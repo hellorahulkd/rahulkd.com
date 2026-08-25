@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Kumar Das — Creative Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171717;
+    --paper:#F7F5F1;
+    --paper-dim:#EDEAE2;
+    --orange:#D9542E;
+    --orange-dark:#B33F22;
+    --blue:#3E5CDB;
+    --green:#1FA35C;
+    --rule:#DDD8CC;
+    --max:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;object-fit:cover;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:0.01em;}
+  .eyebrow{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:#8A8577;}
+
+  /* nav */
+  .topnav{position:sticky;top:0;z-index:20;background:rgba(247,245,241,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);}
+  .topnav-inner{max-width:var(--max);margin:0 auto;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;}
+  .topnav-inner .display{font-size:18px;}
+  .topnav-links{display:flex;gap:22px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .topnav-links a{text-decoration:none;position:relative;padding:4px 0;transition:color 0.2s ease;}
+  .topnav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--orange);transition:width 0.25s ease;}
+  .topnav-links a:hover::after,.topnav-links a.active::after{width:100%;}
+  .topnav-links a:hover,.topnav-links a.active{color:var(--orange);}
+  .nav-toggle{display:none;background:none;border:1.5px solid var(--ink);border-radius:8px;padding:8px 10px;cursor:pointer;}
+  .nav-toggle span{display:block;width:18px;height:2px;background:var(--ink);margin:3px 0;transition:transform 0.2s ease, opacity 0.2s ease;}
+  @media (max-width:680px){
+    .topnav-links{
+      position:fixed;top:60px;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--paper);
+      border-bottom:1px solid var(--rule);
+      max-height:0;overflow:hidden;transition:max-height 0.3s ease;
+    }
+    .topnav-links.open{max-height:400px;}
+    .topnav-links a{padding:14px 28px;border-top:1px solid var(--rule);}
+    .nav-toggle{display:block;}
+  }
+
+  section{padding:76px 0;}
+  .rule-top{border-top:1px solid var(--rule);}
+  @media (max-width:680px){
+    section{padding:52px 0;}
+    .wrap{padding:0 20px;}
+  }
+
+  /* ---------------- hero ---------------- */
+  .hero{padding-top:56px;}
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;}
+  .hero-badges{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:26px;}
+  .hero-badges span{font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+  h1.name{
+    font-size:clamp(3rem,9vw,6.2rem);line-height:0.86;color:var(--orange);margin:0;
+  }
+  .badge-oval{
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1.5px solid var(--blue);border-radius:50%;
+    width:132px;height:132px;text-align:center;
+    font-family:'Anton',sans-serif;font-size:15px;text-transform:uppercase;line-height:1.15;
+    transform:rotate(-6deg);margin:18px 0 22px;
+  }
+  .hero-tagline{font-size:1rem;max-width:340px;color:#4A4A44;margin:0 0 30px;}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:13px 24px;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;letter-spacing:0.02em;transition:transform 0.18s ease, box-shadow 0.18s ease;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(23,23,23,0.14);}
+  .btn:active{transform:translateY(0);}
+  .btn-primary{background:var(--orange);color:#fff;}
+  .btn-dark{background:var(--ink);color:var(--paper);}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;}
+  .hero-photo{border-radius:20px;overflow:hidden;background:#2B2B2B;aspect-ratio:3/4;}
+  .hero-photo img{width:100%;height:100%;}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:28px;}
+    .hero-photo{max-width:320px;margin:0 auto;order:-1;}
+    h1.name{text-align:center;}
+    .hero-badges{justify-content:center;}
+    .hero-badges,.disclaimer,.hero-tagline{margin-left:auto;margin-right:auto;text-align:center;}
+    .badge-oval{margin-left:auto;margin-right:auto;}
+    .hero-cta{justify-content:center;}
+  }
+  @media (max-width:480px){
+    .badge-oval{width:104px;height:104px;font-size:12px;}
+  }
+
+  /* ---------------- about ---------------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:26px;align-items:center;}
+  .about-photo{border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#2B2B2B;}
+  .about-photo img{width:100%;height:100%;}
+  .about-photo.tilt{transform:rotate(-4deg);}
+  .about-center{text-align:center;}
+  h2.section-title{font-size:clamp(2.4rem,6vw,3.6rem);margin:0 0 6px;line-height:0.95;}
+  .who-badge{
+    display:inline-block;border:1.5px solid var(--blue);border-radius:999px;
+    padding:6px 20px;font-family:'Anton',sans-serif;font-size:14px;text-transform:uppercase;
+    margin:-8px 0 22px;
+  }
+  .about-text{font-size:1rem;color:#3A3A34;max-width:440px;margin:0 auto;}
+  .about-text p{margin:0 0 14px;}
+  .stat-chip{
+    display:inline-block;background:var(--orange);color:#fff;font-family:'Anton',sans-serif;
+    border-radius:12px;padding:14px 18px;font-size:22px;margin-top:22px;
+  }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} .about-photo{max-width:220px;margin:0 auto;} }
+
+  /* ---------------- clients ---------------- */
+  .clients-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:32px;}
+  .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .client-card{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#2B2B2B;}
+  .client-card img{width:100%;height:100%;opacity:0.92;transition:transform 0.4s ease, opacity 0.3s ease;}
+  .client-card:hover img{transform:scale(1.06);opacity:1;}
+  .client-tag{
+    position:absolute;left:14px;bottom:14px;right:14px;
+    background:var(--orange);color:#fff;border-radius:10px;padding:10px 14px;
+  }
+  .client-tag b{display:block;font-size:13px;}
+  .client-tag span{font-size:10.5px;opacity:0.9;}
+  @media (max-width:680px){ .clients-grid{grid-template-columns:1fr;} }
+
+  /* ---------------- content portfolio ---------------- */
+  .content-strip-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:10px;}
+  .format-pill{background:#E3DFD3;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:600;}
+  .content-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:14px;overflow-x:auto;padding:24px 0 8px;scroll-snap-type:x proximity;}
+  .content-row .ccard{scroll-snap-align:start;}
+  @media (max-width:560px){
+    .content-row{grid-auto-columns:minmax(120px,42vw);}
+  }
+  .ccard{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:9/16;background:#2B2B2B;}
+  .ccard img{width:100%;height:100%;transition:transform 0.4s ease;}
+  .ccard:hover img{transform:scale(1.06);}
+  .ccard-label{position:absolute;top:10px;left:10px;background:rgba(23,23,23,0.75);color:#fff;font-size:10.5px;font-weight:700;text-transform:uppercase;padding:5px 9px;border-radius:6px;}
+  .ccard-views{position:absolute;bottom:10px;left:10px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;}
+  .content-row-wide .ccard{aspect-ratio:16/9;}
+
+  /* ---------------- services ---------------- */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;}
+  .price-card{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:24px 20px;transition:transform 0.2s ease, box-shadow 0.2s ease;}
+  .price-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(23,23,23,0.08);}
+  .price-card .amount{font-family:'Anton',sans-serif;color:var(--orange);font-size:2rem;}
+  .price-card .desc{font-size:0.85rem;color:#4A4A44;margin-top:8px;}
+  .price-note{background:var(--ink);color:var(--paper);border-radius:16px;padding:22px 24px;font-size:0.9rem;}
+  .price-note ul{margin:10px 0 0;padding-left:18px;}
+  .extra-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px;}
+  .extra-pill{display:flex;justify-content:space-between;align-items:center;background:var(--paper-dim);border-radius:999px;padding:12px 22px;font-weight:600;font-size:0.92rem;}
+  .extra-pill span.amt{color:var(--orange);font-family:'Anton',sans-serif;font-size:1.1rem;}
+  @media (max-width:680px){ .price-grid{grid-template-columns:1fr;} .extra-grid{grid-template-columns:1fr;} }
+
+  /* ---------------- testimonials ---------------- */
+  .test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .test-card{border-radius:16px;overflow:hidden;background:#2B2B2B;position:relative;}
+  .test-card img{aspect-ratio:5/4;opacity:0.95;}
+  .test-info{background:var(--orange);color:#fff;padding:16px 20px;}
+  .test-info b{display:block;font-size:15px;}
+  .test-info .role{font-size:11px;opacity:0.85;display:block;margin-bottom:8px;}
+  .test-info .quote{font-size:0.92rem;font-style:italic;}
+  @media (max-width:680px){ .test-grid{grid-template-columns:1fr;} }
+
+  /* ---------------- experience / education / ventures ---------------- */
+  .entry{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--rule);}
+  .entry:first-of-type{border-top:none;}
+  .entry-when{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--orange);padding-top:3px;}
+  .entry h4{margin:0 0 4px;font-size:1.1rem;font-weight:700;}
+  .entry p{margin:0;font-size:0.95rem;color:#3A3A34;}
+  @media (max-width:560px){ .entry{grid-template-columns:1fr;gap:4px;} }
+
+  .pills{display:flex;flex-wrap:wrap;gap:10px;}
+  .pill{font-size:12.5px;font-weight:600;padding:9px 16px;border:1.5px solid var(--ink);border-radius:999px;transition:background 0.2s ease, color 0.2s ease;}
+  .pill:hover{background:var(--ink);color:var(--paper);}
+
+  /* ---------------- resume ---------------- */
+  .resume-panel{background:var(--orange);color:#fff;border-radius:20px;padding:44px 36px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+  .resume-panel .display{font-size:1.8rem;margin:0 0 6px;}
+  .resume-panel p{margin:0;max-width:420px;font-size:0.92rem;opacity:0.95;}
+
+  /* ---------------- contact ---------------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;}
+  .contact-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:#2B2B2B;}
+  .contact-photo img{width:100%;height:100%;}
+  .contact-links{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+  .contact-links a{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;font-size:1rem;}
+  @media (max-width:680px){ .contact-grid{grid-template-columns:1fr;} }
+
+  footer{padding:36px 0 60px;font-size:12px;color:#8A8577;text-align:center;}
+
+  .disclaimer{
+    font-size:12px;font-weight:600;color:var(--orange-dark);
+    background:#F1E4DC;border:1px dashed var(--orange);border-radius:10px;
+    padding:10px 14px;display:inline-block;margin:14px 0 6px;max-width:460px;
+  }
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .btn,.ccard img,.client-card img,.price-card{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <span class="display">RKD</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="topnav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#clients">Clients</a>
+      <a href="#content">Content</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-badges eyebrow">
+        <span>Content Creator</span><span>Storyteller</span><span>Digital Marketer</span>
+      </div>
+      <h1 class="name display">Rahul<br>Kumar<br>Das</h1>
+      <div class="disclaimer">Rahul is different, he's easy to work with, and his rates are fair. Hire him, you won't be sorry. If you don't, he'll be sad — but he'll still love you.</div>
+      <div class="badge-oval">Creative<br>Portfolio</div>
+      <p class="hero-tagline">Creating content that connects, informs, and inspires.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="mailto:hello.rahulkd@gmail.com">Work with me</a>
+        <a class="btn btn-dark" href="#resume">Download CV</a>
+        <a class="btn btn-outline" href="https://instagram.com/_rahul_kd_" target="_blank" rel="noopener">@_rahul_kd_</a>
+      </div>
+    </div>
+    <div class="hero-photo"><img src="assets/hero.jpg" alt="Rahul Kumar Das"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="rule-top reveal">
+  <div class="wrap about-grid">
+    <div class="about-photo tilt"><img src="assets/about-1.jpg" alt="Rahul, portrait"></div>
+    <div class="about-center">
+      <h2 class="section-title display">About Me</h2>
+      <span class="who-badge">Who I Am?</span>
+      <div class="about-text">
+        <p>With four years of experience in digital content, I specialize in creating relevant, high-performing content and managing social media. I focus on building trust rather than grabbing quick attention.</p>
+        <p>A passionate adventurer, a geek, student and a giver, always saying yes to life and opportunities.</p>
+      </div>
+      <div class="stat-chip">4+ Years</div>
+    </div>
+    <div class="about-photo"><img src="assets/about-2.jpg" alt="Rahul, close up"></div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" class="rule-top reveal">
+  <div class="wrap">
+    <div class="clients-head">
+      <h2 class="section-title display">Clients</h2>
+      <span class="eyebrow">Brands I've partnered with</span>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card">
+        <img src="assets/client-gradplus.jpg" alt="Graduate Plus">
+        <div class="client-tag"><b>Graduate Plus</b><span>Job Ready Program</span></div>
+      </div>
+      <div class="client-card">
+        <img src="assets/client-sydneytax.jpg" alt="Sydney Tax & Accountancy Services">
+        <div class="client-tag"><b>Sydney Tax</b><span>&amp; Accountancy Services</span></div>
+      </div>
+      <div class="client-card">
+        <img src="assets/client-torrens.jpg" alt="Torrens University Australia">
+        <div class="client-tag"><b>Torrens University</b><span>Australia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT PORTFOLIO -->
+<section id="content" class="rule-top reveal">
+  <div class="wrap">
+    <div class="content-strip-head">
+      <h2 class="section-title display">Content Portfolio</h2>
+      <span class="format-pill">Vertical, short forms</span>
+    </div>
+    <div class="content-row">
+      <div class="ccard"><img src="assets/content-sales.jpg" alt="Sales content"><span class="ccard-label">Sales</span><span class="ccard-views">👁 83.6K</span></div>
+      <div class="ccard"><img src="assets/content-location.jpg" alt="Location showcase"><span class="ccard-label">Location showcase</span><span class="ccard-views">👁 10K</span></div>
+      <div class="ccard"><img src="assets/content-informative.jpg" alt="Informative"><span class="ccard-label">Informative</span><span class="ccard-views">👁 Billboard</span></div>
+      <div class="ccard"><img src="assets/content-campaign.jpg" alt="Campaign"><span class="ccard-label">Campaign</span><span class="ccard-views">👁 107K</span></div>
+      <div class="ccard"><img src="assets/content-paid.jpg" alt="Paid content"><span class="ccard-label">Paid</span><span class="ccard-views">👁 106K</span></div>
+      <div class="ccard"><img src="assets/content-fun.jpg" alt="Fun content"><span class="ccard-label">Fun</span><span class="ccard-views">👁 10K</span></div>
+    </div>
+
+    <div class="content-strip-head" style="margin-top:48px;">
+      <span></span>
+      <span class="format-pill">Long form, 16:9</span>
+    </div>
+    <div class="content-row content-row-wide">
+      <div class="ccard"><img src="assets/content-trust.jpg" alt="Brand trust building"><span class="ccard-label">Brand trust building</span></div>
+      <div class="ccard"><img src="assets/content-longsales.jpg" alt="Sales long form"><span class="ccard-label">Sales</span></div>
+      <div class="ccard"><img src="assets/content-story.jpg" alt="Storytelling"><span class="ccard-label">Storytelling</span></div>
+      <div class="ccard"><img src="assets/content-personal.jpg" alt="Informative personal"><span class="ccard-label">Informative</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES & PRICING -->
+<section id="services" class="rule-top reveal">
+  <div class="wrap">
+    <h2 class="section-title display">Services &amp; Pricing</h2>
+    <div class="price-grid" style="margin-top:30px;">
+      <div class="price-card">
+        <div class="amount">$45/hr</div>
+        <div class="desc">~$220 · UGC video (15–30 sec) for Instagram &amp; TikTok</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">$45/hr</div>
+        <div class="desc">~$270 · UGC video (60–90 sec) for LinkedIn &amp; Facebook</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">$55/hr</div>
+        <div class="desc">~$400 · UGC video (2–8 min) for YouTube &amp; LinkedIn</div>
+      </div>
+    </div>
+    <div class="price-note">
+      Includes: brainstorming, scripting, shooting, editing.
+      <br><strong>Equipment on the house.</strong>
+    </div>
+    <div class="extra-grid">
+      <div class="extra-pill">Single post <span class="amt">$45</span></div>
+      <div class="extra-pill">Carousel <span class="amt">~$200</span></div>
+      <div class="extra-pill">Story <span class="amt">$45</span></div>
+      <div class="extra-pill">Presentation <span class="amt">~$200</span></div>
+      <div class="extra-pill">Poster <span class="amt">$80</span></div>
+      <div class="extra-pill">Brochure <span class="amt">$80</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="rule-top reveal">
+  <div class="wrap">
+    <h2 class="section-title display" style="text-align:center;">Testimonials</h2>
+    <p style="text-align:center;" class="eyebrow">Client feedback</p>
+    <div class="test-grid" style="margin-top:30px;">
+      <div class="test-card">
+        <img src="assets/testimonial-juliana.jpg" alt="Juliana Rodriguez">
+        <div class="test-info">
+          <b>Juliana Rodriguez</b>
+          <span class="role">Marketing Executive, Torrens University Australia</span>
+          <span class="quote">"Working with Rahul was effortless, our campaign saw a 3x boost in reach."</span>
+        </div>
+      </div>
+      <div class="test-card">
+        <img src="assets/testimonial-basan.jpg" alt="Basan Subedi">
+        <div class="test-info">
+          <b>Basan Subedi</b>
+          <span class="role">Founder, Graduate Plus &amp; DigiPearl</span>
+          <span class="quote">"He shared our product exactly how we imagined, genuine and beautifully styled."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENTURES / EXPERIENCE / EDUCATION -->
+<section id="ventures" class="rule-top reveal">
+  <div class="wrap">
+    <h2 class="section-title display">Beyond Content</h2>
+    <p class="eyebrow" style="margin-bottom:20px;">MBA ventures &amp; work experience</p>
+    <div class="entry">
+      <div class="entry-when">Current</div>
+      <div><h4>TAC Assistant — Torrens University Australia</h4><p>Manage course fee and admissions data across UAC and QTAC systems, including a master course reference workbook spanning 60+ courses.</p></div>
+    </div>
+    <div class="entry">
+      <div class="entry-when">Ongoing</div>
+      <div><h4>Founder — Passport People</h4><p>A student travel brand for Sydney uni students aged 19–26. Built the brand identity, launched on Instagram, and ran the first trip end to end.</p></div>
+    </div>
+    <div class="entry">
+      <div class="entry-when">Education</div>
+      <div><h4>MBA — Torrens University Australia</h4><p>Sydney campus, in progress. Also holds a Bachelor of Business Information Systems (BBIS), Torrens University Australia.</p></div>
+    </div>
+    <div style="margin-top:26px;" class="pills">
+      <span class="pill">Content Strategy</span>
+      <span class="pill">UGC &amp; Video Production</span>
+      <span class="pill">Scripting &amp; Editing</span>
+      <span class="pill">Brand Identity</span>
+      <span class="pill">Pitch Decks</span>
+      <span class="pill">Data &amp; Spreadsheets</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="rule-top reveal">
+  <div class="wrap">
+    <div class="resume-panel">
+      <div>
+        <div class="display">Want the full picture?</div>
+        <p>Download my CV for the complete work history, education, and references.</p>
+      </div>
+      <a class="btn btn-dark" href="resume.pdf" download>Download my CV →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="rule-top reveal">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 class="section-title display">Thank<br>You</h2>
+      <span class="who-badge">Trust &gt; attention</span>
+      <div class="contact-links">
+        <a href="mailto:hello.rahulkd@gmail.com">✉ hello.rahulkd@gmail.com</a>
+        <a href="https://instagram.com/_rahul_kd_" target="_blank" rel="noopener">📷 @_rahul_kd_</a>
+        <a href="https://linkedin.com/in/rahulkd" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+    </div>
+    <div class="contact-photo"><img src="assets/about-2.jpg" alt="Rahul Kumar Das"></div>
+  </div>
+</section>
+
+<footer>Rahul Kumar Das — Sydney, Australia</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scrollspy — highlight active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.topnav-links a');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealer.observe(el));
+</script>
+
+</body>
+</html>
