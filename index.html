@@ -151,6 +151,22 @@
   .ccard:hover img{transform:scale(1.06);}
   .ccard-label{position:absolute;top:10px;left:10px;background:rgba(23,23,23,0.75);color:#fff;font-size:10.5px;font-weight:700;text-transform:uppercase;padding:5px 9px;border-radius:6px;}
   .ccard-views{position:absolute;bottom:10px;left:10px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;}
+
+  .viral-banner{
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    background:var(--ink);color:var(--paper);border-radius:18px;
+    padding:26px 28px;margin:18px 0 34px;
+  }
+  .viral-banner .num{font-family:'Anton',sans-serif;font-size:2.6rem;color:var(--orange);line-height:1;}
+  .viral-banner .label{font-size:0.92rem;color:#DCE0E8;max-width:360px;}
+  .viral-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px;}
+  .vcard-slot{
+    position:relative;border-radius:14px;overflow:hidden;aspect-ratio:9/16;
+    background:#2B2B2B;display:flex;align-items:center;justify-content:center;
+  }
+  .vcard-slot video,.vcard-slot img{width:100%;height:100%;object-fit:cover;}
+  .vcard-slot .placeholder-text{color:#8A8577;font-size:11px;text-align:center;padding:12px;font-weight:600;}
+  @media (max-width:680px){ .viral-grid{grid-template-columns:repeat(2,1fr);} }
   .content-row-wide .ccard{aspect-ratio:16/9;}
 
   /* ---------------- services ---------------- */
@@ -252,7 +268,7 @@
         <span>Content Creator</span><span>Storyteller</span><span>Digital Marketer</span>
       </div>
       <h1 class="name display">Rahul<br>Kumar<br>Das</h1>
-      <div class="disclaimer">Rahul is different, he's easy to work with, and his rates are fair. Hire him, you won't be sorry. If you don't, he'll be sad — but he'll still love you.</div>
+      <div class="disclaimer">I'm easy to work with and my rates are fair. Hit me up, you won't regret it. If you don't, I'll survive, but no promises I won't think about it.</div>
       <div class="badge-oval">Creative<br>Portfolio</div>
       <p class="hero-tagline">Creating content that connects, informs, and inspires.</p>
       <div class="hero-cta">
@@ -313,7 +329,21 @@
       <h2 class="section-title display">Content Portfolio</h2>
       <a class="format-pill" style="text-decoration:none;" href="https://instagram.com/rahul_yaps" target="_blank" rel="noopener">More on @rahul_yaps →</a>
     </div>
-    <span class="eyebrow">Vertical, short forms</span>
+
+    <div class="viral-banner">
+      <span class="num">10M+</span>
+      <span class="label">Combined views across four videos on @rahul_yaps, posted daily since this account took off.</span>
+    </div>
+
+    <span class="eyebrow">Viral hits</span>
+    <div class="viral-grid">
+      <div class="vcard-slot"><span class="placeholder-text">Video 1<br>coming soon</span></div>
+      <div class="vcard-slot"><span class="placeholder-text">Video 2<br>coming soon</span></div>
+      <div class="vcard-slot"><span class="placeholder-text">Video 3<br>coming soon</span></div>
+      <div class="vcard-slot"><span class="placeholder-text">Video 4<br>coming soon</span></div>
+    </div>
+
+    <span class="eyebrow" style="display:block;margin-top:40px;">Vertical, short forms</span>
     <div class="content-row">
       <div class="ccard"><img src="assets/content-sales.jpg" alt="Sales content"><span class="ccard-label">Sales</span><span class="ccard-views">👁 83.6K</span></div>
       <div class="ccard"><img src="assets/content-location.jpg" alt="Location showcase"><span class="ccard-label">Location showcase</span><span class="ccard-views">👁 10K</span></div>
