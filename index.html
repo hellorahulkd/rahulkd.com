@@ -57,7 +57,8 @@
     70%{box-shadow:0 0 0 8px rgba(31,163,92,0);}
     100%{box-shadow:0 0 0 0 rgba(31,163,92,0);}
   }
-  @media (max-width:680px){ .avail-pill{left:14px;bottom:14px;font-size:10px;padding:8px 14px 8px 10px;} }
+  /* fixed pill overlaps body copy on narrow screens — desktop only */
+  @media (max-width:680px){ .avail-pill{display:none;} }
 
   /* nav */
   .topnav{position:sticky;top:0;z-index:20;background:rgba(247,245,241,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);}
@@ -82,11 +83,14 @@
     .nav-toggle{display:block;}
   }
 
-  section{padding:88px 0;position:relative;}
+  /* scroll-margin keeps anchored headings clear of the sticky nav */
+  section{padding:88px 0;position:relative;scroll-margin-top:76px;}
   .rule-top{border-top:1px solid var(--rule);}
   @media (max-width:680px){
     section{padding:56px 0;}
     .wrap{padding:0 20px;}
+    h2.section-title{font-size:clamp(2rem,10vw,2.6rem);}
+    .sec-head{gap:10px;}
   }
 
   /* section heading with mono index number */
@@ -109,11 +113,6 @@
       linear-gradient(90deg, rgba(237,234,229,0.06) 1px, transparent 1px);
   }
 
-  /* corner crosshair accents on photos */
-  .cross{position:relative;}
-  .cross::before,.cross::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none;z-index:2;}
-  .cross::before{top:8px;left:8px;border-top:1.5px solid rgba(62,92,219,0.85);border-left:1.5px solid rgba(62,92,219,0.85);}
-  .cross::after{bottom:8px;right:8px;border-bottom:1.5px solid rgba(62,92,219,0.85);border-right:1.5px solid rgba(62,92,219,0.85);}
 
   /* ---------------- hero ---------------- */
   .hero{padding-top:64px;overflow:hidden;}
@@ -184,8 +183,6 @@
   }
 
   /* staggered card reveal + cursor spotlight */
-  .stagger{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease, transform 0.55s ease;}
-  .reveal.in .stagger{opacity:1;transform:translateY(0);}
   .stagger:nth-child(1){transition-delay:0s;}
   .stagger:nth-child(2){transition-delay:0.09s;}
   .stagger:nth-child(3){transition-delay:0.18s;}
@@ -399,16 +396,21 @@
     padding:10px 14px;display:inline-block;margin:14px 0 6px;max-width:460px;
   }
 
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease, transform 0.6s ease;}
-  .reveal.in{opacity:1;transform:translateY(0);}
+  /* Scoped to .js so content is never hidden when scripts fail to run —
+     otherwise a single JS error blanks whole sections. */
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease, transform 0.6s ease;}
+  .js .reveal.in{opacity:1;transform:translateY(0);}
+  .js .stagger{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease, transform 0.55s ease;}
+  .js .reveal.in .stagger{opacity:1;transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
+    .js .reveal,.js .reveal .stagger{opacity:1;transform:none;transition:none;}
     .btn,.ccard img,.client-card img,.price-card,.scroll-cue svg,.avail-dot{transition:none;animation:none;}
     .stagger{opacity:1;transform:none;transition:none;}
     .tilt-3d{transition:none;}
     .cursor-follow{display:none;}
   }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -441,9 +443,9 @@
         <span>Content Creator</span><span>Storyteller</span><span>Digital Marketer</span>
       </div>
       <h1 class="name display">Rahul<br>Kumar<br>Das</h1>
-      <div class="disclaimer">Fair rates. Quick turnarounds. And yes, I actually reply to emails.</div>
+      <div class="disclaimer">I'm easy to work with, quick to reply, and my rates are fair. Hire me, you won't be sorry. If you don't, I'll be a little sad, but I'll still like your brand.</div>
       <div class="badge-oval">Creative<br>Portfolio</div>
-      <p class="hero-tagline">I make videos people actually finish. That's added up to 10M+ views so far.</p>
+      <p class="hero-tagline">I make videos people actually watch to the end. 10M+ views and counting — a few of those are my mum, most aren't.</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-glow" href="mailto:hello.rahulkd@gmail.com">Work with me</a>
         <a class="btn btn-dark btn-glow" href="#resume">Grab my CV</a>
@@ -551,7 +553,7 @@
       <div class="video-caption">
         <span class="eyebrow">Long form · YouTube</span>
         <h3>A proper brand film</h3>
-        <p>Made with a team, start to finish. We wrote it, shot it and cut it ourselves — no stock footage, no shortcuts.</p>
+        <p>Written, shot and cut by us, start to finish. No stock footage, no AI voiceover, no “we'll fix it in post”.</p>
       </div>
     </div>
 
@@ -782,7 +784,7 @@
         <a href="https://linkedin.com/in/rahulkd" target="_blank" rel="noopener"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.25h4V23h-4V8.25zM8.5 8.25h3.83v2.01h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.9c0-1.64-.03-3.76-2.29-3.76-2.29 0-2.64 1.79-2.64 3.64V23h-4V8.25z"></path></svg></span> LinkedIn</a>
       </div>
     </div>
-    <div class="contact-photo cross"><img src="assets/about-2.jpg" alt="Rahul Kumar Das"></div>
+    <div class="contact-photo"><img src="assets/about-2.jpg" alt="Rahul Kumar Das"></div>
   </div>
 </section>
 
@@ -821,17 +823,23 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
   sections.forEach(s => spy.observe(s));
 
-  // Scroll reveal
+  // Scroll reveal. threshold must stay 0: a percentage threshold is
+  // unreachable for any section taller than viewport/threshold, which on a
+  // phone silently left the tall work section stuck at opacity 0.
   const revealEls = document.querySelectorAll('.reveal');
-  const revealer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        revealer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => revealer.observe(el));
+  if ('IntersectionObserver' in window) {
+    const revealer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(el => revealer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
 
   // Scroll progress bar
   const progressBar = document.getElementById('progressBar');
