@@ -118,10 +118,10 @@
   /* Decorative only: clipped by the container so they can never widen the
      page, and pointer-events:none so they never eat a click. */
   .float-icons{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4;}
-  .fi{position:absolute;display:block;color:var(--orange);opacity:0.38;animation:fi-float 9s ease-in-out infinite;}
+  .fi{position:absolute;display:block;color:var(--orange);opacity:0.55;animation:fi-float 9s ease-in-out infinite;}
   .fi svg{width:100%;height:100%;display:block;animation:fi-pulse 6s ease-in-out infinite;}
   .fi.blue{color:var(--blue);}
-  .midnight .fi{color:#A9ADCF;opacity:0.42;}
+  .midnight .fi{color:#B9BDDD;opacity:0.6;}
   .midnight .fi.blue{color:var(--orange);}
   @keyframes fi-float{
     0%,100%{transform:translateY(0) rotate(-5deg);}
@@ -131,18 +131,14 @@
     0%,100%{transform:scale(1);opacity:0.72;}
     50%{transform:scale(1.14);opacity:1;}
   }
-  .fi-a{top:14%;left:3.5%;width:46px;height:46px;animation-delay:0s;}
-  .fi-b{top:68%;left:6%;width:36px;height:36px;animation-delay:1.6s;}
-  .fi-c{top:20%;right:4.5%;width:40px;height:40px;animation-delay:0.8s;}
-  .fi-d{top:76%;right:8%;width:52px;height:52px;animation-delay:2.4s;}
-  .fi-e{top:44%;left:46%;width:30px;height:30px;animation-delay:3.1s;}
-  .fi-f{top:9%;right:24%;width:34px;height:34px;animation-delay:1.1s;}
-  @media (max-width:680px){
-    .fi-e,.fi-f{display:none;}
-    .fi{opacity:0.3;}
-    .fi-a,.fi-d{width:34px;height:34px;}
-    .fi-b,.fi-c{width:28px;height:28px;}
-  }
+  .fi-a{top:13%;left:calc(50% - 636px);width:62px;height:62px;animation-delay:0s;}
+  .fi-b{top:63%;left:calc(50% - 622px);width:48px;height:48px;animation-delay:1.6s;}
+  .fi-c{top:19%;right:calc(50% - 630px);width:54px;height:54px;animation-delay:0.8s;}
+  .fi-d{top:72%;right:calc(50% - 640px);width:66px;height:66px;animation-delay:2.4s;}
+  .fi-e{top:40%;left:calc(50% - 616px);width:42px;height:42px;animation-delay:3.1s;}
+  .fi-f{top:33%;right:calc(50% - 618px);width:44px;height:44px;animation-delay:1.1s;}
+  /* Below this the gutters close up and an icon would land on the copy. */
+  @media (max-width:1300px){ .float-icons{display:none;} }
   @media (prefers-reduced-motion: reduce){
     .fi,.fi svg{animation:none;}
   }
@@ -321,6 +317,7 @@
   /* embed.js swaps the blockquote for an iframe carrying the same class, and
      hard-codes min-width:326px inline — which overflows narrow grid columns. */
   .ig-embed .instagram-media{margin:0 !important;min-width:0 !important;width:100% !important;max-width:100% !important;}
+  .section-lede{margin:10px 0 0;max-width:620px;color:#4A4A44;font-size:0.98rem;}
   .reel-cap{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:#6B675C;}
   /* Fallback card shown when embed.js is blocked (ad blockers, privacy browsers).
      Only matches the un-replaced blockquote — embed.js swaps in an iframe on success. */
@@ -534,8 +531,9 @@
     <div class="about-center">
       <span class="who-badge">Who's this guy?</span>
       <div class="about-text">
+        <p>I've been a camera geek for about a decade. It started with photography, turned into a proper obsession with visuals and storytelling, and that's what got me here. I'm as useful in front of the lens as I am behind it — I'll write it, shoot it, present it and cut it.</p>
         <p>I landed in Sydney from Nepal at 19, knowing nobody, with exactly zero local experience. Three years on: campaign videos with millions of views between them, 30+ new clients brought into a firm on a $0 ad budget, and 3,000+ students represented as SRC President.</p>
-        <p>My approach is honestly a bit boring — earn the trust first, and the attention turns up on its own. Off the clock I'm usually outside, learning something new, or saying yes to a plan I should've thought about longer.</p>
+        <p>My approach is honestly a bit boring — earn the trust first, and the attention turns up on its own.</p>
       </div>
       <div class="stat-chip">4+ Years</div>
       <div class="marquee">
@@ -545,12 +543,16 @@
           <span class="pill">Scripting &amp; Editing</span>
           <span class="pill">Brand Identity</span>
           <span class="pill">Pitch Decks</span>
+          <span class="pill">Photography</span>
+          <span class="pill">On-camera Presenting</span>
           <span class="pill">Data &amp; Spreadsheets</span>
           <span class="pill">Content Strategy</span>
           <span class="pill">UGC &amp; Video Production</span>
           <span class="pill">Scripting &amp; Editing</span>
           <span class="pill">Brand Identity</span>
           <span class="pill">Pitch Decks</span>
+          <span class="pill">Photography</span>
+          <span class="pill">On-camera Presenting</span>
           <span class="pill">Data &amp; Spreadsheets</span>
         </div>
       </div>
@@ -632,6 +634,7 @@
     </div>
 
     <span class="eyebrow" style="display:block;margin-top:44px;">Off the clock</span>
+    <p class="section-lede">On my own account I cook, make memes, play the piano and sing, and post something educational when the mood takes me. None of it breaks the internet. That was never really the point.</p>
     <div class="reel-grid">
       <div class="reel ig-embed stagger">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DKb6l4iyXAk/" data-instgrm-version="14">
