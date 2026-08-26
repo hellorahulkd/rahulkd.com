@@ -332,11 +332,22 @@
   .flagship-media.is-embed{aspect-ratio:auto;background:transparent;overflow:visible;padding:18px;}
   .flagship-media.is-embed blockquote.instagram-media{background:#000;}
 
-  /* About: personal video */
-  .about-video{display:grid;grid-template-columns:330px 1fr;gap:34px;align-items:center;margin-top:58px;}
-  .about-video-copy h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,3vw,2rem);margin:10px 0 12px;line-height:1.05;}
-  .about-video-copy p{margin:0;color:#3A3A34;max-width:430px;}
-  @media (max-width:760px){ .about-video{grid-template-columns:1fr;gap:22px;text-align:center;justify-items:center;} .about-video-copy p{margin:0 auto;} }
+  /* A single reel sat beside its own copy (About bio video, client work) */
+  .media-split{display:grid;grid-template-columns:330px 1fr;gap:34px;align-items:center;margin-top:58px;}
+  .media-split-copy h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,3vw,2rem);margin:10px 0 12px;line-height:1.05;}
+  .media-split-copy p{margin:0;color:#3A3A34;max-width:430px;}
+  .media-split-stat{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:14px;}
+  .media-split-stat .num{font-family:'Anton',sans-serif;color:var(--orange);font-size:2.2rem;line-height:1;}
+  .media-split-stat .txt{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B675C;text-transform:uppercase;}
+  @media (max-width:760px){ .media-split{grid-template-columns:1fr;gap:22px;text-align:center;justify-items:center;} .media-split-copy p{margin:0 auto;} }
+
+  /* Paired 16:9 cards (long-form embed alongside a still) */
+  .wide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:16px;align-items:start;}
+  @media (max-width:680px){ .wide-grid{grid-template-columns:1fr;} }
+  .wide-card{min-width:0;}
+  .wide-card .embed-16x9{border-radius:14px;overflow:hidden;}
+  .wide-still{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#2B2B2B;}
+  .wide-still img{width:100%;height:100%;}
 
   /* ---------------- services ---------------- */
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;}
@@ -512,13 +523,13 @@
     </div>
     <div class="about-photo tilt-3d" data-base-rotate="0"><img src="assets/about-2.jpg" alt="Rahul, close up"></div>
   </div>
-  <div class="wrap about-video">
+  <div class="wrap media-split">
     <div class="ig-embed">
       <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DLvvGg9z4Zb/" data-instgrm-version="14">
         <a href="https://www.instagram.com/reel/DLvvGg9z4Zb/" target="_blank" rel="noopener">Watch this reel on Instagram</a>
       </blockquote>
     </div>
-    <div class="about-video-copy">
+    <div class="media-split-copy">
       <span class="eyebrow">In my words</span>
       <h3>How I manage it all</h3>
       <p>Studying full time, client work, and side projects running at once — here's how it actually fits together.</p>
@@ -606,9 +617,23 @@
       </div>
     </div>
 
+    <span class="eyebrow" style="display:block;margin-top:44px;">Client work · short form</span>
+    <div class="media-split" style="margin-top:16px;">
+      <div class="ig-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DKPCniky3_O/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DKPCniky3_O/" target="_blank" rel="noopener">Watch this reel on Instagram</a>
+        </blockquote>
+      </div>
+      <div class="media-split-copy">
+        <span class="eyebrow">Sales · Instagram</span>
+        <h3>Sales content that travelled</h3>
+        <div class="media-split-stat"><span class="num">83.6K</span><span class="txt">Views</span></div>
+        <p>Short-form sales content written, shot and cut end to end.</p>
+      </div>
+    </div>
+
     <span class="eyebrow" style="display:block;margin-top:44px;">More short-form work</span>
     <div class="content-row">
-      <div class="ccard spot"><img src="assets/content-sales.jpg" alt="Sales content"><span class="ccard-label">Sales</span><span class="ccard-views">👁 83.6K</span></div>
       <div class="ccard spot"><img src="assets/content-location.jpg" alt="Location showcase"><span class="ccard-label">Location showcase</span><span class="ccard-views">👁 10K</span></div>
       <div class="ccard spot"><img src="assets/content-informative.jpg" alt="Informative"><span class="ccard-label">Informative</span><span class="ccard-views">👁 Billboard</span></div>
       <div class="ccard spot"><img src="assets/content-paid.jpg" alt="Paid content"><span class="ccard-label">Paid</span><span class="ccard-views">👁 106K</span></div>
@@ -616,14 +641,40 @@
     </div>
 
     <div class="content-strip-head" style="margin-top:48px;">
-      <span class="eyebrow">Long-form, 16:9</span>
-      <span class="format-pill">For YouTube &amp; LinkedIn</span>
+      <span class="eyebrow">For YouTube &amp; LinkedIn</span>
+      <span class="format-pill">Long form</span>
     </div>
-    <div class="content-row content-row-wide">
-      <div class="ccard spot"><img src="assets/content-trust.jpg" alt="Brand trust building"><span class="ccard-label">Brand trust building</span></div>
-      <div class="ccard spot"><img src="assets/content-longsales.jpg" alt="Sales long form"><span class="ccard-label">Sales</span></div>
-      <div class="ccard spot"><img src="assets/content-story.jpg" alt="Storytelling"><span class="ccard-label">Storytelling</span></div>
-      <div class="ccard spot"><img src="assets/content-personal.jpg" alt="Informative personal"><span class="ccard-label">Informative</span></div>
+    <div class="wide-grid">
+      <div class="wide-card stagger">
+        <div class="embed-16x9">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/YuhRqt8VN7A"
+            title="Long-form sales video"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="reel-cap">Sales · YouTube</div>
+      </div>
+      <div class="wide-card stagger">
+        <div class="wide-still spot"><img src="assets/content-trust.jpg" alt="Brand trust building"></div>
+        <div class="reel-cap">Brand trust building</div>
+      </div>
+    </div>
+    <div class="reel-grid two" style="margin-top:22px;">
+      <div class="reel ig-embed stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRs-86Dkp8Q/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DRs-86Dkp8Q/" target="_blank" rel="noopener">Watch this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Informative</div>
+      </div>
+      <div class="reel ig-embed stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSKP8UJkidj/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DSKP8UJkidj/" target="_blank" rel="noopener">Watch this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Storytelling</div>
+      </div>
     </div>
   </div>
 </section>
