@@ -292,6 +292,41 @@
 
   .content-row-wide .ccard{aspect-ratio:16/9;}
 
+  /* ---------------- video embeds ---------------- */
+  .video-feature{margin:22px 0 8px;border-radius:22px;overflow:hidden;background:var(--ink);}
+  .embed-16x9{position:relative;aspect-ratio:16/9;background:#000;}
+  .embed-16x9 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+  .video-caption{padding:22px 26px 26px;color:var(--cream-text);}
+  .video-caption .eyebrow{color:#B7B2A4;}
+  .video-caption h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,3vw,1.9rem);margin:10px 0 10px;line-height:1.05;}
+  .video-caption p{margin:0;color:#D7D3C6;font-size:0.95rem;max-width:560px;}
+
+  .reel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px;align-items:start;}
+  .reel-grid.two{grid-template-columns:repeat(2,1fr);max-width:706px;}
+  @media (max-width:860px){ .reel-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .reel-grid,.reel-grid.two{grid-template-columns:1fr;max-width:none;} }
+  .reel{min-width:0;}
+  /* embed.js swaps the blockquote for an iframe carrying the same class, and
+     hard-codes min-width:326px inline — which overflows narrow grid columns. */
+  .reel .instagram-media{margin:0 !important;min-width:0 !important;width:100% !important;max-width:100% !important;}
+  .reel-cap{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:#6B675C;}
+  /* Fallback card shown when embed.js is blocked (ad blockers, privacy browsers).
+     Only matches the un-replaced blockquote — embed.js swaps in an iframe on success. */
+  .reel blockquote.instagram-media{
+    display:flex;align-items:center;justify-content:center;
+    aspect-ratio:9/14;padding:20px;text-align:center;
+    background:var(--ink);border-radius:14px;
+  }
+  .reel blockquote.instagram-media a{
+    display:inline-flex;flex-direction:column;align-items:center;gap:14px;
+    color:var(--paper);font-size:13px;font-weight:700;text-decoration:none;
+  }
+  .reel blockquote.instagram-media a::before{
+    content:"";width:46px;height:46px;border-radius:50%;background:var(--orange);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center;background-size:20px 20px;
+  }
+
   /* ---------------- services ---------------- */
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;}
   .price-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 20px;transition:transform 0.2s ease, box-shadow 0.2s ease;}
@@ -473,7 +508,7 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">02</span><h2 class="section-title display">Content Portfolio</h2></div>
     <div class="content-strip-head" style="margin-top:20px;">
-      <span class="eyebrow">Vertical, short-form work</span>
+      <span class="eyebrow">Watch the work</span>
       <a class="format-pill" style="text-decoration:none;" href="https://instagram.com/rahul_yaps" target="_blank" rel="noopener">More on @rahul_yaps →</a>
     </div>
 
@@ -493,7 +528,63 @@
       </div>
     </div>
 
-    <span class="eyebrow" style="display:block;margin-top:8px;">More vertical, short forms</span>
+    <span class="eyebrow" style="display:block;margin-top:44px;">Featured film</span>
+    <div class="video-feature">
+      <div class="embed-16x9">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/ZtGtrbKrCpI?start=1"
+          title="Brand film produced with a team"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <div class="video-caption">
+        <span class="eyebrow">Long form · YouTube</span>
+        <h3>A full brand piece, made with a team</h3>
+        <p>Professional brand content produced end to end — concept, shoot and final cut, with a team behind it.</p>
+      </div>
+    </div>
+
+    <span class="eyebrow" style="display:block;margin-top:44px;">Viral on Instagram</span>
+    <div class="reel-grid">
+      <div class="reel stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYehDQJxJKr/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DYehDQJxJKr/" target="_blank" rel="noopener">View this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Viral reel 01</div>
+      </div>
+      <div class="reel stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYwxxr-x9qa/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DYwxxr-x9qa/" target="_blank" rel="noopener">View this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Viral reel 02</div>
+      </div>
+      <div class="reel stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbx8SdERL0Z/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/Dbx8SdERL0Z/" target="_blank" rel="noopener">View this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Viral reel 03</div>
+      </div>
+    </div>
+
+    <span class="eyebrow" style="display:block;margin-top:44px;">Off the clock</span>
+    <div class="reel-grid two">
+      <div class="reel stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DKb6l4iyXAk/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DKb6l4iyXAk/" target="_blank" rel="noopener">View this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Fun, with the team</div>
+      </div>
+      <div class="reel stagger">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DPGgXVckiij/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DPGgXVckiij/" target="_blank" rel="noopener">View this reel on Instagram</a>
+        </blockquote>
+        <div class="reel-cap">Travel with friends</div>
+      </div>
+    </div>
+
+    <span class="eyebrow" style="display:block;margin-top:44px;">More short-form work</span>
     <div class="content-row">
       <div class="ccard spot"><img src="assets/content-sales.jpg" alt="Sales content"><span class="ccard-label">Sales</span><span class="ccard-views">👁 83.6K</span></div>
       <div class="ccard spot"><img src="assets/content-location.jpg" alt="Location showcase"><span class="ccard-label">Location showcase</span><span class="ccard-views">👁 10K</span></div>
@@ -659,6 +750,9 @@
 
 <div class="avail-pill mono"><span class="avail-dot"></span> Available for new projects — Sydney, AU</div>
 <div class="cursor-follow mono" id="cursorFollow" aria-hidden="true">View</div>
+
+<!-- Instagram embeds: turns the blockquotes above into players and auto-sizes them. -->
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <script>
   // Mobile nav toggle
