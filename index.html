@@ -278,7 +278,8 @@
 
   /* ---------------- clients ---------------- */
   .clients-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:32px;}
-  .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media (max-width:1000px){ .clients-grid{grid-template-columns:repeat(2,1fr);} }
   .client-card{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:3/4;background:#2B2B2B;}
   .client-card img{width:100%;height:100%;opacity:0.92;transition:transform 0.4s ease, opacity 0.3s ease;}
   .client-card:hover img{transform:scale(1.06);opacity:1;}
@@ -546,9 +547,9 @@
     <div class="about-body">
       <div class="circled who-circle"><span class="circled-text">Who's this guy?</span><svg class="circled-mark" viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true"><path d="M152 8C88 5 26 24 15 48c-11 25 38 50 118 53 74 3 148-16 152-44 4-26-52-46-124-49-33-1-62 2-84 9" stroke-width="2.4"/><path d="M44 88c52 15 152 18 216 2" stroke-width="1.9" opacity="0.8"/></svg></div>
       <div class="about-text">
-        <p>I picked up a camera about ten years ago and never really put it down. Photography turned into video, video turned into storytelling, and that's the short version of how I ended up here.</p>
-        <p>I moved to Sydney from Nepal at 19 — no contacts, no local experience, no plan beyond "figure it out". Since then: campaign videos with millions of views between them, 30+ clients brought into a firm on a $0 ad budget, and 3,000+ students represented as SRC President.</p>
-        <p>I'm equally useful on either side of the lens. I'll write it, shoot it, present it and cut it — and I'd rather earn your audience's trust slowly than borrow their attention for a day.</p>
+        <p>I picked up a camera about ten years ago and never really put it down. Photography became video, video became storytelling, and here we are.</p>
+        <p>I landed in Sydney from Nepal at 19 and knew roughly nobody. My first job here was at KFC. These days it's campaign videos with millions of views between them, 30+ clients brought into a firm on a $0 ad budget, and 3,000+ students who somehow elected me to represent them.</p>
+        <p>Point me at either side of the camera and I'll be useful — I'll write it, shoot it, present it, cut it, then overthink the thumbnail. I'd rather earn your audience's trust slowly than borrow their attention for an afternoon.</p>
       </div>
       <div class="stat-chip">4+ Years</div>
     </div>
@@ -743,6 +744,10 @@
       <div class="client-card spot stagger">
         <img src="assets/client-torrens.jpg" alt="Torrens University Australia">
         <div class="client-tag"><b>Torrens University</b><span>Australia</span></div>
+      </div>
+      <div class="client-card spot stagger">
+        <img src="assets/client-bmihms.jpg" alt="BMIHMS hospitality school">
+        <div class="client-tag"><b>BMIHMS</b><span>Hospitality School</span></div>
       </div>
     </div>
   </div>
