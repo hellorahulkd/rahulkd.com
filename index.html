@@ -117,11 +117,11 @@
   /* ---------------- floating reaction icons ---------------- */
   /* Decorative only: clipped by the container so they can never widen the
      page, and pointer-events:none so they never eat a click. */
-  .float-icons{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
-  .fi{position:absolute;display:block;color:var(--orange);opacity:0.15;animation:fi-float 9s ease-in-out infinite;}
+  .float-icons{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4;}
+  .fi{position:absolute;display:block;color:var(--orange);opacity:0.38;animation:fi-float 9s ease-in-out infinite;}
   .fi svg{width:100%;height:100%;display:block;animation:fi-pulse 6s ease-in-out infinite;}
   .fi.blue{color:var(--blue);}
-  .midnight .fi{color:#8B8FB0;opacity:0.2;}
+  .midnight .fi{color:#A9ADCF;opacity:0.42;}
   .midnight .fi.blue{color:var(--orange);}
   @keyframes fi-float{
     0%,100%{transform:translateY(0) rotate(-5deg);}
@@ -131,16 +131,17 @@
     0%,100%{transform:scale(1);opacity:0.72;}
     50%{transform:scale(1.14);opacity:1;}
   }
-  .fi-a{top:14%;left:3.5%;width:23px;height:23px;animation-delay:0s;}
-  .fi-b{top:68%;left:7%;width:17px;height:17px;animation-delay:1.6s;}
-  .fi-c{top:20%;right:5%;width:19px;height:19px;animation-delay:0.8s;}
-  .fi-d{top:76%;right:9%;width:25px;height:25px;animation-delay:2.4s;}
-  .fi-e{top:44%;left:46%;width:15px;height:15px;animation-delay:3.1s;}
-  .fi-f{top:9%;right:24%;width:16px;height:16px;animation-delay:1.1s;}
+  .fi-a{top:14%;left:3.5%;width:46px;height:46px;animation-delay:0s;}
+  .fi-b{top:68%;left:6%;width:36px;height:36px;animation-delay:1.6s;}
+  .fi-c{top:20%;right:4.5%;width:40px;height:40px;animation-delay:0.8s;}
+  .fi-d{top:76%;right:8%;width:52px;height:52px;animation-delay:2.4s;}
+  .fi-e{top:44%;left:46%;width:30px;height:30px;animation-delay:3.1s;}
+  .fi-f{top:9%;right:24%;width:34px;height:34px;animation-delay:1.1s;}
   @media (max-width:680px){
     .fi-e,.fi-f{display:none;}
-    .fi{opacity:0.11;}
-    .fi-a,.fi-d{width:18px;height:18px;}
+    .fi{opacity:0.3;}
+    .fi-a,.fi-d{width:34px;height:34px;}
+    .fi-b,.fi-c{width:28px;height:28px;}
   }
   @media (prefers-reduced-motion: reduce){
     .fi,.fi svg{animation:none;}
@@ -533,7 +534,7 @@
     <div class="about-center">
       <span class="who-badge">Who's this guy?</span>
       <div class="about-text">
-        <p>I landed in Sydney from Nepal at 19, knowing nobody, with exactly zero local experience. Three years on: campaigns at 107K views, 30+ new clients brought into a firm on a $0 ad budget, and 3,000+ students represented as SRC President.</p>
+        <p>I landed in Sydney from Nepal at 19, knowing nobody, with exactly zero local experience. Three years on: campaign videos with millions of views between them, 30+ new clients brought into a firm on a $0 ad budget, and 3,000+ students represented as SRC President.</p>
         <p>My approach is honestly a bit boring — earn the trust first, and the attention turns up on its own. Off the clock I'm usually outside, learning something new, or saying yes to a plan I should've thought about longer.</p>
       </div>
       <div class="stat-chip">4+ Years</div>
