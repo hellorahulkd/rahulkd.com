@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Kumar Das — Creative Portfolio</title>
-<meta name="description" content="Rahul Kumar Das — content creator, storyteller and digital marketer in Sydney. 10M+ views, 4+ years making content that connects, informs and inspires.">
+<meta name="description" content="Rahul Kumar Das — content creator and digital marketer in Sydney. 10M+ views across campaigns for Torrens University, Sydney Tax and Graduate Plus.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -146,6 +146,7 @@
   .btn-glow:hover::before{opacity:1;}
   .hero-photo{border-radius:20px;overflow:hidden;background:#2B2B2B;aspect-ratio:3/4;}
   .hero-photo img{width:100%;height:100%;}
+  .tilt-3d{transition:transform 0.2s ease-out;transform-style:preserve-3d;will-change:transform;}
   .scroll-cue{
     display:flex;flex-direction:column;align-items:center;gap:8px;
     margin:56px auto 0;width:fit-content;color:#8A8577;
@@ -181,6 +182,32 @@
     .stat:nth-child(2n+1){border-left:none;}
     .stat:nth-child(n+3){border-top:1px solid var(--rule);}
   }
+
+  /* staggered card reveal + cursor spotlight */
+  .stagger{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease, transform 0.55s ease;}
+  .reveal.in .stagger{opacity:1;transform:translateY(0);}
+  .stagger:nth-child(1){transition-delay:0s;}
+  .stagger:nth-child(2){transition-delay:0.09s;}
+  .stagger:nth-child(3){transition-delay:0.18s;}
+  .stagger:nth-child(4){transition-delay:0.27s;}
+
+  .spot{position:relative;isolation:isolate;}
+  .spot::after{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;
+    background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.22), transparent 70%);
+    opacity:0;transition:opacity 0.3s ease;
+  }
+  .spot:hover::after{opacity:1;}
+
+  .cursor-follow{
+    position:fixed;top:0;left:0;z-index:50;pointer-events:none;
+    transform:translate(-50%,-50%) scale(0.6);
+    background:var(--ink);color:var(--paper);
+    font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;
+    padding:10px 18px;border-radius:999px;white-space:nowrap;
+    opacity:0;transition:opacity 0.2s ease, transform 0.2s ease;
+  }
+  .cursor-follow.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
 
   /* ---------------- about ---------------- */
   .about-grid{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:26px;align-items:center;}
@@ -218,7 +245,7 @@
   .client-card img{width:100%;height:100%;opacity:0.92;transition:transform 0.4s ease, opacity 0.3s ease;}
   .client-card:hover img{transform:scale(1.06);opacity:1;}
   .client-tag{
-    position:absolute;left:14px;bottom:14px;right:14px;
+    position:absolute;left:14px;bottom:14px;right:14px;z-index:1;
     background:var(--orange);color:#fff;border-radius:10px;padding:10px 14px;
   }
   .client-tag b{display:block;font-size:13px;}
@@ -234,10 +261,11 @@
     background:var(--ink);color:var(--cream-text);border-radius:22px;overflow:hidden;
     margin:22px 0 40px;
   }
-  .flagship-media{position:relative;aspect-ratio:9/13;background:#2B2B2B;}
-  .flagship-media img{width:100%;height:100%;opacity:0.95;}
+  .flagship-media{position:relative;aspect-ratio:9/13;background:#2B2B2B;overflow:hidden;}
+  .flagship-media img{width:100%;height:100%;opacity:0.95;animation:kenburns 16s ease-in-out infinite alternate;}
+  @keyframes kenburns{from{transform:scale(1);}to{transform:scale(1.1);}}
   .flagship-play{
-    position:absolute;inset:0;margin:auto;width:58px;height:58px;
+    position:absolute;inset:0;margin:auto;width:58px;height:58px;z-index:1;
     display:flex;align-items:center;justify-content:center;
     background:rgba(247,245,241,0.92);border-radius:50%;color:var(--ink);
     box-shadow:0 8px 20px rgba(0,0,0,0.35);
@@ -259,8 +287,8 @@
   .ccard{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:9/16;background:#2B2B2B;}
   .ccard img{width:100%;height:100%;transition:transform 0.4s ease;}
   .ccard:hover img{transform:scale(1.06);}
-  .ccard-label{position:absolute;top:10px;left:10px;background:rgba(23,23,23,0.75);color:#fff;font-size:10.5px;font-weight:700;text-transform:uppercase;padding:5px 9px;border-radius:6px;}
-  .ccard-views{position:absolute;bottom:10px;left:10px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;}
+  .ccard-label{position:absolute;top:10px;left:10px;z-index:1;background:rgba(23,23,23,0.75);color:#fff;font-size:10.5px;font-weight:700;text-transform:uppercase;padding:5px 9px;border-radius:6px;}
+  .ccard-views{position:absolute;bottom:10px;left:10px;z-index:1;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;}
 
   .content-row-wide .ccard{aspect-ratio:16/9;}
 
@@ -338,6 +366,10 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1;transform:none;transition:none;}
     .btn,.ccard img,.client-card img,.price-card,.scroll-cue svg,.avail-dot{transition:none;animation:none;}
+    .stagger{opacity:1;transform:none;transition:none;}
+    .flagship-media img{animation:none;}
+    .tilt-3d{transition:none;}
+    .cursor-follow{display:none;}
   }
 </style>
 </head>
@@ -372,16 +404,16 @@
         <span>Content Creator</span><span>Storyteller</span><span>Digital Marketer</span>
       </div>
       <h1 class="name display">Rahul<br>Kumar<br>Das</h1>
-      <div class="disclaimer">I'm easy to work with and my rates are fair. Hit me up, you won't regret it. If you don't, I'll survive, but no promises I won't think about it.</div>
+      <div class="disclaimer">Fair rates, fast turnarounds, and I actually reply to my emails. Let's talk.</div>
       <div class="badge-oval">Creative<br>Portfolio</div>
-      <p class="hero-tagline">Creating content that connects, informs, and inspires.</p>
+      <p class="hero-tagline">I make content people actually finish watching — 10M+ views and counting.</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-glow" href="mailto:hello.rahulkd@gmail.com">Work with me</a>
         <a class="btn btn-dark btn-glow" href="#resume">Download CV</a>
         <a class="btn btn-outline" href="https://instagram.com/_rahul_kd_" target="_blank" rel="noopener">@_rahul_kd_</a>
       </div>
     </div>
-    <div class="hero-photo"><img src="assets/hero.jpg" alt="Rahul Kumar Das"></div>
+    <div class="hero-photo tilt-3d" data-base-rotate="0"><img src="assets/hero.jpg" alt="Rahul Kumar Das"></div>
   </div>
   <a href="#about" class="scroll-cue" aria-label="Scroll to about section">
     Scroll
@@ -393,10 +425,10 @@
 <section class="stats-strip reveal">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><div class="num">10M+</div><div class="lbl">Combined views</div></div>
-      <div class="stat"><div class="num">4+</div><div class="lbl">Years experience</div></div>
-      <div class="stat"><div class="num">3</div><div class="lbl">Major clients</div></div>
-      <div class="stat"><div class="num">3,000+</div><div class="lbl">Students represented</div></div>
+      <div class="stat stagger"><div class="num" data-count="10" data-suffix="M+">0</div><div class="lbl">Combined views</div></div>
+      <div class="stat stagger"><div class="num" data-count="4" data-suffix="+">0</div><div class="lbl">Years experience</div></div>
+      <div class="stat stagger"><div class="num" data-count="3" data-suffix="">0</div><div class="lbl">Major clients</div></div>
+      <div class="stat stagger"><div class="num" data-count="3000" data-suffix="+">0</div><div class="lbl">Students represented</div></div>
     </div>
   </div>
 </section>
@@ -407,12 +439,12 @@
     <div class="sec-head"><span class="sec-num mono">01</span><h2 class="section-title display">About Me</h2></div>
   </div>
   <div class="wrap about-grid" style="margin-top:20px;">
-    <div class="about-photo tilt"><img src="assets/about-1.jpg" alt="Rahul, portrait"></div>
+    <div class="about-photo tilt tilt-3d" data-base-rotate="-4"><img src="assets/about-1.jpg" alt="Rahul, portrait"></div>
     <div class="about-center">
       <span class="who-badge">Who I Am?</span>
       <div class="about-text">
-        <p>With four years of experience in digital content, I specialize in creating relevant, high-performing content and managing social media. I focus on building trust rather than grabbing quick attention.</p>
-        <p>A passionate adventurer, a geek, student and a giver, always saying yes to life and opportunities.</p>
+        <p>I moved to Sydney from Nepal at 19 with no local experience. Three years on, I've produced campaigns that hit 107K views, brought 30+ new clients to a firm with zero paid budget, and led a 3,000+ student community as SRC President. I build trust first — the attention follows.</p>
+        <p>Outside of work: adventuring, learning something new, and saying yes more often than I probably should.</p>
       </div>
       <div class="stat-chip">4+ Years</div>
       <div class="marquee">
@@ -432,7 +464,7 @@
         </div>
       </div>
     </div>
-    <div class="about-photo"><img src="assets/about-2.jpg" alt="Rahul, close up"></div>
+    <div class="about-photo tilt-3d" data-base-rotate="0"><img src="assets/about-2.jpg" alt="Rahul, close up"></div>
   </div>
 </section>
 
@@ -446,7 +478,7 @@
     </div>
 
     <div class="flagship">
-      <div class="flagship-media">
+      <div class="flagship-media spot">
         <img src="assets/content-campaign.jpg" alt="Flagship campaign video">
         <span class="flagship-play" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
@@ -463,11 +495,11 @@
 
     <span class="eyebrow" style="display:block;margin-top:8px;">More vertical, short forms</span>
     <div class="content-row">
-      <div class="ccard"><img src="assets/content-sales.jpg" alt="Sales content"><span class="ccard-label">Sales</span><span class="ccard-views">👁 83.6K</span></div>
-      <div class="ccard"><img src="assets/content-location.jpg" alt="Location showcase"><span class="ccard-label">Location showcase</span><span class="ccard-views">👁 10K</span></div>
-      <div class="ccard"><img src="assets/content-informative.jpg" alt="Informative"><span class="ccard-label">Informative</span><span class="ccard-views">👁 Billboard</span></div>
-      <div class="ccard"><img src="assets/content-paid.jpg" alt="Paid content"><span class="ccard-label">Paid</span><span class="ccard-views">👁 106K</span></div>
-      <div class="ccard"><img src="assets/content-fun.jpg" alt="Fun content"><span class="ccard-label">Fun</span><span class="ccard-views">👁 10K</span></div>
+      <div class="ccard spot"><img src="assets/content-sales.jpg" alt="Sales content"><span class="ccard-label">Sales</span><span class="ccard-views">👁 83.6K</span></div>
+      <div class="ccard spot"><img src="assets/content-location.jpg" alt="Location showcase"><span class="ccard-label">Location showcase</span><span class="ccard-views">👁 10K</span></div>
+      <div class="ccard spot"><img src="assets/content-informative.jpg" alt="Informative"><span class="ccard-label">Informative</span><span class="ccard-views">👁 Billboard</span></div>
+      <div class="ccard spot"><img src="assets/content-paid.jpg" alt="Paid content"><span class="ccard-label">Paid</span><span class="ccard-views">👁 106K</span></div>
+      <div class="ccard spot"><img src="assets/content-fun.jpg" alt="Fun content"><span class="ccard-label">Fun</span><span class="ccard-views">👁 10K</span></div>
     </div>
 
     <div class="content-strip-head" style="margin-top:48px;">
@@ -475,10 +507,10 @@
       <span class="format-pill">For YouTube &amp; LinkedIn</span>
     </div>
     <div class="content-row content-row-wide">
-      <div class="ccard"><img src="assets/content-trust.jpg" alt="Brand trust building"><span class="ccard-label">Brand trust building</span></div>
-      <div class="ccard"><img src="assets/content-longsales.jpg" alt="Sales long form"><span class="ccard-label">Sales</span></div>
-      <div class="ccard"><img src="assets/content-story.jpg" alt="Storytelling"><span class="ccard-label">Storytelling</span></div>
-      <div class="ccard"><img src="assets/content-personal.jpg" alt="Informative personal"><span class="ccard-label">Informative</span></div>
+      <div class="ccard spot"><img src="assets/content-trust.jpg" alt="Brand trust building"><span class="ccard-label">Brand trust building</span></div>
+      <div class="ccard spot"><img src="assets/content-longsales.jpg" alt="Sales long form"><span class="ccard-label">Sales</span></div>
+      <div class="ccard spot"><img src="assets/content-story.jpg" alt="Storytelling"><span class="ccard-label">Storytelling</span></div>
+      <div class="ccard spot"><img src="assets/content-personal.jpg" alt="Informative personal"><span class="ccard-label">Informative</span></div>
     </div>
   </div>
 </section>
@@ -491,15 +523,15 @@
       <span class="eyebrow">Brands I've partnered with</span>
     </div>
     <div class="clients-grid">
-      <div class="client-card">
+      <div class="client-card spot stagger">
         <img src="assets/client-gradplus.jpg" alt="Graduate Plus">
         <div class="client-tag"><b>Graduate Plus</b><span>Job Ready Program</span></div>
       </div>
-      <div class="client-card">
+      <div class="client-card spot stagger">
         <img src="assets/client-sydneytax.jpg" alt="Sydney Tax & Accountancy Services">
         <div class="client-tag"><b>Sydney Tax</b><span>&amp; Accountancy Services</span></div>
       </div>
-      <div class="client-card">
+      <div class="client-card spot stagger">
         <img src="assets/client-torrens.jpg" alt="Torrens University Australia">
         <div class="client-tag"><b>Torrens University</b><span>Australia</span></div>
       </div>
@@ -512,15 +544,15 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">04</span><h2 class="section-title display">Services &amp; Pricing</h2></div>
     <div class="price-grid" style="margin-top:30px;">
-      <div class="price-card">
+      <div class="price-card stagger">
         <div class="amount">$45/hr</div>
         <div class="desc">~$220 · UGC video (15–30 sec) for Instagram &amp; TikTok</div>
       </div>
-      <div class="price-card">
+      <div class="price-card stagger">
         <div class="amount">$45/hr</div>
         <div class="desc">~$270 · UGC video (60–90 sec) for LinkedIn &amp; Facebook</div>
       </div>
-      <div class="price-card">
+      <div class="price-card stagger">
         <div class="amount">$55/hr</div>
         <div class="desc">~$400 · UGC video (2–8 min) for YouTube &amp; LinkedIn</div>
       </div>
@@ -549,7 +581,7 @@
     </div>
     <p style="text-align:center;" class="eyebrow">Client feedback</p>
     <div class="test-grid" style="margin-top:30px;">
-      <div class="test-card">
+      <div class="test-card spot stagger">
         <img src="assets/testimonial-juliana.jpg" alt="Juliana Rodriguez">
         <div class="test-info">
           <b>Juliana Rodriguez</b>
@@ -557,7 +589,7 @@
           <span class="quote">"Working with Rahul was effortless, our campaign saw a 3x boost in reach."</span>
         </div>
       </div>
-      <div class="test-card">
+      <div class="test-card spot stagger">
         <img src="assets/testimonial-basan.jpg" alt="Basan Subedi">
         <div class="test-info">
           <b>Basan Subedi</b>
@@ -573,7 +605,7 @@
 <section id="ventures" class="rule-top reveal">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">06</span><h2 class="section-title display">Beyond Content</h2></div>
-    <p class="eyebrow" style="margin-bottom:20px;">MBA ventures &amp; work experience</p>
+    <p class="eyebrow" style="margin-bottom:20px;">Leadership, ventures &amp; work experience</p>
     <div class="entry">
       <div class="entry-when">Current</div>
       <div><h4>TAC Assistant — Torrens University Australia</h4><p>Manage course fee and admissions data across UAC and QTAC systems, including a master course reference workbook spanning 60+ courses.</p></div>
@@ -612,7 +644,7 @@
   <div class="wrap contact-grid">
     <div>
       <div class="sec-head"><span class="sec-num mono">07</span><h2 class="section-title display">Let's<br>Talk</h2></div>
-      <span class="sendoff">Reach out, you won't regret it. If you don't, no hard feelings — just good vibes either way.</span>
+      <span class="sendoff">Got a project in mind? Tell me about it — I usually reply within a day.</span>
       <div class="contact-links">
         <a href="mailto:hello.rahulkd@gmail.com"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg></span> hello.rahulkd@gmail.com</a>
         <a href="https://instagram.com/_rahul_kd_" target="_blank" rel="noopener"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></span> @_rahul_kd_</a>
@@ -626,6 +658,7 @@
 <footer>Rahul Kumar Das — Sydney, Australia</footer>
 
 <div class="avail-pill mono"><span class="avail-dot"></span> Available for new projects — Sydney, AU</div>
+<div class="cursor-follow mono" id="cursorFollow" aria-hidden="true">View</div>
 
 <script>
   // Mobile nav toggle
@@ -687,6 +720,74 @@
       });
     });
   }
+
+  // Cursor spotlight on cards
+  if(!reduceMotion){
+    document.querySelectorAll('.spot').forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+  }
+
+  // 3D tilt on hero/about photos
+  if(!reduceMotion && window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.tilt-3d').forEach(el => {
+      const base = parseFloat(el.dataset.baseRotate || '0');
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        el.style.transform = `perspective(800px) rotate(${base}deg) rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  // Cursor-follow "View" pill over cards
+  if(!reduceMotion && window.matchMedia('(hover:hover)').matches){
+    const cursorFollow = document.getElementById('cursorFollow');
+    document.addEventListener('mousemove', (e) => {
+      cursorFollow.style.left = e.clientX + 'px';
+      cursorFollow.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('.ccard, .client-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorFollow.classList.add('show'));
+      el.addEventListener('mouseleave', () => cursorFollow.classList.remove('show'));
+    });
+  }
+
+  // Animated count-up on stats
+  const countEls = document.querySelectorAll('.stat .num[data-count]');
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    if(reduceMotion){
+      el.textContent = target.toLocaleString() + suffix;
+      return;
+    }
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(target * eased);
+      el.textContent = value.toLocaleString() + suffix;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        animateCount(entry.target);
+        countObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(el => countObserver.observe(el));
 </script>
 
 </body>
