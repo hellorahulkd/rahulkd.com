@@ -114,6 +114,38 @@
   }
 
 
+  /* ---------------- floating reaction icons ---------------- */
+  /* Decorative only: clipped by the container so they can never widen the
+     page, and pointer-events:none so they never eat a click. */
+  .float-icons{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+  .fi{position:absolute;display:block;color:var(--orange);opacity:0.15;animation:fi-float 9s ease-in-out infinite;}
+  .fi svg{width:100%;height:100%;display:block;animation:fi-pulse 6s ease-in-out infinite;}
+  .fi.blue{color:var(--blue);}
+  .midnight .fi{color:#8B8FB0;opacity:0.2;}
+  .midnight .fi.blue{color:var(--orange);}
+  @keyframes fi-float{
+    0%,100%{transform:translateY(0) rotate(-5deg);}
+    50%{transform:translateY(-15px) rotate(5deg);}
+  }
+  @keyframes fi-pulse{
+    0%,100%{transform:scale(1);opacity:0.72;}
+    50%{transform:scale(1.14);opacity:1;}
+  }
+  .fi-a{top:14%;left:3.5%;width:23px;height:23px;animation-delay:0s;}
+  .fi-b{top:68%;left:7%;width:17px;height:17px;animation-delay:1.6s;}
+  .fi-c{top:20%;right:5%;width:19px;height:19px;animation-delay:0.8s;}
+  .fi-d{top:76%;right:9%;width:25px;height:25px;animation-delay:2.4s;}
+  .fi-e{top:44%;left:46%;width:15px;height:15px;animation-delay:3.1s;}
+  .fi-f{top:9%;right:24%;width:16px;height:16px;animation-delay:1.1s;}
+  @media (max-width:680px){
+    .fi-e,.fi-f{display:none;}
+    .fi{opacity:0.11;}
+    .fi-a,.fi-d{width:18px;height:18px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fi,.fi svg{animation:none;}
+  }
+
   /* ---------------- hero ---------------- */
   .hero{padding-top:64px;overflow:hidden;}
   .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;position:relative;z-index:1;}
@@ -413,6 +445,12 @@
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ic-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.7 8.8-8.7a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="ic-comment" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-4-.9L3 20l1.1-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></symbol>
+  <symbol id="ic-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+  <symbol id="ic-save" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></symbol>
+</svg>
 
 <div class="progress-bar" id="progressBar"></div>
 
@@ -436,6 +474,13 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-a"><svg><use href="#ic-heart"/></svg></span>
+    <span class="fi fi-c blue"><svg><use href="#ic-comment"/></svg></span>
+    <span class="fi fi-d"><svg><use href="#ic-send"/></svg></span>
+    <span class="fi fi-f blue"><svg><use href="#ic-save"/></svg></span>
+  </div>
+
   <div class="blueprint-bg"></div>
   <div class="wrap hero-grid">
     <div>
@@ -474,6 +519,12 @@
 
 <!-- ABOUT -->
 <section id="about" class="rule-top reveal">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-b"><svg><use href="#ic-heart"/></svg></span>
+    <span class="fi fi-c blue"><svg><use href="#ic-save"/></svg></span>
+    <span class="fi fi-e"><svg><use href="#ic-comment"/></svg></span>
+  </div>
+
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">01</span><h2 class="section-title display">About Me</h2></div>
   </div>
@@ -650,6 +701,11 @@
 
 <!-- CLIENTS -->
 <section id="clients" class="rule-top reveal">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-a blue"><svg><use href="#ic-comment"/></svg></span>
+    <span class="fi fi-d"><svg><use href="#ic-heart"/></svg></span>
+  </div>
+
   <div class="wrap">
     <div class="clients-head">
       <div class="sec-head" style="margin-bottom:0;"><span class="sec-num mono">03</span><h2 class="section-title display">Clients</h2></div>
@@ -674,6 +730,11 @@
 
 <!-- SERVICES & PRICING -->
 <section id="services" class="rule-top reveal">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-c"><svg><use href="#ic-heart"/></svg></span>
+    <span class="fi fi-b blue"><svg><use href="#ic-send"/></svg></span>
+  </div>
+
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">04</span><h2 class="section-title display">Services &amp; Pricing</h2></div>
     <div class="price-grid" style="margin-top:30px;">
@@ -707,6 +768,12 @@
 
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="rule-top reveal">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-a"><svg><use href="#ic-heart"/></svg></span>
+    <span class="fi fi-d blue"><svg><use href="#ic-comment"/></svg></span>
+    <span class="fi fi-f"><svg><use href="#ic-heart"/></svg></span>
+  </div>
+
   <div class="wrap">
     <div class="sec-head" style="justify-content:center;text-align:center;flex-direction:column;align-items:center;">
       <span class="sec-num mono">05</span>
@@ -736,6 +803,11 @@
 
 <!-- VENTURES / EXPERIENCE / EDUCATION -->
 <section id="ventures" class="rule-top reveal">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-b blue"><svg><use href="#ic-save"/></svg></span>
+    <span class="fi fi-c"><svg><use href="#ic-heart"/></svg></span>
+  </div>
+
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">06</span><h2 class="section-title display">Beyond Content</h2></div>
     <p class="eyebrow" style="margin-bottom:20px;">The other hats I wear</p>
@@ -773,6 +845,12 @@
 
 <!-- CONTACT -->
 <section id="contact" class="rule-top reveal midnight">
+  <div class="float-icons" aria-hidden="true">
+    <span class="fi fi-a"><svg><use href="#ic-heart"/></svg></span>
+    <span class="fi fi-d blue"><svg><use href="#ic-send"/></svg></span>
+    <span class="fi fi-b"><svg><use href="#ic-comment"/></svg></span>
+  </div>
+
   <div class="blueprint-bg"></div>
   <div class="wrap contact-grid">
     <div>
