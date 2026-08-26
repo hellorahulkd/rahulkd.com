@@ -151,13 +151,22 @@
   h1.name{
     font-size:clamp(3rem,9vw,6.4rem);line-height:0.86;color:var(--orange);margin:0;
   }
-  .badge-oval{
-    display:inline-flex;align-items:center;justify-content:center;
-    border:1.5px solid var(--blue);border-radius:50%;
-    width:132px;height:132px;text-align:center;
-    font-family:'Anton',sans-serif;font-size:19px;text-transform:uppercase;line-height:1.1;
-    transform:rotate(-6deg);margin:18px 0 22px;
+  /* Marker-circled text, as in the deck: a wobbly ellipse that stretches to
+     whatever it wraps (preserveAspectRatio:none), plus a second sweep under. */
+  .circled{position:relative;display:inline-block;padding:14px 30px;}
+  .circled-text{position:relative;z-index:1;font-family:'Anton',sans-serif;text-transform:uppercase;line-height:1.12;display:block;text-align:center;}
+  .circled-mark{
+    position:absolute;left:-14px;top:-10px;
+    width:calc(100% + 28px);height:calc(100% + 20px);
+    overflow:visible;pointer-events:none;color:var(--blue);
   }
+  .circled-mark path{fill:none;stroke:currentColor;stroke-linecap:round;vector-effect:non-scaling-stroke;}
+  .badge-oval{margin:18px 0 26px;transform:rotate(-2.5deg);}
+  .badge-oval .circled-text{font-size:19px;}
+  .who-circle{margin:0 0 22px;transform:rotate(-1.5deg);}
+  .who-circle .circled-text{font-size:15px;}
+  .clients-circle{padding:10px 24px;transform:rotate(-1deg);}
+  .clients-circle .circled-text{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;font-weight:500;color:#6B675C;}
   .hero-tagline{font-size:1rem;max-width:340px;color:#4A4A44;margin:0 0 30px;}
   .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
   .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:6px;padding:13px 24px;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;letter-spacing:0.02em;transition:transform 0.18s ease, box-shadow 0.18s ease;isolation:isolate;}
@@ -193,7 +202,7 @@
     .hero-cta{justify-content:center;}
   }
   @media (max-width:480px){
-    .badge-oval{width:104px;height:104px;font-size:15px;}
+    .badge-oval .circled-text{font-size:16px;}
   }
 
   /* ---------------- stats strip ---------------- */
@@ -236,23 +245,26 @@
   .cursor-follow.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
 
   /* ---------------- about ---------------- */
-  .about-grid{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:26px;align-items:center;}
-  .about-photo{border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#2B2B2B;}
+  .about-grid{display:grid;grid-template-columns:0.92fr 1.08fr;gap:56px;align-items:center;}
+  .about-media{position:relative;padding-bottom:14%;}
+  .about-photo{border-radius:16px;overflow:hidden;background:#2B2B2B;}
   .about-photo img{width:100%;height:100%;}
-  .about-photo.tilt{transform:rotate(-4deg);}
-  .about-center{text-align:center;min-width:0;}
-  .who-badge{
-    display:inline-block;border:1.5px solid var(--blue);border-radius:999px;
-    padding:6px 20px;font-family:'Anton',sans-serif;font-size:14px;text-transform:uppercase;
-    margin:-8px 0 22px;
+  .about-photo-1{aspect-ratio:3/4;width:74%;transform:rotate(-4deg);}
+  .about-photo-2{
+    aspect-ratio:1/1;width:48%;position:absolute;right:0;bottom:0;
+    transform:rotate(5deg);border:7px solid var(--paper);
   }
-  .about-text{font-size:1rem;color:#3A3A34;max-width:440px;margin:0 auto;}
-  .about-text p{margin:0 0 14px;}
+  .about-body{min-width:0;}
+  .about-text{font-size:1.02rem;color:#3A3A34;max-width:530px;}
+  .about-text p{margin:0 0 16px;}
   .stat-chip{
     display:inline-block;background:var(--orange);color:#fff;font-family:'Anton',sans-serif;
     border-radius:12px;padding:14px 18px;font-size:22px;margin-top:22px;
   }
-  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} .about-photo{max-width:220px;margin:0 auto;} .about-photo:nth-child(3){display:none;} }
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr;gap:34px;}
+    .about-media{max-width:340px;margin:0 auto;padding-bottom:18%;}
+  }
 
   /* skills marquee */
   .marquee{margin-top:34px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);}
@@ -487,7 +499,7 @@
       </div>
       <h1 class="name display">Rahul<br>Kumar<br>Das</h1>
       <div class="disclaimer">I'm easy to work with, quick to reply, and my rates are fair. Hire me, you won't be sorry. If you don't, I'll be a little sad, but I'll still like your brand.</div>
-      <div class="badge-oval">Creative<br>Portfolio</div>
+      <div class="circled badge-oval"><span class="circled-text">Creative<br>Portfolio</span><svg class="circled-mark" viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true"><path d="M152 8C88 5 26 24 15 48c-11 25 38 50 118 53 74 3 148-16 152-44 4-26-52-46-124-49-33-1-62 2-84 9" stroke-width="2.4"/><path d="M44 88c52 15 152 18 216 2" stroke-width="1.9" opacity="0.8"/></svg></div>
       <p class="hero-tagline">I make videos people actually watch to the end. 10M+ views and counting — a few of those are my mum, most aren't.</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-glow" href="mailto:hello.rahulkd@gmail.com">Work with me</a>
@@ -526,17 +538,23 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">01</span><h2 class="section-title display">About Me</h2></div>
   </div>
-  <div class="wrap about-grid" style="margin-top:20px;">
-    <div class="about-photo tilt tilt-3d" data-base-rotate="-4"><img src="assets/about-1.jpg" alt="Rahul, portrait"></div>
-    <div class="about-center">
-      <span class="who-badge">Who's this guy?</span>
+  <div class="wrap about-grid" style="margin-top:26px;">
+    <div class="about-media">
+      <div class="about-photo about-photo-1 tilt-3d" data-base-rotate="-4"><img src="assets/about-1.jpg" alt="Rahul, portrait"></div>
+      <div class="about-photo about-photo-2 tilt-3d" data-base-rotate="5"><img src="assets/about-2.jpg" alt="Rahul, close up"></div>
+    </div>
+    <div class="about-body">
+      <div class="circled who-circle"><span class="circled-text">Who's this guy?</span><svg class="circled-mark" viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true"><path d="M152 8C88 5 26 24 15 48c-11 25 38 50 118 53 74 3 148-16 152-44 4-26-52-46-124-49-33-1-62 2-84 9" stroke-width="2.4"/><path d="M44 88c52 15 152 18 216 2" stroke-width="1.9" opacity="0.8"/></svg></div>
       <div class="about-text">
-        <p>I've been a camera geek for about a decade. It started with photography, turned into a proper obsession with visuals and storytelling, and that's what got me here. I'm as useful in front of the lens as I am behind it — I'll write it, shoot it, present it and cut it.</p>
-        <p>I landed in Sydney from Nepal at 19, knowing nobody, with exactly zero local experience. Three years on: campaign videos with millions of views between them, 30+ new clients brought into a firm on a $0 ad budget, and 3,000+ students represented as SRC President.</p>
-        <p>My approach is honestly a bit boring — earn the trust first, and the attention turns up on its own.</p>
+        <p>I picked up a camera about ten years ago and never really put it down. Photography turned into video, video turned into storytelling, and that's the short version of how I ended up here.</p>
+        <p>I moved to Sydney from Nepal at 19 — no contacts, no local experience, no plan beyond "figure it out". Since then: campaign videos with millions of views between them, 30+ clients brought into a firm on a $0 ad budget, and 3,000+ students represented as SRC President.</p>
+        <p>I'm equally useful on either side of the lens. I'll write it, shoot it, present it and cut it — and I'd rather earn your audience's trust slowly than borrow their attention for a day.</p>
       </div>
       <div class="stat-chip">4+ Years</div>
-      <div class="marquee">
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:40px;">
+    <div class="marquee">
         <div class="marquee-track">
           <span class="pill">Content Strategy</span>
           <span class="pill">UGC &amp; Video Production</span>
@@ -555,9 +573,7 @@
           <span class="pill">On-camera Presenting</span>
           <span class="pill">Data &amp; Spreadsheets</span>
         </div>
-      </div>
     </div>
-    <div class="about-photo tilt-3d" data-base-rotate="0"><img src="assets/about-2.jpg" alt="Rahul, close up"></div>
   </div>
 </section>
 
@@ -713,7 +729,7 @@
   <div class="wrap">
     <div class="clients-head">
       <div class="sec-head" style="margin-bottom:0;"><span class="sec-num mono">03</span><h2 class="section-title display">Clients</h2></div>
-      <span class="eyebrow">Brands that took a chance on me</span>
+      <span class="circled clients-circle"><span class="circled-text">Brands that took a chance on me</span><svg class="circled-mark" viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true"><path d="M152 8C88 5 26 24 15 48c-11 25 38 50 118 53 74 3 148-16 152-44 4-26-52-46-124-49-33-1-62 2-84 9" stroke-width="2.4"/><path d="M44 88c52 15 152 18 216 2" stroke-width="1.9" opacity="0.8"/></svg></span>
     </div>
     <div class="clients-grid">
       <div class="client-card spot stagger">
