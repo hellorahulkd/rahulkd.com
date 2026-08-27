@@ -364,8 +364,7 @@
   .ig-frame{display:block;width:100%;aspect-ratio:9/16.6;border:0;border-radius:14px;background:#fff;}
   /* LinkedIn only embeds at a fixed frame size, so cap the width and let it
      keep its own height rather than forcing an aspect that would clip it. */
-  .li-frame{display:block;width:100%;height:620px;border:0;border-radius:14px;background:#fff;}
-  @media (max-width:860px){ .li-frame{height:560px;} }
+  .li-frame{display:block;width:100%;aspect-ratio:9/16.6;border:0;border-radius:14px;background:#fff;}
   .section-lede{margin:10px 0 0;max-width:620px;color:#4A4A44;font-size:0.98rem;}
   .reel-cap{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:#6B675C;}
   /* Best-performing panel: intro band above the two top reels */
@@ -737,7 +736,6 @@
           src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7405094085272756224"
           title="An unforgettable night — the H&amp;M magazine launch, for BMIHMS"
           loading="lazy" frameborder="0" allowfullscreen></iframe>
-        <div class="reel-cap">BMIHMS · LinkedIn</div>
       </div>
     </div>
   </div>
@@ -1041,9 +1039,23 @@
       if (frame.contentWindow === e.source) {
         frame.style.aspectRatio = 'auto';
         frame.style.height = h + 'px';
+        matchLinkedInHeight(frame.closest('.reel-grid'));
       }
     });
   });
+
+  // LinkedIn never reports a height, so pin it to the tallest measured reel in
+  // the same row — otherwise it keeps a placeholder size the reels have left.
+  function matchLinkedInHeight(row) {
+    if (!row) return;
+    const li = row.querySelector('iframe.li-frame');
+    if (!li) return;
+    const heights = [...row.querySelectorAll('iframe.ig-frame')]
+      .map(f => parseInt(f.style.height, 10)).filter(Boolean);
+    if (!heights.length) return;
+    li.style.aspectRatio = 'auto';
+    li.style.height = Math.max(...heights) + 'px';
+  }
 
   // Animated count-up on stats
   const countEls = document.querySelectorAll('.stat .num[data-count]');
