@@ -353,21 +353,19 @@
   .video-caption p{margin:0;color:#D7D3C6;font-size:0.95rem;max-width:560px;}
 
   .reel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px;align-items:start;}
-  .reel-grid.two{grid-template-columns:repeat(2,1fr);max-width:706px;}
   @media (max-width:860px){ .reel-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .reel-grid,.reel-grid.two{grid-template-columns:1fr;max-width:none;} }
+  @media (max-width:560px){ .reel-grid{grid-template-columns:1fr;} }
   .reel{min-width:0;}
   .ig-embed{min-width:0;}
   /* Direct iframes rather than Instagram's embed.js: the script does not run on
      every phone, and when it fails nothing is rendered at all. An iframe is the
      same mechanism YouTube and LinkedIn use here, and it always paints. Its
      height cannot auto-fit, so the ratio covers the reel plus IG's own chrome. */
-  .ig-frame{display:block;width:100%;aspect-ratio:9/19.5;border:0;border-radius:14px;background:#fff;}
+  .ig-frame{display:block;width:100%;aspect-ratio:9/16.6;border:0;border-radius:14px;background:#fff;}
   /* LinkedIn only embeds at a fixed frame size, so cap the width and let it
      keep its own height rather than forcing an aspect that would clip it. */
-  .li-embed{max-width:520px;margin-top:14px;border-radius:14px;overflow:hidden;background:var(--paper-dim);}
-  .li-embed iframe{display:block;width:100%;height:660px;border:0;}
-  @media (max-width:560px){ .li-embed iframe{height:580px;} }
+  .li-frame{display:block;width:100%;height:620px;border:0;border-radius:14px;background:#fff;}
+  @media (max-width:860px){ .li-frame{height:560px;} }
   .section-lede{margin:10px 0 0;max-width:620px;color:#4A4A44;font-size:0.98rem;}
   .reel-cap{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:#6B675C;}
   /* Best-performing panel: intro band above the two top reels */
@@ -376,7 +374,7 @@
     padding:32px;margin:22px 0 40px;
   }
   .flagship-stack .flagship-body{padding:0;}
-  .flagship-reels{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px;max-width:720px;}
+  .flagship-reels{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:28px;align-items:start;}
   @media (max-width:560px){ .flagship-reels{grid-template-columns:1fr;} .flagship-stack{padding:22px;} }
   /* The shared fallback card is --ink, which would vanish on this dark panel. */
   .flagship-reel-cap{margin-top:12px;display:flex;align-items:baseline;gap:8px;}
@@ -723,7 +721,7 @@
         <div class="reel-cap">Brand trust building</div>
       </div>
     </div>
-    <div class="reel-grid two" style="margin-top:22px;">
+    <div class="reel-grid" style="margin-top:22px;">
       <div class="reel ig-embed stagger">
         <iframe class="ig-frame" src="https://www.instagram.com/reel/DRs-86Dkp8Q/embed" loading="lazy"
           title="Instagram reel" scrolling="no" frameborder="0" allowfullscreen></iframe>
@@ -734,20 +732,14 @@
           title="Instagram reel" scrolling="no" frameborder="0" allowfullscreen></iframe>
         <div class="reel-cap">Storytelling</div>
       </div>
+      <div class="reel stagger">
+        <iframe class="li-frame"
+          src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7405094085272756224"
+          title="An unforgettable night — the H&amp;M magazine launch, for BMIHMS"
+          loading="lazy" frameborder="0" allowfullscreen></iframe>
+        <div class="reel-cap">BMIHMS · LinkedIn</div>
+      </div>
     </div>
-
-    <span class="eyebrow" style="display:block;margin-top:44px;">BMIHMS · on LinkedIn</span>
-    <div class="li-embed">
-      <iframe
-        src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7405094085272756224"
-        title="An unforgettable night — the H&amp;M magazine launch, for BMIHMS"
-        loading="lazy"
-        frameborder="0"
-        allowfullscreen></iframe>
-    </div>
-    <a class="format-pill" style="text-decoration:none;display:inline-block;margin-top:14px;"
-       href="https://www.linkedin.com/posts/bmihms_an-unforgettable-night-the-hm-magazine-activity-7405094085272756224-hegb"
-       target="_blank" rel="noopener">Open the post on LinkedIn →</a>
   </div>
 </section>
 
@@ -1032,6 +1024,26 @@
       el.addEventListener('mouseleave', () => cursorFollow.classList.remove('show'));
     });
   }
+
+  // Instagram's embed iframe posts its own rendered height. Listening for it
+  // fits each card to its actual content instead of a guessed aspect ratio,
+  // which is what left dead white space under every reel.
+  window.addEventListener('message', (e) => {
+    let host;
+    try { host = new URL(e.origin).hostname; } catch (err) { return; }
+    if (host !== 'instagram.com' && !host.endsWith('.instagram.com')) return;
+    let data = e.data;
+    if (typeof data === 'string') { try { data = JSON.parse(data); } catch (err) { return; } }
+    if (!data || data.type !== 'MEASURE' || !data.details) return;
+    const h = parseInt(data.details.height, 10);
+    if (!h) return;
+    document.querySelectorAll('iframe.ig-frame').forEach(frame => {
+      if (frame.contentWindow === e.source) {
+        frame.style.aspectRatio = 'auto';
+        frame.style.height = h + 'px';
+      }
+    });
+  });
 
   // Animated count-up on stats
   const countEls = document.querySelectorAll('.stat .num[data-count]');
