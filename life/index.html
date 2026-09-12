@@ -312,7 +312,7 @@ const DAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satu
 
 const S = {
   user:null, settings:null, routine:[], overrides:[], tasks:[], calendar:[],
-  mealPlan:[], mealLog:[], cats:[], tx:[], goals:[], codes:[], journal:[], recent:[],
+  mealPlan:[], mealLog:[], cats:[], tx:[], goals:[], codes:[], fields:[], recent:[],
   view:"today", month:null, busy:false
 };
 
@@ -459,6 +459,25 @@ async function seedDefaults(uid){
     {user_id:uid,name:"Savings",kind:"save",sort:8}
   ]);
 
+  const F = (sort,section,key,label,type,extra) =>
+    Object.assign({user_id:uid, sort, section, key, label, type}, extra||{});
+  await sb.from("life_journal_fields").insert([
+    F(1,"How the day went","day_rating","Day, out of ten","scale",{min:1,max:10,min_label:"rough",max_label:"great"}),
+    F(2,"How the day went","mood","Mood","scale",{min:1,max:10}),
+    F(3,"How the day went","energy","Energy","scale",{min:1,max:10}),
+    F(4,"How the day went","stress","Stress","scale",{min:1,max:10,min_label:"calm",max_label:"fried"}),
+    F(5,"How the day went","sleep_hours","Hours slept last night","number",{min:0,max:16,step:0.5,suffix:"hrs"}),
+    F(6,"How the day went","water_litres","Water","number",{min:0,max:10,step:0.1,suffix:"L"}),
+    F(7,"How the day went","screen_hours","Screen time","number",{min:0,max:24,step:0.5,suffix:"hrs"}),
+    F(8,"How the day went","moved_body","Did you move your body?","bool"),
+    F(9,"How the day went","ate_well","Did you eat well?","bool"),
+    F(10,"In your own words","wins","What went well","para",{help:"Even a small one counts."}),
+    F(11,"In your own words","challenges","What got in the way","para",{help:"Name it and it stops running the show."}),
+    F(12,"In your own words","grateful_for","Grateful for","para"),
+    F(13,"In your own words","learned","Something you learned","para"),
+    F(14,"In your own words","notes","Anything else","para")
+  ]);
+
   await sb.from("life_codes").insert([
     {user_id:uid,text:"Do the hardest thing first, while the day is still yours."},
     {user_id:uid,text:"Tired is not the same as done."},
@@ -482,7 +501,7 @@ async function loadAll(){
   }
   S.settings = settings;
 
-  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent] =
+  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields] =
     await Promise.all([
       sb.from("life_routine").select("*").eq("active",true).order("start_time"),
       sb.from("life_day_overrides").select("*").eq("on_date",today),
@@ -496,13 +515,15 @@ async function loadAll(){
         .order("on_date",{ascending:false}),
       sb.from("life_savings_goals").select("*").eq("archived",false),
       sb.from("life_codes").select("*").eq("active",true),
-      sb.from("life_journal").select("*").order("entry_date",{ascending:false}).limit(60)
+      sb.from("life_journal").select("*").order("entry_date",{ascending:false}).limit(60),
+      sb.from("life_journal_fields").select("*").order("sort")
     ]);
   S.routine = routine.data || []; S.overrides = overrides.data || [];
   S.tasks = tasks.data || []; S.calendar = calendar.data || [];
   S.mealPlan = mealPlan.data || []; S.mealLog = mealLog.data || [];
   S.cats = cats.data || []; S.tx = tx.data || []; S.goals = goals.data || [];
   S.codes = codes.data || []; S.recent = recent.data || [];
+  S.fields = fields.data || [];
   S.month = mk;
 }
 
@@ -561,7 +582,7 @@ function render(){
   renderNav();
   const v = el("view");
   v.innerHTML = ({today:viewToday, week:viewWeek, money:viewMoney,
-                  journal:viewJournal, log:viewLog}[S.view] || viewToday)();
+                  journal:viewJournal, fields:viewFields, log:viewLog}[S.view] || viewToday)();
   v.scrollTop = 0;
   window.scrollTo({top:0});
 }
@@ -955,104 +976,198 @@ function monthsTo(iso){
 }
 
 /* ===== JOURNAL ===== */
-function viewJournal(){
-  const iso = isoDay();
-  const existing = S.recent.find(j => j.entry_date === iso);
-  const d = existing || {};
-  const a = d.answers || {};
-  const tomorrow = isoDay(1);
-  const planned = S.tasks.filter(t => t.due_date === tomorrow).sort((x,y) => x.position - y.position);
+/* The form is built from life_journal_fields. A field whose `key` is a real
+   column on life_journal is stored there; everything else goes in `answers`. */
+const JOURNAL_COLS = new Set(["day_rating","mood","energy","stress","sleep_hours","water_litres",
+  "screen_hours","moved_body","ate_well","wins","challenges","grateful_for","learned",
+  "tomorrow_note","notes"]);
 
-  const dial = (name, label, val, min=1, max=10) => `
-    <div class="dial">
-      <div class="lab"><span>${label}</span><span class="num" id="v_${name}">${val ?? "–"}</span></div>
-      <input type="range" name="${name}" min="${min}" max="${max}" step="1"
-        value="${val ?? Math.round((min+max)/2)}" data-dial="${name}"></div>`;
+function answerOf(f, entry){
+  if (!entry) return null;
+  const v = JOURNAL_COLS.has(f.key) ? entry[f.key] : (entry.answers || {})[f.key];
+  return v === undefined ? null : v;
+}
+function fieldHTML(f, val){
+  const id = "f_" + f.key, req = f.required ? "required" : "";
+  const help = f.help ? `<div class="hint">${esc(f.help)}</div>` : "";
+  const opts = Array.isArray(f.options) ? f.options : [];
+
+  if (f.type === "scale"){
+    const min = f.min ?? 1, max = f.max ?? 10;
+    // the readout has to agree with where the slider actually sits
+    const at = val ?? Math.round((Number(min) + Number(max)) / 2);
+    return `<div class="dial">
+      <div class="lab"><span>${esc(f.label)}</span>
+        <span class="num" id="v_${esc(f.key)}">${at}</span></div>
+      <input type="range" id="${id}" data-f="${esc(f.key)}" min="${min}" max="${max}" step="${f.step ?? 1}"
+        value="${at}" data-dial="${esc(f.key)}">
+      ${(f.min_label || f.max_label) ? `<div class="scale"><span>${esc(f.min_label||"")}</span>
+        <span>${esc(f.max_label||"")}</span></div>` : ""}${help}</div>`;
+  }
+  if (f.type === "bool"){
+    return `<label class="fld"><span>${esc(f.label)}</span>
+      <div class="seg" data-bool="${esc(f.key)}">
+        <button type="button" data-v="1" aria-pressed="${val === true}">Yes</button>
+        <button type="button" data-v="0" aria-pressed="${val === false}">No</button>
+      </div>${help}</label>`;
+  }
+  if (f.type === "choice"){
+    return `<label class="fld"><span>${esc(f.label)}</span>
+      <div class="seg" data-choice="${esc(f.key)}">
+        ${opts.map(o => `<button type="button" data-v="${esc(o)}"
+          aria-pressed="${val === o}">${esc(o)}</button>`).join("")}
+      </div>${help}</label>`;
+  }
+  if (f.type === "checks"){
+    const on = Array.isArray(val) ? val : [];
+    return `<label class="fld"><span>${esc(f.label)}</span>
+      <div class="seg" data-checks="${esc(f.key)}">
+        ${opts.map(o => `<button type="button" data-v="${esc(o)}"
+          aria-pressed="${on.includes(o)}">${esc(o)}</button>`).join("")}
+      </div>${help}</label>`;
+  }
+  if (f.type === "select"){
+    return `<label class="fld"><span>${esc(f.label)}</span>
+      <select id="${id}" data-f="${esc(f.key)}" ${req}>
+        <option value="">—</option>
+        ${opts.map(o => `<option value="${esc(o)}" ${val === o ? "selected" : ""}>${esc(o)}</option>`).join("")}
+      </select>${help}</label>`;
+  }
+  if (f.type === "para"){
+    return `<label class="fld"><span>${esc(f.label)}</span>
+      <textarea id="${id}" data-f="${esc(f.key)}" ${req}
+        placeholder="${esc(f.help || "")}">${esc(val ?? "")}</textarea></label>`;
+  }
+  if (f.type === "number"){
+    return `<label class="fld"><span>${esc(f.label)}${f.suffix ? ` (${esc(f.suffix)})` : ""}</span>
+      <input type="number" id="${id}" data-f="${esc(f.key)}" ${req}
+        ${f.min != null ? `min="${f.min}"` : ""} ${f.max != null ? `max="${f.max}"` : ""}
+        step="${f.step ?? 1}" value="${val ?? ""}">${help}</label>`;
+  }
+  if (f.type === "date" || f.type === "time"){
+    return `<label class="fld"><span>${esc(f.label)}</span>
+      <input type="${f.type}" id="${id}" data-f="${esc(f.key)}" ${req}
+        value="${esc(val ?? "")}">${help}</label>`;
+  }
+  return `<label class="fld"><span>${esc(f.label)}</span>
+    <input type="text" id="${id}" data-f="${esc(f.key)}" ${req}
+      value="${esc(val ?? "")}" placeholder="${esc(f.help || "")}" maxlength="300"></label>`;
+}
+
+function viewJournal(){
+  const iso = isoDay(), tomorrow = isoDay(1);
+  const existing = S.recent.find(j => j.entry_date === iso);
+  const planned = S.tasks.filter(t => t.due_date === tomorrow).sort((x,y) => x.position - y.position);
+  const fields = S.fields.filter(f => f.active).sort((a,b) => a.sort - b.sort);
+
+  const sections = [];
+  for (const f of fields){
+    let s = sections.find(s => s.name === f.section);
+    if (!s){ s = {name:f.section, items:[]}; sections.push(s); }
+    s.items.push(f);
+  }
+  const half = Math.ceil(sections.length / 2);
+
+  const card = s => `<section class="card">
+    <header><h2>${esc(s.name)}</h2></header>
+    <div class="bd">${s.items.map(f => fieldHTML(f, answerOf(f, existing))).join("")}</div>
+  </section>`;
+
+  const three = `<section class="card">
+    <header><h2>Tomorrow's three</h2><span class="meta">these become your tasks</span></header>
+    <div class="bd">
+      ${[1,2,3].map(i => {
+        const t = planned[i-1] || {};
+        return `<div class="tasknum">
+          <span class="n">${i}</span>
+          <input type="text" name="task${i}" maxlength="140" value="${esc(t.title||"")}"
+            placeholder="${i === 1 ? "The one that actually matters" : i === 2 ? "The second thing" : "The third thing"}">
+          <select name="area${i}">${AREAS.map(x =>
+            `<option value="${x}" ${(t.area||["study","work","health"][i-1]) === x ? "selected" : ""}>${x}</option>`).join("")}</select>
+        </div>`;
+      }).join("")}
+      <p class="empty" style="margin-top:6px">Leave one blank if two is honest. Three is a ceiling, not a quota.</p>
+    </div></section>`;
 
   return `
   <div class="pagehead">
     <div><div class="date">${esc(longDate(iso))}</div>
       <h1>Tonight</h1>
-      <p class="sub">Close the day out. The three things you write at the bottom become tomorrow's tasks — they'll be waiting on Today when you wake up.</p></div>
+      <p class="sub">Close the day out. The three things at the bottom become tomorrow's tasks — they'll be waiting on Today when you wake up.</p></div>
+    <button class="btn ghost" data-go="fields">Edit these questions</button>
   </div>
 
-  ${existing ? `<div class="msg ok">You already filled this in tonight at ${esc(new Date(d.submitted_at)
-      .toLocaleTimeString("en-AU",{timeZone:tz(),hour:"numeric",minute:"2-digit"}))}. Saving again just updates it.</div>` : ""}
+  ${existing ? `<div class="msg ok">Already filled in tonight at ${esc(new Date(existing.submitted_at)
+      .toLocaleTimeString("en-AU",{timeZone:tz(),hour:"numeric",minute:"2-digit"}))}. Saving again updates it.</div>` : ""}
+
+  ${!fields.length ? `<div class="msg">No questions set up yet. <b>Edit these questions</b> to add them.</div>` : ""}
 
   <form data-form="journal">
     <div class="grid2">
-      <div class="stack">
-        <section class="card">
-          <header><h2>How the day went</h2></header>
-          <div class="bd">
-            ${dial("day_rating","Day, out of ten", d.day_rating)}
-            ${dial("mood","Mood", d.mood)}
-            ${dial("energy","Energy", d.energy)}
-            ${dial("stress","Stress", d.stress)}
-            <div class="row">
-              <label class="fld"><span>Hours slept last night</span>
-                <input type="number" name="sleep_hours" step="0.5" min="0" max="16"
-                  value="${d.sleep_hours ?? ""}" placeholder="7.5"></label>
-              <label class="fld"><span>Water (litres)</span>
-                <input type="number" name="water_litres" step="0.1" min="0" max="10"
-                  value="${d.water_litres ?? ""}" placeholder="2"></label>
-              <label class="fld"><span>Screen time (hrs)</span>
-                <input type="number" name="screen_hours" step="0.5" min="0" max="24"
-                  value="${d.screen_hours ?? ""}" placeholder="3"></label>
-            </div>
-            <label class="fld"><span>Did you move your body?</span>
-              <div class="seg" data-bool="moved_body">
-                <button type="button" data-v="1" aria-pressed="${d.moved_body === true}">Yes</button>
-                <button type="button" data-v="0" aria-pressed="${d.moved_body === false}">No</button>
-              </div></label>
-            <label class="fld" style="margin-bottom:0"><span>Did you eat well?</span>
-              <div class="seg" data-bool="ate_well">
-                <button type="button" data-v="1" aria-pressed="${d.ate_well === true}">Yes</button>
-                <button type="button" data-v="0" aria-pressed="${d.ate_well === false}">No</button>
-              </div></label>
-          </div>
-        </section>
-
-        <section class="card">
-          <header><h2>Tomorrow's three</h2><span class="meta">these become your tasks</span></header>
-          <div class="bd">
-            ${[1,2,3].map(i => {
-              const t = planned[i-1] || {};
-              return `<div class="tasknum">
-                <span class="n">${i}</span>
-                <input type="text" name="task${i}" maxlength="140" value="${esc(t.title||"")}"
-                  placeholder="${i === 1 ? "The one that actually matters" : i === 2 ? "The second thing" : "The third thing"}">
-                <select name="area${i}">${AREAS.map(x =>
-                  `<option value="${x}" ${ (t.area||["study","work","health"][i-1]) === x ? "selected" : ""}>${x}</option>`).join("")}</select>
-              </div>`;
-            }).join("")}
-            <p class="empty" style="margin-top:6px">Leave one blank if two is honest. Three is a ceiling, not a quota.</p>
-          </div>
-        </section>
-      </div>
-
-      <div class="stack">
-        <section class="card">
-          <header><h2>In your own words</h2></header>
-          <div class="bd">
-            <label class="fld"><span>What went well</span>
-              <textarea name="wins" placeholder="Even a small one counts.">${esc(d.wins||"")}</textarea></label>
-            <label class="fld"><span>What got in the way</span>
-              <textarea name="challenges" placeholder="Name it and it stops running the show.">${esc(d.challenges||"")}</textarea></label>
-            <label class="fld"><span>Grateful for</span>
-              <textarea name="grateful_for" style="min-height:56px">${esc(d.grateful_for||"")}</textarea></label>
-            <label class="fld"><span>Something you learned</span>
-              <textarea name="learned" style="min-height:56px">${esc(d.learned||"")}</textarea></label>
-            <label class="fld" style="margin-bottom:0"><span>Anything else</span>
-              <textarea name="notes" style="min-height:56px">${esc(d.notes||"")}</textarea></label>
-          </div>
-        </section>
-
+      <div class="stack">${sections.slice(0,half).map(card).join("")}${three}</div>
+      <div class="stack">${sections.slice(half).map(card).join("")}
         <button class="btn" type="submit" style="width:100%;padding:13px">
           ${existing ? "Update tonight's entry" : "Save and close the day"}</button>
       </div>
     </div>
   </form>`;
+}
+
+/* ===== FIELD EDITOR ===== */
+function viewFields(){
+  const fields = S.fields.slice().sort((a,b) => a.sort - b.sort);
+  const TYPES = [["scale","Linear scale"],["short","Short answer"],["para","Paragraph"],
+    ["number","Number"],["choice","Multiple choice"],["checks","Checkboxes"],
+    ["select","Dropdown"],["bool","Yes / no"],["date","Date"],["time","Time"]];
+  return `
+  <div class="pagehead">
+    <div><div class="date">The nightly form</div><h1>Your questions</h1>
+      <p class="sub">Whatever is here is what you get asked tonight. Order them with the number on the left. Deleting a question keeps the answers already given — they just stop being shown.</p></div>
+    <button class="btn ghost" data-go="journal">← Back to tonight</button>
+  </div>
+
+  <section class="card" style="margin-bottom:16px">
+    <header><h2>Add a question</h2></header>
+    <div class="bd">
+      <form data-form="addfield">
+        <div class="row">
+          <label class="fld" style="flex:2 1 220px"><span>Question</span>
+            <input type="text" name="label" required maxlength="160" placeholder="How well did you sleep?"></label>
+          <label class="fld" style="flex:0 0 160px"><span>Type</span>
+            <select name="type">${TYPES.map(([v,l]) => `<option value="${v}">${l}</option>`).join("")}</select></label>
+          <label class="fld" style="flex:0 0 150px"><span>Section</span>
+            <input type="text" name="section" maxlength="60" placeholder="How the day went"></label>
+        </div>
+        <div class="row">
+          <label class="fld"><span>Options</span>
+            <input type="text" name="options" placeholder="Comma separated — choice, checkboxes and dropdown only">
+            <div class="hint">Leave blank for every other type.</div></label>
+          <label class="fld" style="flex:0 0 92px"><span>Min</span>
+            <input type="number" name="min" step="any" placeholder="1"></label>
+          <label class="fld" style="flex:0 0 92px"><span>Max</span>
+            <input type="number" name="max" step="any" placeholder="10"></label>
+          <button class="btn fit" type="submit" style="margin-bottom:12px">Add</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="card">
+    <header><h2>In order</h2><span class="meta">${fields.length} question${fields.length===1?"":"s"}</span></header>
+    <div class="bd">
+      ${fields.length ? fields.map(f => `<div class="ritem">
+        <span class="bar" style="background:var(--${f.type === "scale" ? "study" : f.type === "para" ? "work" : "self"})"></span>
+        <span class="tx">${esc(f.label)}
+          <small>${esc(f.section)} · ${esc(f.type)}${
+            f.type === "scale" ? ` ${f.min ?? 1}–${f.max ?? 10}` : ""}${
+            (f.options||[]).length ? ` · ${esc((f.options||[]).join(", "))}` : ""} · key <code>${esc(f.key)}</code></small></span>
+        <span class="row" style="flex:0 0 auto;gap:4px">
+          <input type="number" value="${f.sort}" data-field-sort="${f.id}"
+            style="width:62px;padding:4px 6px" aria-label="Order for ${esc(f.label)}">
+          <button class="x" data-del-field="${f.id}" aria-label="Remove ${esc(f.label)}">×</button>
+        </span></div>`).join("") : `<p class="empty">No questions yet.</p>`}
+    </div>
+  </section>`;
 }
 
 /* ===== LOG ===== */
@@ -1071,14 +1186,16 @@ function viewLog(){
       <header><h2>Journal entries</h2><span class="meta">newest first</span></header>
       <div class="bd">
         ${S.recent.length ? S.recent.map(j => {
-          const bits = [];
-          if (j.day_rating != null) bits.push(`day <b>${j.day_rating}</b>`);
-          if (j.mood != null) bits.push(`mood <b>${j.mood}</b>`);
-          if (j.energy != null) bits.push(`energy <b>${j.energy}</b>`);
-          if (j.sleep_hours != null) bits.push(`slept <b>${j.sleep_hours}h</b>`);
-          const qa = [["What went well",j.wins],["What got in the way",j.challenges],
-            ["Grateful for",j.grateful_for],["Learned",j.learned],["Notes",j.notes]]
-            .filter(([,v]) => v && String(v).trim());
+          const ordered = S.fields.slice().sort((a,b) => a.sort - b.sort);
+          const bits = ordered.filter(f => ["scale","number","bool"].includes(f.type))
+            .map(f => { const v = answerOf(f, j); if (v == null || v === "") return null;
+              const shown = typeof v === "boolean" ? (v ? "yes" : "no") : v + (f.suffix ? f.suffix : "");
+              return `${esc(f.label.toLowerCase().replace(/\?$/,""))} <b>${esc(shown)}</b>`; })
+            .filter(Boolean);
+          const qa = ordered.filter(f => !["scale","number","bool"].includes(f.type))
+            .map(f => [f.label, answerOf(f, j)])
+            .filter(([,v]) => v != null && !(Array.isArray(v) && !v.length) && String(v).trim() !== "")
+            .map(([l,v]) => [l, Array.isArray(v) ? v.join(", ") : v]);
           return `<details class="entry">
             <summary><span class="d">${esc(shortDate(j.entry_date))}</span>
               <span class="s">${j.day_rating != null ? j.day_rating + "/10" : "—"}</span></summary>
@@ -1129,12 +1246,25 @@ document.addEventListener("click", async e => {
     return;
   }
 
-  const bool = e.target.closest("[data-bool] button");
-  if (bool){
-    const wrap = bool.closest("[data-bool]");
-    wrap.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b === bool));
+  const one = e.target.closest("[data-bool] button, [data-choice] button");
+  if (one){
+    const wrap = one.closest("[data-bool], [data-choice]");
+    const was = one.getAttribute("aria-pressed") === "true";
+    wrap.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed","false"));
+    one.setAttribute("aria-pressed", was ? "false" : "true");   // click again to clear
     return;
   }
+  const many = e.target.closest("[data-checks] button");
+  if (many){
+    many.setAttribute("aria-pressed", many.getAttribute("aria-pressed") === "true" ? "false" : "true");
+    return;
+  }
+
+  const df = e.target.closest("[data-del-field]");
+  if (df) return run(async () => {
+    await sb.from("life_journal_fields").delete().eq("id", df.dataset.delField);
+    S.fields = S.fields.filter(f => f.id !== df.dataset.delField); render();
+  });
 
   const dt = e.target.closest("[data-del-task]");
   if (dt) return run(async () => {
@@ -1192,6 +1322,14 @@ document.addEventListener("change", async e => {
     const id = cb.dataset.catBudget, v = Number(cb.value) || 0;
     await sb.from("life_budget_categories").update({monthly:v}).eq("id",id);
     const c = S.cats.find(c => c.id === id); if (c) c.monthly = v;
+    render();
+  });
+
+  const fs = e.target.closest("[data-field-sort]");
+  if (fs) return run(async () => {
+    const id = fs.dataset.fieldSort, v = Number(fs.value) || 0;
+    await sb.from("life_journal_fields").update({sort:v}).eq("id",id);
+    const f = S.fields.find(f => f.id === id); if (f) f.sort = v;
     render();
   });
 
@@ -1281,21 +1419,54 @@ document.addEventListener("submit", async e => {
     form.reset(); render();
   });
 
+  if (form.dataset.form === "addfield") return run(async () => {
+    const label = g("label");
+    const base = label.toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_|_$/g,"").slice(0,40) || "q";
+    let key = base, n = 2;
+    while (S.fields.some(f => f.key === key)) key = base + "_" + (n++);
+    const opts = g("options") ? g("options").split(",").map(x => x.trim()).filter(Boolean) : [];
+    const { data, error } = await sb.from("life_journal_fields").insert({
+      user_id:uid, label, key, type:g("type") || "short",
+      section:g("section") || "How the day went", options:opts,
+      min:g("min") === "" ? null : Number(g("min")),
+      max:g("max") === "" ? null : Number(g("max")),
+      sort:S.fields.reduce((m,f) => Math.max(m,f.sort), 0) + 1
+    }).select().single();
+    if (error) throw error;
+    if (data) S.fields.push(data);
+    form.reset(); render();
+  });
+
   if (form.dataset.form === "journal") return run(async () => {
     const iso = isoDay(), tomorrow = isoDay(1);
-    const num = k => g(k) === "" ? null : Number(g(k));
-    const boolOf = name => {
-      const w = form.querySelector(`[data-bool="${name}"] [aria-pressed="true"]`);
-      return w ? w.dataset.v === "1" : null;
+    const collect = f => {
+      if (f.type === "bool"){
+        const w = form.querySelector(`[data-bool="${f.key}"] [aria-pressed="true"]`);
+        return w ? w.dataset.v === "1" : null;
+      }
+      if (f.type === "choice"){
+        const w = form.querySelector(`[data-choice="${f.key}"] [aria-pressed="true"]`);
+        return w ? w.dataset.v : null;
+      }
+      if (f.type === "checks"){
+        return Array.from(form.querySelectorAll(`[data-checks="${f.key}"] [aria-pressed="true"]`))
+          .map(b => b.dataset.v);
+      }
+      const inp = form.querySelector(`[data-f="${f.key}"]`);
+      if (!inp) return null;
+      const v = String(inp.value).trim();
+      if (v === "") return null;
+      return (f.type === "scale" || f.type === "number") ? Number(v) : v;
     };
-    const row = {
-      user_id:uid, entry_date:iso, submitted_at:new Date().toISOString(),
-      day_rating:num("day_rating"), mood:num("mood"), energy:num("energy"), stress:num("stress"),
-      sleep_hours:num("sleep_hours"), water_litres:num("water_litres"), screen_hours:num("screen_hours"),
-      moved_body:boolOf("moved_body"), ate_well:boolOf("ate_well"),
-      wins:g("wins")||null, challenges:g("challenges")||null, grateful_for:g("grateful_for")||null,
-      learned:g("learned")||null, notes:g("notes")||null
-    };
+
+    const row = {user_id:uid, entry_date:iso, submitted_at:new Date().toISOString(), answers:{}};
+    for (const f of S.fields.filter(f => f.active)){
+      const v = collect(f);
+      const empty = v === null || (Array.isArray(v) && !v.length);
+      if (JOURNAL_COLS.has(f.key)) row[f.key] = empty ? null : v;
+      else if (!empty) row.answers[f.key] = v;
+    }
+
     const { data:j, error } = await sb.from("life_journal")
       .upsert(row, {onConflict:"user_id,entry_date"}).select().single();
     if (error) throw error;
@@ -1312,7 +1483,7 @@ document.addEventListener("submit", async e => {
     await loadAll();
     S.view = "today";
     render();
-    flash(`Day closed out.${rows.length ? ` ${rows.length} ${rows.length===1?"task":"tasks"} waiting for you tomorrow.` : ""}`);
+    flash(`Day closed out.${rows.length ? ` ${rows.length} ${rows.length === 1 ? "task" : "tasks"} waiting for you tomorrow.` : ""}`);
   });
 });
 

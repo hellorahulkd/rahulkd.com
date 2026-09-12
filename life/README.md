@@ -22,6 +22,7 @@ to Supabase.
 | --- | --- |
 | `life_settings` | name, timezone, currency, wake and sleep times |
 | `life_journal` | one row per night; typed columns for the dials, `answers` jsonb for anything the form grows later |
+| `life_journal_fields` | **the form itself, as rows.** One per question: label, type, section, options, scale range. The Journal tab renders from this, so changing the nightly form is data, not code |
 | `life_tasks` | the three, plus anything added by hand. `journal_id` marks the ones a journal entry created |
 | `life_routine` | the weekly template. `starts_on`/`ends_on` scope a block to a date range, which is how class only shows during the trimester |
 | `life_day_overrides` | skip, move or add a block on one date, so a week can bend without being rewritten |
@@ -43,9 +44,17 @@ to Supabase.
 
 Everything is in one file, in this order: CSS tokens → shell → one `view*()`
 function per tab → a delegated `click` / `change` / `submit` handler → `boot()`.
-Adding a field to the journal means adding an input to `viewJournal()` and a
-line to the `journal` branch of the submit handler; if it isn't worth a column,
-put it in `answers`.
+
+**The nightly form is not in the code.** It is rows in `life_journal_fields`,
+rendered by `fieldHTML()`. Supported types: `scale`, `short`, `para`, `number`,
+`choice`, `checks`, `select`, `bool`, `date`, `time` — which covers every
+question type Google Forms offers. Add or reorder questions from the page
+itself (Journal → *Edit these questions*), or insert rows directly.
+
+Where an answer is stored depends on the field's `key`: if it matches a column
+on `life_journal` (`mood`, `sleep_hours`, `wins`, …) it goes there and is
+queryable; anything else lands in the `answers` jsonb. Deleting a question never
+deletes answers already given — they just stop being displayed.
 
 To work on it offline, stub the Supabase client — the shape used is small
 (`from().select().eq().order()`, `auth.getSession()`), and a fake one renders
