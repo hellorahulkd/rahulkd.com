@@ -299,8 +299,8 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
    to auth.uid(), so it grants nothing without a signed-in session.
    ============================================================ */
 
-const SUPABASE_URL = "https://xdkmscxqctgxljbmctoo.supabase.co";
-const SUPABASE_KEY = "sb_publishable_1KplN0D0drxQjxbBDJONtw__uTYzHFW";
+const SUPABASE_URL = "https://djqabdzhxtydkapltkcd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_ybByYcLi_388zcLdjSriyA_OxdxoBmB";
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 let booted = false;
 window.__lifeBooted = () => booted;
@@ -1490,6 +1490,22 @@ document.addEventListener("submit", async e => {
 /* ---------- boot ---------- */
 async function boot(){
   booted = true;
+
+  // A failed magic link comes back as #error=...&error_code=... Say what happened
+  // in plain words rather than showing a bare sign-in form again.
+  const h = new URLSearchParams(location.hash.replace(/^#/,""));
+  const code = h.get("error_code") || h.get("error");
+  if (code){
+    const say = {
+      otp_expired: "That link had already been used, or it had expired. Sign-in links work once, and only the newest one counts \u2014 send yourself a fresh one.",
+      access_denied: "That link was turned away. Send yourself a fresh one and open it in this browser.",
+      server_error: "The sign-in service had a problem. Try again in a minute."
+    }[code] || (h.get("error_description") || "That sign-in attempt didn't work.").replace(/\+/g," ");
+    el("gateMsg").innerHTML = `<div class="msg err">${esc(say)}</div>`;
+    history.replaceState(null, "", location.pathname);
+    return;                                   // gate is already on screen
+  }
+
   const { data:{ session } } = await sb.auth.getSession();
   if (!session) return;                      // the gate is already on screen
   el("gate").classList.add("hide");

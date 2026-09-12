@@ -8,9 +8,9 @@ to Supabase.
 
 - `index.html` — the whole app. No build step, no framework. The Supabase JS
   client loads as an ES module from jsDelivr; everything else ships in the file.
-- **Supabase project** `xdkmscxqctgxljbmctoo` (`powerkingnepal` org). All tables
-  are prefixed `life_` so they sit beside the existing inventory schema in the
-  same project without touching it.
+- **Supabase project** `djqabdzhxtydkapltkcd` — *hellorahulkd's dashboard
+  Project*, in the `rahulkd` org, region ap-south-1. Nothing else lives in it.
+  Tables are prefixed `life_`.
 - **Auth** is a magic link. There is no password.
 - The publishable key in the page is *meant* to be public. Every `life_` table
   has RLS on with a single policy — `user_id = auth.uid()` — so the key alone
@@ -33,10 +33,13 @@ to Supabase.
 
 ## Setup this needs once
 
-1. **Supabase → Authentication → URL Configuration**
-   - Site URL: `https://rahulkd.com`
-   - Redirect URLs: add `https://rahulkd.com/life` and `https://rahulkd.com/life/`
-   Without this the magic link bounces.
+1. **Supabase → Authentication → URL Configuration**, on project
+   `djqabdzhxtydkapltkcd` — check the ref in the dashboard URL, there is a
+   second project with a nearly identical name.
+   - Site URL: `https://rahulkd.com/life`
+   - Redirect URLs: `https://rahulkd.com/**`
+   Site URL defaults to `http://localhost:3000`; leave it and every magic link
+   lands on a dead localhost page.
 2. **Merge this branch into `main`.** GitHub Pages serves `main`, so `/life`
    only goes live once it lands there.
 
