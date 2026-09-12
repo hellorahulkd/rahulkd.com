@@ -1,0 +1,93 @@
+<title>Rahul's Station Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap">
+
+<style>
+:root{
+  --ground:#EDF0F0; --band:#0D2A31; --band-ink:#EAF2F1; --band-soft:#8FB0B2; --band-rule:#265059;
+  --ink:#16232A; --ink-soft:#55666E; --ink-faint:#8B9AA0; --rule:#D3DBDC;
+  --accent:#0B7A82; --gold:#B07A16;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ground:#0B1417; --band:#061519; --band-ink:#E4EDEE; --band-soft:#7B9CA0; --band-rule:#1C3E45;
+  --ink:#E4EDEE; --ink-soft:#98ABB1; --ink-faint:#67797F; --rule:#1E3037;
+  --accent:#41B3B9; --gold:#DCA640;
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1417; --band:#061519; --band-ink:#E4EDEE; --band-soft:#7B9CA0; --band-rule:#1C3E45;
+  --ink:#E4EDEE; --ink-soft:#98ABB1; --ink-faint:#67797F; --rule:#1E3037;
+  --accent:#41B3B9; --gold:#DCA640;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:660px;margin:0 auto;padding-inline:24px}
+@media (max-width:560px){ .wrap{padding-inline:16px} }
+
+.band{background:var(--band);color:var(--band-ink);border-bottom:1px solid var(--band-rule)}
+.band .wrap{padding-block:22px 30px}
+.stationline{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--band-soft)}
+.stationline .sep{color:var(--band-rule);padding-inline:8px}
+.stationline .live{color:var(--gold)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.4vw,38px);line-height:1.15;
+  margin:20px 0 0;letter-spacing:-.01em;text-wrap:balance;max-width:22ch}
+.band p{margin:14px 0 0;font-size:15px;color:var(--band-soft);max-width:56ch;line-height:1.6}
+.go{display:inline-flex;align-items:center;gap:9px;margin-top:22px;background:var(--accent);
+  border:1px solid var(--accent);color:#fff;text-decoration:none;padding:10px 17px;border-radius:4px;
+  font-size:14px;font-weight:500}
+.go:hover{filter:brightness(1.09)}
+
+main .wrap{padding-block:28px 44px}
+h2{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  margin:0 0 14px;color:var(--ink)}
+.rows{border-top:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;padding-block:12px;
+  border-bottom:1px solid var(--rule);align-items:baseline}
+@media (max-width:520px){ .row{grid-template-columns:1fr;gap:3px} }
+.row dt{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-faint)}
+.row dd{margin:0;font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+.note{margin-top:26px;padding-top:18px;border-top:1px solid var(--rule);
+  font-size:13.5px;color:var(--ink-faint);line-height:1.6;max-width:62ch}
+.note code{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft)}
+</style>
+
+<div class="band">
+  <div class="wrap">
+    <div class="stationline">
+      RAHUL'S STATION LOG<span class="sep">/</span>SYDNEY<span class="sep">/</span><span class="live">MOVED TO NOTION</span>
+    </div>
+    <h1>The board lives in Notion now.</h1>
+    <p>Priorities, habits, goals and the ledger are all one place, and the morning run writes the briefing straight onto that page. Nothing is kept here any more, so this page won't disagree with it.</p>
+    <a class="go" href="https://app.notion.com/p/3d7f9a0e3f1c81059584c1e7d8df8550" target="_blank" rel="noopener noreferrer">Open Station Log →</a>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <h2>What moved where</h2>
+    <dl class="rows">
+      <div class="row"><dt>Briefing</dt>
+        <dd>The callout at the top of the Notion page, rewritten each morning at 6:20.</dd></div>
+      <div class="row"><dt>Today's shape</dt>
+        <dd>A table under the briefing, built from Google Calendar during the morning run.</dd></div>
+      <div class="row"><dt>Waiting on you</dt>
+        <dd>Unread threads from actual people, separated from the newsletters.</dd></div>
+      <div class="row"><dt>Priorities</dt>
+        <dd>Its own board. Unfinished ones carry to the next day and count how long they've been held over.</dd></div>
+      <div class="row"><dt>Habits</dt>
+        <dd>The <em>Daily log</em> board — one row a day, tag what you did.</dd></div>
+      <div class="row"><dt>Goals &amp; ledger</dt>
+        <dd>Two boards, with progress and what's left worked out for you.</dd></div>
+    </dl>
+
+    <p class="note">The live version of this page — the day drawn as a colour bar, the inbox triaged as you opened it — still exists as source at <code>tools/station-log/station-log.html</code> in the rahulkd.com repository. Publishing it back to this same URL brings it straight back if Notion turns out not to be the right home.</p>
+  </div>
+</main>
