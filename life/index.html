@@ -302,7 +302,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://djqabdzhxtydkapltkcd.supabase.co";
 const SUPABASE_KEY = "sb_publishable_ybByYcLi_388zcLdjSriyA_OxdxoBmB";
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
-let booted = false;
+let booted = false, booting = false;
 window.__lifeBooted = () => booted;
 
 const AREAS = ["work","study","health","family","self","money","home"];
@@ -409,10 +409,10 @@ try { const t = localStorage.getItem("life:theme"); if (t) document.documentElem
 
 /* ---------- first run ---------- */
 async function seedDefaults(uid){
-  await sb.from("life_settings").insert({
+  await sb.from("life_settings").upsert({
     user_id:uid, display_name:"Rahul", timezone:"Australia/Sydney", currency:"AUD",
     wake_time:"06:30", sleep_time:"22:30"
-  });
+  }, {onConflict:"user_id", ignoreDuplicates:true});
 
   // The week as it actually stands: study full-time, class Fridays for the
   // trimester, 20h of work across Mon/Tue/Thu, KFC on Saturday nights.
@@ -446,9 +446,10 @@ async function seedDefaults(uid){
   rows.push(R(0,"19:45","21:30","Downtime","entertainment"));
   [1,3,5].forEach(d => rows.push(R(d,"06:45","07:45","Gym","gym")));
   [2,4].forEach(d => rows.push(R(d,"06:45","07:15","Walk or stretch","gym")));
-  await sb.from("life_routine").insert(rows);
+  await sb.from("life_routine")
+    .upsert(rows, {onConflict:"user_id,weekday,start_time,label", ignoreDuplicates:true});
 
-  await sb.from("life_budget_categories").insert([
+  await sb.from("life_budget_categories").upsert([
     {user_id:uid,name:"Rent / board",kind:"need",sort:1},
     {user_id:uid,name:"Groceries",kind:"need",sort:2},
     {user_id:uid,name:"Transport",kind:"need",sort:3},
@@ -457,11 +458,11 @@ async function seedDefaults(uid){
     {user_id:uid,name:"Eating out",kind:"want",sort:6},
     {user_id:uid,name:"Fun & subscriptions",kind:"want",sort:7},
     {user_id:uid,name:"Savings",kind:"save",sort:8}
-  ]);
+  ], {onConflict:"user_id,name", ignoreDuplicates:true});
 
   const F = (sort,section,key,label,type,extra) =>
     Object.assign({user_id:uid, sort, section, key, label, type}, extra||{});
-  await sb.from("life_journal_fields").insert([
+  await sb.from("life_journal_fields").upsert([
     F(1,"How the day went","day_rating","Day, out of ten","scale",{min:1,max:10,min_label:"rough",max_label:"great"}),
     F(2,"How the day went","mood","Mood","scale",{min:1,max:10}),
     F(3,"How the day went","energy","Energy","scale",{min:1,max:10}),
@@ -476,9 +477,9 @@ async function seedDefaults(uid){
     F(12,"In your own words","grateful_for","Grateful for","para"),
     F(13,"In your own words","learned","Something you learned","para"),
     F(14,"In your own words","notes","Anything else","para")
-  ]);
+  ], {onConflict:"user_id,key", ignoreDuplicates:true});
 
-  await sb.from("life_codes").insert([
+  await sb.from("life_codes").upsert([
     {user_id:uid,text:"Do the hardest thing first, while the day is still yours."},
     {user_id:uid,text:"Tired is not the same as done."},
     {user_id:uid,text:"Two hours of real study beats six hours of sitting near the books."},
@@ -486,7 +487,7 @@ async function seedDefaults(uid){
     {user_id:uid,text:"Ring home. It costs you nothing and it's the whole point."},
     {user_id:uid,text:"You can do the next small thing, even on a bad day."},
     {user_id:uid,text:"Sleep is the assignment you hand in to tomorrow."}
-  ]);
+  ], {onConflict:"user_id,text", ignoreDuplicates:true});
 }
 
 /* ---------- load ---------- */
@@ -1489,7 +1490,12 @@ document.addEventListener("submit", async e => {
 
 /* ---------- boot ---------- */
 async function boot(){
+  if (booting || S.user) return;     // page load and the SIGNED_IN event both call this
+  booting = true;
   booted = true;
+  try { await bootInner(); } finally { booting = false; }
+}
+async function bootInner(){
 
   // A failed magic link comes back as #error=...&error_code=... Say what happened
   // in plain words rather than showing a bare sign-in form again.
