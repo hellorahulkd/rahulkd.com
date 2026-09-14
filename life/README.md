@@ -62,3 +62,27 @@ deletes answers already given — they just stop being displayed.
 To work on it offline, stub the Supabase client — the shape used is small
 (`from().select().eq().order()`, `auth.getSession()`), and a fake one renders
 every view without a network.
+
+## Voice capture
+
+`Capture` records (or takes an uploaded file), stores the audio in the private
+`recordings` bucket, and calls the `transcribe` Edge Function. The function runs
+with `verify_jwt` on and builds its Supabase client from the *caller's* token, so
+RLS — not a client-supplied header — decides what it can touch.
+
+State lives on `life_recordings.status`:
+`uploading → uploaded → transcribing → organising → ready`, or `failed`.
+A failure never deletes `storage_path`, so Retry re-runs against the same audio.
+Both upstream calls are wrapped in `AbortController` (120s transcribe, 60s plan)
+and the browser adds its own 210s ceiling, so nothing loads indefinitely.
+`REC.busyId` plus a 409 from the function guard against double submits.
+
+Proposed tasks stay on the recording row until you tick and accept them; only
+then do they become `life_tasks` with `source='voice'`. `date_is_explicit`
+separates a date you actually said from one the model inferred, and the UI says
+which is which. Model enums are re-validated server-side — an unknown area or
+priority is coerced, never trusted.
+
+**Not configured yet:** the function needs `OPENAI_API_KEY` in Supabase →
+Edge Functions → Secrets. Until it's set, a run returns `not_configured`, leaves
+the recording at `uploaded` rather than `failed`, and the UI offers Retry.

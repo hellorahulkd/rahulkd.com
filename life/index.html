@@ -248,6 +248,19 @@ input[type=range]{width:100%;accent-color:var(--accent);height:22px}
 .ritem:hover .x,.task:hover .x,.x:focus-visible{opacity:1}
 .x:hover{color:var(--bad)}
 
+/* ---------- capture ---------- */
+.reclive{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--bad)}
+.reclive .dot{width:9px;height:9px;border-radius:50%;background:var(--bad);animation:pulse 1.1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.working{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--ink-2);
+  background:var(--sunk);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:12px}
+.working small{flex-basis:100%;color:var(--ink-3);font-size:12.5px}
+.spin{width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--accent);
+  border-radius:50%;animation:spin .8s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ritem.on{background:color-mix(in srgb,var(--accent) 8%,transparent);
+  margin-inline:-13px;padding-inline:13px;border-radius:var(--r-sm)}
+
 /* ---------- sign in ---------- */
 .gate{min-height:100dvh;display:grid;place-items:center;padding:24px}
 .gate .box{max-width:400px;width:100%;background:var(--surface);border:1px solid var(--line);
@@ -305,7 +318,8 @@ const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 let booted = false, booting = false;
 window.__lifeBooted = () => booted;
 
-const AREAS = ["work","study","health","family","self","money","home"];
+const AREAS = ["work","study","health","meals","mind","content","projects",
+               "lifestyle","family","travel","money","home","self"];
 const KINDS = ["sleep","meal","work","study","class","gym","family","self","entertainment","commute","admin"];
 const SLOTS = ["breakfast","lunch","dinner","snack"];
 const DAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -313,6 +327,7 @@ const DAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satu
 const S = {
   user:null, settings:null, routine:[], overrides:[], tasks:[], calendar:[],
   mealPlan:[], mealLog:[], cats:[], tx:[], goals:[], codes:[], fields:[], recent:[],
+  recordings:[], openRec:null,
   view:"today", month:null, busy:false
 };
 
@@ -502,7 +517,7 @@ async function loadAll(){
   }
   S.settings = settings;
 
-  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields] =
+  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields, recordings] =
     await Promise.all([
       sb.from("life_routine").select("*").eq("active",true).order("start_time"),
       sb.from("life_day_overrides").select("*").eq("on_date",today),
@@ -517,7 +532,8 @@ async function loadAll(){
       sb.from("life_savings_goals").select("*").eq("archived",false),
       sb.from("life_codes").select("*").eq("active",true),
       sb.from("life_journal").select("*").order("entry_date",{ascending:false}).limit(60),
-      sb.from("life_journal_fields").select("*").order("sort")
+      sb.from("life_journal_fields").select("*").order("sort"),
+      sb.from("life_recordings").select("*").order("created_at",{ascending:false}).limit(30)
     ]);
   S.routine = routine.data || []; S.overrides = overrides.data || [];
   S.tasks = tasks.data || []; S.calendar = calendar.data || [];
@@ -525,6 +541,7 @@ async function loadAll(){
   S.cats = cats.data || []; S.tx = tx.data || []; S.goals = goals.data || [];
   S.codes = codes.data || []; S.recent = recent.data || [];
   S.fields = fields.data || [];
+  S.recordings = recordings.data || [];
   S.month = mk;
 }
 
@@ -562,8 +579,10 @@ function codeForDay(iso){
 
 /* ---------- views ---------- */
 const NAV = [
-  {id:"today",  label:"Today",   ico:"◉"},
-  {id:"week",   label:"Week",    ico:"▦"},
+  {id:"today",     label:"Today",   ico:"◉"},
+  {id:"capture",   label:"Capture", ico:"◍"},
+  {id:"priorities",label:"Priority",ico:"▲"},
+  {id:"week",      label:"Week",    ico:"▦"},
   {id:"money",  label:"Money",   ico:"$"},
   {id:"journal",label:"Journal", ico:"✎"},
   {id:"log",    label:"Log",     ico:"≡"}
@@ -582,8 +601,9 @@ function renderNav(){
 function render(){
   renderNav();
   const v = el("view");
-  v.innerHTML = ({today:viewToday, week:viewWeek, money:viewMoney,
-                  journal:viewJournal, fields:viewFields, log:viewLog}[S.view] || viewToday)();
+  v.innerHTML = ({today:viewToday, capture:viewCapture, priorities:viewPriorities,
+                  week:viewWeek, money:viewMoney, journal:viewJournal,
+                  fields:viewFields, log:viewLog}[S.view] || viewToday)();
   v.scrollTop = 0;
   window.scrollTo({top:0});
 }
@@ -1171,6 +1191,184 @@ function viewFields(){
   </section>`;
 }
 
+/* ===== CAPTURE: voice -> transcript -> proposed tasks ===== */
+const REC = { media:null, chunks:[], stream:null, startedAt:0, tick:null, busyId:null };
+const STATE_LABEL = {
+  uploading:"Saving the audio…", uploaded:"Saved, not yet transcribed",
+  transcribing:"Transcribing…", organising:"Organising into tasks…",
+  ready:"Ready to review", failed:"Didn't finish"
+};
+
+function viewCapture(){
+  const recs = S.recordings || [];
+  const open = recs.find(r => r.id === S.openRec) || recs[0] || null;
+  const recording = !!REC.media;
+
+  return `
+  <div class="pagehead">
+    <div><div class="date">Say it, and it becomes a plan</div><h1>Capture</h1>
+      <p class="sub">Talk through the week out loud. It gets transcribed, broken into tasks you can edit, and nothing is added anywhere until you accept it.</p></div>
+  </div>
+
+  <div class="grid2">
+    <div class="stack">
+      <section class="card">
+        <header><h2>Record</h2><span class="meta" id="recClock">${recording ? "recording" : "up to 5 minutes"}</span></header>
+        <div class="bd">
+          <div class="row" style="align-items:center">
+            ${recording
+              ? `<button class="btn fit" id="stopRec" style="background:var(--bad);border-color:var(--bad)">■ Stop and save</button>
+                 <span class="reclive"><span class="dot"></span>listening…</span>`
+              : `<button class="btn fit" id="startRec">● Start recording</button>
+                 <label class="btn ghost fit" style="margin:0">Upload a file
+                   <input type="file" id="audioFile" accept="audio/*" style="display:none"></label>`}
+          </div>
+          <p class="empty" style="margin-top:10px">Your microphone is only opened while you're recording. Audio is stored privately and never leaves your account.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <header><h2>Recordings</h2><span class="meta">${recs.length || "none"}</span></header>
+        <div class="bd">
+          ${recs.length ? recs.map(r => `
+            <div class="ritem ${r.id === (open && open.id) ? "on" : ""}" data-open-rec="${r.id}" style="cursor:pointer">
+              <span class="bar" style="background:var(--${r.status === "ready" ? "health" : r.status === "failed" ? "bad" : "study"})"></span>
+              <span class="tx">${esc(STATE_LABEL[r.status] || r.status)}
+                <small>${esc(whenShort(r.created_at))}${r.transcript ? " · " + esc(r.transcript.slice(0,60)) + "…" : ""}</small></span>
+              <button class="x" data-del-rec="${r.id}" aria-label="Delete recording">×</button>
+            </div>`).join("")
+            : `<p class="empty">Nothing captured yet.</p>`}
+        </div>
+      </section>
+    </div>
+
+    <div class="stack">
+      ${open ? recordingPanel(open) : `<section class="card"><div class="bd">
+        <p class="empty">Record something and it'll appear here to review.</p></div></section>`}
+    </div>
+  </div>`;
+}
+
+function whenShort(iso){
+  try {
+    return new Intl.DateTimeFormat("en-AU",{timeZone:tz(),weekday:"short",day:"numeric",
+      month:"short",hour:"numeric",minute:"2-digit"}).format(new Date(iso));
+  } catch { return ""; }
+}
+
+function recordingPanel(r){
+  const plan = r.plan || {};
+  const tasks = Array.isArray(plan.tasks) ? plan.tasks : [];
+  const questions = Array.isArray(plan.questions) ? plan.questions : [];
+  const working = r.status === "transcribing" || r.status === "organising" || r.status === "uploading";
+
+  return `
+  <section class="card">
+    <header><h2>${esc(STATE_LABEL[r.status] || r.status)}</h2>
+      <span class="meta">${esc(whenShort(r.created_at))}</span></header>
+    <div class="bd">
+      ${working ? `<div class="working"><span class="spin"></span>${esc(STATE_LABEL[r.status])}
+        <small>This stops by itself if it takes too long — it won't hang.</small></div>` : ""}
+
+      ${r.error ? `<div class="msg err">${esc(r.error)}</div>` : ""}
+
+      ${r.status === "failed" || r.status === "uploaded" ? `
+        <div class="row" style="margin-bottom:12px">
+          <button class="btn sm fit" data-retry="${r.id}">Retry</button>
+          <span class="empty" style="flex:1">Your audio is still saved — retrying doesn't lose it.</span>
+        </div>` : ""}
+
+      ${r.transcript ? `
+        <label class="fld"><span>Transcript — edit it if it misheard you</span>
+          <textarea id="tScript" style="min-height:120px">${esc(r.transcript_edited || r.transcript)}</textarea>
+          <div class="hint">Editing then pressing Re-organise re-reads the corrected words.</div></label>
+        <div class="row" style="margin-bottom:14px">
+          <button class="btn ghost sm fit" data-reorg="${r.id}">Re-organise from this text</button>
+        </div>` : ""}
+
+      ${plan.summary ? `<p style="font-size:14.5px;color:var(--ink-2);margin:0 0 12px">${esc(plan.summary)}</p>` : ""}
+
+      ${questions.length ? `<div class="msg"><b>Worth confirming</b><ul style="margin:6px 0 0;padding-left:18px">
+        ${questions.map(q => `<li>${esc(q)}</li>`).join("")}</ul></div>` : ""}
+
+      ${tasks.length ? `
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+          color:var(--ink-3);margin:4px 0 8px">Proposed — nothing saved yet</div>
+        <div class="plist">
+          ${tasks.map((t,i) => `<div class="task">
+            <input type="checkbox" class="tick" data-acc="${i}" checked id="acc-${i}">
+            <label class="tx" for="acc-${i}">${esc(t.title)}
+              <span class="chip" style="background:var(--${areaVar(t.area)});margin-left:6px">${esc(t.area)}</span>
+              <span class="chip" style="background:var(--${prioVar(t.priority)});margin-left:4px">${esc(prioLabel(t.priority))}</span>
+              <small style="display:block;color:var(--ink-3);font-size:12px;margin-top:3px">
+                ${t.due_date ? (t.date_is_explicit
+                    ? `due ${esc(shortDate(t.due_date))} — you said this`
+                    : `suggested for ${esc(shortDate(t.due_date))} — not a date you gave`)
+                  : "no date"}${t.estimated_minutes ? ` · ~${t.estimated_minutes} min` : ""}${
+                  t.notes ? ` · ${esc(t.notes)}` : ""}</small></label>
+            <span></span></div>`).join("")}
+        </div>
+        <button class="btn" data-accept="${r.id}" style="width:100%;margin-top:14px;padding:11px">
+          Add the ticked ones to my tasks</button>
+        ${r.plan_accepted_at ? `<p class="empty" style="margin-top:8px">Already accepted ${esc(whenShort(r.plan_accepted_at))}. Accepting again adds them a second time.</p>` : ""}
+      ` : (r.status === "ready" ? `<p class="empty">Nothing actionable was found in this one.</p>` : "")}
+    </div>
+  </section>`;
+}
+
+const areaVar = a => ["work","study","health","family","self","money","home"].includes(a) ? a
+  : ({meals:"family", mind:"self", content:"study", projects:"work",
+      lifestyle:"home", travel:"money"}[a] || "self");
+const prioVar = p => ({urgent_important:"bad", important:"work",
+  urgent_minor:"warn", optional:"home"}[p] || "work");
+const prioLabel = p => ({urgent_important:"do first", important:"schedule",
+  urgent_minor:"quick", optional:"later"}[p] || p);
+
+/* ===== PRIORITIES: the four groups ===== */
+const QUADRANTS = [
+  {key:"urgent_important", title:"Do first",  blurb:"Urgent and important."},
+  {key:"important",        title:"Schedule",  blurb:"Important, not urgent. This is where the real progress is."},
+  {key:"urgent_minor",     title:"Quick",     blurb:"Urgent but minor. Knock over or hand off."},
+  {key:"optional",         title:"Later",     blurb:"Optional. Safe to ignore today."}
+];
+
+function viewPriorities(){
+  const iso = isoDay();
+  const all = (S.tasks || []).filter(t => t.status !== "dropped");
+  const open = all.filter(t => !t.done);
+  const overdue = open.filter(t => t.due_date && t.due_date < iso);
+
+  return `
+  <div class="pagehead">
+    <div><div class="date">${open.length} open · ${overdue.length} overdue</div><h1>Priorities</h1>
+      <p class="sub">Four groups, in the order they deserve your attention. Anything carrying a date you didn't actually give is marked as a suggestion.</p></div>
+  </div>
+
+  ${overdue.length ? `<div class="msg err" style="margin-bottom:16px">
+    <b>${overdue.length} overdue</b> — ${esc(overdue.slice(0,3).map(t => t.title).join(" · "))}${overdue.length > 3 ? " …" : ""}</div>` : ""}
+
+  <div class="stack">
+    ${QUADRANTS.map(q => {
+      const items = open.filter(t => (t.priority || "important") === q.key);
+      return `<section class="card">
+        <header><h2>${q.title}</h2><span class="meta">${items.length || "clear"}</span></header>
+        <div class="bd">
+          <p class="empty" style="margin:-4px 0 8px">${q.blurb}</p>
+          ${items.length ? items.sort((a,b) => (a.due_date||"9999").localeCompare(b.due_date||"9999"))
+            .map(taskRow).join("") : ""}
+          <form data-form="addtask" class="row" style="margin-top:10px">
+            <input type="hidden" name="priority" value="${q.key}">
+            <input type="text" name="title" placeholder="Add to ${q.title.toLowerCase()}" required maxlength="140">
+            <select name="area" class="fit" style="flex:0 0 110px">
+              ${AREAS.map(a => `<option value="${a}">${a}</option>`).join("")}</select>
+            <input type="date" name="due_date" class="fit" style="flex:0 0 140px" aria-label="Due date">
+            <button class="btn sm fit" type="submit">Add</button>
+          </form>
+        </div></section>`;
+    }).join("")}
+  </div>`;
+}
+
 /* ===== LOG ===== */
 function viewLog(){
   const done = S.tasks.filter(t => t.done).sort((a,b) => (b.done_at||"").localeCompare(a.done_at||""));
@@ -1233,10 +1431,163 @@ function journalStreak(){
   return n;
 }
 
+/* ---------- capture: recording, upload, transcribe, accept ---------- */
+const FN_URL = SUPABASE_URL + "/functions/v1/transcribe";
+const fmtDur = s => Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+
+function pickMime(){
+  for (const m of ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg"])
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported(m)) return m;
+  return "";
+}
+
+async function startRecording(){
+  if (!navigator.mediaDevices || !window.MediaRecorder)
+    return flash("This browser can't record audio. Upload a file instead.", "err");
+  let stream;
+  try { stream = await navigator.mediaDevices.getUserMedia({audio:true}); }
+  catch { return flash("Microphone access was refused. Allow it in the address bar, or upload a file.", "err"); }
+
+  const mime = pickMime();
+  const mr = new MediaRecorder(stream, mime ? {mimeType:mime} : undefined);
+  REC.stream = stream; REC.chunks = []; REC.media = mr; REC.startedAt = Date.now();
+  mr.ondataavailable = e => { if (e.data && e.data.size) REC.chunks.push(e.data); };
+  mr.onstop = async () => {
+    const secs = Math.round((Date.now() - REC.startedAt) / 100) / 10;
+    (REC.stream ? REC.stream.getTracks() : []).forEach(t => t.stop());
+    const blob = new Blob(REC.chunks, {type: mr.mimeType || "audio/webm"});
+    REC.media = null; REC.stream = null;
+    if (REC.tick){ clearInterval(REC.tick); REC.tick = null; }
+    render();
+    if (blob.size < 1200) return flash("That was too short to transcribe.", "err");
+    await saveRecording(blob, mr.mimeType || "audio/webm", secs);
+  };
+  mr.start();
+  REC.tick = setInterval(() => {
+    const s = Math.floor((Date.now() - REC.startedAt) / 1000);
+    const c = el("recClock"); if (c) c.textContent = fmtDur(s);
+    if (s >= 300) stopRecording();            // hard stop at five minutes
+  }, 1000);
+  render();
+}
+function stopRecording(){ if (REC.media && REC.media.state !== "inactive") REC.media.stop(); }
+
+async function saveRecording(blob, mime, secs){
+  const uid = S.user.id;
+  const ext = /ogg/.test(mime) ? "ogg" : /mp4|m4a|aac/.test(mime) ? "mp4" : /mpeg|mp3/.test(mime) ? "mp3" : "webm";
+  const { data:rec, error } = await sb.from("life_recordings")
+    .insert({user_id:uid, status:"uploading", bytes:blob.size, duration_seconds:secs || null})
+    .select().single();
+  if (error) return flash(error.message, "err");
+  S.openRec = rec.id; S.view = "capture";
+  await refreshRecordings(); render();
+
+  const path = `${uid}/${rec.id}.${ext}`;
+  const up = await sb.storage.from("recordings").upload(path, blob, {contentType:mime, upsert:true});
+  if (up.error){
+    await sb.from("life_recordings")
+      .update({status:"failed", error:"Couldn't save the audio: " + up.error.message}).eq("id", rec.id);
+    await refreshRecordings(); render(); return;
+  }
+  await sb.from("life_recordings").update({status:"uploaded", storage_path:path}).eq("id", rec.id);
+  await refreshRecordings(); render();
+  runTranscribe(rec.id);
+}
+
+async function refreshRecordings(){
+  const { data } = await sb.from("life_recordings").select("*")
+    .order("created_at",{ascending:false}).limit(30);
+  S.recordings = data || [];
+}
+
+async function runTranscribe(id, transcriptOverride){
+  if (REC.busyId) return;                       // one at a time, no double submits
+  REC.busyId = id;
+  await refreshRecordings(); render();
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 210000);
+  try {
+    const { data:{ session } } = await sb.auth.getSession();
+    if (!session) throw new Error("Your session expired. Reload and sign in again.");
+    if (transcriptOverride != null){
+      await sb.from("life_recordings")
+        .update({transcript_edited:transcriptOverride, transcript:transcriptOverride}).eq("id", id);
+    }
+    const res = await fetch(FN_URL, {
+      method:"POST", signal:ctl.signal,
+      headers:{Authorization:"Bearer " + session.access_token, "Content-Type":"application/json"},
+      body: JSON.stringify({recording_id:id})
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok) flash(out.message || `Processing failed (${res.status}).`, "err");
+  } catch (e){
+    const msg = e && e.name === "AbortError"
+      ? "That took too long and was stopped. Your audio is saved — press Retry."
+      : (e && e.message) || "Couldn't reach the transcription service. Your audio is saved.";
+    flash(msg, "err");
+  } finally {
+    clearTimeout(timer);
+    REC.busyId = null;
+    await refreshRecordings(); render();
+  }
+}
+
+async function acceptPlan(recId){
+  const r = (S.recordings || []).find(x => x.id === recId);
+  if (!r) return;
+  const tasks = (r.plan && Array.isArray(r.plan.tasks)) ? r.plan.tasks : [];
+  const picked = Array.from(document.querySelectorAll("[data-acc]"))
+    .filter(c => c.checked).map(c => tasks[+c.dataset.acc]).filter(Boolean);
+  if (!picked.length) return flash("Nothing ticked, so nothing was added.", "err");
+
+  const rows = picked.map((t,i) => ({
+    user_id:S.user.id, title:t.title, notes:t.notes || null, area:t.area,
+    priority:t.priority, due_date:t.due_date || null,
+    date_is_explicit:!!t.date_is_explicit,
+    estimated_minutes:t.estimated_minutes || null,
+    status:"accepted", source:"voice", source_ref:recId, position:i + 1
+  }));
+  const { error } = await sb.from("life_tasks").insert(rows);
+  if (error) return flash(error.message, "err");
+  await sb.from("life_recordings")
+    .update({plan_accepted_at:new Date().toISOString()}).eq("id", recId);
+  await loadAll();
+  S.view = "priorities"; render();
+  flash(`${rows.length} ${rows.length === 1 ? "task" : "tasks"} added. Nothing was written to your calendar.`);
+}
+
 /* ---------- actions ---------- */
 document.addEventListener("click", async e => {
   const go = e.target.closest("[data-go]");
   if (go){ S.view = go.dataset.go; render(); return; }
+
+  if (e.target.closest("#startRec")) return startRecording();
+  if (e.target.closest("#stopRec"))  return stopRecording();
+
+  const orec = e.target.closest("[data-open-rec]");
+  if (orec){ S.openRec = orec.dataset.openRec; render(); return; }
+
+  const rtry = e.target.closest("[data-retry]");
+  if (rtry) return runTranscribe(rtry.dataset.retry);
+
+  const reorg = e.target.closest("[data-reorg]");
+  if (reorg){
+    const box = el("tScript");
+    return runTranscribe(reorg.dataset.reorg, box ? box.value.trim() : undefined);
+  }
+
+  const acc = e.target.closest("[data-accept]");
+  if (acc) return run(() => acceptPlan(acc.dataset.accept));
+
+  const drec = e.target.closest("[data-del-rec]");
+  if (drec) return run(async () => {
+    const id = drec.dataset.delRec;
+    const r = (S.recordings || []).find(x => x.id === id);
+    if (r && r.storage_path) await sb.storage.from("recordings").remove([r.storage_path]);
+    await sb.from("life_recordings").delete().eq("id", id);
+    if (S.openRec === id) S.openRec = null;
+    await refreshRecordings(); render();
+  });
 
   const mo = e.target.closest("[data-month]");
   if (mo){
@@ -1293,6 +1644,14 @@ document.addEventListener("click", async e => {
 });
 
 document.addEventListener("change", async e => {
+  const af = e.target.closest("#audioFile");
+  if (af && af.files && af.files[0]){
+    const f = af.files[0];
+    if (f.size > 25 * 1024 * 1024)
+      return flash("That file is over 25 MB, which is past the transcription limit.", "err");
+    return run(() => saveRecording(f, f.type || "audio/mpeg", null));
+  }
+
   const tk = e.target.closest("[data-task]");
   if (tk) return run(async () => {
     const id = tk.dataset.task, done = tk.checked;
@@ -1358,10 +1717,14 @@ document.addEventListener("submit", async e => {
 
   if (form.dataset.form === "addtask") return run(async () => {
     const iso = isoDay();
-    const pos = S.tasks.filter(t => t.due_date === iso).length + 1;
-    const { data } = await sb.from("life_tasks")
-      .insert({user_id:uid, due_date:iso, title:g("title"), area:g("area")||"work", position:pos})
-      .select().single();
+    const due = g("due_date") || (form.querySelector("[name=due_date]") ? null : iso);
+    const { data, error } = await sb.from("life_tasks").insert({
+      user_id:uid, title:g("title"), area:g("area") || "work",
+      priority:g("priority") || "important", due_date:due,
+      date_is_explicit: !!g("due_date"), status:"accepted", source:"manual",
+      position:S.tasks.filter(t => t.due_date === due).length + 1
+    }).select().single();
+    if (error) throw error;
     if (data) S.tasks.unshift(data);
     form.reset(); render();
   });
