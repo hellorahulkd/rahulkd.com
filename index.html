@@ -401,6 +401,26 @@
   .extra-pill span.amt{color:var(--orange);font-family:'Anton',sans-serif;font-size:1.1rem;}
   @media (max-width:680px){ .price-grid{grid-template-columns:1fr;} .extra-grid{grid-template-columns:1fr;} }
 
+  /* Beyond video — websites, photography, social */
+  .more-services{margin-top:52px;padding-top:40px;border-top:1px solid var(--rule);}
+  .more-services .ms-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;
+    font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.06;margin-top:10px;max-width:15ch;}
+  .ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .ms-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:26px 22px 24px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;}
+  .ms-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(23,23,23,0.08);}
+  .ms-card .ms-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.08em;color:var(--orange);}
+  .ms-card h4{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:0.01em;
+    font-size:1.25rem;line-height:1.1;margin:12px 0 10px;}
+  .ms-card p{font-size:0.88rem;line-height:1.6;color:#4A4A44;}
+  .ms-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    background:var(--ink);color:var(--paper);border-radius:16px;padding:24px 28px;margin-top:16px;}
+  .ms-cta p{font-size:0.95rem;line-height:1.55;margin:0;max-width:54ch;}
+  .ms-cta strong{color:#FFC7B3;}
+  .ms-cta .btn{flex:none;}
+  @media (max-width:860px){ .ms-grid{grid-template-columns:1fr;} }
+  @media (max-width:680px){ .ms-cta{flex-direction:column;align-items:flex-start;padding:22px;} }
+
   /* ---------------- testimonials ---------------- */
   .test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
   .test-card{border-radius:16px;overflow:hidden;background:#2B2B2B;position:relative;}
@@ -808,6 +828,34 @@
       <div class="extra-pill">Presentation <span class="amt">~$200</span></div>
       <div class="extra-pill">Poster <span class="amt">$80</span></div>
       <div class="extra-pill">Brochure <span class="amt">$80</span></div>
+    </div>
+
+    <div class="more-services">
+      <span class="eyebrow">Also on the menu</span>
+      <h3 class="ms-title">Video isn't the only thing I do</h3>
+
+      <div class="ms-grid">
+        <div class="ms-card stagger">
+          <span class="ms-num">01</span>
+          <h4>Websites</h4>
+          <p>Like the one you're reading. Hand-built, quick to load and yours to keep — no template, no monthly fee for a page that just sits there. I'll build it and look after it.</p>
+        </div>
+        <div class="ms-card stagger">
+          <span class="ms-num">02</span>
+          <h4>Photography</h4>
+          <p>Your event, your craft, your team, your work. Ten years behind a camera and I still get a bit giddy about good light.</p>
+        </div>
+        <div class="ms-card stagger">
+          <span class="ms-num">03</span>
+          <h4>Social media, handled</h4>
+          <p>The whole thing — what to post, when to post it, and actually posting it. You go back to running the business.</p>
+        </div>
+      </div>
+
+      <div class="ms-cta">
+        <p>Not sure which one you need? Neither am I until we talk. <strong>Hit me up with a hi</strong> and we'll figure it out from there.</p>
+        <a class="btn btn-primary btn-glow" href="mailto:hello.rahulkd@gmail.com?subject=Hi">Say hi</a>
+      </div>
     </div>
   </div>
 </section>
