@@ -407,12 +407,26 @@
     font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.06;margin-top:10px;max-width:15ch;}
   .ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
   .ms-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:26px 22px 24px;
-    transition:transform 0.2s ease, box-shadow 0.2s ease;}
+    display:flex;flex-direction:column;transition:transform 0.2s ease, box-shadow 0.2s ease;}
   .ms-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(23,23,23,0.08);}
   .ms-card .ms-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.08em;color:var(--orange);}
   .ms-card h4{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:0.01em;
     font-size:1.25rem;line-height:1.1;margin:12px 0 10px;}
   .ms-card p{font-size:0.88rem;line-height:1.6;color:#4A4A44;}
+  .ms-pricing{background:var(--card);border:1px solid var(--rule);border-radius:16px;
+    padding:24px 26px 22px;margin-top:16px;}
+  .msp-rows{display:grid;grid-template-columns:1fr 1fr;gap:18px 32px;margin-top:14px;}
+  .msp-cell p{font-size:0.82rem;line-height:1.55;color:#6B675C;margin-top:8px;}
+  .msp-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding-bottom:9px;border-bottom:1px solid var(--rule);}
+  .msp-top .lbl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.06em;
+    text-transform:uppercase;color:#6B675C;font-weight:500;}
+  .msp-top .amt{font-family:'Anton',sans-serif;color:var(--orange);font-size:1.5rem;
+    line-height:1;white-space:nowrap;}
+  .msp-top .amt i{font-style:normal;font-size:0.82rem;}
+  .ms-fine{font-size:0.78rem;line-height:1.55;color:#6B675C;margin-top:16px;
+    padding-top:14px;border-top:1px solid var(--rule);}
+  @media (max-width:680px){ .msp-rows{grid-template-columns:1fr;} }
   .ms-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
     background:var(--ink);color:var(--paper);border-radius:16px;padding:24px 28px;margin-top:16px;}
   .ms-cta p{font-size:0.95rem;line-height:1.55;margin:0;max-width:54ch;}
@@ -838,7 +852,7 @@
         <div class="ms-card stagger">
           <span class="ms-num">01</span>
           <h4>Websites</h4>
-          <p>Like the one you're reading. Hand-built, quick to load and yours to keep — no template, no monthly fee for a page that just sits there. I'll build it and look after it.</p>
+          <p>Like the one you're reading. Hand-built, quick to load and yours to keep — no template, no page builder, no drag-and-drop mush. I'll build it and then look after it.</p>
         </div>
         <div class="ms-card stagger">
           <span class="ms-num">02</span>
@@ -850,6 +864,21 @@
           <h4>Social media, handled</h4>
           <p>The whole thing — what to post, when to post it, and actually posting it. You go back to running the business.</p>
         </div>
+      </div>
+
+      <div class="ms-pricing">
+        <span class="eyebrow">What a website runs you</span>
+        <div class="msp-rows">
+          <div class="msp-cell">
+            <div class="msp-top"><span class="lbl">Build it</span><span class="amt">A$800–1,000</span></div>
+            <p>One-off, to design and build the thing and get it live.</p>
+          </div>
+          <div class="msp-cell">
+            <div class="msp-top"><span class="lbl">Look after it</span><span class="amt">A$150<i>/month</i></span></div>
+            <p>Maintenance, content and photo updates, team and project changes, small edits and technical support.</p>
+          </div>
+        </div>
+        <p class="ms-fine">Bigger redesigns or new functionality quoted separately. Photography and social media are priced per job — ask and I'll give you a number.</p>
       </div>
 
       <div class="ms-cta">
