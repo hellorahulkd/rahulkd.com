@@ -65,7 +65,7 @@ dashboard/, life/, tools/   → unrelated private side-projects that share the d
 - Brought **30+ clients** into a firm on a **$0 ad budget**.
 - **President, Student Representative Council (SRC)**, Torrens University — represented **3,000+ students**. Promoted from member → social media manager → president.
 - **TAC Assistant, Torrens University Australia** (current) — course fee and admissions data across UAC and QTAC systems, including a master reference workbook spanning 60+ courses.
-- **Founder, Passport People** — a student travel brand for Sydney uni students aged 19–26.
+- **Founder, Passport People** — a student travel brand for Sydney uni students.
 - **MBA (Advanced)**, Torrens University Australia, Sydney campus, **full scholarship**, in progress.
 - **Bachelor of Business Information Systems**, Torrens University Australia, completed **December 2025**.
 - Works both sides of the camera: writes, shoots, presents, edits.

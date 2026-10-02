@@ -1,7 +1,13 @@
 # The free-first-video brochure — design thinking record
 
 A4, landscape, folded once down the middle → four A5 panels.
-Files: `index.html` (source of truth), `rahul-brochure-A4.pdf` (send this to a printer).
+Send `rahul-brochure-A4.pdf` to a printer; `index.html` is the page that presents it.
+
+> **Note, 2 October 2026.** The artwork that actually prints is a later design, laid
+> out elsewhere and adopted unchanged. The offer, the panel order and the three steps
+> survived from the work below; the layout, the cut-out photography and the price list
+> did not. This record is kept because the reasoning still holds, not because it
+> describes the current artwork.
 
 ---
 
