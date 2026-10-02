@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bowline Coffee — a demo café site by Rahul Kumar Das</title>
+<meta name="description" content="A demonstration café website built by Rahul Kumar Das. Bowline Coffee is a fictional business created to show what a small café site can look like.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17150F;--paper:#FBF7EF;--dim:#F0E9DC;--rule:#DED5C4;--muted:#7A7265;--roast:#8A4B2A;--leaf:#3F6B4A;--cream:#FFF8EC;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:-.01em;line-height:.95}
+.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}
+a{color:inherit}
+
+/* demo ribbon */
+.demo-bar{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--cream);padding:9px 0}
+.demo-bar .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.demo-bar b{color:#F0A78C}
+.demo-bar a{font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
+header.site{padding:26px 0;border-bottom:1px solid var(--rule)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Anton',sans-serif;font-size:21px;text-transform:uppercase;letter-spacing:.02em}
+.brand i{width:30px;height:30px;border-radius:50%;background:var(--roast);display:block;position:relative;flex:none}
+.brand i::after{content:'';position:absolute;inset:9px 4px;border-radius:50%;background:var(--cream)}
+nav.site{display:flex;gap:26px}
+nav.site a{font-size:13px;font-weight:600;text-decoration:none}
+nav.site a:hover{color:var(--roast)}
+
+.hero{padding:70px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(52px,8vw,104px)}
+.hero h1 em{font-style:normal;color:var(--roast)}
+.hero p.lead{font-size:19px;margin-top:22px;max-width:40ch;color:#443E34}
+.hero .cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;border:1.5px solid var(--ink)}
+.btn-fill{background:var(--ink);color:var(--paper)}
+.btn-line{background:transparent}
+.cup{aspect-ratio:1;border-radius:50%;background:
+  radial-gradient(circle at 50% 42%, #6B3A20 0 33%, transparent 34%),
+  radial-gradient(circle at 50% 42%, var(--cream) 0 38%, transparent 39%),
+  conic-gradient(from 210deg, var(--roast), #B4653C, var(--roast));
+  display:grid;place-items:center;position:relative;box-shadow:0 30px 60px #17150f1f}
+.cup span{position:absolute;bottom:11%;left:50%;transform:translateX(-50%);font-family:'Anton',sans-serif;
+  text-transform:uppercase;color:var(--cream);font-size:clamp(17px,2.1vw,25px);line-height:1.05;text-align:center;white-space:nowrap}
+
+.strip{background:var(--ink);color:var(--cream);padding:17px 0;overflow:hidden;white-space:nowrap}
+.strip span{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:20px;padding-right:34px}
+.strip i{color:var(--roast);font-style:normal;padding-right:34px}
+
+section{padding:72px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:38px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(32px,4.4vw,52px)}
+.sec-head .mono{color:var(--muted)}
+
+.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.menu h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:20px;margin-bottom:14px;color:var(--roast)}
+.row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted var(--rule);font-size:14px}
+.row b{font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:0}
+.row span small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{aspect-ratio:1;border-radius:4px;display:grid;place-items:center;padding:16px;text-align:center}
+.tile b{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(15px,1.7vw,21px);line-height:1.05}
+.t1{background:var(--roast);color:var(--cream)}
+.t2{background:var(--dim);color:var(--ink)}
+.t3{background:var(--leaf);color:var(--cream)}
+.t4{background:var(--ink);color:var(--cream)}
+
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.hours div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.hours div b{font-weight:600}
+.visit .where p{margin-top:12px;font-size:15px;color:#443E34}
+.visit .where .big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:28px;line-height:1.1;margin-bottom:6px}
+
+footer.site{background:var(--ink);color:var(--cream);padding:48px 0 40px;margin-top:20px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+footer.site .mono{color:#A99F8E}
+footer.site h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:34px;line-height:1}
+
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .menu{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .visit{grid-template-columns:1fr;gap:34px}
+  nav.site{display:none}
+  .wrap{width:calc(100% - 36px)}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <div class="wrap">
+    <span class="mono"><b>Demo site</b> · Bowline Coffee is not a real business</span>
+    <a class="mono" href="https://rahulkd.com">Built by Rahul Kumar Das → rahulkd.com</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><i></i> Bowline</div>
+    <nav class="site">
+      <a href="#menu">Menu</a><a href="#beans">Beans</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn-fill" href="#visit" style="padding:11px 20px;font-size:13px">Find us</a>
+  </div>
+</header>
+
+<section class="hero wrap" style="padding-bottom:50px">
+  <div class="hero-grid">
+    <div>
+      <span class="mono" style="color:var(--muted)">Kogarah · open from 6:30am</span>
+      <h1 class="display" style="margin-top:18px">Coffee,<br>and a reason<br>to <em>sit down.</em></h1>
+      <p class="lead">Small roastery, smaller café. We open early, we know your order by Thursday, and the banana bread is still warm at seven.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="#menu">See the menu</a>
+        <a class="btn btn-line" href="#visit">Opening hours</a>
+      </div>
+    </div>
+    <div class="cup"><span>Roasted<br>on site</span></div>
+  </div>
+</section>
+
+<div class="strip">
+  <span>Single origin <i>✳</i> Oat is free <i>✳</i> Dogs welcome <i>✳</i> Cash and card <i>✳</i> Single origin <i>✳</i> Oat is free <i>✳</i> Dogs welcome <i>✳</i> Cash and card <i>✳</i></span>
+</div>
+
+<section id="menu" class="wrap">
+  <div class="sec-head"><h2 class="display">The short menu</h2><span class="mono">Updated weekly</span></div>
+  <div class="menu">
+    <div>
+      <h3>Coffee</h3>
+      <div class="row"><span>Espresso<small>House blend, chocolate &amp; plum</small></span><b>$4.00</b></div>
+      <div class="row"><span>Flat white<small>Our most ordered, by a mile</small></span><b>$4.80</b></div>
+      <div class="row"><span>Batch filter<small>Changes every few days</small></span><b>$5.00</b></div>
+      <div class="row"><span>Cold brew<small>18 hours, no shortcuts</small></span><b>$6.00</b></div>
+    </div>
+    <div>
+      <h3>Food</h3>
+      <div class="row"><span>Banana bread<small>Grilled, salted butter</small></span><b>$6.50</b></div>
+      <div class="row"><span>Bacon &amp; egg roll<small>Until 11am, or until it's gone</small></span><b>$12.00</b></div>
+      <div class="row"><span>Big breakfast<small>Weekends only</small></span><b>$22.00</b></div>
+      <div class="row"><span>Toastie<small>Three cheeses, one regret</small></span><b>$11.00</b></div>
+    </div>
+    <div>
+      <h3>Not coffee</h3>
+      <div class="row"><span>Matcha<small>Ceremonial, properly whisked</small></span><b>$6.00</b></div>
+      <div class="row"><span>Hot chocolate<small>65% dark</small></span><b>$5.50</b></div>
+      <div class="row"><span>Loose leaf tea<small>Four to choose from</small></span><b>$4.50</b></div>
+      <div class="row"><span>Fresh orange<small>Squeezed when you order</small></span><b>$7.00</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="beans" class="wrap" style="padding-top:20px">
+  <div class="sec-head"><h2 class="display">What's in the hopper</h2><span class="mono">Roasted Tuesdays</span></div>
+  <div class="tiles">
+    <div class="tile t1"><b>Ethiopia<br>Guji</b></div>
+    <div class="tile t2"><b>Colombia<br>Huila</b></div>
+    <div class="tile t3"><b>House<br>blend</b></div>
+    <div class="tile t4"><b>Decaf,<br>honestly good</b></div>
+  </div>
+</section>
+
+<section id="visit" class="wrap" style="padding-top:20px">
+  <div class="sec-head"><h2 class="display">Come in</h2><span class="mono">Two minutes from the station</span></div>
+  <div class="visit">
+    <div class="hours">
+      <div><b>Monday – Friday</b><span>6:30am – 3:00pm</span></div>
+      <div><b>Saturday</b><span>7:00am – 2:00pm</span></div>
+      <div><b>Sunday</b><span>7:30am – 1:00pm</span></div>
+      <div><b>Public holidays</b><span>We sleep in. 8:00am – 12:00pm</span></div>
+    </div>
+    <div class="where">
+      <div class="big">14 Railway Parade<br>Kogarah NSW</div>
+      <p>Street parking out front, more behind the laneway. We hold the corner table for anyone working on something.</p>
+      <p style="margin-top:18px"><strong>Say hello:</strong> hello@bowline.example · (02) 0000 0000</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <h3>Bowline Coffee</h3>
+      <span class="mono">A demonstration site. Nothing here is a real business.</span>
+    </div>
+    <a class="mono" href="https://rahulkd.com" style="color:#F0A78C;font-weight:700">Want one like this? → rahulkd.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

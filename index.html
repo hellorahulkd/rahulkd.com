@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F7F5F1">
-  <title>Rahul Kumar Das — Videos worth stopping for. Sydney.</title>
-  <meta name="description" content="Sydney content creator, videographer and digital marketer. Real stories, 10M+ views, and an easy person to work with. Based in Kogarah Bay. Let's make something.">
+  <title>Rahul Kumar Das — Video, photo, social and websites. Sydney.</title>
+  <meta name="description" content="Sydney content creator and web builder. Video, photography, social media management and websites, all from one person. 10M+ views, four years, and an easy person to work with. Based in Kogarah Bay.">
   <link rel="canonical" href="https://rahulkd.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Rahul Kumar Das — Videos worth stopping for.">
-  <meta property="og:description" content="Content creator. Storyteller. Your next collaborator. Sydney, Australia.">
+  <meta property="og:title" content="Rahul Kumar Das — Video, photo, social and websites.">
+  <meta property="og:description" content="Video, photos, social media and the website it all points back to. One person, Sydney, Australia.">
   <meta property="og:url" content="https://rahulkd.com/">
   <meta property="og:site_name" content="Rahul Kumar Das">
   <meta property="og:locale" content="en_AU">
@@ -18,8 +18,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Rahul Kumar Das. Videos worth stopping for. Sydney, Australia.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rahul Kumar Das — Videos worth stopping for.">
-  <meta name="twitter:description" content="Sydney content creator, videographer and storyteller. 10M+ views and counting.">
+  <meta name="twitter:title" content="Rahul Kumar Das — Video, photo, social and websites.">
+  <meta name="twitter:description" content="Video, photography, social media and websites, all from one person in Sydney. 10M+ views and counting.">
   <meta name="twitter:image" content="https://rahulkd.com/assets/rahul-social-card.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiNGN0Y1RjEiLz48cGF0aCBkPSJNMTYgMTJoMTZjMTIgMCAxOCA2IDE4IDE2IDAgNy0zIDEyLTEwIDE1bDEyIDEzSDM3TDI3IDQzaC0xdjEzSDE2em0xMCAxMXYxMGg2YzUgMCA3LTEgNy01cy0yLTUtNy01eiIgZmlsbD0iIzE0MTIwRiIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iNTQiIHI9IjYiIGZpbGw9IiNEOTU0MkUiLz48L3N2Zz4K">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,92 @@
 .project-art.has-photo .poster-smile,.project-art.has-photo .long-ring{display:none}
 .project-art.has-photo .project-play{background:#F7F5F1;color:#14120F;border-color:#F7F5F1}
 
+/* Four pillars, the stills wall, and the website demos. */
+.pillar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;margin-top:40px}
+.pillar{display:flex;flex-direction:column;padding-top:22px;border-top:2px solid var(--ink)}
+.pillar .mono{color:var(--orange)}
+.pillar h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.018em;
+  font-size:clamp(24px,2.5vw,33px);line-height:1;margin:14px 0 12px}
+.pillar p{font-size:13px;line-height:1.75;color:var(--muted);flex:1}
+.pillar .text-link{margin-top:18px;font-size:12px;align-self:flex-start}
+
+.stills-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:168px;gap:12px;margin-top:40px}
+.stills-grid figure{margin:0;overflow:hidden;border-radius:3px;background:var(--paper-dim)}
+.stills-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.stills-grid figure:hover img{transform:scale(1.04)}
+.stills-grid .tall{grid-row:span 2}
+.stills-grid .wide{grid-column:span 2}
+.stills-note{margin-top:26px;font-size:13px;line-height:1.75;color:var(--muted);max-width:70ch}
+
+.site-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;margin-top:40px}
+.site-card{display:block;border:1px solid var(--rule);border-radius:5px;overflow:hidden;background:var(--card);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.site-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px #14120f14}
+.site-card-art{height:230px;position:relative;overflow:hidden;display:grid;place-items:center;padding:26px}
+.art-cafe{background:#FBF7EF}
+.art-cafe .scr{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.art-cafe .scr i{width:84px;height:84px;border-radius:50%;display:block;
+  background:radial-gradient(circle at 50% 44%,#6B3A20 0 34%,transparent 35%),
+             radial-gradient(circle at 50% 44%,#FFF8EC 0 40%,transparent 41%),
+             conic-gradient(from 210deg,#8A4B2A,#B4653C,#8A4B2A)}
+.art-cafe .scr b{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:19px;line-height:1.05;
+  color:#17150F;max-width:14ch}
+.art-inst{background:#F6F7FA;position:relative}
+.art-inst .sc1,.art-inst .sc2{position:absolute;border-radius:4px}
+.art-inst .sc1{background:#2C4BD8;inset:30px 44% 44% 34px}
+.art-inst .sc2{background:#C8E86B;inset:46% 34px 30px 46%}
+.site-card-body{padding:24px 26px 26px;border-top:1px solid var(--rule)}
+.site-card-body .mono{color:var(--orange)}
+.site-card-body h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.018em;
+  font-size:clamp(23px,2.3vw,30px);line-height:1;margin:11px 0 11px}
+.site-card-body p{font-size:13px;line-height:1.75;color:var(--muted)}
+.site-card-body .text-link{margin-top:16px;font-size:12px}
+.site-note{margin-top:26px;font-size:13px;line-height:1.75;color:var(--muted);max-width:76ch}
+.site-note strong{color:var(--ink);font-weight:700}
+
+@media(max-width:1080px){
+  .pillar-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+  .stills-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:150px}
+}
+@media(max-width:760px){
+  .pillar-grid{grid-template-columns:1fr;gap:22px}
+  .site-cards{grid-template-columns:1fr;gap:20px}
+  .stills-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:124px;gap:9px}
+  .site-card-art{height:190px}
+}
+
+/* The work, playing in the page. */
+.work-row{margin-top:58px;padding-top:34px;border-top:1px solid var(--rule)}
+.work-row:first-of-type{margin-top:40px}
+.work-row-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px 44px;align-items:end;margin-bottom:26px}
+.work-row-head .mono{color:var(--orange);grid-column:1/-1}
+.work-row-head h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.018em;
+  font-size:clamp(27px,3.3vw,44px);line-height:1.02;margin-top:8px}
+.work-row-head p{font-size:13.5px;line-height:1.75;color:var(--muted);max-width:62ch;align-self:end}
+.reel-grid{display:grid;gap:18px}
+.reel-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.reel-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.reel-grid.one.wide{grid-template-columns:minmax(0,1fr)}
+.reel{background:var(--paper-dim);border:1px solid var(--rule);border-radius:4px;overflow:hidden;min-width:0}
+.reel iframe{display:block;width:100%;border:0;background:#fff}
+.ig-frame{aspect-ratio:9/16;min-height:420px}
+.yt-frame{aspect-ratio:16/9}
+.li-frame{height:640px}
+.reel figcaption{display:flex;align-items:baseline;gap:10px;padding:13px 16px 15px;border-top:1px solid var(--rule);background:var(--paper)}
+.reel figcaption b{font-family:var(--display);font-weight:400;font-size:25px;line-height:1;color:var(--orange);letter-spacing:-.02em}
+.reel figcaption span{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:980px){
+  .work-row-head{grid-template-columns:1fr;gap:10px}
+  .reel-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  .work-row{margin-top:40px;padding-top:26px}
+  .reel-grid.two,.reel-grid.three{grid-template-columns:minmax(0,1fr)}
+  .ig-frame{min-height:0}
+  .li-frame{height:560px}
+  .work-row-head p{font-size:12.5px}
+}
+
 /* About, a click-through story, and a sticky three-step process. */
 .about-grid{display:grid;grid-template-columns:.95fr 1fr;gap:90px;align-items:center}.about-art{background:var(--paper-dim);position:relative;min-height:560px;padding:30px;overflow:hidden}
 .about-art.has-photo{background:#14120F}
@@ -60,16 +146,13 @@
 /* Native radios and range inputs keep the estimate usable on touch and keyboard. */
 .pricing-layout{display:grid;grid-template-columns:1.45fr 1fr;gap:60px;margin-top:48px;align-items:start}fieldset{border:0;padding:0;margin:0;min-width:0}legend{padding:0;margin-bottom:16px}.format-option{display:flex;gap:16px;align-items:center;position:relative;padding:21px 16px;border-top:1px solid var(--rule);cursor:pointer;transition:background .2s}.format-option:last-child{border-bottom:1px solid var(--rule)}.format-option:has(input:checked){background:var(--paper-dim)}.format-option>input{position:absolute;opacity:0;width:22px;height:22px;left:16px;top:calc(50% - 11px);margin:0}.format-radio{width:20px;height:20px;border:1px solid #8a847a;border-radius:50%;position:relative;flex-shrink:0}.format-option input:checked+.format-radio{border:1px solid var(--orange-dark)}.format-option input:checked+.format-radio::after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--orange-dark)}.format-option input:focus-visible+.format-radio{outline:3px solid var(--blue);outline-offset:4px}.format-text{display:flex;flex-direction:column;gap:4px;min-width:0}.format-text strong{font-size:14px;font-weight:600}.format-text>span{font-size:10px;color:var(--muted)}.format-text small{font-family:var(--mono);font-size:9px;color:var(--muted)}.format-price{margin-left:auto;font-size:24px;line-height:1.3;font-weight:600;letter-spacing:-.05em;text-align:right;white-space:nowrap}.format-price>span{font-family:var(--mono);font-size:8px;display:block;color:var(--muted);letter-spacing:0}.quantity-control{flex-direction:column;margin-top:30px}.quantity-control label{display:flex;justify-content:space-between;align-items:center;font-size:9px}.quantity-control output{font-size:12px;color:var(--orange-dark)}input[type=range]{width:100%;margin:12px 0 0;height:32px;accent-color:var(--orange-dark);cursor:pointer}.range-labels{display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}.estimate{background:var(--midnight);color:var(--paper);padding:30px;flex-direction:column;min-height:440px}.estimate>.mono{font-size:9px;color:#c2c1c9}.estimate-price{display:flex;gap:10px;align-items:center;font-family:var(--display);font-size:80px;line-height:1.1;margin-top:26px;font-variant-numeric:tabular-nums}.estimate-price>span{font-size:35px;color:#9899ab}.estimate>p{font-size:12px;color:#c2c1c9;margin-top:12px}.estimate-includes{display:flex;flex-direction:column;gap:8px;font-size:11px;border-top:1px solid var(--midnight-rule);padding-top:20px;margin-top:22px;margin-bottom:25px}.estimate-includes>span::first-letter{color:#b4cb73}.estimate .button{width:100%}.estimate>.estimate-note{font-size:10px;line-height:1.6;margin-top:17px}.other-services{padding-top:40px;margin-top:35px;border-top:1px solid var(--rule);display:flex;gap:45px;align-items:flex-start}.other-services h3{font-size:9px;line-height:2;white-space:nowrap}.other-services>div{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 35px;flex:1}.other-services>div>span{font-size:11px;display:flex;justify-content:space-between;gap:20px}.other-services b{font-family:var(--mono);font-size:10px;font-weight:500}.beyond-video{padding-top:40px;margin-top:35px;border-top:1px solid var(--rule)}
 .beyond-video>h3{font-size:9px;line-height:2;margin-bottom:24px;color:var(--muted)}
-.bv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
-.bv-grid strong{font-family:var(--display);font-weight:400;font-size:27px;line-height:1.05;letter-spacing:-.02em;display:block}
-.bv-grid p{font-size:12px;line-height:1.75;color:var(--muted);margin-top:11px}
-.bv-rates{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px;padding-top:30px;border-top:1px solid var(--rule)}
+.bv-rates{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:22px}
 .bv-rates small{font-size:9px;letter-spacing:.1em;color:var(--muted);display:block}
 .bv-rates b{font-family:var(--display);font-weight:400;font-size:42px;line-height:1;letter-spacing:-.02em;color:var(--orange);display:block;margin-top:10px}
 .bv-rates b em{font-style:normal;font-size:15px}
 .bv-rates i{font-style:normal;font-size:12px;line-height:1.7;color:var(--muted);display:block;margin-top:12px}
 .bv-note{font-size:11px;line-height:1.7;color:var(--muted);margin-top:28px}
-@media(max-width:860px){.bv-grid{grid-template-columns:1fr;gap:26px}.bv-rates{grid-template-columns:1fr;gap:26px}}
+@media(max-width:860px){.bv-rates{grid-template-columns:1fr;gap:26px}}
 .testimonial-section{padding-bottom:90px}.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}.quote-mark{display:block;color:var(--orange);font-family:Georgia,serif;font-size:90px;line-height:1;height:70px}.quote blockquote{font-size:clamp(21px,2.25vw,30px);line-height:1.5;letter-spacing:-.03em;margin:0}.quote blockquote em{font-style:normal;text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:7px;text-decoration-thickness:2px}.quote figcaption{display:flex;align-items:center;gap:14px;margin-top:30px}.quote-avatar{object-fit:cover;height:40px;width:40px;display:flex;align-items:center;justify-content:center;background:var(--paper-dim);border-radius:50%;font-family:var(--mono);font-size:11px}.quote figcaption strong{font-size:11px;font-weight:600;display:block}.quote figcaption small{font-size:9px;color:var(--muted);line-height:1.6;display:block;margin-top:3px}.beyond-section{border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1.3fr;gap:80px;padding-top:75px;padding-bottom:85px}.beyond-section h2{font-size:65px;margin-top:30px}.beyond-section>div>p{font-size:12px;color:var(--muted);margin-top:22px}.roles details{border-top:1px solid var(--rule)}.roles details:last-child{border-bottom:1px solid var(--rule)}.roles summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:24px;padding:22px 0;list-style:none;font-size:21px;font-weight:500;letter-spacing:-.02em}.roles summary::-webkit-details-marker{display:none}.roles summary small{display:block;font-size:8px;letter-spacing:.075em;color:var(--muted);margin-bottom:5px}.details-plus{font-size:26px;font-weight:400;transition:transform .3s}.roles details[open] .details-plus{transform:rotate(45deg);color:var(--orange-dark)}.roles details>p{font-size:12px;color:var(--muted);padding-bottom:25px;max-width:95%}.first-video{background:#e9e2d6;display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:45px;margin-bottom:100px}.first-video .eyebrow{font-size:9px;color:var(--orange-dark);margin-bottom:22px}.first-video h2{font-size:clamp(48px,4.6vw,66px)}.first-video>div:last-child{align-self:center}.first-video p{font-size:13px;line-height:1.8;margin-bottom:15px;max-width:395px}.first-video .button{margin-top:8px}
 /* Footer glow is decorative; every contact action has a conventional link. */
 .contact-section{background:var(--midnight);color:var(--paper);padding-top:55px;position:relative;overflow:hidden;isolation:isolate;scroll-margin-top:80px}.contact-glow{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 440px 350px at var(--glow-x,80%) var(--glow-y,20%),#5041654d,transparent 80%)}.contact-section .section-top{border-bottom-color:var(--midnight-rule);padding-bottom:24px;margin-bottom:45px}.contact-section .eyebrow>span{color:#f58b62}.contact-section .eyebrow{color:#c2c1c9}.availability{font-size:9px;display:flex;align-items:center;gap:10px;color:#c2c1c9}.contact-section h2{font-size:clamp(77px,11.2vw,160px);line-height:.99;position:relative;letter-spacing:-.025em}.contact-section h2>span{color:#a9a2b9}.contact-arrow{position:absolute;right:20px;top:30px;width:120px;height:120px;border:1px solid #5d5970;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--body);font-size:70px;font-weight:400;line-height:1;transition:background .3s,color .3s}.contact-arrow:hover{background:var(--orange);color:var(--midnight);border-color:var(--orange)}.contact-details{display:grid;grid-template-columns:1.5fr 1fr;gap:90px;margin-top:48px;padding-bottom:65px}.contact-details p{font-size:13px;color:#b9b5c4}.email-row{display:flex;align-items:center;gap:17px;flex-wrap:wrap;margin-top:14px}.email-link{font-size:clamp(17px,2.2vw,31px);letter-spacing:-.03em;min-height:44px;display:flex;align-items:center}.email-link:hover{text-decoration:underline;text-underline-offset:8px}.copy-email{background:none;color:#c2c1c9;font-family:var(--mono);font-size:10px;gap:9px;align-items:center;min-height:44px;padding:10px 5px}.copy-email:hover{color:white}.copy-email>span{font-size:20px}.social-links{display:flex;flex-direction:column}.social-links a{min-height:44px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--midnight-rule);font-size:11px;gap:25px;padding:11px 0}.social-links a>span{font-size:19px}.social-links a:hover{color:#f58b62}.site-footer{border-top:1px solid var(--midnight-rule);display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:87px}.site-footer .mono{font-size:8px;color:#aaa6b7}.site-footer>a{min-height:44px;display:flex;align-items:center}.site-footer>a:hover{color:var(--paper)}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,25px);opacity:0;pointer-events:none;z-index:100;background:var(--ink);border:1px solid #777;color:var(--paper);font-size:13px;padding:12px 20px;border-radius:4px;max-width:calc(100vw - 32px);text-align:center;transition:opacity .2s,transform .2s}.toast.is-visible{opacity:1;transform:translate(-50%,0)}
@@ -93,7 +176,7 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
 
 </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://rahulkd.com/#profile","url":"https://rahulkd.com/","name":"Rahul Kumar Das — Content creator and videographer","mainEntity":{"@type":"Person","@id":"https://rahulkd.com/#rahul","name":"Rahul Kumar Das","url":"https://rahulkd.com/","jobTitle":"Content creator, videographer and digital marketer","email":"mailto:hello.rahulkd@gmail.com","homeLocation":{"@type":"Place","name":"Kogarah Bay, Sydney, Australia"},"sameAs":["https://www.instagram.com/_rahul_kd_/","https://www.instagram.com/rahul_yaps/","https://www.linkedin.com/in/rahulkd/"]}}
+  {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://rahulkd.com/#profile","url":"https://rahulkd.com/","name":"Rahul Kumar Das — Video, photo, social and websites","mainEntity":{"@type":"Person","@id":"https://rahulkd.com/#rahul","name":"Rahul Kumar Das","url":"https://rahulkd.com/","jobTitle":"Content creator, videographer, photographer and web developer","email":"mailto:hello.rahulkd@gmail.com","homeLocation":{"@type":"Place","name":"Kogarah Bay, Sydney, Australia"},"sameAs":["https://www.instagram.com/_rahul_kd_/","https://www.instagram.com/rahul_yaps/","https://www.linkedin.com/in/rahulkd/"]}}
   </script>
 </head>
 <body>
@@ -103,9 +186,11 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
     <div class="nav-wrap wrap">
       <a class="identity" href="#top" aria-label="Rahul Kumar Das, back to top"><span class="monogram" aria-hidden="true">R<span>.</span></span><span class="identity-name">RAHUL<br>KUMAR DAS</span></a>
       <nav id="primary-nav" aria-label="Main navigation">
-        <a href="#work">The work<span>01</span></a>
-        <a href="#about">The person<span>02</span></a>
-        <a href="#services">The rates<span>03</span></a>
+        <a href="#what">What I do<span>01</span></a>
+        <a href="#work">The work<span>02</span></a>
+        <a href="#websites">Websites<span>03</span></a>
+        <a href="#about">The person<span>04</span></a>
+        <a href="#services">The rates<span>05</span></a>
         <a class="mobile-contact" href="#contact">Let's talk <span>↗</span></a>
       </nav>
       <div class="nav-actions">
@@ -121,10 +206,10 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       <div class="hero-kicker mono"><span class="live-dot" aria-hidden="true"></span> KOGARAH BAY, SYDNEY <span class="hero-kicker-end">INDEPENDENT CREATIVE / EST. IN REAL LIFE</span></div>
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="hero-role mono">CONTENT CREATOR <span aria-hidden="true">/</span> STORYTELLER</div>
+          <div class="hero-role mono">VIDEO <span aria-hidden="true">/</span> PHOTO <span aria-hidden="true">/</span> SOCIAL <span aria-hidden="true">/</span> WEBSITES</div>
           <h1 id="hero-title">RAHUL<br>KUMAR<br><span class="name-last">DAS<span class="orange">.</span><svg class="name-mark" viewBox="0 0 360 140" fill="none" aria-hidden="true"><path d="M330 26C249-13 42 0 17 60c-33 80 262 90 319 32C370 58 307 13 180 13"/></svg></span></h1>
-          <p class="hero-intro">I make videos worth<br><em>stopping for.</em></p>
-          <p class="hero-description">The thinking, the writing, the shooting, the edit.<br>One person. Both sides of the camera.</p>
+          <p class="hero-intro">I make the stuff<br><em>people stop for.</em></p>
+          <p class="hero-description">Videos, photos, the accounts they live on, and the website it all points back to. One person, both sides of the camera, and nobody to hand you off to.</p>
           <div class="hero-buttons"><a class="button button-dark magnetic" href="#work"><span>See the good stuff</span><span aria-hidden="true">↘</span></a><a class="text-link" href="#contact">Work with me <span aria-hidden="true">↗</span></a></div>
         </div>
 
@@ -165,32 +250,82 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       <div class="marquee-track" aria-hidden="true"><span>GOOD IDEAS <i>✳</i> REAL PEOPLE <i>✳</i> BETTER STORIES <i>✳</i> MADE IN SYDNEY <i>✳</i> </span><span>GOOD IDEAS <i>✳</i> REAL PEOPLE <i>✳</i> BETTER STORIES <i>✳</i> MADE IN SYDNEY <i>✳</i> </span></div>
     </div>
 
-    <section class="section wrap" id="work" aria-labelledby="work-title">
-      <div class="section-top"><span class="eyebrow"><span>01</span> SELECTED WORK</span><span class="mono section-aside">LESS TALK. MORE PLAY.</span></div>
-      <div class="section-heading reveal"><h2 id="work-title">HERE'S WHAT<br><span class="marker-word">THAT LOOKS LIKE.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>Campaigns, brand films, and a few things made just because. Real work, with real people.</p></div>
-      <div class="work-toolbar enhance-only"><div class="filter-group" role="group" aria-label="Filter projects"><button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All work <span>13</span></button><button type="button" class="filter" data-filter="campaign" aria-pressed="false">Campaigns</button><button type="button" class="filter" data-filter="film" aria-pressed="false">Brand films</button><button type="button" class="filter" data-filter="personal" aria-pressed="false">Off the clock</button><button type="button" class="filter" data-filter="stories" aria-pressed="false">More stories</button></div><p class="result-count mono" role="status" aria-live="polite">6 OF 13 PROJECTS</p></div>
-      <div class="work-grid">
-        <article class="project-card reveal" data-category="campaign"><a class="project-link media-link" href="https://www.instagram.com/reel/DLkA28Epd9h/" data-video="campaign" aria-label="Play Campaign that connected, 107 thousand views"><div class="project-art art-campaign has-photo"><img class="art-photo" src="assets/content-campaign.jpg" alt="Frame from the 107K campaign reel" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">INSTAGRAM / CAMPAIGN <span>01</span></span><span class="poster-orbit" aria-hidden="true"></span><strong class="poster-type">A REASON<br>TO <i>STOP.</i></strong><span class="poster-number">107K<span>VIEWS</span></span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>A campaign that connected</h3><p>Campaign video · Instagram</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="film"><a class="project-link media-link" href="https://www.youtube.com/watch?v=ZtGtrbKrCpI" data-video="brand" aria-label="Play A proper brand film"><div class="project-art art-film has-photo"><img class="art-photo" src="assets/content-trust.jpg" alt="Frame from the brand film" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">YOUTUBE / BRAND FILM <span>02</span></span><div class="film-lines" aria-hidden="true"><span></span><span></span><span></span></div><strong class="poster-type">MORE<br>THAN A<br><i>LOGO.</i></strong><span class="project-foot mono">THE WHOLE STORY. START TO FINISH.</span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>A proper brand film</h3><p>Written, shot & cut by us</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="campaign"><a class="project-link media-link" href="https://www.instagram.com/reel/DKPCniky3_O/" data-video="sales-reel" aria-label="Play A little less salesy, 83.6 thousand views"><div class="project-art art-sales has-photo"><img class="art-photo" src="assets/content-sales.jpg" alt="Frame from the 83.6K sales reel" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">INSTAGRAM / SALES <span>03</span></span><span class="poster-star" aria-hidden="true">✳</span><strong class="poster-type">LESS<br>SALESY.<br><i>MORE YOU.</i></strong><span class="poster-number">83.6K<span>VIEWS</span></span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>A little less salesy</h3><p>Sales video · Instagram</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="stories"><a class="project-link media-link" href="https://www.instagram.com/reel/DYehDQJxJKr/" data-video="viral-1" aria-label="Play The ones that took off, part one"><div class="project-art art-viral"><span class="project-top mono">INSTAGRAM / THE ONES THAT TOOK OFF <span>04</span></span><strong class="poster-type">PASS<br>IT <i>ON.</i></strong><div class="poster-arrows" aria-hidden="true">↗↗↗</div><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>The ones that took off</h3><p>A story worth sharing · Part 01</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="personal"><a class="project-link media-link" href="https://www.instagram.com/reel/DKb6l4iyXAk/" data-video="team" aria-label="Play The people make it"><div class="project-art art-team has-photo"><img class="art-photo" src="assets/content-fun.jpg" alt="Frame from a team video" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">INSTAGRAM / OFF THE CLOCK <span>05</span></span><span class="poster-smile" aria-hidden="true"><i></i><i></i><b></b></span><strong class="poster-type">GOOD<br><i>COMPANY.</i></strong><span class="project-foot mono">THE PEOPLE MAKE IT.</span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>The people make it</h3><p>Team fun · Off the clock</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="film"><a class="project-link media-link" href="https://www.youtube.com/watch?v=YuhRqt8VN7A" data-video="sales-film" aria-label="Play Room to tell the story"><div class="project-art art-long has-photo"><img class="art-photo" src="assets/content-longsales.jpg" alt="Frame from the long-form sales film" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">YOUTUBE / SALES FILM <span>06</span></span><span class="long-ring" aria-hidden="true"></span><strong class="poster-type">LET'S<br>GET INTO<br><i>IT.</i></strong><span class="project-foot mono">A LITTLE MORE ROOM TO TELL IT.</span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>Room to tell the story</h3><p>Sales film · YouTube</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="stories"><a class="project-link media-link" href="https://www.instagram.com/reel/DYwxxr-x9qa/" data-video="viral-2" aria-label="Play The ones that took off, part two"><div class="project-art art-sales"><span class="project-top mono">INSTAGRAM / SHARED AROUND <span>07</span></span><strong class="poster-type">THAT<br><i>FEELING.</i></strong><span class="poster-star" aria-hidden="true">✳</span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>The ones that took off</h3><p>A story worth sharing · Part 02</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="stories"><a class="project-link media-link" href="https://www.instagram.com/reel/Dbx8SdERL0Z/" data-video="viral-3" aria-label="Play The ones that took off, part three"><div class="project-art art-campaign"><span class="project-top mono">INSTAGRAM / SHARED AROUND <span>08</span></span><strong class="poster-type">ONE<br>MORE<br><i>WATCH.</i></strong><span class="poster-orbit" aria-hidden="true"></span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>The ones that took off</h3><p>A story worth sharing · Part 03</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="personal"><a class="project-link media-link" href="https://www.instagram.com/reel/DPGgXVckiij/" data-video="travel" aria-label="Play Out with the good ones"><div class="project-art art-viral"><span class="project-top mono">INSTAGRAM / FRIENDS & TRAVEL <span>09</span></span><strong class="poster-type">TAKE<br>THE <i>TRIP.</i></strong><div class="poster-arrows" aria-hidden="true">↗↗</div><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>Out with the good ones</h3><p>Travel with friends · Off the clock</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="personal"><a class="project-link media-link" href="https://www.instagram.com/reel/DLvvGg9z4Zb/" data-video="balance" aria-label="Play A few things at once"><div class="project-art art-long has-photo"><img class="art-photo" src="assets/content-personal.jpg" alt="Frame from a personal video" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">INSTAGRAM / REAL LIFE <span>10</span></span><strong class="poster-type">A LITTLE<br>BIT OF<br><i>EVERYTHING.</i></strong><span class="long-ring" aria-hidden="true"></span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>A few things at once</h3><p>How I manage it all · Off the clock</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="stories"><a class="project-link media-link" href="https://www.instagram.com/reel/DRs-86Dkp8Q/" data-video="informative" aria-label="Play Something to take away"><div class="project-art art-team has-photo"><img class="art-photo" src="assets/content-informative.jpg" alt="Frame from an informative reel" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">INSTAGRAM / INFORMATIVE <span>11</span></span><strong class="poster-type">WORTH<br><i>KNOWING.</i></strong><span class="poster-star" aria-hidden="true">✳</span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>Something to take away</h3><p>Informative content · Instagram</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="stories"><a class="project-link media-link" href="https://www.instagram.com/reel/DSKP8UJkidj/" data-video="storytelling" aria-label="Play There's a story in that"><div class="project-art art-film has-photo"><img class="art-photo" src="assets/content-story.jpg" alt="Frame from a storytelling reel" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">INSTAGRAM / STORYTELLING <span>12</span></span><strong class="poster-type">STAY<br>FOR THE<br><i>STORY.</i></strong><div class="film-lines" aria-hidden="true"><span></span><span></span><span></span></div><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>There's a story in that</h3><p>Storytelling · Instagram</p></div><span aria-hidden="true">↗</span></div></a></article>
-        <article class="project-card reveal" data-category="stories"><a class="project-link media-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7405094085272756224/" data-video="linkedin" aria-label="Open BMIHMS on LinkedIn"><div class="project-art art-sales has-photo"><img class="art-photo" src="assets/client-bmihms.jpg" alt="Frame from the BMIHMS video" loading="lazy" decoding="async" width="406" height="720"><span class="project-top mono">LINKEDIN / BMIHMS <span>13</span></span><strong class="poster-type">A FRESH<br>POINT<br><i>OF VIEW.</i></strong><span class="poster-star" aria-hidden="true">✳</span><span class="project-play" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>A different kind of feed</h3><p>BMIHMS · LinkedIn</p></div><span aria-hidden="true">↗</span></div></a></article>
+    <section class="section wrap" id="what" aria-labelledby="what-title">
+      <div class="section-top"><span class="eyebrow"><span>01</span> ALL OF IT, FROM ONE PERSON</span><span class="mono section-aside">NO AGENCY. NO HANDBALL.</span></div>
+      <div class="section-heading reveal"><h2 id="what-title">FOUR THINGS.<br><span class="marker-word">ONE PERSON.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>Most businesses end up with a video person, a photo person, somebody running the socials, and a web developer who stopped replying in March. I do all four — which is mostly how they end up looking like the same business.</p></div>
+      <div class="pillar-grid">
+        <article class="pillar reveal"><span class="mono">01 / VIDEO</span><h3>The videos</h3><p>Reels, brand films, sales videos, the lot. Written, shot, cut and captioned by the same person. Thirteen of them are playing further down this page, so you can judge for yourself.</p><a class="text-link" href="#work">See the video work <span aria-hidden="true">↗</span></a></article>
+        <article class="pillar reveal"><span class="mono">02 / PHOTO</span><h3>The photos</h3><p>Ten years ago this started as photography and it never really stopped. Your event, your space, your team, your product — shot by someone who already knows how it needs to crop for a feed.</p><a class="text-link" href="#stills">See some frames <span aria-hidden="true">↗</span></a></article>
+        <article class="pillar reveal"><span class="mono">03 / SOCIAL</span><h3>The accounts</h3><p>What to post, when to post it, and the actually posting it. Captions, replies, the calendar, the numbers at the end of the month. You go back to running the business.</p><a class="text-link" href="#services">What that costs <span aria-hidden="true">↗</span></a></article>
+        <article class="pillar reveal"><span class="mono">04 / WEBSITES</span><h3>The website</h3><p>Hand-built, quick to load, and yours to keep. No template, no page builder, no drag-and-drop mush. You are reading one right now.</p><a class="text-link" href="#websites">See two more <span aria-hidden="true">↗</span></a></article>
       </div>
-      <div class="work-end"><p>Some work is for brands. Some is just for the joy of making it.</p><button class="button button-outline enhance-only" id="show-more" type="button" aria-expanded="false">All 13 projects <span aria-hidden="true">＋</span></button></div>
+    </section>
+
+    <section class="section wrap" id="work" aria-labelledby="work-title">
+      <div class="section-top"><span class="eyebrow"><span>02</span> THE VIDEO WORK</span><span class="mono section-aside">PRESS PLAY. IT RUNS RIGHT HERE.</span></div>
+      <div class="section-heading reveal"><h2 id="work-title">HERE'S WHAT<br><span class="marker-word">THAT LOOKS LIKE.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>Thirteen of them, playing right here on the page. No new tab, no “watch on Instagram”, no detour. Campaigns, brand films, and a few made purely because I felt like it.</p></div>
+      <div class="work-row reveal">
+        <div class="work-row-head"><span class="mono">01 / CAMPAIGNS · @rahul_yaps</span><h3>The ones somebody paid for</h3><p>Written, shot and cut by me, then posted and watched by rather more people than any of us planned for.</p></div>
+        <div class="reel-grid two"><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DLkA28Epd9h/embed/" title="Campaign reel, 107K views" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><b>107K</b><span>Views · Campaign</span></figcaption></figure><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DKPCniky3_O/embed/" title="Sales reel, 83.6K views" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><b>83.6K</b><span>Views · Sales</span></figcaption></figure></div>
+      </div>
+      <div class="work-row reveal">
+        <div class="work-row-head"><span class="mono">02 / YOUTUBE · BRAND FILM</span><h3>A proper brand film</h3><p>Written, shot and cut start to finish. No stock footage, no AI voiceover, and nobody once said “we’ll fix it in post”.</p></div>
+        <div class="reel-grid one wide"><figure class="reel"><iframe class="yt-frame" src="https://www.youtube-nocookie.com/embed/ZtGtrbKrCpI?rel=0&amp;playsinline=1" title="A proper brand film" loading="lazy" allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe><figcaption><span>Brand film · YouTube</span></figcaption></figure></div>
+      </div>
+      <div class="work-row reveal">
+        <div class="work-row-head"><span class="mono">03 / THE ONES THAT TOOK OFF</span><h3>Shared further than planned</h3><p>I would love to tell you there is a formula. There is mostly just turning up, every day, for four years.</p></div>
+        <div class="reel-grid three"><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DYehDQJxJKr/embed/" title="A reel that took off, part one" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>A story worth sharing · 01</span></figcaption></figure><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DYwxxr-x9qa/embed/" title="A reel that took off, part two" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>A story worth sharing · 02</span></figcaption></figure><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/Dbx8SdERL0Z/embed/" title="A reel that took off, part three" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>A story worth sharing · 03</span></figcaption></figure></div>
+      </div>
+      <div class="work-row reveal">
+        <div class="work-row-head"><span class="mono">04 / OFF THE CLOCK</span><h3>Made for nobody but me</h3><p>On my own account I cook, make memes, play the piano and sing, and post something educational when the mood takes me. None of it breaks the internet. That was never really the point.</p></div>
+        <div class="reel-grid three"><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DKb6l4iyXAk/embed/" title="Fun with the team" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>Fun, with the team</span></figcaption></figure><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DPGgXVckiij/embed/" title="Travel with friends" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>Travel with friends</span></figcaption></figure><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DLvvGg9z4Zb/embed/" title="How I manage it all" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>How I manage it all</span></figcaption></figure></div>
+      </div>
+      <div class="work-row reveal">
+        <div class="work-row-head"><span class="mono">05 / ROOM TO BREATHE</span><h3>The longer ones</h3><p>For YouTube and LinkedIn, where people will actually give you two minutes — so you get to tell the whole thing instead of just the hook.</p></div>
+        <div class="reel-grid one wide"><figure class="reel"><iframe class="yt-frame" src="https://www.youtube-nocookie.com/embed/YuhRqt8VN7A?rel=0&amp;playsinline=1" title="A long-form sales film" loading="lazy" allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe><figcaption><span>Sales film · YouTube</span></figcaption></figure></div><div class="reel-grid three" style="margin-top:18px"><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DRs-86Dkp8Q/embed/" title="Something worth knowing" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>Informative · Instagram</span></figcaption></figure><figure class="reel"><iframe class="ig-frame" src="https://www.instagram.com/reel/DSKP8UJkidj/embed/" title="There is a story in that" loading="lazy" allowtransparency="true" allowfullscreen allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"></iframe><figcaption><span>Storytelling · Instagram</span></figcaption></figure><figure class="reel li"><iframe class="li-frame" src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7405094085272756224" title="BMIHMS on LinkedIn" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><figcaption><span>BMIHMS · LinkedIn</span></figcaption></figure></div>
+      </div>
+      <div class="work-end"><p>Some of it is for brands. Some of it is just for the joy of making it. Both count.</p><a class="button button-outline" href="https://www.instagram.com/rahul_yaps/" target="_blank" rel="noopener">More on @rahul_yaps <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="section wrap" id="stills" aria-labelledby="stills-title">
+      <div class="section-top"><span class="eyebrow"><span>03</span> STILLS</span><span class="mono section-aside">SHOT ON THE SAME JOBS.</span></div>
+      <div class="section-heading reveal"><h2 id="stills-title">FRAMES I'M<br><span class="marker-word">FOND OF.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>This all started as photography, about ten years and several cameras ago. These are frames pulled off the same jobs as the videos above — same eye, same light, just held still.</p></div>
+      <div class="stills-grid reveal">
+        <figure class="tall"><img src="assets/content-campaign.jpg" alt="A frame from the campaign work" loading="lazy" decoding="async"></figure><figure class="wide"><img src="assets/client-sydneytax.jpg" alt="A frame shot for Sydney Tax &amp; Accountancy" loading="lazy" decoding="async"></figure><figure class="tall"><img src="assets/content-fun.jpg" alt="A frame from a team shoot" loading="lazy" decoding="async"></figure><figure><img src="assets/content-sales.jpg" alt="A frame from a sales video" loading="lazy" decoding="async"></figure><figure class="wide"><img src="assets/content-story.jpg" alt="A frame from a storytelling piece" loading="lazy" decoding="async"></figure><figure><img src="assets/content-location.jpg" alt="A frame shot on location" loading="lazy" decoding="async"></figure><figure><img src="assets/content-paid.jpg" alt="A frame from paid work" loading="lazy" decoding="async"></figure><figure class="wide"><img src="assets/content-personal.jpg" alt="A frame from personal work" loading="lazy" decoding="async"></figure><figure><img src="assets/client-gradplus.jpg" alt="A frame shot for Graduate Plus" loading="lazy" decoding="async"></figure><figure><img src="assets/content-informative.jpg" alt="A frame from an informative piece" loading="lazy" decoding="async"></figure><figure><img src="assets/client-torrens.jpg" alt="A frame shot at Torrens University" loading="lazy" decoding="async"></figure><figure class="wide"><img src="assets/about-2.jpg" alt="Portrait of Rahul Kumar Das" loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="stills-note">Shooting your event, your space, your team or your product is its own job, priced per shoot. Ask and I'll give you a number the same day.</p>
+    </section>
+
+    <section class="section wrap" id="websites" aria-labelledby="websites-title">
+      <div class="section-top"><span class="eyebrow"><span>04</span> WEBSITES</span><span class="mono section-aside">YES, INCLUDING THIS ONE.</span></div>
+      <div class="section-heading reveal"><h2 id="websites-title">YOU'RE LOOKING<br><span class="marker-word">AT EXHIBIT A.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>Every line of this site is hand-written — the type, the layout, the reels playing in the page, the bit where it notices you're on a phone. No template, no page builder, no monthly fee to a platform that owns your pages. Here is what the same approach looks like for two businesses that aren't me.</p></div>
+      <div class="site-cards">
+        <a class="site-card reveal" href="demos/cafe/" target="_blank" rel="noopener">
+          <div class="site-card-art art-cafe" aria-hidden="true"><span class="scr"><i></i><b>Coffee, and a reason to sit down.</b></span></div>
+          <div class="site-card-body">
+            <span class="mono">DEMO / A CAFÉ</span>
+            <h3>Bowline Coffee</h3>
+            <p>Menu, opening hours, what's in the hopper this week, and a “where we are” that still works one-handed at a bus stop. Built for the shop that currently has a Facebook page and a lot of hope.</p>
+            <span class="text-link">Open the demo <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+        <a class="site-card reveal" href="demos/institute/" target="_blank" rel="noopener">
+          <div class="site-card-art art-inst" aria-hidden="true"><span class="sc1"></span><span class="sc2"></span></div>
+          <div class="site-card-body">
+            <span class="mono">DEMO / A TEACHING INSTITUTE</span>
+            <h3>Harbourline Institute</h3>
+            <p>Courses people can actually compare, intake dates you don't have to email for, and an enquiry that takes nine seconds. Built for the school whose prospectus is a 40-page PDF.</p>
+            <span class="text-link">Open the demo <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+      </div>
+      <p class="site-note">Both are demonstrations I built for this page — the businesses are invented, so nobody gets confused. Yours would use your words, your photos and your colours. <strong>A$800–1,000 to build it, A$150 a month to look after it.</strong></p>
     </section>
 
     <section class="clients wrap" aria-label="Brands Rahul has worked with"><p class="mono">GOOD PEOPLE WHO TOOK<br>A CHANCE ON ME</p><div class="client-names"><span>Graduate<span class="orange">Plus</span></span><span class="client-tax">SYDNEY TAX<br><small>& ACCOUNTANCY SERVICES</small></span><span class="client-torrens">Torrens<br><small>UNIVERSITY AUSTRALIA</small></span><span class="client-bmihms">BMIHMS<small>BLUE MOUNTAINS INTERNATIONAL<br>HOTEL MANAGEMENT SCHOOL</small></span></div></section>
 
     <section class="section about-section" id="about" aria-labelledby="about-title"><div class="wrap">
-      <div class="section-top"><span class="eyebrow"><span>02</span> THE PERSON BEHIND THE CAMERA</span><span class="mono section-aside">HI. I'M RAHUL.</span></div>
+      <div class="section-top"><span class="eyebrow"><span>05</span> THE PERSON BEHIND THE CAMERA</span><span class="mono section-aside">HI. I'M RAHUL.</span></div>
       <div class="about-grid">
         <div class="about-art has-photo reveal"><img class="art-photo" src="assets/about-1.jpg" alt="Rahul Kumar Das" loading="lazy" decoding="async" width="832" height="1248"><span class="mono">A LONG WAY FROM WHERE I STARTED.</span><strong>NEPAL<br><span class="journey-arrow" aria-hidden="true">↘</span><br>SYDNEY<span class="orange">.</span></strong><div class="about-ticket"><span class="mono">BROUGHT WITH ME</span><p>A camera.<br>Some curiosity.<br>A willingness to figure it out.</p></div><span class="about-art-bottom mono">SAME CURIOSITY. BIGGER STORIES.</span></div>
         <div class="about-copy reveal"><h2 id="about-title">WHO'S<br><span class="orange">THIS GUY?</span></h2><p class="large-copy">I arrived from Nepal at 19.<br>Knew nobody. Started at KFC.</p><p>Somewhere between that first shift and now, I turned a camera habit into a career. Photography came first. Then video. Then the part I love most: finding the story.</p><p>Today I write, shoot, present and edit. I'm easy to work with, quick to reply, and just as comfortable in front of the camera as behind it.</p><p class="about-belief">“I'd rather earn your audience's trust slowly than borrow their attention for an afternoon.”</p><a class="text-link" href="https://rahulkd.com/resume.pdf" target="_blank" rel="noopener">The slightly more formal version (CV) <span aria-hidden="true">↗</span></a></div>
@@ -201,7 +336,7 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
     <section class="process-section" id="process" aria-labelledby="process-title"><div class="process-grid wrap"><div class="process-heading"><span class="eyebrow"><span>THE PROCESS</span> EASY FROM THE START</span><h2 id="process-title">IDEA.<br>CAMERA.<br><span>ACTION.</span></h2><p>You bring your business.<br>I'll bring the camera and the questions.</p><span class="process-counter" aria-hidden="true">01<span>/03</span></span></div><div class="process-steps"><article class="process-step" data-step="01"><span class="step-number mono">01 / FIND THE STORY</span><h3>Let's hear it.</h3><p>Tell me what you do, who it's for, and what you want people to feel. We find an idea that sounds like you.</p><span class="step-decoration" aria-hidden="true">✳</span></article><article class="process-step" data-step="02"><span class="step-number mono">02 / MAKE THE THING</span><h3>I'll take it from here.</h3><p>The script, the shoot, the edit. I work both sides of the camera, so you have one person to talk to from start to finish.</p><span class="step-decoration" aria-hidden="true">↗</span></article><article class="process-step" data-step="03"><span class="step-number mono">03 / OUT INTO THE WORLD</span><h3>Ready for your feed.</h3><p>A video made for your audience and your platform. Something that feels like your business, with a little more stopping power.</p><span class="step-decoration" aria-hidden="true">▶</span></article></div></div></section>
 
     <section class="section wrap" id="services" aria-labelledby="services-title">
-      <div class="section-top"><span class="eyebrow"><span>03</span> SERVICES & RATES</span><span class="mono section-aside">THE GEAR'S ON ME.</span></div>
+      <div class="section-top"><span class="eyebrow"><span>06</span> SERVICES & RATES</span><span class="mono section-aside">THE GEAR'S ON ME.</span></div>
       <div class="section-heading reveal"><h2 id="services-title">GOOD WORK.<br><span class="orange">FAIR RATES.</span></h2><p>Every price covers the thinking, writing, shooting and editing. You're hiring a person, with the gear included.</p></div>
       <div class="pricing-layout">
         <div class="format-picker"><fieldset><legend class="mono">PICK YOUR FORMAT</legend><label class="format-option"><input type="radio" name="format" value="short" checked><span class="format-radio" aria-hidden="true"></span><span class="format-text"><strong>Short & scroll-stopping</strong><span>15–30 seconds · Instagram & TikTok</span><small>$45 / hour</small></span><span class="format-price">~$220<span>per video</span></span></label><label class="format-option"><input type="radio" name="format" value="medium"><span class="format-radio" aria-hidden="true"></span><span class="format-text"><strong>A little more story</strong><span>60–90 seconds · LinkedIn & Facebook</span><small>$45 / hour</small></span><span class="format-price">~$270<span>per video</span></span></label><label class="format-option"><input type="radio" name="format" value="long"><span class="format-radio" aria-hidden="true"></span><span class="format-text"><strong>The full picture</strong><span>2–8 minutes · YouTube & LinkedIn</span><small>$55 / hour</small></span><span class="format-price">~$400<span>per video</span></span></label></fieldset><div class="quantity-control enhance-only"><label class="mono" for="quantity">HOW MANY VIDEOS? <output for="quantity" id="quantity-label">1 video</output></label><input id="quantity" type="range" min="1" max="5" step="1" value="1"><div class="range-labels mono" aria-hidden="true"><span>1</span><span>5</span></div></div></div>
@@ -210,21 +345,7 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       <div class="other-services" id="toolkit"><h3 class="mono">ALSO IN THE TOOLKIT</h3><div><span>Single post <b>$45</b></span><span>Carousel <b>~$200</b></span><span>Story <b>$45</b></span><span>Presentation <b>~$200</b></span><span>Poster <b>$80</b></span><span>Brochure <b>$80</b></span></div></div>
 
       <div class="beyond-video reveal">
-        <h3 class="mono">NOT ONLY VIDEO</h3>
-        <div class="bv-grid">
-          <div>
-            <strong>Websites</strong>
-            <p>Like the one you're reading. Hand-built, quick to load and yours to keep — no template, no page builder, no drag-and-drop mush. I'll build it and then look after it.</p>
-          </div>
-          <div>
-            <strong>Photography</strong>
-            <p>Your event, your craft, your team, your work. Ten years behind a camera and I still get a bit giddy about good light.</p>
-          </div>
-          <div>
-            <strong>Social media, handled</strong>
-            <p>The whole thing — what to post, when to post it, and actually posting it. You go back to running the business.</p>
-          </div>
-        </div>
+        <h3 class="mono">NOT ONLY VIDEO — WHAT A WEBSITE COSTS</h3>
         <div class="bv-rates">
           <span>
             <small class="mono">BUILD IT</small>
@@ -241,16 +362,16 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       </div>
     </section>
 
-    <section class="testimonial-section wrap" aria-labelledby="testimonials-title"><div class="section-top"><span class="eyebrow"><span>04</span> NICE THINGS FROM GOOD PEOPLE</span></div><h2 id="testimonials-title" class="sr-only">Don't take my word for it</h2><div class="quote-grid"><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>Working with Rahul was effortless, our campaign saw a <em>3x boost in reach.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-juliana.jpg" alt="Juliana Rodriguez" loading="lazy" decoding="async" width="200" height="200"><span><strong>Juliana Rodriguez</strong><small>Marketing Executive<br>Torrens University Australia</small></span></figcaption></figure><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>He shared our product exactly how we imagined, <em>genuine and beautifully styled.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-basan.jpg" alt="Basan Subedi" loading="lazy" decoding="async" width="200" height="200"><span><strong>Basan Subedi</strong><small>Founder<br>Graduate Plus & DigiPearl</small></span></figcaption></figure></div></section>
+    <section class="testimonial-section wrap" aria-labelledby="testimonials-title"><div class="section-top"><span class="eyebrow"><span>07</span> NICE THINGS FROM GOOD PEOPLE</span></div><h2 id="testimonials-title" class="sr-only">Don't take my word for it</h2><div class="quote-grid"><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>Working with Rahul was effortless, our campaign saw a <em>3x boost in reach.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-juliana.jpg" alt="Juliana Rodriguez" loading="lazy" decoding="async" width="200" height="200"><span><strong>Juliana Rodriguez</strong><small>Marketing Executive<br>Torrens University Australia</small></span></figcaption></figure><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>He shared our product exactly how we imagined, <em>genuine and beautifully styled.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-basan.jpg" alt="Basan Subedi" loading="lazy" decoding="async" width="200" height="200"><span><strong>Basan Subedi</strong><small>Founder<br>Graduate Plus & DigiPearl</small></span></figcaption></figure></div></section>
 
-    <section class="section wrap beyond-section" aria-labelledby="beyond-title"><div><span class="eyebrow"><span>05</span> BEYOND THE CAMERA</span><h2 id="beyond-title">A FEW<br>OTHER HATS.</h2><p>Content is a big part of my life.<br>It isn't the whole picture.</p></div><div class="roles"><details><summary><span><small class="mono">WORK / CURRENT</small>TAC Assistant</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>At Torrens University Australia, I work with course fee and admissions data across UAC and QTAC, including a master reference workbook spanning 60+ courses.</p></details><details><summary><span><small class="mono">COMMUNITY / LEADERSHIP</small>SRC President</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>I represented 3,000+ students at Torrens University, growing from SRC member to social media manager to president.</p></details><details><summary><span><small class="mono">BUILDING / ONGOING</small>Passport People</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>I founded a student travel brand for Sydney university students aged 19–26. Good trips, good people, and a reason to get out there.</p></details><details><summary><span><small class="mono">LEARNING / ALWAYS</small>MBA & BBIS</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>I'm studying an MBA (Advanced) at Torrens University on a full scholarship. I completed my Bachelor of Business Information Systems in December 2025.</p></details></div></section>
+    <section class="section wrap beyond-section" aria-labelledby="beyond-title"><div><span class="eyebrow"><span>08</span> BEYOND THE CAMERA</span><h2 id="beyond-title">A FEW<br>OTHER HATS.</h2><p>Content is a big part of my life.<br>It isn't the whole picture.</p></div><div class="roles"><details><summary><span><small class="mono">WORK / CURRENT</small>TAC Assistant</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>At Torrens University Australia, I work with course fee and admissions data across UAC and QTAC, including a master reference workbook spanning 60+ courses.</p></details><details><summary><span><small class="mono">COMMUNITY / LEADERSHIP</small>SRC President</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>I represented 3,000+ students at Torrens University, growing from SRC member to social media manager to president.</p></details><details><summary><span><small class="mono">BUILDING / ONGOING</small>Passport People</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>I founded a student travel brand for Sydney university students aged 19–26. Good trips, good people, and a reason to get out there.</p></details><details><summary><span><small class="mono">LEARNING / ALWAYS</small>MBA & BBIS</span><span class="details-plus" aria-hidden="true">＋</span></summary><p>I'm studying an MBA (Advanced) at Torrens University on a full scholarship. I completed my Bachelor of Business Information Systems in December 2025.</p></details></div></section>
 
     <section class="first-video wrap" aria-labelledby="first-video-title"><div><span class="eyebrow">FOR LOCAL BUSINESSES</span><h2 id="first-video-title">THE FIRST ONE'S<br><span class="marker-word">ON ME.<svg viewBox="0 0 330 30" aria-hidden="true"><path d="M4 20C73 6 238 2 324 14M39 27c79-13 220-7 266-2"/></svg></span></h2></div><div><p>I'm based in Kogarah Bay and would love to make something for your business.</p><p><strong>Your first video is free.</strong> You keep it either way. If you like working together, we can talk about the next one.</p><a class="button button-dark" href="mailto:hello.rahulkd@gmail.com?subject=My%20first%20video&body=Hi%20Rahul%2C%0A%0AMy%20business%20is%3A%20%0AWe%27re%20based%20in%3A%20%0AI%27d%20love%20a%20video%20about%3A%20">Let's try an idea <span aria-hidden="true">↗</span></a></div></section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="wrap"><div class="section-top"><span class="eyebrow"><span>06</span> YOUR TURN</span><span class="availability mono"><span class="live-dot" aria-hidden="true"></span> OPEN FOR NEW PROJECTS</span></div><h2 id="contact-title">LET'S MAKE<br><span>SOMETHING.</span><a href="mailto:hello.rahulkd@gmail.com" class="contact-arrow magnetic" aria-label="Email Rahul"><span aria-hidden="true">↗</span></a></h2><div class="contact-details"><div><p>Got something you want made?<br>Send me the details. I reply fast.</p><div class="email-row"><a class="email-link" href="mailto:hello.rahulkd@gmail.com">hello.rahulkd@gmail.com</a><button type="button" class="copy-email enhance-only" aria-label="Copy email address">Copy <span aria-hidden="true">⧉</span></button></div></div><div class="social-links"><a href="https://www.instagram.com/rahul_yaps/" target="_blank" rel="noopener">The work / Instagram <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/_rahul_kd_/" target="_blank" rel="noopener">The person / Instagram <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/rahulkd/" target="_blank" rel="noopener">The professional / LinkedIn <span aria-hidden="true">↗</span></a></div></div><footer class="site-footer"><span class="mono">© <span id="year">2026</span> RAHUL KUMAR DAS</span><span class="mono">MADE WITH CURIOSITY. SYDNEY, AU.</span><a class="mono" href="#top">BACK TO THE TOP ↑</a></footer></div></section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="wrap"><div class="section-top"><span class="eyebrow"><span>09</span> YOUR TURN</span><span class="availability mono"><span class="live-dot" aria-hidden="true"></span> OPEN FOR NEW PROJECTS</span></div><h2 id="contact-title">LET'S MAKE<br><span>SOMETHING.</span><a href="mailto:hello.rahulkd@gmail.com" class="contact-arrow magnetic" aria-label="Email Rahul"><span aria-hidden="true">↗</span></a></h2><div class="contact-details"><div><p>Got something you want made?<br>Send me the details. I reply fast.</p><div class="email-row"><a class="email-link" href="mailto:hello.rahulkd@gmail.com">hello.rahulkd@gmail.com</a><button type="button" class="copy-email enhance-only" aria-label="Copy email address">Copy <span aria-hidden="true">⧉</span></button></div></div><div class="social-links"><a href="https://www.instagram.com/rahul_yaps/" target="_blank" rel="noopener">The work / Instagram <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/_rahul_kd_/" target="_blank" rel="noopener">The person / Instagram <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/rahulkd/" target="_blank" rel="noopener">The professional / LinkedIn <span aria-hidden="true">↗</span></a></div></div><footer class="site-footer"><span class="mono">© <span id="year">2026</span> RAHUL KUMAR DAS</span><span class="mono">MADE WITH CURIOSITY. SYDNEY, AU.</span><a class="mono" href="#top">BACK TO THE TOP ↑</a></footer></div></section>
   </main>
 
-  <dialog class="video-dialog" aria-labelledby="video-title"><div class="dialog-toolbar"><div><span class="mono" id="video-platform">THE WORK</span><h2 id="video-title">Watch the work</h2></div><button class="dialog-close" type="button" aria-label="Close video">Close <span aria-hidden="true">×</span></button></div><div id="video-container"></div><div class="dialog-bottom"><p>Player taking its time?</p><a class="text-link" id="video-external" href="https://www.instagram.com/rahul_yaps/" target="_blank" rel="noopener">Watch on the original platform ↗</a></div></dialog>
+  
   <div class="toast" role="status" aria-live="polite"></div>
 <script>
 'use strict';
@@ -346,122 +467,25 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   });
   mobileQuery.addEventListener('change', () => closeMenu());
 
-  // Filtering changes the gallery in place. Every project keeps a real URL.
-  const cards = $$('.project-card');
-  const filterButtons = $$('.filter');
-  const moreButton = $('#show-more');
-  let activeFilter = 'all';
-  let expanded = false;
-  function updateGallery(animateChange = false) {
-    const matches = cards.filter((card) => activeFilter === 'all' || card.dataset.category === activeFilter);
-    const visible = activeFilter === 'all' && !expanded ? matches.slice(0, 6) : matches;
-    const visibleSet = new Set(visible);
-    cards.forEach((card) => {
-      card.hidden = !visibleSet.has(card);
-      if (!card.hidden && animateChange) animate(card, [
-        { opacity: 0.45, transform: 'translateY(12px)' },
-        { opacity: 1, transform: 'translateY(0)' }
-      ], { duration: 420, easing: 'cubic-bezier(.22,1,.36,1)' });
-    });
-    filterButtons.forEach((button) => {
-      const selected = button.dataset.filter === activeFilter;
-      button.classList.toggle('is-active', selected);
-      button.setAttribute('aria-pressed', String(selected));
-    });
-    $('.result-count').textContent = visible.length + ' OF ' + matches.length + ' PROJECTS';
-    moreButton.hidden = activeFilter !== 'all';
-    moreButton.setAttribute('aria-expanded', String(expanded));
-    moreButton.firstChild.textContent = expanded ? 'Show fewer projects ' : 'All 13 projects ';
-    $('span', moreButton).textContent = expanded ? '−' : '＋';
-    geometryDirty = true;
-    requestFrame();
-  }
-  filterButtons.forEach((button) => button.addEventListener('click', () => {
-    activeFilter = button.dataset.filter;
-    updateGallery(true);
-  }));
-  moreButton.addEventListener('click', () => {
-    const wasExpanded = expanded;
-    expanded = !expanded;
-    updateGallery(true);
-    if (wasExpanded) $('.work-toolbar').scrollIntoView({ block: 'start', behavior: motionEnabled ? 'smooth' : 'auto' });
-  });
-
-  // Only an explicit play action creates an iframe. No 13-player startup cost.
-  const videos = {
-    'campaign': { platform: 'instagram', id: 'DLkA28Epd9h', title: 'A campaign that connected · 107K views' },
-    'brand': { platform: 'youtube', id: 'ZtGtrbKrCpI', title: 'A proper brand film' },
-    'sales-reel': { platform: 'instagram', id: 'DKPCniky3_O', title: 'A little less salesy · 83.6K views' },
-    'viral-1': { platform: 'instagram', id: 'DYehDQJxJKr', title: 'The ones that took off · Part 01' },
-    'team': { platform: 'instagram', id: 'DKb6l4iyXAk', title: 'The people make it' },
-    'sales-film': { platform: 'youtube', id: 'YuhRqt8VN7A', title: 'Room to tell the story' },
-    'viral-2': { platform: 'instagram', id: 'DYwxxr-x9qa', title: 'The ones that took off · Part 02' },
-    'viral-3': { platform: 'instagram', id: 'Dbx8SdERL0Z', title: 'The ones that took off · Part 03' },
-    'travel': { platform: 'instagram', id: 'DPGgXVckiij', title: 'Out with the good ones' },
-    'balance': { platform: 'instagram', id: 'DLvvGg9z4Zb', title: 'A few things at once' },
-    'informative': { platform: 'instagram', id: 'DRs-86Dkp8Q', title: 'Something to take away' },
-    'storytelling': { platform: 'instagram', id: 'DSKP8UJkidj', title: "There's a story in that" },
-    'linkedin': { platform: 'linkedin', id: '7405094085272756224', title: 'BMIHMS · A different kind of feed' }
-  };
-  const dialog = $('.video-dialog');
-  const playerContainer = $('#video-container');
-  let currentTrigger = null;
-  let currentFrame = null;
-  let currentPlatform = null;
-  let modalBackdropPointerDown = false;
-  $$('.media-link').forEach((link) => link.addEventListener('click', (event) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-    const video = videos[link.dataset.video];
-    if (!video || typeof dialog.showModal !== 'function') return;
-    event.preventDefault();
-    currentTrigger = link;
-    currentPlatform = video.platform;
-    $('#video-title').textContent = video.title;
-    $('#video-platform').textContent = video.platform.toUpperCase() + ' / THE WORK';
-    $('#video-external').href = link.href;
-    const iframe = document.createElement('iframe');
-    iframe.title = video.title;
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
-    iframe.allowFullscreen = true;
-    if (video.platform === 'youtube') iframe.src = 'https://www.youtube-nocookie.com/embed/' + video.id + '?autoplay=1&rel=0&playsinline=1';
-    else if (video.platform === 'instagram') iframe.src = 'https://www.instagram.com/reel/' + video.id + '/embed/';
-    else iframe.src = 'https://www.linkedin.com/embed/feed/update/urn:li:activity:' + video.id;
-    playerContainer.className = 'player-' + video.platform;
-    playerContainer.replaceChildren(iframe);
-    currentFrame = iframe;
-    dialog.showModal();
-    body.classList.add('modal-open');
-    dialog.scrollTop = 0;
-    $('.dialog-close').focus({ preventScroll: true });
-    animate(dialog, [ { opacity: 0, transform: 'translateY(15px) scale(.98)' }, { opacity: 1, transform: 'translateY(0) scale(1)' } ], { duration: 240, easing: 'ease-out' });
-  }));
-  $('.dialog-close').addEventListener('click', () => dialog.close());
-  function outsideDialog(event) {
-    const box = dialog.getBoundingClientRect();
-    return event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
-  }
-  dialog.addEventListener('pointerdown', (event) => { modalBackdropPointerDown = event.target === dialog && outsideDialog(event); });
-  dialog.addEventListener('pointerup', (event) => {
-    if (modalBackdropPointerDown && event.target === dialog && outsideDialog(event)) dialog.close();
-    modalBackdropPointerDown = false;
-  });
-  dialog.addEventListener('close', () => {
-    playerContainer.replaceChildren();
-    currentFrame = null;
-    currentPlatform = null;
-    body.classList.remove('modal-open');
-    if (currentTrigger && currentTrigger.isConnected) currentTrigger.focus({ preventScroll: true });
-  });
-  // Accept height information only from the current, genuine Instagram frame.
+  // The reels play in the page. Instagram is the only one that will not tell us
+  // its height up front, so it posts a MEASURE message instead - listen for it.
   window.addEventListener('message', (event) => {
-    if (!currentFrame || currentPlatform !== 'instagram' || event.source !== currentFrame.contentWindow) return;
-    if (event.origin !== 'https://www.instagram.com' && event.origin !== 'https://instagram.com') return;
+    let host;
+    try { host = new URL(event.origin).hostname; } catch (error) { return; }
+    if (host !== 'instagram.com' && !host.endsWith('.instagram.com')) return;
     let message = event.data;
-    if (typeof message === 'string') { try { message = JSON.parse(message); } catch (_) { return; } }
+    if (typeof message === 'string') { try { message = JSON.parse(message); } catch (error) { return; } }
     if (!message || typeof message !== 'object' || message.type !== 'MEASURE') return;
     const height = Number(message.details?.height ?? message.data?.height ?? message.height);
-    if (Number.isFinite(height) && height > 0) currentFrame.style.height = Math.max(320, Math.min(1600, Math.ceil(height))) + 'px';
+    if (!Number.isFinite(height) || height <= 0) return;
+    const resolved = Math.max(320, Math.min(1600, Math.ceil(height)));
+    $$('iframe.ig-frame').forEach((frame) => {
+      if (frame.contentWindow !== event.source) return;
+      frame.style.aspectRatio = 'auto';
+      frame.style.height = resolved + 'px';
+    });
+    geometryDirty = true;
+    requestFrame();
   });
 
   const storyButtons = $$('.story-option');
@@ -709,7 +733,6 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
     $$('[data-count]').forEach((element) => statsObserver.observe(element));
   }
 
-  updateGallery();
   showStory('arrival');
   updateEstimate();
   body.classList.add('enhanced');
