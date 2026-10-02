@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hartwell Tax Co. — a demo tax agent site by Rahul Kumar Das</title>
+<meta name="description" content="A demonstration website for a local tax agent, built by Rahul Kumar Das. Hartwell Tax Co. is a fictional practice created to show what a small accounting business's site can look like.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1A17;--paper:#F7F6F2;--dim:#E8EBE6;--rule:#D3D8D1;--muted:#6B736D;--green:#19684A;--green-lt:#2E8C66;--gold:#C8A24A;--white:#fff;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:-.012em;line-height:.97}
+.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}
+a{color:inherit}
+
+.demo-bar{position:sticky;top:0;z-index:50;background:var(--ink);color:#EAF0EC;padding:9px 0}
+.demo-bar .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.demo-bar b{color:var(--gold)}
+.demo-bar a{font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
+header.site{padding:22px 0;background:var(--white);border-bottom:1px solid var(--rule)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:.01em}
+.brand i{width:28px;height:28px;background:var(--green);display:block;flex:none;position:relative;border-radius:3px}
+.brand i::after{content:'';position:absolute;left:7px;top:8px;width:9px;height:14px;border:2.5px solid var(--white);border-top:0;border-left:0;transform:rotate(40deg)}
+nav.site{display:flex;gap:24px}
+nav.site a{font-size:13px;font-weight:600;text-decoration:none}
+nav.site a:hover{color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:3px;font-size:14px;font-weight:700;text-decoration:none;border:1.5px solid var(--ink)}
+.btn-fill{background:var(--green);border-color:var(--green);color:#fff}
+.btn-fill:hover{background:#12543B;border-color:#12543B}
+.btn-line{background:transparent}
+
+.hero{background:var(--white);border-bottom:1px solid var(--rule);padding:62px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(44px,6.6vw,88px)}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero p.lead{font-size:18px;margin-top:20px;max-width:46ch;color:#39423C}
+.hero .cta{display:flex;gap:13px;margin-top:26px;flex-wrap:wrap}
+.hero .assure{margin-top:22px;font-size:13px;color:var(--muted)}
+.hero .assure b{color:var(--ink)}
+.quote-card{background:var(--ink);color:#EAF0EC;border-radius:5px;padding:30px 32px}
+.quote-card .mono{color:var(--gold)}
+.quote-card .fee{font-family:'Anton',sans-serif;font-size:clamp(46px,6vw,72px);line-height:1;margin:14px 0 4px;color:#fff}
+.quote-card .fee small{font-size:17px;color:#9FAEA6}
+.quote-card p{font-size:13.5px;color:#9FAEA6;margin-top:12px;line-height:1.7}
+.quote-card ul{list-style:none;margin-top:18px;padding-top:16px;border-top:1px solid #243830}
+.quote-card li{font-size:13.5px;padding:5px 0;display:flex;gap:10px}
+.quote-card li::before{content:'✓';color:var(--gold);font-weight:700}
+
+.bar{background:var(--dim);padding:20px 0;border-bottom:1px solid var(--rule)}
+.bar .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.bar b{font-family:'Anton',sans-serif;font-size:30px;display:block;line-height:1;color:var(--green)}
+.bar span{font-size:12px;color:var(--muted);display:block;margin-top:5px}
+
+section{padding:64px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule);padding-bottom:15px;margin-bottom:32px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(29px,4.1vw,48px)}
+.sec-head .mono{color:var(--muted)}
+
+.who{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.who div{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:22px}
+.who .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:600}
+.who h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:21px;line-height:1.05;margin:11px 0 9px}
+.who p{font-size:13px;color:#4E564F}
+
+.fees{display:grid;grid-template-columns:1.25fr .75fr;gap:46px;align-items:start}
+.fee-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:15px 0;border-bottom:1px solid var(--rule)}
+.fee-row:last-child{border-bottom:0}
+.fee-row .what{font-size:15px;font-weight:600}
+.fee-row .what small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:3px}
+.fee-row .amt{font-family:'Anton',sans-serif;font-size:26px;line-height:1;color:var(--green);white-space:nowrap}
+.fee-row .amt i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--muted);margin-right:6px;text-transform:uppercase}
+.fee-note{background:var(--dim);border-radius:5px;padding:26px}
+.fee-note h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:23px;line-height:1.05;margin-bottom:11px}
+.fee-note p{font-size:13.5px;color:#4E564F;margin-bottom:13px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.steps .n{font-family:'Anton',sans-serif;font-size:46px;line-height:.85;color:var(--gold)}
+.steps h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:21px;margin:12px 0 9px}
+.steps p{font-size:13.5px;color:#4E564F}
+
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.dates .row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.dates .row b{font-weight:600}
+.dates .row span{color:var(--muted);font-size:13px;text-align:right}
+.book{background:var(--green);color:#fff;border-radius:5px;padding:30px}
+.book h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:27px;line-height:1.05;margin-bottom:11px}
+.book p{font-size:14px;margin-bottom:19px;color:#D4E6DC}
+.book .btn{background:#fff;color:var(--ink);border-color:#fff}
+.book .det{margin-top:18px;font-size:13px;color:#D4E6DC;line-height:1.7}
+.book .det strong{color:#fff}
+
+footer.site{background:var(--ink);color:#EAF0EC;padding:44px 0 36px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+footer.site .mono{color:#8A968F}
+footer.site h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:31px;line-height:1}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .bar .wrap{grid-template-columns:1fr 1fr;gap:20px}
+  .who{grid-template-columns:1fr 1fr}
+  .fees,.dates{grid-template-columns:1fr;gap:30px}
+  .steps{grid-template-columns:1fr;gap:26px}
+  nav.site{display:none}
+  .wrap{width:calc(100% - 36px)}
+}
+@media(max-width:560px){.who{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <div class="wrap">
+    <span class="mono"><b>Demo site</b> · Hartwell Tax Co. is not a real practice</span>
+    <a class="mono" href="https://rahulkd.com">Built by Rahul Kumar Das → rahulkd.com</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><i></i> Hartwell Tax</div>
+    <nav class="site"><a href="#who">Who we help</a><a href="#fees">Fees</a><a href="#how">How it works</a><a href="#book">Book</a></nav>
+    <a class="btn btn-fill" href="#book" style="padding:10px 18px;font-size:13px">Book a time</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="mono" style="color:var(--muted)">Registered tax agent · Kogarah &amp; St George</span>
+      <h1 class="display" style="margin-top:15px">Your return,<br>done properly.<br><em>No jargon.</em></h1>
+      <p class="lead">For sole traders, tradies, contractors and the small shops around here. You send us the shoebox, we send you the refund — and we tell you what you can actually claim before you spend it.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="#book">Book a 15-minute call</a>
+        <a class="btn btn-line" href="#fees">See the fees</a>
+      </div>
+      <p class="assure"><b>Fixed fees, agreed up front.</b> No hourly billing, no surprise invoice in March.</p>
+    </div>
+    <div class="quote-card">
+      <span class="mono">Sole trader return</span>
+      <div class="fee">$330<small> inc GST</small></div>
+      <p>Flat fee for an ABN return with business income and deductions. Quoted before we start, not after.</p>
+      <ul>
+        <li>Return prepared and lodged</li>
+        <li>Deductions walked through with you</li>
+        <li>Fee can come out of the refund</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <div><b>Fixed</b><span>Fees agreed before we start</span></div>
+    <div><b>24hr</b><span>We reply within one business day</span></div>
+    <div><b>9yrs</b><span>Working with local sole traders</span></div>
+    <div><b>$0</b><span>Upfront — fee out of the refund</span></div>
+  </div>
+</div>
+
+<section id="who" class="wrap">
+  <div class="sec-head"><h2 class="display">Who we look after</h2><span class="mono">Mostly people with an ABN</span></div>
+  <div class="who">
+    <div>
+      <span class="tag">Sole traders</span>
+      <h3>Tradies &amp; contractors</h3>
+      <p>Sparkies, chippies, plumbers, couriers. Tools, ute, fuel, phone — we'll tell you what's claimable and what the ATO will ask about.</p>
+    </div>
+    <div>
+      <span class="tag">Small business</span>
+      <h3>Shops &amp; cafés</h3>
+      <p>BAS, payroll, GST and a set of books you can actually read. Most of our clients are under ten staff.</p>
+    </div>
+    <div>
+      <span class="tag">Freelance</span>
+      <h3>Consultants &amp; creatives</h3>
+      <p>Invoicing through an ABN, income that moves month to month, and the quarterly bill that catches people out. We plan for it.</p>
+    </div>
+    <div>
+      <span class="tag">Skilled work</span>
+      <h3>Nurses, drivers, techs</h3>
+      <p>Shift work, uniforms, travel between sites, self-education. The deductions people in your job usually miss.</p>
+    </div>
+  </div>
+</section>
+
+<section id="fees" class="wrap" style="padding-top:12px">
+  <div class="sec-head"><h2 class="display">What it costs</h2><span class="mono">All fixed, all inc GST</span></div>
+  <div class="fees">
+    <div>
+      <div class="fee-row"><span class="what">Individual return<small>Salary, bank interest, the usual deductions</small></span><span class="amt"><i>from</i>$145</span></div>
+      <div class="fee-row"><span class="what">Individual + rental property<small>One property, including depreciation</small></span><span class="amt"><i>from</i>$245</span></div>
+      <div class="fee-row"><span class="what">Sole trader / ABN return<small>Business income and deductions</small></span><span class="amt"><i>from</i>$330</span></div>
+      <div class="fee-row"><span class="what">Quarterly BAS<small>Prepared and lodged, per quarter</small></span><span class="amt"><i>from</i>$130</span></div>
+      <div class="fee-row"><span class="what">Bookkeeping<small>Monthly, reconciled and tidy</small></span><span class="amt"><i>from</i>$180</span></div>
+      <div class="fee-row"><span class="what">Company or trust return<small>Including the financial statements</small></span><span class="amt"><i>from</i>$950</span></div>
+      <div class="fee-row"><span class="what">Late or unlodged returns<small>Per year, however far back it goes</small></span><span class="amt"><i>from</i>$145</span></div>
+    </div>
+    <div class="fee-note">
+      <h3>Behind on a few years?</h3>
+      <p>It happens more than you'd think, and it's almost never as bad as you're imagining. We'll work out what's outstanding, lodge it in order, and talk to the ATO for you.</p>
+      <p>Nobody here is going to make you feel stupid about it.</p>
+      <a class="btn btn-fill" href="#book">Let's sort it out</a>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="wrap" style="padding-top:12px">
+  <div class="sec-head"><h2 class="display">How it works</h2><span class="mono">Usually done inside a week</span></div>
+  <div class="steps">
+    <div><span class="n">1</span><h3>Fifteen minutes</h3><p>A quick call or a coffee. You tell us what you do and how you get paid. We quote a fixed fee on the spot.</p></div>
+    <div><span class="n">2</span><h3>Send the shoebox</h3><p>Photos of receipts are fine. So is a carrier bag. We'll ask for the handful of things that are actually missing.</p></div>
+    <div><span class="n">3</span><h3>We lodge it</h3><p>You see the return before it goes anywhere. Then it's lodged, and we tell you what to put aside for next time.</p></div>
+  </div>
+</section>
+
+<section id="book" class="wrap" style="padding-top:12px">
+  <div class="sec-head"><h2 class="display">Dates &amp; booking</h2><span class="mono">Open Saturday mornings</span></div>
+  <div class="dates">
+    <div>
+      <div class="row"><b>31 October</b><span>Individual returns due, if you lodge yourself</span></div>
+      <div class="row"><b>15 May</b><span>Returns due when you're with a tax agent</span></div>
+      <div class="row"><b>28 Oct / Feb / Apr / Jul</b><span>Quarterly BAS</span></div>
+      <div class="row"><b>14 July</b><span>Payment summaries out to staff</span></div>
+      <div class="row"><b>Any time</b><span>Late returns — the sooner the better</span></div>
+    </div>
+    <div class="book">
+      <h3>Book fifteen<br>minutes.</h3>
+      <p>Tell us what you do and roughly what's involved. If we're not the right fit we'll say so and point you somewhere better.</p>
+      <a class="btn" href="#book">Request a time</a>
+      <p class="det"><strong>hello@hartwelltax.example</strong><br>(02) 0000 0000<br>Shop 2, 118 Railway Parade, Kogarah NSW<br>Mon–Fri 9–5, Saturdays 9–12</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <h3>Hartwell Tax Co.</h3>
+      <span class="mono">A demonstration site. Not a real practice, not a registered tax agent, and not advice.</span>
+    </div>
+    <a class="mono" href="https://rahulkd.com" style="color:var(--gold);font-weight:700">Want one like this? → rahulkd.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
