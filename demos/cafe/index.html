@@ -10,88 +10,167 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#17150F;--paper:#FBF7EF;--dim:#F0E9DC;--rule:#DED5C4;--muted:#7A7265;--roast:#8A4B2A;--leaf:#3F6B4A;--cream:#FFF8EC;}
+:root{
+  --ink:#140F09;--roast:#2A1B10;--crema:#C9803F;--milk:#FBF3E6;--cream:#F3E3CA;
+  --leaf:#4C6B48;--rule:rgba(251,243,230,.16);--muted:#A99278;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-.display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:-.01em;line-height:.95}
-.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
-.wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-a{color:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--roast);color:var(--milk);font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:-.015em;line-height:.9}
+.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+.wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
 
-/* demo ribbon */
-.demo-bar{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--cream);padding:9px 0}
+/* grain, the thing that makes a flat brown look like paper */
+body::after{content:'';position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E")}
+
+.demo-bar{position:relative;z-index:60;background:var(--milk);color:var(--ink);padding:9px 0}
 .demo-bar .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.demo-bar b{color:#F0A78C}
+.demo-bar b{color:#9A3F12}
 .demo-bar a{font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 
-header.site{padding:26px 0;border-bottom:1px solid var(--rule)}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px;font-family:'Anton',sans-serif;font-size:21px;text-transform:uppercase;letter-spacing:.02em}
-.brand i{width:30px;height:30px;border-radius:50%;background:var(--roast);display:block;position:relative;flex:none}
-.brand i::after{content:'';position:absolute;inset:9px 4px;border-radius:50%;background:var(--cream)}
-nav.site{display:flex;gap:26px}
-nav.site a{font-size:13px;font-weight:600;text-decoration:none}
-nav.site a:hover{color:var(--roast)}
+header{position:sticky;top:0;z-index:55;transition:background .4s var(--ease),padding .4s var(--ease),border-color .4s}
+header{padding:20px 0;border-bottom:1px solid transparent}
+header.stuck{background:rgba(42,27,16,.86);backdrop-filter:blur(14px);padding:11px 0;border-bottom-color:var(--rule)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Anton',sans-serif;font-size:21px;text-transform:uppercase;letter-spacing:.03em}
+.knot{width:30px;height:30px;flex:none}
+nav.main{display:flex;gap:28px}
+nav.main a{font-size:12.5px;font-weight:600;position:relative;padding:6px 0}
+nav.main a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--crema);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+nav.main a:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:13.5px;font-weight:700;
+  border:1.5px solid currentColor;transition:background .3s,color .3s,transform .3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-fill{background:var(--crema);border-color:var(--crema);color:var(--roast)}
+.btn-fill:hover{background:var(--milk);border-color:var(--milk)}
+.btn-ghost{color:var(--milk)}
+.btn-ghost:hover{background:var(--milk);color:var(--roast)}
 
-.hero{padding:70px 0 60px}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(52px,8vw,104px)}
-.hero h1 em{font-style:normal;color:var(--roast)}
-.hero p.lead{font-size:19px;margin-top:22px;max-width:40ch;color:#443E34}
-.hero .cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;border:1.5px solid var(--ink)}
-.btn-fill{background:var(--ink);color:var(--paper)}
-.btn-line{background:transparent}
-.cup{aspect-ratio:1;border-radius:50%;background:
-  radial-gradient(circle at 50% 42%, #6B3A20 0 33%, transparent 34%),
-  radial-gradient(circle at 50% 42%, var(--cream) 0 38%, transparent 39%),
-  conic-gradient(from 210deg, var(--roast), #B4653C, var(--roast));
-  display:grid;place-items:center;position:relative;box-shadow:0 30px 60px #17150f1f}
-.cup span{position:absolute;bottom:11%;left:50%;transform:translateX(-50%);font-family:'Anton',sans-serif;
-  text-transform:uppercase;color:var(--cream);font-size:clamp(17px,2.1vw,25px);line-height:1.05;text-align:center;white-space:nowrap}
+/* ---------------- hero, layered and parallaxed ---------------- */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:60px 0 80px;overflow:hidden}
+.hero-bg{position:absolute;inset:-10% -10% 0;z-index:0;
+  background:radial-gradient(60% 55% at 72% 38%,rgba(201,128,63,.42),transparent 70%),
+             radial-gradient(45% 40% at 18% 78%,rgba(76,107,72,.3),transparent 72%);
+  filter:blur(8px);animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(-26px,22px,0) scale(1.06)}}
+.ring{position:absolute;border:1px solid var(--rule);border-radius:50%;z-index:0}
+.r1{width:620px;height:620px;right:-150px;top:-120px}
+.r2{width:380px;height:380px;right:60px;top:160px}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;width:min(1180px,calc(100% - 48px))}
+.kicker{display:flex;align-items:center;gap:11px;color:var(--crema)}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--leaf);display:block;
+  box-shadow:0 0 0 0 rgba(76,107,72,.7);animation:ping 2.6s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 11px rgba(76,107,72,0)}100%{box-shadow:0 0 0 0 rgba(76,107,72,0)}}
+h1{font-size:clamp(46px,7.8vw,114px);margin-top:18px}
+h1 .ln{display:block;overflow:hidden}
+h1 .ln>span{display:block;transform:translateY(105%);animation:rise .95s var(--ease) forwards}
+h1 .ln:nth-child(2)>span{animation-delay:.09s}
+h1 .ln:nth-child(3)>span{animation-delay:.18s}
+@keyframes rise{to{transform:translateY(0)}}
+h1 em{font-style:normal;color:var(--crema)}
+.hero p.lead{font-size:18px;max-width:40ch;margin-top:24px;color:#E3D2B9;opacity:0;animation:fade .8s .5s forwards}
+@keyframes fade{to{opacity:1}}
+.hero .cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;opacity:0;animation:fade .8s .64s forwards}
 
-.strip{background:var(--ink);color:var(--cream);padding:17px 0;overflow:hidden;white-space:nowrap}
-.strip span{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:20px;padding-right:34px}
-.strip i{color:var(--roast);font-style:normal;padding-right:34px}
+/* the cup: a real pour, drawn and animated */
+.cupwrap{position:relative;display:grid;place-items:center}
+.cup{width:min(100%,420px);aspect-ratio:1;position:relative}
+.cup svg{width:100%;height:100%;overflow:visible}
+.steam{stroke:rgba(251,243,230,.5);stroke-width:3;fill:none;stroke-linecap:round;
+  stroke-dasharray:60 120;animation:steam 4.4s linear infinite}
+.steam:nth-of-type(2){animation-delay:-1.5s}
+.steam:nth-of-type(3){animation-delay:-3s}
+@keyframes steam{to{stroke-dashoffset:-180}}
+.pour{stroke:var(--crema);stroke-width:7;stroke-linecap:round;fill:none;
+  stroke-dasharray:120;stroke-dashoffset:120;animation:pour 3.4s var(--ease) 1s infinite}
+@keyframes pour{0%{stroke-dashoffset:120}45%,100%{stroke-dashoffset:0;opacity:0}}
+.crema-fill{transform-origin:center;animation:swell 3.4s var(--ease) 1s infinite}
+@keyframes swell{0%{r:0}50%,100%{r:56}}
 
-section{padding:72px 0}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:38px;flex-wrap:wrap}
-.sec-head h2{font-size:clamp(32px,4.4vw,52px)}
+/* ---------------- marquee ---------------- */
+.strip{background:var(--milk);color:var(--ink);padding:16px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:3}
+.strip-track{display:inline-flex;animation:slide 28s linear infinite;will-change:transform}
+.strip span{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:21px;padding-right:38px;letter-spacing:.01em}
+.strip i{color:var(--crema);font-style:normal;padding-right:38px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:96px 0;position:relative;z-index:2}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.sec-head h2{font-size:clamp(36px,5.6vw,74px)}
 .sec-head .mono{color:var(--muted)}
 
-.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
-.menu h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:20px;margin-bottom:14px;color:var(--roast)}
-.row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted var(--rule);font-size:14px}
-.row b{font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:0}
-.row span small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
 
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.tile{aspect-ratio:1;border-radius:4px;display:grid;place-items:center;padding:16px;text-align:center}
-.tile b{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(15px,1.7vw,21px);line-height:1.05}
-.t1{background:var(--roast);color:var(--cream)}
-.t2{background:var(--dim);color:var(--ink)}
-.t3{background:var(--leaf);color:var(--cream)}
-.t4{background:var(--ink);color:var(--cream)}
+/* ---------------- menu: a horizontal rail you can drag ---------------- */
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;
+  scrollbar-width:thin;scrollbar-color:var(--crema) transparent}
+.rail::-webkit-scrollbar{height:4px}
+.rail::-webkit-scrollbar-thumb{background:var(--crema);border-radius:4px}
+.card{flex:0 0 clamp(248px,27vw,320px);scroll-snap-align:start;background:rgba(251,243,230,.05);
+  border:1px solid var(--rule);border-radius:7px;padding:26px;transition:background .35s,transform .35s var(--ease)}
+.card:hover{background:rgba(251,243,230,.09);transform:translateY(-5px)}
+.card h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:23px;color:var(--crema);margin-bottom:16px}
+.card .row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.card .row:last-child{border-bottom:0}
+.card .row b{font-family:'IBM Plex Mono',monospace;font-weight:500}
+.card .row small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.rail-hint{margin-top:10px;color:var(--muted)}
 
-.visit{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.hours div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
-.hours div b{font-weight:600}
-.visit .where p{margin-top:12px;font-size:15px;color:#443E34}
-.visit .where .big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:28px;line-height:1.1;margin-bottom:6px}
+/* ---------------- beans: tilt tiles ---------------- */
+.beans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bean{aspect-ratio:3/4;border-radius:7px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .4s var(--ease)}
+.bean b{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(19px,2.3vw,27px);line-height:1}
+.bean .mono{opacity:.75}
+.bean::before{content:'';position:absolute;right:-40px;bottom:-40px;width:150px;height:150px;border-radius:50%;
+  border:18px solid rgba(255,255,255,.14);transition:transform .6s var(--ease)}
+.bean:hover::before{transform:scale(1.25) rotate(20deg)}
+.b1{background:linear-gradient(150deg,#8C4A1E,#C9803F);color:var(--milk)}
+.b2{background:linear-gradient(150deg,#3F5C3C,#6E8F5F);color:var(--milk)}
+.b3{background:linear-gradient(150deg,#F3E3CA,#D8BE97);color:var(--roast)}
+.b4{background:linear-gradient(150deg,#1C1209,#3A2516);color:var(--milk)}
 
-footer.site{background:var(--ink);color:var(--cream);padding:48px 0 40px;margin-top:20px}
-footer.site .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
-footer.site .mono{color:#A99F8E}
-footer.site h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:34px;line-height:1}
+/* ---------------- visit ---------------- */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.hours .row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.hours .row.now{color:var(--crema);font-weight:700}
+.openpill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--rule);border-radius:999px;
+  padding:9px 16px;margin-bottom:22px}
+.openpill i{width:8px;height:8px;border-radius:50%;background:var(--leaf);display:block}
+.openpill.shut i{background:#A5553E}
+.where .big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(26px,3.4vw,40px);line-height:1.04;margin-bottom:14px}
+.where p{color:#E3D2B9;font-size:15px;margin-bottom:14px}
 
-@media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:38px}
-  .menu{grid-template-columns:1fr}
-  .tiles{grid-template-columns:repeat(2,1fr)}
-  .visit{grid-template-columns:1fr;gap:34px}
-  nav.site{display:none}
-  .wrap{width:calc(100% - 36px)}
+footer{background:var(--milk);color:var(--ink);padding:56px 0 46px;position:relative;z-index:2}
+footer .wrap{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-end}
+footer h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(34px,5vw,62px);line-height:.95}
+footer .mono{color:#7A6A55}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .hero{min-height:0;padding:44px 0 64px}
+  .cupwrap{order:-1}
+  .cup{width:min(72%,290px)}
+  .beans{grid-template-columns:1fr 1fr}
+  .visit{grid-template-columns:1fr;gap:36px}
+  nav.main{display:none}
+  section{padding:70px 0}
+  .wrap,.hero .wrap{width:calc(100% - 36px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  h1 .ln>span{transform:none}
+  .hero p.lead,.hero .cta{opacity:1}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -104,98 +183,197 @@ footer.site h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size
   </div>
 </div>
 
-<header class="site">
+<header id="hdr">
   <div class="wrap">
-    <div class="brand"><i></i> Bowline</div>
-    <nav class="site">
-      <a href="#menu">Menu</a><a href="#beans">Beans</a><a href="#visit">Visit</a>
-    </nav>
-    <a class="btn btn-fill" href="#visit" style="padding:11px 20px;font-size:13px">Find us</a>
+    <a class="brand" href="#top">
+      <svg class="knot" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="#C9803F" stroke-width="2.5"/>
+        <path d="M10 24c6-10 14-10 20 0" stroke="#FBF3E6" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="20" cy="15" r="3" fill="#FBF3E6"/>
+      </svg>
+      Bowline
+    </a>
+    <nav class="main"><a href="#menu">Menu</a><a href="#beans">Beans</a><a href="#visit">Visit</a></nav>
+    <a class="btn btn-fill" href="#visit" style="padding:11px 20px;font-size:12.5px">Find us</a>
   </div>
 </header>
 
-<section class="hero wrap" style="padding-bottom:50px">
-  <div class="hero-grid">
+<section class="hero" id="top" style="padding-top:40px">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <span class="ring r1" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span>
+  <div class="wrap">
     <div>
-      <span class="mono" style="color:var(--muted)">Kogarah · open from 6:30am</span>
-      <h1 class="display" style="margin-top:18px">Coffee,<br>and a reason<br>to <em>sit down.</em></h1>
+      <span class="kicker mono"><i></i> Kogarah · open from 6:30am</span>
+      <h1 class="display">
+        <span class="ln"><span>Coffee,</span></span>
+        <span class="ln"><span>and a reason</span></span>
+        <span class="ln"><span>to <em>sit down.</em></span></span>
+      </h1>
       <p class="lead">Small roastery, smaller café. We open early, we know your order by Thursday, and the banana bread is still warm at seven.</p>
       <div class="cta">
-        <a class="btn btn-fill" href="#menu">See the menu</a>
-        <a class="btn btn-line" href="#visit">Opening hours</a>
+        <a class="btn btn-fill" href="#menu">See the menu <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-ghost" href="#visit">Opening hours</a>
       </div>
     </div>
-    <div class="cup"><span>Roasted<br>on site</span></div>
+    <div class="cupwrap">
+      <div class="cup" data-par="0.12">
+        <svg viewBox="0 0 320 320" aria-hidden="true">
+          <defs><clipPath id="cupclip"><circle cx="160" cy="186" r="86"/></clipPath></defs>
+          <path class="steam" d="M126 96c0-16 14-16 14-32s-14-16-14-32"/>
+          <path class="steam" d="M160 92c0-18 15-18 15-36s-15-18-15-36"/>
+          <path class="steam" d="M194 96c0-16 14-16 14-32s-14-16-14-32"/>
+          <circle cx="160" cy="186" r="104" fill="none" stroke="rgba(251,243,230,.18)" stroke-width="2"/>
+          <circle cx="160" cy="186" r="94" fill="#1C1209"/>
+          <g clip-path="url(#cupclip)">
+            <circle cx="160" cy="186" r="86" fill="#2A1B10"/>
+            <circle class="crema-fill" cx="160" cy="186" r="0" fill="#C9803F"/>
+          </g>
+          <circle cx="160" cy="186" r="86" fill="none" stroke="#F3E3CA" stroke-width="5"/>
+          <path class="pour" d="M160 104v54"/>
+        </svg>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="strip">
-  <span>Single origin <i>✳</i> Oat is free <i>✳</i> Dogs welcome <i>✳</i> Cash and card <i>✳</i> Single origin <i>✳</i> Oat is free <i>✳</i> Dogs welcome <i>✳</i> Cash and card <i>✳</i></span>
+  <div class="strip-track">
+    <span>Single origin <i>✳</i> Oat is free <i>✳</i> Dogs welcome <i>✳</i> Roasted Tuesdays <i>✳</i> Cash and card <i>✳</i> </span>
+    <span>Single origin <i>✳</i> Oat is free <i>✳</i> Dogs welcome <i>✳</i> Roasted Tuesdays <i>✳</i> Cash and card <i>✳</i> </span>
+  </div>
 </div>
 
 <section id="menu" class="wrap">
-  <div class="sec-head"><h2 class="display">The short menu</h2><span class="mono">Updated weekly</span></div>
-  <div class="menu">
-    <div>
+  <div class="sec-head rv"><h2 class="display">The short menu</h2><span class="mono">Drag sideways →</span></div>
+  <div class="rail rv">
+    <div class="card">
       <h3>Coffee</h3>
       <div class="row"><span>Espresso<small>House blend, chocolate &amp; plum</small></span><b>$4.00</b></div>
       <div class="row"><span>Flat white<small>Our most ordered, by a mile</small></span><b>$4.80</b></div>
       <div class="row"><span>Batch filter<small>Changes every few days</small></span><b>$5.00</b></div>
       <div class="row"><span>Cold brew<small>18 hours, no shortcuts</small></span><b>$6.00</b></div>
     </div>
-    <div>
+    <div class="card">
       <h3>Food</h3>
       <div class="row"><span>Banana bread<small>Grilled, salted butter</small></span><b>$6.50</b></div>
-      <div class="row"><span>Bacon &amp; egg roll<small>Until 11am, or until it's gone</small></span><b>$12.00</b></div>
+      <div class="row"><span>Bacon &amp; egg roll<small>Until 11, or until it's gone</small></span><b>$12.00</b></div>
       <div class="row"><span>Big breakfast<small>Weekends only</small></span><b>$22.00</b></div>
       <div class="row"><span>Toastie<small>Three cheeses, one regret</small></span><b>$11.00</b></div>
     </div>
-    <div>
+    <div class="card">
       <h3>Not coffee</h3>
       <div class="row"><span>Matcha<small>Ceremonial, properly whisked</small></span><b>$6.00</b></div>
       <div class="row"><span>Hot chocolate<small>65% dark</small></span><b>$5.50</b></div>
       <div class="row"><span>Loose leaf tea<small>Four to choose from</small></span><b>$4.50</b></div>
       <div class="row"><span>Fresh orange<small>Squeezed when you order</small></span><b>$7.00</b></div>
     </div>
-  </div>
-</section>
-
-<section id="beans" class="wrap" style="padding-top:20px">
-  <div class="sec-head"><h2 class="display">What's in the hopper</h2><span class="mono">Roasted Tuesdays</span></div>
-  <div class="tiles">
-    <div class="tile t1"><b>Ethiopia<br>Guji</b></div>
-    <div class="tile t2"><b>Colombia<br>Huila</b></div>
-    <div class="tile t3"><b>House<br>blend</b></div>
-    <div class="tile t4"><b>Decaf,<br>honestly good</b></div>
-  </div>
-</section>
-
-<section id="visit" class="wrap" style="padding-top:20px">
-  <div class="sec-head"><h2 class="display">Come in</h2><span class="mono">Two minutes from the station</span></div>
-  <div class="visit">
-    <div class="hours">
-      <div><b>Monday – Friday</b><span>6:30am – 3:00pm</span></div>
-      <div><b>Saturday</b><span>7:00am – 2:00pm</span></div>
-      <div><b>Sunday</b><span>7:30am – 1:00pm</span></div>
-      <div><b>Public holidays</b><span>We sleep in. 8:00am – 12:00pm</span></div>
+    <div class="card">
+      <h3>Beans to go</h3>
+      <div class="row"><span>250g house<small>Ground how you like it</small></span><b>$19.00</b></div>
+      <div class="row"><span>250g single origin<small>Whatever's best that week</small></span><b>$24.00</b></div>
+      <div class="row"><span>1kg house<small>For the office</small></span><b>$62.00</b></div>
+      <div class="row"><span>Subscription<small>Fortnightly, cancel whenever</small></span><b>$17.00</b></div>
     </div>
-    <div class="where">
+  </div>
+  <p class="rail-hint mono">Four cards · scroll or swipe</p>
+</section>
+
+<section id="beans" class="wrap" style="padding-top:28px">
+  <div class="sec-head rv"><h2 class="display">In the hopper</h2><span class="mono">Roasted Tuesdays</span></div>
+  <div class="beans rv">
+    <div class="bean b1" data-tilt><span class="mono">Ethiopia</span><b>Guji<br>Natural</b></div>
+    <div class="bean b2" data-tilt><span class="mono">Colombia</span><b>Huila<br>Washed</b></div>
+    <div class="bean b3" data-tilt><span class="mono">Everyday</span><b>House<br>Blend</b></div>
+    <div class="bean b4" data-tilt><span class="mono">No caffeine</span><b>Decaf,<br>honestly good</b></div>
+  </div>
+</section>
+
+<section id="visit" class="wrap" style="padding-top:28px">
+  <div class="sec-head rv"><h2 class="display">Come in</h2><span class="mono">Two minutes from the station</span></div>
+  <div class="visit">
+    <div class="hours rv">
+      <div class="openpill mono" id="openpill"><i></i> <span id="opentext">Checking…</span></div>
+      <div class="row" data-day="1,2,3,4,5"><b>Monday – Friday</b><span>6:30am – 3:00pm</span></div>
+      <div class="row" data-day="6"><b>Saturday</b><span>7:00am – 2:00pm</span></div>
+      <div class="row" data-day="0"><b>Sunday</b><span>7:30am – 1:00pm</span></div>
+      <div class="row"><b>Public holidays</b><span>We sleep in. 8:00am – 12:00pm</span></div>
+    </div>
+    <div class="where rv">
       <div class="big">14 Railway Parade<br>Kogarah NSW</div>
       <p>Street parking out front, more behind the laneway. We hold the corner table for anyone working on something.</p>
-      <p style="margin-top:18px"><strong>Say hello:</strong> hello@bowline.example · (02) 0000 0000</p>
+      <p><strong>hello@bowline.example</strong> · (02) 0000 0000</p>
+      <a class="btn btn-fill" href="#menu" style="margin-top:8px">Have a look at the menu</a>
     </div>
   </div>
 </section>
 
-<footer class="site">
+<footer>
   <div class="wrap">
     <div>
-      <h3>Bowline Coffee</h3>
-      <span class="mono">A demonstration site. Nothing here is a real business.</span>
+      <h3 class="display">See you<br>at 6:30.</h3>
+      <span class="mono" style="display:block;margin-top:14px">A demonstration site. Nothing here is a real business.</span>
     </div>
-    <a class="mono" href="https://rahulkd.com" style="color:#F0A78C;font-weight:700">Want one like this? → rahulkd.com</a>
+    <a class="mono" href="https://rahulkd.com" style="color:#9A3F12;font-weight:700">Want one like this? → rahulkd.com</a>
   </div>
 </footer>
 
+<script>
+(() => {
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // header condenses once you have moved
+  const hdr=$('#hdr');
+  const onScroll=()=>hdr.classList.toggle('stuck', scrollY>40);
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // reveal
+  if ('IntersectionObserver' in window && !still) {
+    const io=new IntersectionObserver((es,o)=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target);}
+    }),{threshold:0,rootMargin:'0px 0px -8% 0px'});
+    $$('.rv').forEach(el=>io.observe(el));
+  } else $$('.rv').forEach(el=>el.classList.add('in'));
+
+  // the cup drifts a little slower than the page
+  const par=$('[data-par]');
+  if(par && !still){
+    let tick=false;
+    addEventListener('scroll',()=>{
+      if(tick) return; tick=true;
+      requestAnimationFrame(()=>{
+        par.style.transform='translateY('+(scrollY*parseFloat(par.dataset.par)*-1)+'px)';
+        tick=false;
+      });
+    },{passive:true});
+  }
+
+  // bean tiles lean towards the cursor
+  if(!still && matchMedia('(pointer:fine)').matches){
+    $$('[data-tilt]').forEach(el=>{
+      el.addEventListener('pointermove',e=>{
+        const r=el.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        el.style.transform='perspective(700px) rotateX('+(-y*7)+'deg) rotateY('+(x*9)+'deg) translateY(-4px)';
+      });
+      el.addEventListener('pointerleave',()=>{el.style.transform='';});
+    });
+  }
+
+  // are we actually open right now?
+  const HOURS={0:[7.5,13],1:[6.5,15],2:[6.5,15],3:[6.5,15],4:[6.5,15],5:[6.5,15],6:[7,14]};
+  const now=new Date(), d=now.getDay(), h=now.getHours()+now.getMinutes()/60;
+  const [open,close]=HOURS[d];
+  const isOpen=h>=open && h<close;
+  const fmt=v=>{const hh=Math.floor(v), mm=Math.round((v-hh)*60);
+    const ap=hh>=12?'pm':'am', h12=((hh+11)%12)+1;
+    return h12+(mm?':'+String(mm).padStart(2,'0'):'')+ap;};
+  $('#opentext').textContent = isOpen ? 'Open now · until '+fmt(close) : 'Closed · back at '+fmt(open);
+  $('#openpill').classList.toggle('shut', !isOpen);
+  $$('.hours .row[data-day]').forEach(r=>{
+    if(r.dataset.day.split(',').map(Number).includes(d)) r.classList.add('now');
+  });
+})();
+</script>
 </body>
 </html>
