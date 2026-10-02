@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rahul Kumar Das — Free First Video Brochure</title>
+<style>
+/* ---------- fonts (local, so print never depends on a network) ---------- */
+@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:block;src:url(fonts/Anton-400.woff2) format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:block;src:url(fonts/IBMPlexMono-500.woff2) format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:block;src:url(fonts/IBMPlexMono-600.woff2) format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:block;src:url(fonts/Inter-var.woff2) format('woff2');}
+
+/* ---------- print setup: A4 landscape, folded once down the middle ---------- */
+@page{size:A4 landscape;margin:0;}
+
+:root{
+  --ink:#14120F;
+  --paper:#F7F5F1;
+  --orange:#D9542E;
+  --blue:#3E5CDB;
+  --midnight:#121420;
+  --cream:#EDEAE2;
+  --muted:#6B675C;
+  --pad-out:11mm;   /* outer trim edge */
+  --pad-in:11mm;    /* edge that meets the fold */
+  --pad-v:12mm;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#9c9a94;}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  padding:14mm 0 24mm;
+}
+.display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:0.005em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+/* ---------- sheet + panel geometry ---------- */
+.sheet{
+  width:297mm;height:210mm;
+  margin:0 auto 14mm;
+  display:flex;
+  position:relative;
+  overflow:hidden;
+  background:var(--paper);
+  box-shadow:0 6mm 18mm rgba(0,0,0,.35);
+}
+.panel{
+  width:148.5mm;height:210mm;
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:var(--pad-v) var(--pad-in) var(--pad-v) var(--pad-out);
+}
+.panel.right{padding:var(--pad-v) var(--pad-out) var(--pad-v) var(--pad-in);}
+
+/* fold ticks — tiny guides so a hand fold lands straight */
+.tick{position:absolute;left:50%;width:.3mm;height:4mm;background:rgba(0,0,0,.35);transform:translateX(-50%);}
+.tick.t{top:0}.tick.b{bottom:0}
+
+/* ---------- shared type ---------- */
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+.rule{height:.45mm;background:currentColor;opacity:.22;margin:5mm 0;}
+p{font-size:9.6pt;line-height:1.52;}
+
+/* =========================================================
+   PANEL 1 — FRONT COVER
+   ========================================================= */
+.p-front{background:var(--orange);color:var(--cream);}
+.p-front .eyebrow{color:rgba(255,255,255,.72);}
+.cover-head{margin-top:auto;}
+.cover-head .l1{font-size:20mm;line-height:.9;display:block;opacity:.92;}
+.cover-head .l2{font-size:27.5mm;line-height:.92;display:block;}
+.cover-head .l3{font-size:27.5mm;line-height:1.04;display:block;white-space:nowrap;}
+
+.circled{position:relative;display:inline-block;padding:0 7mm;}
+.circled .ct{position:relative;z-index:1;}
+.circled svg{
+  position:absolute;left:-3mm;top:-4.4mm;
+  width:calc(100% + 6mm);height:calc(100% + 8.8mm);
+  overflow:visible;pointer-events:none;
+}
+.circled svg path{fill:none;stroke:#FFF2D8;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+
+.promise{margin-top:7mm;font-size:11pt;line-height:1.46;font-weight:600;max-width:112mm;}
+.promise b{font-weight:800;border-bottom:.7mm solid rgba(255,242,216,.55);}
+
+.reassure{margin-top:auto;display:flex;align-items:center;gap:4mm;}
+.reassure .ln{flex:1;height:.4mm;background:rgba(255,242,216,.4);}
+.reassure .txt{font-family:'IBM Plex Mono',monospace;font-size:8.4pt;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,242,216,.92);flex:none;}
+.cover-foot{margin-top:auto;padding-top:8mm;display:flex;align-items:center;gap:6mm;}
+.qr{background:#fff;padding:2mm;border-radius:1.2mm;flex:none;line-height:0;}
+.qr img{display:block;}
+.qr.lg img{width:32mm;height:32mm;}
+.qr.sm img{width:25mm;height:25mm;}
+.cover-foot .scan{flex:1;}
+.cover-foot .scan .big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:6.6mm;line-height:1.02;display:block;}
+.cover-foot .scan .sub{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.04em;margin-top:2mm;display:block;color:rgba(255,255,255,.85);}
+
+/* =========================================================
+   PANEL 2 — HOW IT WORKS
+   ========================================================= */
+.p-how{background:var(--paper);color:var(--ink);}
+.p-how .eyebrow{color:var(--orange);}
+.p-how h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;
+  font-size:10.5mm;line-height:1.0;margin-top:4mm;}
+.steps{margin-top:auto;display:flex;flex-direction:column;gap:7mm;}
+.step{display:flex;gap:5mm;align-items:flex-start;}
+.step .n{font-family:'Anton',sans-serif;font-size:13mm;line-height:.82;color:var(--orange);flex:none;width:17mm;}
+.step h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;font-size:6mm;line-height:1;margin-bottom:2.2mm;}
+.step p{color:#43403A;}
+.pull{margin-top:auto;background:var(--ink);color:var(--cream);padding:7mm 7mm 7.5mm;border-radius:1.5mm;}
+.pull .q{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:6.4mm;line-height:1.12;}
+.pull .a{font-family:'IBM Plex Mono',monospace;font-size:7.8pt;letter-spacing:.1em;text-transform:uppercase;color:#A8A396;margin-top:3.5mm;}
+
+/* =========================================================
+   PANEL 3 — PROOF
+   ========================================================= */
+.p-proof{background:var(--midnight);color:var(--cream);}
+.p-proof .eyebrow{color:var(--orange);}
+.p-proof .lead{font-size:10pt;line-height:1.5;color:#9D988B;margin-top:4.5mm;max-width:105mm;}
+.p-proof h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;
+  font-size:10.5mm;line-height:1.0;margin-top:4mm;}
+.stats{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8mm 6mm;}
+.stat .num{font-family:'Anton',sans-serif;color:var(--orange);font-size:13mm;line-height:.9;display:block;}
+.stat .lbl{font-family:'IBM Plex Mono',monospace;font-size:7.6pt;line-height:1.42;letter-spacing:.05em;
+  text-transform:uppercase;color:#9D988B;margin-top:2.2mm;display:block;}
+.logos{margin-top:auto;}
+.logos .cap{font-family:'IBM Plex Mono',monospace;font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:#7C776B;}
+.logos ul{list-style:none;margin-top:3.5mm;}
+.logos li{font-size:9.6pt;font-weight:700;line-height:1.55;letter-spacing:.005em;}
+.logos li span{color:#7C776B;font-weight:400;}
+.quote{margin-top:auto;border-left:1mm solid var(--orange);padding-left:5mm;}
+.quote .q{font-size:12pt;line-height:1.35;font-weight:700;}
+.quote .who{font-family:'IBM Plex Mono',monospace;font-size:7.6pt;line-height:1.5;letter-spacing:.05em;
+  text-transform:uppercase;color:#9D988B;margin-top:3mm;}
+
+/* =========================================================
+   PANEL 4 — BACK COVER
+   ========================================================= */
+.p-back{background:var(--paper);color:var(--ink);}
+.p-back .eyebrow{color:var(--orange);}
+.p-back h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;
+  font-size:9.5mm;line-height:1.02;margin-top:4mm;}
+.prices{margin-top:6mm;}
+.price{display:flex;align-items:baseline;gap:2mm;padding:2.6mm 0;border-bottom:.3mm dotted #C9C4B8;}
+.price:last-child{border-bottom:none;}
+.price .what{font-size:9.4pt;font-weight:600;white-space:nowrap;}
+.price .what em{font-style:normal;color:var(--muted);font-weight:400;}
+.price .dots{flex:1;border-bottom:.3mm dotted #CFCABE;transform:translateY(-1mm);}
+.price .amt{font-family:'Anton',sans-serif;font-size:5.4mm;line-height:1;color:var(--orange);white-space:nowrap;}
+.price .amt i{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:7.2pt;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:1.2mm;}
+.incl{margin-top:4.5mm;font-size:8.6pt;line-height:1.5;color:#54514A;}
+.incl b{font-weight:700;color:var(--ink);}
+
+.me{margin-top:auto;display:flex;gap:5mm;align-items:flex-start;padding-top:7mm;}
+.me img{width:26mm;height:26mm;border-radius:50%;object-fit:cover;flex:none;}
+.me p{font-size:9pt;line-height:1.5;color:#43403A;}
+.me .nm{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:5.6mm;line-height:1;margin-bottom:2.2mm;color:var(--ink);}
+
+.contact{margin-top:auto;background:var(--orange);color:#fff;border-radius:1.5mm;
+  padding:5mm 5.5mm;display:flex;align-items:center;gap:5mm;}
+.contact .lines{flex:1;}
+.contact .lines .hdr{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:5.4mm;line-height:1;margin-bottom:2.8mm;}
+.contact .lines div{font-family:'IBM Plex Mono',monospace;font-size:8.2pt;line-height:1.62;letter-spacing:.02em;}
+
+/* ---------- screen-only helper ---------- */
+.howto{max-width:297mm;margin:0 auto 10mm;background:#14120F;color:#EDEAE2;padding:7mm 9mm;border-radius:2mm;
+  font-size:13px;line-height:1.65;}
+.howto h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:22px;margin-bottom:6px;letter-spacing:.01em;}
+.howto b{color:#F0A78C;}
+.howto code{font-family:'IBM Plex Mono',monospace;background:#26231D;padding:1px 5px;border-radius:3px;}
+.howto ol{margin:8px 0 0 18px;}
+.sheet-label{max-width:297mm;margin:0 auto 3mm;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:#f2f0ec;}
+
+@media print{
+  html,body{background:#fff;}
+  body{padding:0;}
+  .howto,.sheet-label{display:none !important;}
+  .sheet{margin:0;box-shadow:none;break-after:page;page-break-after:always;}
+  .sheet:last-of-type{break-after:auto;page-break-after:auto;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+}
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Print me</h1>
+  <ol>
+    <li>Print <b>A4, landscape, double-sided</b>, scale <b>100%</b> — not “fit to page”, or the QR shrinks.</li>
+    <li>Fold once down the middle. Sheet 1 is the outside, sheet 2 is the inside.</li>
+    <li><b>If the inside comes out upside-down</b>, reprint and switch the duplex setting between
+        “flip on short edge” and “flip on long edge”. Drivers disagree about which is which on landscape pages —
+        short edge is the one to try first.</li>
+    <li>Print shop version: hand them the PDF and ask for <b>A4, 170–250gsm silk, double sided,
+        full bleed, folded once to A5</b>. They’ll sort the rest.</li>
+    <li>Home printer? You’ll get a thin white edge around the orange. Still works fine.</li>
+  </ol>
+  <p style="margin-top:8px;opacity:.72">QR points to <code>https://rahulkd.com</code> — error-correction level H, so it still scans if it gets scuffed or a thumb covers a corner.</p>
+</div>
+
+<!-- ============ SHEET 1 — OUTSIDE (back cover | front cover) ============ -->
+<div class="sheet-label">Sheet 1 — outside</div>
+<div class="sheet">
+
+  <!-- PANEL 4 : BACK COVER -->
+  <section class="panel p-back">
+    <div class="eyebrow">03 — And if you like it?</div>
+    <h2>No quote form.<br>Here’s the whole<br>price list.</h2>
+
+    <div class="prices">
+      <div class="price"><span class="what">Reel / TikTok <em>15–30s</em></span><span class="dots"></span><span class="amt"><i>from</i> $220</span></div>
+      <div class="price"><span class="what">LinkedIn / Facebook <em>60–90s</em></span><span class="dots"></span><span class="amt"><i>from</i> $270</span></div>
+      <div class="price"><span class="what">YouTube feature <em>2–8 min</em></span><span class="dots"></span><span class="amt"><i>from</i> $400</span></div>
+      <div class="price"><span class="what">Single post or story</span><span class="dots"></span><span class="amt"><i>from</i> $45</span></div>
+      <div class="price"><span class="what">Carousel, poster, brochure</span><span class="dots"></span><span class="amt"><i>from</i> $80</span></div>
+    </div>
+    <p class="incl"><b>Included:</b> camera, lights, the edit, the captions, and the flat white I drink while editing. Pay per video — no retainer, no lock-in, no twelve-month anything.</p>
+
+    <div class="me">
+      <img src="rahul.jpg" alt="Rahul Kumar Das">
+      <div>
+        <div class="nm">Hi, I’m Rahul</div>
+        <p>Ten years a camera geek, four years doing this properly. I’ve run content for a university, a hotel school, a tax firm and a startup — and I still make cooking videos at 1am because I like it.</p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="lines">
+        <div class="hdr">Let’s make one</div>
+        <div>hello.rahulkd@gmail.com</div>
+        <div>instagram @_rahul_kd_</div>
+        <div>linkedin.com/in/rahulkd</div>
+        <div>rahulkd.com · Sydney</div>
+      </div>
+      <div class="qr sm"><img src="qr-rahulkd.png" alt="QR code to rahulkd.com"></div>
+    </div>
+  </section>
+
+  <!-- PANEL 1 : FRONT COVER -->
+  <section class="panel right p-front">
+    <div class="eyebrow">Rahul Kumar Das · Sydney · Content &amp; video</div>
+
+    <div class="cover-head">
+      <span class="display l1">Your</span>
+      <span class="display l2">First Video</span>
+      <span class="display l3">Is
+        <span class="circled"><span class="ct">On Me</span><svg viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true"><path d="M152 8C88 5 26 24 15 48c-11 25 38 50 118 53 74 3 148-16 152-44 4-26-52-46-124-49-33-1-62 2-84 9" stroke-width="3.2"/><path d="M44 88c52 15 152 18 216 2" stroke-width="1.9" opacity="0.5"/></svg></span>
+      </span>
+    </div>
+
+    <p class="promise">I film it, I edit it, I hand it over. Like it? <b>Let’s keep going.</b> Don’t? Keep it anyway — you owe me nothing.</p>
+
+    <div class="reassure">
+      <span class="ln"></span>
+      <span class="txt">No contract · No retainer · No catch</span>
+      <span class="ln"></span>
+    </div>
+
+    <div class="cover-foot">
+      <div class="qr lg"><img src="qr-rahulkd.png" alt="QR code to rahulkd.com"></div>
+      <div class="scan">
+        <span class="big">Scan this.<br>Watch 30 seconds.</span>
+        <span class="sub">rahulkd.com · 10M+ views of proof</span>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="tick t"></div><div class="tick b"></div>
+</div>
+
+<!-- ============ SHEET 2 — INSIDE (how it works | proof) ============ -->
+<div class="sheet-label">Sheet 2 — inside</div>
+<div class="sheet">
+
+  <!-- PANEL 2 : HOW IT WORKS -->
+  <section class="panel p-how">
+    <div class="eyebrow">01 — How this works</div>
+    <h2>Three steps.<br>No contract.<br>No catch.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div>
+          <h3>Say hi</h3>
+          <p>Scan the code on the front, send me one line about what you sell. Twenty seconds. I’ll reply the same day.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div>
+          <h3>I make the video</h3>
+          <p>My camera, my edit, my weekend. Shot at your place in about an hour, or built from footage you already have on your phone.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div>
+          <h3>You decide</h3>
+          <p>Love it, post it, and we make more. Don’t love it? Keep the video anyway. No invoice, no chasing, no awkward follow-ups.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull">
+      <div class="q">Nobody believes a brochure. Everybody believes a video of their own shop.</div>
+      <div class="a">So I’ll just make you one first</div>
+    </div>
+  </section>
+
+  <!-- PANEL 3 : PROOF -->
+  <section class="panel right p-proof">
+    <div class="eyebrow">02 — Proof, not promises</div>
+    <h2>I’ve done this<br>a few times.</h2>
+    <p class="lead">Four years, a lot of weekends, and a camera I’ve dropped twice.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="num">10M+</span><span class="lbl">Views across the<br>videos I’ve made</span></div>
+      <div class="stat"><span class="num">107K</span><span class="lbl">One campaign reel,<br>one weekend</span></div>
+      <div class="stat"><span class="num">83.6K</span><span class="lbl">A sales video that<br>actually sold</span></div>
+      <div class="stat"><span class="num">30+</span><span class="lbl">Clients brought in on<br>a $0 ad budget</span></div>
+    </div>
+
+    <div class="logos">
+      <div class="cap">Trusted by</div>
+      <ul>
+        <li>Torrens University Australia</li>
+        <li>Blue Mountains Int’l Hotel School</li>
+        <li>Graduate Plus</li>
+        <li>Sydney Tax &amp; Accountancy</li>
+      </ul>
+    </div>
+
+    <div class="quote">
+      <div class="q">“Reach went up 3x.”</div>
+      <div class="who">Juliana Rodriguez<br>Marketing Executive, Torrens University Australia</div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
