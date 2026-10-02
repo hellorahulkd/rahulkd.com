@@ -408,6 +408,44 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   .site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--paper)}
 }
 .scroll-progress span{will-change:transform}
+
+/* ---- Four things, one person: the camera shot belongs on a phone too. ---- */
+@media (max-width:680px){
+  /* The headline keeps the full line; the shot sits beside the paragraph,
+     in the space the second line leaves empty. */
+  .what-cutout{display:block;left:auto;right:-12px;top:202px;width:40%;max-width:178px}
+  #what .section-heading>p{max-width:57%}
+}
+@media (max-width:420px){
+  .what-cutout{top:186px;width:42%;max-width:146px;right:-10px}
+  #what .section-heading>p{max-width:56%}
+}
+
+/* ---- Who's this guy, on a laptop: the panel grew, the things inside it did
+   not. Scale them to the same proportions the phone already reads well at. */
+@media (min-width:861px){
+  .about-art>strong.journey{font-size:clamp(54px,4.9vw,72px);margin-top:14px}
+  .journey .j-to{margin-left:.75em}
+  .about-art .journey-arrow{width:clamp(90px,8.2vw,120px);margin:2px 0 2px .5em}
+  .about-art>span:first-child{font-size:13px}
+  .about-art-bottom{font-size:13px}
+  .about-ticket{width:58%;max-width:355px;bottom:68px;right:22px;padding:24px 28px}
+  .about-ticket>.mono{font-size:13px}
+  .about-ticket>p{font-size:16.5px;line-height:1.55;margin-top:10px}
+  .about-copy>.large-copy{font-size:26px}
+  .about-copy>p{font-size:16px;line-height:1.75;margin-top:19px}
+  .about-copy>.about-belief{font-size:18px;padding-left:22px;margin:28px 0}
+  .about-copy .text-link{font-size:14.5px}
+}
+
+/* The photo is the panel's first child, so span:first-child stopped matching
+   and this caption lost its stacking - it was painting under the scrim. */
+.about-art>span.mono:first-of-type{position:relative;z-index:2}
+
+/* On a narrower laptop the panel is tighter, so pull SYDNEY back off his face. */
+@media (min-width:861px) and (max-width:1320px){
+  .journey .j-to{margin-left:.42em}
+}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://rahulkd.com/#profile","url":"https://rahulkd.com/","name":"Rahul Kumar Das — Video, photo, social and websites","mainEntity":{"@type":"Person","@id":"https://rahulkd.com/#rahul","name":"Rahul Kumar Das","url":"https://rahulkd.com/","jobTitle":"Content creator, videographer, photographer and web developer","email":"mailto:hello.rahulkd@gmail.com","homeLocation":{"@type":"Place","name":"Kogarah Bay, Sydney, Australia"},"sameAs":["https://www.instagram.com/_rahul_kd_/","https://www.instagram.com/rahul_yaps/","https://www.linkedin.com/in/rahulkd/"]}}
