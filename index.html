@@ -518,12 +518,135 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   body.enhanced .rise.is-in{opacity:1;transform:none;will-change:auto}
 }
 
-/* The process heading pins below the section rail rather than behind it. */
-.process-heading{top:calc(var(--rail-top) + 78px)}
+/* The process heading pins below the section rail rather than behind it - but
+   only where it is sticky in the first place. On a phone it is position:relative,
+   where a top offset would just shove it down over the step beneath it. And
+   inside a live stage the pin does the holding, so the heading stays put. */
+@media (min-width:901px){.process-heading{top:calc(var(--rail-top) + 78px)}}
+body.enhanced .stage.is-live .process-heading{position:static;top:auto}
 
 /* This block is only 400px tall, so a pinned rail would sit over its own
    content for most of the section. It keeps the shape, not the pinning. */
 .first-video>.section-top{position:static}
+
+/* =========================================================================
+   SCROLL STORY
+   Two kinds of motion, and nothing else.
+
+   1. Entrances. An element is told once, when it first arrives, to play a
+      named effect. The effect is a CSS transition on opacity, transform or
+      clip-path, so it runs on the compositor and costs nothing afterwards.
+      Which effect an element gets is chosen per section, so the page does
+      not repeat one gesture from top to bottom.
+
+   2. Progress. Two sections hold still while their content advances. They
+      publish how far you are through them as --p, and the step highlight
+      follows. Only those two read geometry per frame.
+
+   Nothing here applies without JavaScript (everything is scoped to
+   body.enhanced) or when the visitor asks for reduced motion.
+   ========================================================================= */
+:root{--fx-ease:cubic-bezier(.22,.61,.36,1);--fx-ease-out:cubic-bezier(.16,1,.3,1)}
+
+@media (prefers-reduced-motion:no-preference){
+  body.enhanced [data-fx]{--fx-d:0ms}
+
+  /* The quiet default: a short lift. Used where nothing louder is wanted. */
+  body.enhanced [data-fx=rise]{opacity:0;transform:translate3d(0,16px,0);
+    transition:opacity .62s var(--fx-ease) var(--fx-d),transform .62s var(--fx-ease) var(--fx-d)}
+
+  /* A heading wiped up from behind its own baseline.
+     This uses a mask rather than clip-path on purpose: clip-path zeroes an
+     element's intersection rectangle, so a clipped element can never be seen
+     by IntersectionObserver and would wait for a reveal that never came. */
+  body.enhanced [data-fx=mask]{transform:translate3d(0,10px,0);
+    -webkit-mask-image:linear-gradient(#000,#000);mask-image:linear-gradient(#000,#000);
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-size:100% 100%;mask-size:100% 100%;
+    -webkit-mask-position:0 112%;mask-position:0 112%;
+    transition:-webkit-mask-position .9s var(--fx-ease-out) var(--fx-d),
+               mask-position .9s var(--fx-ease-out) var(--fx-d),
+               transform .9s var(--fx-ease-out) var(--fx-d)}
+  body.enhanced [data-fx=mask].is-in{-webkit-mask-position:0 0;mask-position:0 0}
+
+  /* A row arriving from the edge it belongs to. */
+  body.enhanced [data-fx=slide]{opacity:0;transform:translate3d(-30px,0,0);
+    transition:opacity .66s var(--fx-ease) var(--fx-d),transform .66s var(--fx-ease) var(--fx-d)}
+  body.enhanced [data-fx=slide-r]{opacity:0;transform:translate3d(30px,0,0);
+    transition:opacity .66s var(--fx-ease) var(--fx-d),transform .66s var(--fx-ease) var(--fx-d)}
+
+  /* A card settling onto the page. */
+  body.enhanced [data-fx=scale]{opacity:0;transform:scale(.962) translate3d(0,14px,0);
+    transition:opacity .72s var(--fx-ease-out) var(--fx-d),transform .72s var(--fx-ease-out) var(--fx-d)}
+
+  /* An image uncovered left to right, masked for the same reason. */
+  body.enhanced [data-fx=wipe]{
+    -webkit-mask-image:linear-gradient(#000,#000);mask-image:linear-gradient(#000,#000);
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-size:100% 100%;mask-size:100% 100%;
+    -webkit-mask-position:-102% 0;mask-position:-102% 0;
+    transition:-webkit-mask-position .85s var(--fx-ease-out) var(--fx-d),
+               mask-position .85s var(--fx-ease-out) var(--fx-d)}
+  body.enhanced [data-fx=wipe].is-in{-webkit-mask-position:0 0;mask-position:0 0}
+
+  /* A number or a chip landing. */
+  body.enhanced [data-fx=pop]{opacity:0;transform:scale(.76);
+    transition:opacity .5s var(--fx-ease-out) var(--fx-d),transform .62s cubic-bezier(.34,1.42,.5,1) var(--fx-d)}
+
+  /* A drawn mark stroking itself on. */
+  body.enhanced [data-fx=draw] path{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);
+    transition:stroke-dashoffset 1.1s var(--fx-ease-out) var(--fx-d)}
+  body.enhanced [data-fx=draw].is-in path{stroke-dashoffset:0}
+
+  body.enhanced [data-fx].is-in{opacity:1;transform:none}
+  body.enhanced [data-fx]:not(.is-in){will-change:opacity,transform}
+  body.enhanced [data-fx].fx-done{-webkit-mask-image:none;mask-image:none;will-change:auto}
+}
+
+/* ---- A section that holds still while its content advances ---------------
+   The track is tall; the pin inside it sticks for the length of that extra
+   height, so the block stays put while the page keeps scrolling normally.
+   Scroll is never captured - this is ordinary sticky positioning. */
+.stage-track{position:relative}
+.stage-pin{position:relative}
+body.enhanced .stage.is-live .stage-track{height:var(--track-h)}
+body.enhanced .stage.is-live .stage-pin{position:sticky;top:var(--pin-top);
+  display:flex;flex-direction:column;justify-content:center;min-height:var(--pin-min,auto)}
+body.enhanced .stage.is-live .process-grid{align-items:center}
+
+/* The marker that counts the stage out. */
+.stage-dots{display:flex;gap:7px;margin-top:26px;align-items:center}
+.stage-dot{width:26px;height:3px;border-radius:2px;background:currentColor;opacity:.2;
+  transition:opacity .45s var(--fx-ease),width .45s var(--fx-ease)}
+.stage-dot.is-on{opacity:1;width:42px}
+.stage:not(.is-live) .stage-dots{display:none}
+
+/* ---- Inside a live stage -------------------------------------------------
+   What I do keeps all four services on screen and walks the emphasis across
+   them, so nothing is ever hidden from someone scanning. The process shows one
+   step at a time, which is what makes that section feel like it is telling you
+   something rather than listing it. */
+body.enhanced .stage.is-live .pillar{transition:opacity .5s var(--fx-ease),transform .5s var(--fx-ease)}
+body.enhanced .stage.is-live .pillar.is-off{opacity:.45}
+body.enhanced .stage.is-live .pillar.is-on{opacity:1;transform:translateY(-6px)}
+body.enhanced .stage.is-live .pillar{border-top-color:var(--ink)}
+body.enhanced .stage.is-live .pillar.is-on{border-top-color:var(--orange)}
+
+body.enhanced .stage.is-live .process-steps{display:grid}
+body.enhanced .stage.is-live .process-step{grid-area:1/1;opacity:0;transform:translate3d(0,26px,0);
+  transition:opacity .5s var(--fx-ease),transform .55s var(--fx-ease-out);pointer-events:none;
+  border-top-color:transparent}
+body.enhanced .stage.is-live .process-step.is-on{opacity:1;transform:none;pointer-events:auto;
+  border-top-color:#63200b66}
+
+/* The counter and the dots sit with the heading, which is what you watch. */
+body.enhanced .stage.is-live .process-counter{transition:opacity .3s var(--fx-ease)}
+.process-section .stage-dots{color:var(--ink)}
+.process-section .stage-dots{margin-top:34px}
+
+/* The portrait drifts inside its frame as the page passes it. */
+body.enhanced .about-art.has-photo .art-photo{transform:translate3d(0,var(--art-shift,0px),0) scale(1.07)}
+html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://rahulkd.com/#profile","url":"https://rahulkd.com/","name":"Rahul Kumar Das — Video, photo, social and websites","mainEntity":{"@type":"Person","@id":"https://rahulkd.com/#rahul","name":"Rahul Kumar Das","url":"https://rahulkd.com/","jobTitle":"Content creator, videographer, photographer and web developer","email":"mailto:hello.rahulkd@gmail.com","homeLocation":{"@type":"Place","name":"Kogarah Bay, Sydney, Australia"},"sameAs":["https://www.instagram.com/_rahul_kd_/","https://www.instagram.com/rahul_yaps/","https://www.linkedin.com/in/rahulkd/"]}}
@@ -616,12 +739,16 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       <div class="section-top"><span class="eyebrow"><span>01</span> ALL OF IT, FROM ONE PERSON</span><span class="mono section-aside">NO AGENCY. NO HANDBALL.</span></div>
       <div class="section-heading reveal"><h2 id="what-title">FOUR THINGS.<br><span class="marker-word">ONE PERSON.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>Most shops end up juggling four different people. I do all four, so everything you put out actually looks like the same business.</p></div>
       <img class="what-cutout" src="assets/rahul-cutout-camera.png" alt="Rahul Kumar Das holding a phone gimbal" width="640" height="640" loading="lazy" decoding="async">
+      <div class="stage" data-stage="pillars" data-stage-steps="4" data-stage-min-width="900">
+      <div class="stage-track"><div class="stage-pin">
       <div class="pillar-grid">
         <article class="pillar reveal"><span class="cat cat-sm"><i>01</i>Video</span><h3>Your videos</h3><p>Reels for Instagram and TikTok, longer ones for YouTube. Thirteen are playing further down, so you can see what you would be getting.</p><a class="text-link" href="#work">See the video work <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
         <article class="pillar reveal"><span class="cat cat-sm"><i>02</i>Photo</span><h3>Your photos</h3><p>Your shop, your team, your food, your work. Shot so it still looks right when it is cropped for a feed.</p><a class="text-link" href="#stills">See some frames <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
         <article class="pillar reveal"><span class="cat cat-sm"><i>03</i>Social</span><h3>Your socials</h3><p>I plan it, write it and post it. You get on with running the place.</p><a class="text-link" href="#services">What that costs <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
         <article class="pillar reveal"><span class="cat cat-sm"><i>04</i>Websites</span><h3>Your website</h3><p>A proper website that loads fast and is yours to keep. This one is mine — scroll down for two I built for other businesses.</p><a class="text-link" href="#websites">See two more <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
       </div>
+      <div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div>
+      </div></div></div>
     </section>
 
     <div class="stats wrap" aria-label="Experience and results">
@@ -707,7 +834,7 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       <div class="story-timeline" aria-label="Rahul's story"><div class="story-options enhance-only" role="group" aria-label="Explore Rahul's story"><button type="button" class="story-option is-active" data-story="arrival" aria-pressed="true"><span class="cat cat-xs"><i>01</i>A New Start</span><strong>19 & in Sydney.</strong></button><button type="button" class="story-option" data-story="camera" aria-pressed="false"><span class="cat cat-xs"><i>02</i>The Constant</span><strong>A camera in hand.</strong></button><button type="button" class="story-option" data-story="community" aria-pressed="false"><span class="cat cat-xs"><i>03</i>The Community</span><strong>3,000+ voices.</strong></button><button type="button" class="story-option" data-story="today" aria-pressed="false"><span class="cat cat-xs"><i>04</i>Still Curious</span><strong>More to make.</strong></button></div><div class="story-details" aria-live="polite"><p data-story-panel="arrival"><strong>Nepal <svg class="ic" aria-hidden="true"><use href="#i-rt"/></svg> Sydney.</strong> At 19, I moved to Australia knowing nobody. You learn a lot about people when you are starting a new place from scratch.</p><p data-story-panel="camera"><strong>About ten years with a camera.</strong> Photography became video, and video became storytelling. I've now spent 4+ years doing content professionally.</p><p data-story-panel="community"><strong>From member to president.</strong> At Torrens University, I went from SRC member to social media manager to president, representing 3,000+ students.</p><p data-story-panel="today"><strong>A few hats. The same curiosity.</strong> Content creator, TAC Assistant, Passport People founder, and MBA (Advanced) student on a full scholarship.</p></div></div>
     </div></section>
 
-    <section class="process-section" id="process" aria-labelledby="process-title"><div class="section-top wrap"><span class="eyebrow"><span>06</span> THE PROCESS</span><span class="mono section-aside">EASY FROM THE START.</span></div><div class="process-grid wrap"><div class="process-heading"><h2 id="process-title">IDEA.<br>CAMERA.<br><span>ACTION.</span></h2><p>You bring your business.<br>I'll bring the camera and the questions.</p><span class="process-counter" aria-hidden="true">01<span>/03</span></span></div><div class="process-steps"><article class="process-step" data-step="01"><span class="step-number mono">01 / FIND THE STORY</span><h3>Let's hear it.</h3><p>Tell me what you do and who it's for. We find an idea that sounds like you.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span></article><article class="process-step" data-step="02"><span class="step-number mono">02 / MAKE THE THING</span><h3>I'll take it from here.</h3><p>Script, shoot, edit. One person to talk to, start to finish.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></article><article class="process-step" data-step="03"><span class="step-number mono">03 / OUT INTO THE WORLD</span><h3>Ready for your feed.</h3><p>Made for your audience and your platform.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span></article></div></div></section>
+    <section class="process-section" id="process" aria-labelledby="process-title"><div class="section-top wrap"><span class="eyebrow"><span>06</span> THE PROCESS</span><span class="mono section-aside">EASY FROM THE START.</span></div><div class="stage" data-stage="process" data-stage-steps="3"><div class="stage-track"><div class="stage-pin"><div class="process-grid wrap"><div class="process-heading"><h2 id="process-title">IDEA.<br>CAMERA.<br><span>ACTION.</span></h2><p>You bring your business.<br>I'll bring the camera and the questions.</p><span class="process-counter" aria-hidden="true">01<span>/03</span></span></div><div class="process-steps"><article class="process-step" data-step="01"><span class="step-number mono">01 / FIND THE STORY</span><h3>Let's hear it.</h3><p>Tell me what you do and who it's for. We find an idea that sounds like you.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span></article><article class="process-step" data-step="02"><span class="step-number mono">02 / MAKE THE THING</span><h3>I'll take it from here.</h3><p>Script, shoot, edit. One person to talk to, start to finish.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></article><article class="process-step" data-step="03"><span class="step-number mono">03 / OUT INTO THE WORLD</span><h3>Ready for your feed.</h3><p>Made for your audience and your platform.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span></article></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></section>
 
     <section class="section wrap" id="services" aria-labelledby="services-title">
       <div class="section-top"><span class="eyebrow"><span>07</span> SERVICES & RATES</span><span class="mono section-aside">THE GEAR'S ON ME.</span></div>
@@ -938,8 +1065,6 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   const hero = $('.hero-art');
   const contact = $('.contact-section');
   const navTargets = $$('a[href^="#"]', navigation).map((link) => ({ link, target: $(link.getAttribute('href')), top: 0 })).filter((item) => item.target);
-  const steps = $$('.process-step').map((element) => ({ element, top: 0, height: 0 }));
-  const processCounter = $('.process-counter');
   let viewportHeight = window.innerHeight;
   let documentHeight = document.documentElement.scrollHeight;
   let heroTop = 0;
@@ -949,7 +1074,6 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   let heroPointerTarget = { x: 0, y: 0 };
   let heroPointer = { x: 0, y: 0 };
   let contactPointer = null;
-  let selectedStep = '';
 
   function measureGeometry() {
     const scrollY = window.scrollY;
@@ -959,11 +1083,7 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
     heroTop = heroBox.top + scrollY;
     heroHeight = heroBox.height;
     navTargets.forEach((item) => { item.top = item.target.getBoundingClientRect().top + scrollY; });
-    steps.forEach((item) => {
-      const box = item.element.getBoundingClientRect();
-      item.top = box.top + scrollY;
-      item.height = box.height;
-    });
+    layoutStages();
     geometryDirty = false;
   }
   function requestFrame() {
@@ -981,20 +1101,32 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
       if (item === current) item.link.setAttribute('aria-current', 'location');
       else item.link.removeAttribute('aria-current');
     });
-    const activeStep = steps.find((item) => item.top + item.height > y + viewportHeight * 0.48) || steps[steps.length - 1];
-    if (activeStep && activeStep.element.dataset.step !== selectedStep) {
-      selectedStep = activeStep.element.dataset.step;
-      processCounter.firstChild.textContent = selectedStep;
-      steps.forEach((item) => item.element.classList.toggle('is-active', item === activeStep));
-    }
+    updateStages();
     let needsAnotherFrame = false;
+    const heroOnScreen = heroTop + heroHeight > y && heroTop < y + viewportHeight;
+    if (motionEnabled) {
+      // The hero cards drift as the page moves. This part is for everyone, not
+      // only a mouse - it is the first thing that says the page is alive.
+      if (heroOnScreen) {
+        hero.style.setProperty('--scroll-shift', Math.max(-25, Math.min(25, (y - heroTop + 120) * -0.045)).toFixed(2) + 'px');
+      }
+      // The portrait drifts inside its own frame as you pass it, so the panel
+      // reads as a window rather than a flat picture. It is scaled slightly so
+      // no edge is ever exposed.
+      if (artPanel) {
+        const box = artPanel.getBoundingClientRect();
+        if (box.bottom > 0 && box.top < viewportHeight) {
+          const through = (viewportHeight - box.top) / (viewportHeight + box.height);
+          artPanel.style.setProperty('--art-shift', ((through - 0.5) * -46).toFixed(2) + 'px');
+        }
+      }
+    }
     if (motionEnabled && finePointerQuery.matches) {
-      if (heroTop + heroHeight > y && heroTop < y + viewportHeight) {
+      if (heroOnScreen) {
         heroPointer.x += (heroPointerTarget.x - heroPointer.x) * 0.14;
         heroPointer.y += (heroPointerTarget.y - heroPointer.y) * 0.14;
         hero.style.setProperty('--pointer-x', heroPointer.x.toFixed(3));
         hero.style.setProperty('--pointer-y', heroPointer.y.toFixed(3));
-        hero.style.setProperty('--scroll-shift', Math.max(-25, Math.min(25, (y - heroTop + 120) * -0.045)).toFixed(2) + 'px');
         needsAnotherFrame = Math.abs(heroPointer.x - heroPointerTarget.x) + Math.abs(heroPointer.y - heroPointerTarget.y) > 0.005;
       }
       if (contactPointer) {
@@ -1090,38 +1222,183 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   });
 
 
-  // Content arrives as you reach it: a short lift and fade, staggered inside a
-  // row so four cards land one after another rather than all at once. Opacity
-  // and transform only - nothing moves the layout, and anything already on
-  // screen when the page loads is left alone.
-  const riseSelectors = ['.section-heading', '.pillar', '.stats > div', '.work-row-head',
-    '.site-card', '.site-note', '.client-names figure', '.about-art', '.about-copy',
-    '.process-step', '.pricing-layout > *', '.other-services', '.quote',
-    '.beyond-grid > *', '.bv-head', '.bv-rates', '.bv-note',
-    '.free-grid > *', '.contact-lines > *'];
-  if ('IntersectionObserver' in window && !motionQuery.matches) {
-    const riseObserver = new IntersectionObserver((entries, observer) => {
+  // ---- The scroll story --------------------------------------------------
+  // A storyboard rather than one effect everywhere: each section is given the
+  // gesture that suits what it holds. Headings wipe up from their baseline,
+  // list rows come in from the edge they sit on, cards settle, images uncover
+  // left to right, numbers land. The third value is the stagger, in
+  // milliseconds, between siblings in the same group.
+  const storyboard = [
+    ['#what .section-heading',                  'mask',    0],
+    ['#what .what-cutout',                      'scale',   0],
+    ['#what .pillar',                           'rise',    95],
+    ['.stats > div',                            'pop',     95],
+    ['#work .section-heading',                  'mask',    0],
+    ['#work .work-row-head > .cat',             'slide',   0],
+    ['#work .work-row-head > h3',               'mask',    110],
+    ['#work .work-row-head > p',                'rise',    190],
+    ['#stills .section-heading',                'mask',    0],
+    ['.stills-note',                            'rise',    0],
+    ['#websites .section-heading',              'mask',    0],
+    ['.site-card',                              'scale',   140],
+    ['.site-note',                              'rise',    0],
+    ['.clients-cat',                            'slide',   0],
+    ['.client-names figure',                    'wipe',    110],
+    ['#about .about-art',                       'scale',   0],
+    ['#about .about-copy > h2',                 'mask',    0],
+    ['#about .about-copy > p',                  'rise',    80],
+    ['#about .about-copy > .text-link',         'rise',    0],
+    ['.story-option',                           'rise',    70],
+    ['#services .section-heading',              'mask',    0],
+    ['.format-option',                          'slide',   85],
+    ['.estimate',                               'scale',   120],
+    ['.other-services',                         'rise',    0],
+    ['.bv-head',                                'mask',    0],
+    ['.bv-rates > span',                        'slide',   120],
+    ['.bv-note',                                'rise',    0],
+    ['.testimonial-section .section-heading',   'mask',    0],
+    ['.quote',                                  'scale',   150],
+    ['.beyond-grid > div:first-child',          'mask',    0],
+    ['.roles details',                          'slide',   80],
+    ['#free h2',                                'mask',    0],
+    ['#free .free-grid > div:last-child > *',   'rise',    85],
+    ['#contact h2',                             'mask',    0],
+    ['.contact-arrow',                          'pop',     0],
+    ['.contact-details > div',                  'rise',    110],
+    ['.contact-details a[href^=http], .contact-details a[download]', 'slide-r', 70],
+    ['.marker-word > svg',                      'draw',    0]
+  ];
+
+  const storyEnabled = 'IntersectionObserver' in window && !motionQuery.matches;
+  if (storyEnabled) {
+    const fxObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         observer.unobserve(entry.target);
-        entry.target.classList.add('is-in');
+        const target = entry.target;
+        target.classList.add('is-in');
+        // A mask is only needed while the effect plays. Taking it off afterwards
+        // means an underline that overhangs its heading is not clipped forever.
+        if (target.dataset.fx === 'mask' || target.dataset.fx === 'wipe') {
+          window.setTimeout(() => target.classList.add('fx-done'), 1400);
+        }
       });
-    }, { rootMargin: '0px 0px -7% 0px', threshold: 0.03 });
-    const seen = new Set();
-    riseSelectors.forEach((selector) => {
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.02 });
+
+    const tagged = new Set();
+    storyboard.forEach(([selector, effect, stagger]) => {
+      const group = new Map();
       $$(selector).forEach((element) => {
-        // The hero is the first thing anyone sees; it does not arrive, it is there.
-        if (seen.has(element) || element.closest('.hero')) return;
-        // A block of cross-origin iframes cannot be composited, so animating it
-        // repaints the strip on the main thread exactly while you scroll past.
-        if (element.querySelector('iframe')) return;
-        seen.add(element);
-        if (element.getBoundingClientRect().top < window.innerHeight * 0.92) return;
-        const position = Array.prototype.indexOf.call(element.parentElement.children, element);
-        element.style.setProperty('--rise-delay', Math.min(position, 5) * 75 + 'ms');
-        element.classList.add('rise');
-        riseObserver.observe(element);
+        // The hero is the first thing anyone sees. It is there, it does not arrive.
+        if (tagged.has(element) || element.closest('.hero')) return;
+        // A block holding a cross-origin iframe cannot be composited, so moving
+        // one repaints the strip on the main thread exactly while you scroll
+        // past it. Those are left alone.
+        if (element.querySelector('iframe') || element.closest('.reel')) return;
+        tagged.add(element);
+        const parent = element.parentElement;
+        const seat = (group.get(parent) || 0);
+        group.set(parent, seat + 1);
+        element.dataset.fx = effect;
+        if (stagger) element.style.setProperty('--fx-d', Math.min(seat, 5) * stagger + 'ms');
+        if (effect === 'draw') {
+          $$('path', element).forEach((path) => {
+            try { path.style.setProperty('--len', Math.ceil(path.getTotalLength()) + ''); } catch (_) { /* no geometry yet */ }
+          });
+        }
+        // Already on screen when the page loads: leave it be.
+        if (element.getBoundingClientRect().top < window.innerHeight * 0.9) {
+          element.classList.add('is-in');
+          return;
+        }
+        fxObserver.observe(element);
       });
+    });
+  }
+
+  // ---- Stages: the section holds still while its content advances ----------
+  // The track is given extra height and the block inside it sticks, so the page
+  // keeps scrolling at exactly the speed your finger asks for while the content
+  // steps forward. Nothing captures the scroll.
+  const artPanel = $('.about-art.has-photo');
+  const stages = $$('[data-stage]').map((element) => ({
+    element,
+    track: $('.stage-track', element),
+    pin: $('.stage-pin', element),
+    dots: $$('.stage-dot', element),
+    count: Number(element.dataset.stageSteps) || 1,
+    minWidth: Number(element.dataset.stageMinWidth) || 0,
+    items: [],
+    live: false,
+    active: -1
+  }));
+  stages.forEach((stage) => {
+    stage.items = stage.element.dataset.stage === 'process'
+      ? $$('.process-step', stage.element)
+      : $$('.pillar', stage.element);
+  });
+
+  function layoutStages() {
+    stages.forEach((stage) => {
+      // Measure the block the size it will be while held, not the size it is
+      // now: the process collapses three steps into one slot once it is live,
+      // and without this it would be judged too tall to ever become live.
+      const wasLive = stage.element.classList.contains('is-live');
+      stage.pin.style.removeProperty('--pin-min');
+      stage.element.classList.add('is-live');
+      const pinHeight = stage.pin.offsetHeight;
+      if (!wasLive) stage.element.classList.remove('is-live');
+      const headroom = parseFloat(getComputedStyle(root).getPropertyValue('--rail-top')) || 86;
+      const pinTop = headroom + 58;
+      // Only hold the section still if it comfortably fits on the screen with
+      // room to spare. On anything shorter it stays an ordinary block.
+      const fits = window.innerHeight - pinTop - pinHeight > 56;
+      const wide = window.innerWidth >= stage.minWidth;
+      const live = storyEnabled && fits && wide;
+      if (live !== stage.live) {
+        stage.live = live;
+        stage.element.classList.toggle('is-live', live);
+        if (!live) {
+          stage.active = -1;
+          stage.items.forEach((item) => item.classList.remove('is-on', 'is-off'));
+          stage.dots.forEach((dot) => dot.classList.remove('is-on'));
+        }
+      }
+      if (!live) {
+        stage.track.style.removeProperty('--track-h');
+        stage.pin.style.removeProperty('--pin-min');
+        return;
+      }
+      stage.element.style.setProperty('--pin-top', pinTop + 'px');
+      // The held block fills the screen and centres its content in it.
+      const frame = window.innerHeight - pinTop - 24;
+      stage.pin.style.setProperty('--pin-min', frame + 'px');
+      const dwell = Math.max(260, Math.min(window.innerHeight * 0.6, 430));
+      stage.track.style.setProperty('--track-h', Math.round(frame + stage.count * dwell) + 'px');
+    });
+  }
+
+  function updateStages() {
+    stages.forEach((stage) => {
+      if (!stage.live) return;
+      const box = stage.track.getBoundingClientRect();
+      const pinTop = parseFloat(stage.element.style.getPropertyValue('--pin-top')) || 0;
+      const travel = box.height - stage.pin.offsetHeight;
+      if (travel <= 0) return;
+      const progress = Math.max(0, Math.min(1, (pinTop - box.top) / travel));
+      // Before and after the stage every item reads at full strength. The
+      // highlight only moves while you are inside it.
+      const inside = box.top <= pinTop && box.bottom > pinTop + stage.pin.offsetHeight * 0.5;
+      const active = inside ? Math.min(stage.count - 1, Math.floor(progress * stage.count)) : -1;
+      if (active === stage.active) return;
+      stage.active = active;
+      stage.items.forEach((item, index) => {
+        item.classList.toggle('is-on', active < 0 || index === active);
+        item.classList.toggle('is-off', active >= 0 && index !== active);
+      });
+      stage.dots.forEach((dot, index) => dot.classList.toggle('is-on', index === Math.max(active, 0)));
+      const counter = $('.process-counter', stage.element);
+      if (counter && active >= 0) counter.firstChild.textContent = String(active + 1).padStart(2, '0');
     });
   }
 
