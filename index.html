@@ -74,11 +74,10 @@ html,body{overflow-x:clip}body{margin:0;background:var(--paper);color:var(--ink)
 @media(max-width:680px){.hero-offer{font-size:14px;gap:10px;padding:9px 15px 9px 9px}}
 
 #what,#work,#stills{position:relative}
-.what-cutout{position:absolute;left:42%;top:96px;width:372px;height:auto;z-index:1;pointer-events:none;
-  filter:drop-shadow(-10px 12px 26px rgba(20,18,15,.18))}
-@media(max-width:1180px){.what-cutout{left:48%;top:118px;width:300px}}
+
+@media(max-width:1180px){}
 @media(max-width:1024px){}
-@media(max-width:900px){.what-cutout{display:none}}
+@media(max-width:900px){}
 @media(max-width:680px){}
 
 /* Four pillars, the stills wall, and the website demos. */
@@ -360,7 +359,6 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   font-size:clamp(19px,1.9vw,26px);line-height:1.1}
 
 /* Let the section rule pass above the cut-out, not through it. */
-.what-cutout{top:132px}
 
 @media (max-width:860px){
   .about-art{min-height:600px}
@@ -413,12 +411,8 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
 @media (max-width:680px){
   /* The headline keeps the full line; the shot sits beside the paragraph,
      in the space the second line leaves empty. */
-  .what-cutout{display:block;left:auto;right:-16px;top:176px;width:57%;max-width:256px}
-  #what .section-heading>p{max-width:45%}
-}
-@media (max-width:420px){
-  .what-cutout{top:160px;width:59%;max-width:208px;right:-14px}
-  #what .section-heading>p{max-width:43%}
+  
+  
 }
 
 /* ---- Who's this guy, on a laptop: the panel grew, the things inside it did
@@ -449,22 +443,8 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
   .journey .j-to{margin-left:.42em}
 }
 
-/* The camera shot is taller than the headline block, so the block gets the
-   room rather than the shot landing on top of the pillars below it. */
-@media (min-width:901px){
-  #what .section-heading{margin-bottom:clamp(118px,10.2vw,150px)}
-}
 /* The paragraph shares this row down here, so he sits to the left of it and
    the size steps up as the row gets wider. */
-@media (min-width:901px) and (max-width:1099px){
-  .what-cutout{left:36%;top:100px;width:282px}
-}
-@media (min-width:1100px) and (max-width:1299px){
-  .what-cutout{left:37%;top:98px;width:330px}
-}
-@media (min-width:1300px){
-  .what-cutout{left:42%;top:92px;width:376px}
-}
 
 /* ================= The section rail holds while its section scrolls ========
    Every section now opens with the same three-part rail - number, label,
@@ -647,6 +627,45 @@ body.enhanced .stage.is-live .process-counter{transition:opacity .3s var(--fx-ea
 /* The portrait drifts inside its frame as the page passes it. */
 body.enhanced .about-art.has-photo .art-photo{transform:translate3d(0,var(--art-shift,0px),0) scale(1.07)}
 html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
+
+/* ---- What I do: the photo is held while the four things arrive ----------- */
+.what-stage{display:grid;gap:clamp(28px,4vw,70px);align-items:center}
+.what-figure{margin:0}
+.what-figure .what-cutout{position:static;left:auto;top:auto;display:block;width:auto;height:auto;max-width:100%;max-height:min(54vh,540px);margin-inline:auto}
+body.enhanced .stage.is-live .what-stage{grid-template-columns:.92fr 1.08fr}
+body.enhanced .stage.is-live .what-stage .stage-dots{grid-column:2}
+body.enhanced .stage.is-live .pillar-grid{margin-top:0}
+@media (max-width:860px){
+  body.enhanced .stage.is-live .what-stage{grid-template-columns:1fr}
+  body.enhanced .stage.is-live .what-stage .stage-dots{grid-column:1}
+  .what-figure .what-cutout{max-height:min(32vh,290px)}
+}
+/* Without the stage it is still there, just a figure above the four services. */
+.stage:not(.is-live) .what-figure{max-width:260px;margin:0 auto 30px}
+
+/* ---- Stage modes --------------------------------------------------------
+   solo: one item at a time, all of them stacked in the same grid cell so the
+   block never changes height as the sequence runs.
+   build: they arrive one after another and stay. */
+body.enhanced .stage.is-live[data-stage-mode=solo] .stage-slot{display:grid;grid-template-columns:1fr}
+body.enhanced .stage.is-live[data-stage-mode=solo] .stage-item{grid-area:1/1}
+body.enhanced .stage.is-live[data-stage-mode=solo] .stage-item{
+  opacity:0;transform:translate3d(0,26px,0);pointer-events:none;
+  transition:opacity .5s var(--fx-ease),transform .55s var(--fx-ease-out)}
+body.enhanced .stage.is-live[data-stage-mode=solo] .stage-item.is-on{
+  opacity:1;transform:none;pointer-events:auto}
+
+body.enhanced .stage.is-live[data-stage-mode=build] .stage-item{
+  opacity:0;transform:translate3d(0,22px,0);
+  transition:opacity .55s var(--fx-ease),transform .6s var(--fx-ease-out)}
+body.enhanced .stage.is-live[data-stage-mode=build] .stage-item.is-on{opacity:1;transform:none}
+
+/* A held block is tighter than the same block scrolling by: the heading sits
+   closer to what it introduces, and the demo art gives back a little height,
+   so the whole thing fits a laptop screen with room to spare. */
+body.enhanced .stage.is-live .section-heading{margin-bottom:26px}
+body.enhanced .stage.is-live .site-card-art{min-height:0;padding-block:26px}
+body.enhanced .stage.is-live .beyond-grid{align-items:center}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://rahulkd.com/#profile","url":"https://rahulkd.com/","name":"Rahul Kumar Das — Video, photo, social and websites","mainEntity":{"@type":"Person","@id":"https://rahulkd.com/#rahul","name":"Rahul Kumar Das","url":"https://rahulkd.com/","jobTitle":"Content creator, videographer, photographer and web developer","email":"mailto:hello.rahulkd@gmail.com","homeLocation":{"@type":"Place","name":"Kogarah Bay, Sydney, Australia"},"sameAs":["https://www.instagram.com/_rahul_kd_/","https://www.instagram.com/rahul_yaps/","https://www.linkedin.com/in/rahulkd/"]}}
@@ -738,9 +757,10 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
     <section class="section wrap" id="what" aria-labelledby="what-title"><div class="float-icons" aria-hidden="true"><span class="fi fi-a"><svg><use href="#ic-heart"/></svg></span><span class="fi fi-c blue"><svg><use href="#ic-send"/></svg></span><span class="fi fi-d"><svg><use href="#ic-comment"/></svg></span><span class="fi fi-b blue"><svg><use href="#ic-save"/></svg></span></div>
       <div class="section-top"><span class="eyebrow"><span>01</span> ALL OF IT, FROM ONE PERSON</span><span class="mono section-aside">NO AGENCY. NO HANDBALL.</span></div>
       <div class="section-heading reveal"><h2 id="what-title">FOUR THINGS.<br><span class="marker-word">ONE PERSON.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>Most shops end up juggling four different people. I do all four, so everything you put out actually looks like the same business.</p></div>
-      <img class="what-cutout" src="assets/rahul-cutout-camera.png" alt="Rahul Kumar Das holding a phone gimbal" width="640" height="640" loading="lazy" decoding="async">
-      <div class="stage" data-stage="pillars" data-stage-steps="4" data-stage-min-width="900">
+      <div class="stage" data-stage="pillars" data-stage-steps="4" data-stage-mode="solo" data-stage-items=".pillar">
       <div class="stage-track"><div class="stage-pin">
+      <div class="what-stage">
+      <figure class="what-figure"><img class="what-cutout" src="assets/rahul-cutout-camera.png" alt="Rahul Kumar Das holding a phone gimbal" width="640" height="640" loading="lazy" decoding="async"></figure>
       <div class="pillar-grid">
         <article class="pillar reveal"><span class="cat cat-sm"><i>01</i>Video</span><h3>Your videos</h3><p>Reels for Instagram and TikTok, longer ones for YouTube. Thirteen are playing further down, so you can see what you would be getting.</p><a class="text-link" href="#work">See the video work <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
         <article class="pillar reveal"><span class="cat cat-sm"><i>02</i>Photo</span><h3>Your photos</h3><p>Your shop, your team, your food, your work. Shot so it still looks right when it is cropped for a feed.</p><a class="text-link" href="#stills">See some frames <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
@@ -748,6 +768,7 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
         <article class="pillar reveal"><span class="cat cat-sm"><i>04</i>Websites</span><h3>Your website</h3><p>A proper website that loads fast and is yours to keep. This one is mine — scroll down for two I built for other businesses.</p><a class="text-link" href="#websites">See two more <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></article>
       </div>
       <div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div>
+      </div>
       </div></div></div>
     </section>
 
@@ -799,7 +820,7 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
 
     <section class="section wrap" id="websites" aria-labelledby="websites-title">
       <div class="section-top"><span class="eyebrow"><span>04</span> WEBSITES</span><span class="mono section-aside">BUILT, THEN LOOKED AFTER.</span></div>
-      <div class="section-heading reveal"><h2 id="websites-title">I BUILD<br><span class="marker-word">WEBSITES TOO.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>A real site with your menu, your hours, your photos and a way to reach you — not a Facebook page. Here are two I built to show you what that looks like.</p></div>
+      <div class="stage" data-stage="sites" data-stage-steps="2" data-stage-mode="build" data-stage-items=".site-card"><div class="stage-track"><div class="stage-pin"><div class="section-heading reveal"><h2 id="websites-title">I BUILD<br><span class="marker-word">WEBSITES TOO.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>A real site with your menu, your hours, your photos and a way to reach you — not a Facebook page. Here are two I built to show you what that looks like.</p></div>
       <div class="site-cards">
         <a class="site-card reveal" href="demos/cafe/" target="_blank" rel="noopener">
           <div class="site-card-art art-cafe" aria-hidden="true"><span class="scr"><i></i><b>Coffee, and a reason to sit down.</b></span></div>
@@ -820,6 +841,8 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
           </div>
         </a>
       </div>
+      <div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span></div>
+      </div></div></div>
       <p class="site-note">Both are demos — the businesses are invented. Yours would use your words and your photos. <strong>A$800–1,000 to build it, A$150 a month to look after it.</strong></p>
     </section>
 
@@ -834,7 +857,7 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
       <div class="story-timeline" aria-label="Rahul's story"><div class="story-options enhance-only" role="group" aria-label="Explore Rahul's story"><button type="button" class="story-option is-active" data-story="arrival" aria-pressed="true"><span class="cat cat-xs"><i>01</i>A New Start</span><strong>19 & in Sydney.</strong></button><button type="button" class="story-option" data-story="camera" aria-pressed="false"><span class="cat cat-xs"><i>02</i>The Constant</span><strong>A camera in hand.</strong></button><button type="button" class="story-option" data-story="community" aria-pressed="false"><span class="cat cat-xs"><i>03</i>The Community</span><strong>3,000+ voices.</strong></button><button type="button" class="story-option" data-story="today" aria-pressed="false"><span class="cat cat-xs"><i>04</i>Still Curious</span><strong>More to make.</strong></button></div><div class="story-details" aria-live="polite"><p data-story-panel="arrival"><strong>Nepal <svg class="ic" aria-hidden="true"><use href="#i-rt"/></svg> Sydney.</strong> At 19, I moved to Australia knowing nobody. You learn a lot about people when you are starting a new place from scratch.</p><p data-story-panel="camera"><strong>About ten years with a camera.</strong> Photography became video, and video became storytelling. I've now spent 4+ years doing content professionally.</p><p data-story-panel="community"><strong>From member to president.</strong> At Torrens University, I went from SRC member to social media manager to president, representing 3,000+ students.</p><p data-story-panel="today"><strong>A few hats. The same curiosity.</strong> Content creator, TAC Assistant, Passport People founder, and MBA (Advanced) student on a full scholarship.</p></div></div>
     </div></section>
 
-    <section class="process-section" id="process" aria-labelledby="process-title"><div class="section-top wrap"><span class="eyebrow"><span>06</span> THE PROCESS</span><span class="mono section-aside">EASY FROM THE START.</span></div><div class="stage" data-stage="process" data-stage-steps="3"><div class="stage-track"><div class="stage-pin"><div class="process-grid wrap"><div class="process-heading"><h2 id="process-title">IDEA.<br>CAMERA.<br><span>ACTION.</span></h2><p>You bring your business.<br>I'll bring the camera and the questions.</p><span class="process-counter" aria-hidden="true">01<span>/03</span></span></div><div class="process-steps"><article class="process-step" data-step="01"><span class="step-number mono">01 / FIND THE STORY</span><h3>Let's hear it.</h3><p>Tell me what you do and who it's for. We find an idea that sounds like you.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span></article><article class="process-step" data-step="02"><span class="step-number mono">02 / MAKE THE THING</span><h3>I'll take it from here.</h3><p>Script, shoot, edit. One person to talk to, start to finish.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></article><article class="process-step" data-step="03"><span class="step-number mono">03 / OUT INTO THE WORLD</span><h3>Ready for your feed.</h3><p>Made for your audience and your platform.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span></article></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></section>
+    <section class="process-section" id="process" aria-labelledby="process-title"><div class="section-top wrap"><span class="eyebrow"><span>06</span> THE PROCESS</span><span class="mono section-aside">EASY FROM THE START.</span></div><div class="stage" data-stage="process" data-stage-steps="3" data-stage-mode="solo" data-stage-items=".process-step"><div class="stage-track"><div class="stage-pin"><div class="process-grid wrap"><div class="process-heading"><h2 id="process-title">IDEA.<br>CAMERA.<br><span>ACTION.</span></h2><p>You bring your business.<br>I'll bring the camera and the questions.</p><span class="process-counter" aria-hidden="true">01<span>/03</span></span></div><div class="process-steps"><article class="process-step" data-step="01"><span class="step-number mono">01 / FIND THE STORY</span><h3>Let's hear it.</h3><p>Tell me what you do and who it's for. We find an idea that sounds like you.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span></article><article class="process-step" data-step="02"><span class="step-number mono">02 / MAKE THE THING</span><h3>I'll take it from here.</h3><p>Script, shoot, edit. One person to talk to, start to finish.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></article><article class="process-step" data-step="03"><span class="step-number mono">03 / OUT INTO THE WORLD</span><h3>Ready for your feed.</h3><p>Made for your audience and your platform.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span></article></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></section>
 
     <section class="section wrap" id="services" aria-labelledby="services-title">
       <div class="section-top"><span class="eyebrow"><span>07</span> SERVICES & RATES</span><span class="mono section-aside">THE GEAR'S ON ME.</span></div>
@@ -863,9 +886,9 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
       </div>
     </section>
 
-    <section class="testimonial-section wrap" aria-labelledby="testimonials-title"><div class="section-top"><span class="eyebrow"><span>08</span> NICE THINGS FROM GOOD PEOPLE</span><span class="mono section-aside">THEIR WORDS, NOT MINE.</span></div><div class="section-heading"><h2 id="testimonials-title">DON'T TAKE<br><span class="marker-word">MY WORD FOR IT.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>People I have made things for.</p></div><div class="quote-grid"><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>Working with Rahul was effortless, our campaign saw a <em>3x boost in reach.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-juliana.jpg" alt="Juliana Rodriguez" loading="lazy" decoding="async" width="200" height="200"><span><strong>Juliana Rodriguez</strong><small>Marketing Executive<br>Torrens University Australia</small></span></figcaption></figure><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>He shared our product exactly how we imagined, <em>genuine and beautifully styled.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-basan.jpg" alt="Basan Subedi" loading="lazy" decoding="async" width="200" height="200"><span><strong>Basan Subedi</strong><small>Founder<br>Graduate Plus & DigiPearl</small></span></figcaption></figure></div></section>
+    <section class="testimonial-section wrap" aria-labelledby="testimonials-title"><div class="section-top"><span class="eyebrow"><span>08</span> NICE THINGS FROM GOOD PEOPLE</span><span class="mono section-aside">THEIR WORDS, NOT MINE.</span></div><div class="stage" data-stage="quotes" data-stage-steps="2" data-stage-mode="build" data-stage-items=".quote"><div class="stage-track"><div class="stage-pin"><div class="section-heading"><h2 id="testimonials-title">DON'T TAKE<br><span class="marker-word">MY WORD FOR IT.<svg viewBox="0 0 540 30" aria-hidden="true"><path d="M4 20C139 4 405 2 533 14M101 26c130-10 285-12 389-3"/></svg></span></h2><p>People I have made things for.</p></div><div class="quote-grid"><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>Working with Rahul was effortless, our campaign saw a <em>3x boost in reach.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-juliana.jpg" alt="Juliana Rodriguez" loading="lazy" decoding="async" width="200" height="200"><span><strong>Juliana Rodriguez</strong><small>Marketing Executive<br>Torrens University Australia</small></span></figcaption></figure><figure class="quote reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote>He shared our product exactly how we imagined, <em>genuine and beautifully styled.</em></blockquote><figcaption><img class="quote-avatar" src="assets/avatar-basan.jpg" alt="Basan Subedi" loading="lazy" decoding="async" width="200" height="200"><span><strong>Basan Subedi</strong><small>Founder<br>Graduate Plus & DigiPearl</small></span></figcaption></figure></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></div></section>
 
-    <section class="section wrap beyond-section" aria-labelledby="beyond-title"><div class="section-top"><span class="eyebrow"><span>09</span> BEYOND THE CAMERA</span><span class="mono section-aside">THE REST OF THE WEEK.</span></div><div class="beyond-grid"><div><h2 id="beyond-title">A FEW<br>OTHER HATS.</h2><p>Content is a big part of my life.<br>It isn't the whole picture.</p></div><div class="roles"><details><summary><span><small class="mono">WORK / CURRENT</small>TAC Assistant</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>At Torrens University Australia, I work with course fee and admissions data across UAC and QTAC, including a master reference workbook spanning 60+ courses.</p></details><details><summary><span><small class="mono">COMMUNITY / LEADERSHIP</small>SRC President</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>I represented 3,000+ students at Torrens University, growing from SRC member to social media manager to president.</p></details><details><summary><span><small class="mono">BUILDING / ONGOING</small>Passport People</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>I founded a student travel brand for Sydney university students. Good trips, good people, and a reason to get out there.</p></details><details><summary><span><small class="mono">LEARNING / ALWAYS</small>MBA & BBIS</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>I'm studying an MBA (Advanced) at Torrens University on a full scholarship. I completed my Bachelor of Business Information Systems in December 2025.</p></details></div></div></section>
+    <section class="section wrap beyond-section" aria-labelledby="beyond-title"><div class="section-top"><span class="eyebrow"><span>09</span> BEYOND THE CAMERA</span><span class="mono section-aside">THE REST OF THE WEEK.</span></div><div class="stage" data-stage="roles" data-stage-steps="4" data-stage-mode="build" data-stage-items=".roles details"><div class="stage-track"><div class="stage-pin"><div class="beyond-grid"><div><h2 id="beyond-title">A FEW<br>OTHER HATS.</h2><p>Content is a big part of my life.<br>It isn't the whole picture.</p></div><div class="roles"><details><summary><span><small class="mono">WORK / CURRENT</small>TAC Assistant</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>At Torrens University Australia, I work with course fee and admissions data across UAC and QTAC, including a master reference workbook spanning 60+ courses.</p></details><details><summary><span><small class="mono">COMMUNITY / LEADERSHIP</small>SRC President</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>I represented 3,000+ students at Torrens University, growing from SRC member to social media manager to president.</p></details><details><summary><span><small class="mono">BUILDING / ONGOING</small>Passport People</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>I founded a student travel brand for Sydney university students. Good trips, good people, and a reason to get out there.</p></details><details><summary><span><small class="mono">LEARNING / ALWAYS</small>MBA & BBIS</span><span class="details-plus" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>I'm studying an MBA (Advanced) at Torrens University on a full scholarship. I completed my Bachelor of Business Information Systems in December 2025.</p></details></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></div></section>
 
     <section class="first-video wrap" id="free" aria-labelledby="first-video-title"><div class="section-top"><span class="eyebrow"><span>10</span> FOR LOCAL BUSINESSES</span><span class="mono section-aside">NO CATCH. NO INVOICE.</span></div><div class="free-grid"><div><h2 id="first-video-title">THE FIRST ONE'S<br><span class="marker-word">ON ME.<svg viewBox="0 0 330 30" aria-hidden="true"><path d="M4 20C73 6 238 2 324 14M39 27c79-13 220-7 266-2"/></svg></span></h2></div><div><p>I'm based in Kogarah Bay and would love to make something for your business.</p><p><strong>Your first video is free.</strong> You keep it either way. If you like working together, we can talk about the next one.</p><a class="button button-dark" href="mailto:hello.rahulkd@gmail.com?subject=My%20first%20video&body=Hi%20Rahul%2C%0A%0AMy%20business%20is%3A%20%0AWe%27re%20based%20in%3A%20%0AI%27d%20love%20a%20video%20about%3A%20">Let's try an idea <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></a></div></div></section>
 
@@ -1330,12 +1353,17 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
     minWidth: Number(element.dataset.stageMinWidth) || 0,
     items: [],
     live: false,
-    active: -1
+    active: ''
   }));
   stages.forEach((stage) => {
-    stage.items = stage.element.dataset.stage === 'process'
-      ? $$('.process-step', stage.element)
-      : $$('.pillar', stage.element);
+    stage.items = $$(stage.element.dataset.stageItems || '.stage-item', stage.element);
+    stage.items.forEach((item) => item.classList.add('stage-item'));
+    if (stage.items[0]) stage.items[0].parentElement.classList.add('stage-slot');
+    stage.authored = stage.element.dataset.stageMode || 'solo';
+    // solo      - one at a time, the others out of the way
+    // build     - they arrive one after another and stay
+    // highlight - all of them are there, the emphasis moves
+    stage.mode = stage.element.dataset.stageMode || 'solo';
   });
 
   function layoutStages() {
@@ -1346,21 +1374,32 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
       const wasLive = stage.element.classList.contains('is-live');
       stage.pin.style.removeProperty('--pin-min');
       stage.element.classList.add('is-live');
-      const pinHeight = stage.pin.offsetHeight;
-      if (!wasLive) stage.element.classList.remove('is-live');
       const headroom = parseFloat(getComputedStyle(root).getPropertyValue('--rail-top')) || 86;
-      const pinTop = headroom + 58;
+      const pinTop = headroom + 44;
+      const room = (height) => window.innerHeight - pinTop - height > 38;
+      // Measure at the authored mode first. If everything on screen at once
+      // will not fit - a phone, a short laptop - show one item at a time
+      // instead, which always does, rather than giving up on the moment.
+      stage.element.dataset.stageMode = stage.authored;
+      stage.mode = stage.authored;
+      let pinHeight = stage.pin.offsetHeight;
+      if (!room(pinHeight) && stage.authored === 'build') {
+        stage.element.dataset.stageMode = 'solo';
+        stage.mode = 'solo';
+        pinHeight = stage.pin.offsetHeight;
+      }
+      if (!wasLive) stage.element.classList.remove('is-live');
       // Only hold the section still if it comfortably fits on the screen with
       // room to spare. On anything shorter it stays an ordinary block.
-      const fits = window.innerHeight - pinTop - pinHeight > 56;
+      const fits = room(pinHeight);
       const wide = window.innerWidth >= stage.minWidth;
       const live = storyEnabled && fits && wide;
       if (live !== stage.live) {
         stage.live = live;
         stage.element.classList.toggle('is-live', live);
         if (!live) {
-          stage.active = -1;
-          stage.items.forEach((item) => item.classList.remove('is-on', 'is-off'));
+          stage.active = '';
+          stage.items.forEach((item) => item.classList.remove('is-on', 'is-lead'));
           stage.dots.forEach((dot) => dot.classList.remove('is-on'));
         }
       }
@@ -1383,24 +1422,34 @@ html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
       if (!stage.live) return;
       const box = stage.track.getBoundingClientRect();
       const pinTop = parseFloat(stage.element.style.getPropertyValue('--pin-top')) || 0;
-      const travel = box.height - stage.pin.offsetHeight;
+      const pinHeight = stage.pin.offsetHeight;
+      const travel = box.height - pinHeight;
       if (travel <= 0) return;
       const progress = Math.max(0, Math.min(1, (pinTop - box.top) / travel));
-      // Before and after the stage every item reads at full strength. The
-      // highlight only moves while you are inside it.
-      const inside = box.top <= pinTop && box.bottom > pinTop + stage.pin.offsetHeight * 0.5;
-      const active = inside ? Math.min(stage.count - 1, Math.floor(progress * stage.count)) : -1;
-      if (active === stage.active) return;
-      stage.active = active;
+      // Three phases. Below the stage nothing has arrived yet; inside it the
+      // sequence runs; once it is behind you everything stays on screen, so
+      // scrolling back up never leaves a gap where content used to be.
+      const phase = box.top > pinTop ? 'before' : (box.bottom <= pinTop + pinHeight * 0.5 ? 'after' : 'inside');
+      const active = phase === 'inside' ? Math.min(stage.count - 1, Math.floor(progress * stage.count))
+        : phase === 'after' ? stage.count - 1 : -1;
+      const key = phase + active;
+      if (key === stage.active) return;
+      stage.active = key;
       stage.items.forEach((item, index) => {
-        item.classList.toggle('is-on', active < 0 || index === active);
-        item.classList.toggle('is-off', active >= 0 && index !== active);
+        const on = phase === 'after' ? true
+          : phase === 'before' ? stage.mode === 'highlight'
+          : stage.mode === 'solo' ? index === active
+          : stage.mode === 'build' ? index <= active
+          : true;
+        item.classList.toggle('is-on', on);
+        item.classList.toggle('is-lead', phase === 'inside' && index === active);
       });
       stage.dots.forEach((dot, index) => dot.classList.toggle('is-on', index === Math.max(active, 0)));
       const counter = $('.process-counter', stage.element);
       if (counter && active >= 0) counter.firstChild.textContent = String(active + 1).padStart(2, '0');
     });
   }
+
 
   // Nothing on this page moves because you scrolled past it. Blocks used to
   // fade and slide up 18px as they came in and the stats counted up from zero,
