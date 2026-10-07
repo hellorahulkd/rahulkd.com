@@ -666,6 +666,58 @@ body.enhanced .stage.is-live[data-stage-mode=build] .stage-item.is-on{opacity:1;
 body.enhanced .stage.is-live .section-heading{margin-bottom:26px}
 body.enhanced .stage.is-live .site-card-art{min-height:0;padding-block:26px}
 body.enhanced .stage.is-live .beyond-grid{align-items:center}
+
+/* ---- The work and the feed ----------------------------------------------
+   These two cannot be held the way the others are: they are built from
+   cross-origin embeds, which cannot be composited, so moving their containers
+   repaints the strip on the main thread exactly while you scroll past. What
+   they get instead is the label holding: each row's category stays with you
+   for as long as its reels are on screen, then the next one takes over. The
+   embeds themselves are never touched. */
+#work .work-row-head{position:sticky;top:calc(var(--rail-top) + 70px);z-index:4;
+  background:var(--paper);padding-top:18px;padding-bottom:16px}
+#stills .section-heading{position:sticky;top:calc(var(--rail-top) + 70px);z-index:4;
+  background:var(--paper);padding-top:16px;padding-bottom:20px}
+@media (max-width:860px){
+  #work .work-row-head{top:calc(var(--rail-top) + 62px);padding-top:14px;padding-bottom:12px}
+  #stills .section-heading{top:calc(var(--rail-top) + 62px)}
+}
+
+/* The frames themselves come down in size - they were filling the column. */
+.reel-grid{max-width:min(100%,1060px)}
+@media (max-width:900px){.reel-grid{max-width:min(100%,560px)}}
+@media (max-width:680px){.reel-grid{max-width:min(100%,330px)}}
+.ig-frame{min-height:360px}
+
+/* ---- Louder in the held sections ----------------------------------------
+   Only one of these is on screen at a time, so it can be the size it deserves
+   rather than the size four-across allowed. */
+body.enhanced .stage.is-live[data-stage-mode=solo] .pillar .cat{font-size:clamp(40px,5.8vw,78px);line-height:1}
+body.enhanced .stage.is-live[data-stage-mode=solo] .pillar .cat>i{font-size:15px;padding:7px 11px;margin-right:22px;vertical-align:.52em}
+body.enhanced .stage.is-live[data-stage-mode=solo] .pillar h3{font-size:clamp(21px,2.1vw,29px);margin:18px 0 12px}
+body.enhanced .stage.is-live[data-stage-mode=solo] .pillar p{font-size:clamp(15.5px,1.2vw,19px);line-height:1.6;max-width:46ch}
+body.enhanced .stage.is-live[data-stage-mode=solo] .pillar .text-link{font-size:15px;margin-top:24px}
+body.enhanced .stage.is-live[data-stage-mode=solo] .pillar{border-top-width:3px;padding-top:26px}
+
+body.enhanced .stage.is-live[data-stage-mode=solo] .process-step h3{font-size:clamp(34px,4.4vw,64px);margin-top:22px}
+body.enhanced .stage.is-live[data-stage-mode=solo] .process-step p{font-size:clamp(15.5px,1.15vw,18px);max-width:44ch;margin-top:16px}
+body.enhanced .stage.is-live[data-stage-mode=solo] .process-step .step-number{font-size:14px}
+
+/* The clients band keeps its row shape inside the stage. */
+.clients-row{display:flex;align-items:center;justify-content:space-between;gap:48px}
+/* Mirrors what the band itself used to do: below 900 it stacks, and the row
+   must stack with it or the four frames are crushed into a 768px line. */
+@media (max-width:1150px){.clients-row{gap:28px}}
+@media (max-width:900px){.clients-row{display:block}}
+.clients .stage{width:100%}
+
+/* The story keeps all four tabs visible; the stage turns the pages. */
+body.enhanced .stage.is-live[data-stage-mode=highlight] .stage-item{
+  transition:opacity .4s var(--fx-ease)}
+
+/* While a stage is being measured it is taken out of flow behind a frozen
+   track height, so nothing below it moves. */
+.stage.is-probing .stage-pin{position:absolute!important;left:0;right:0;top:0;visibility:hidden!important}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://rahulkd.com/#profile","url":"https://rahulkd.com/","name":"Rahul Kumar Das — Video, photo, social and websites","mainEntity":{"@type":"Person","@id":"https://rahulkd.com/#rahul","name":"Rahul Kumar Das","url":"https://rahulkd.com/","jobTitle":"Content creator, videographer, photographer and web developer","email":"mailto:hello.rahulkd@gmail.com","homeLocation":{"@type":"Place","name":"Kogarah Bay, Sydney, Australia"},"sameAs":["https://www.instagram.com/_rahul_kd_/","https://www.instagram.com/rahul_yaps/","https://www.linkedin.com/in/rahulkd/"]}}
@@ -846,7 +898,7 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
       <p class="site-note">Both are demos — the businesses are invented. Yours would use your words and your photos. <strong>A$800–1,000 to build it, A$150 a month to look after it.</strong></p>
     </section>
 
-    <section class="clients wrap" aria-label="Brands Rahul has worked with"><p class="cat cat-sm clients-cat">Good people who took<br>a chance on me</p><div class="client-names"><figure><img src="assets/client-gradplus.jpg" alt="A frame shot for Graduate Plus" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-gradplus.png" alt="Graduate Plus" loading="lazy" decoding="async"></figure><figure><img src="assets/client-sydneytax.jpg" alt="A frame shot for Sydney Tax and Accountancy" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-sydneytax.png" alt="Sydney Tax &amp; Accountancy Services" loading="lazy" decoding="async"></figure><figure><img src="assets/client-torrens.jpg" alt="A frame shot for Torrens University Australia" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-torrens.png" alt="Torrens University Australia" loading="lazy" decoding="async"></figure><figure><img src="assets/client-bmihms.jpg" alt="A frame shot for Blue Mountains International Hotel Management School" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-bmihms.png" alt="Blue Mountains International Hotel Management School" loading="lazy" decoding="async"></figure></div></section>
+    <section class="clients wrap" aria-label="Brands Rahul has worked with"><div class="stage" data-stage="clients" data-stage-steps="4" data-stage-mode="build" data-stage-items=".client-names figure"><div class="stage-track"><div class="stage-pin"><div class="clients-row"><p class="cat cat-sm clients-cat">Good people who took<br>a chance on me</p><div class="client-names"><figure><img src="assets/client-gradplus.jpg" alt="A frame shot for Graduate Plus" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-gradplus.png" alt="Graduate Plus" loading="lazy" decoding="async"></figure><figure><img src="assets/client-sydneytax.jpg" alt="A frame shot for Sydney Tax and Accountancy" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-sydneytax.png" alt="Sydney Tax &amp; Accountancy Services" loading="lazy" decoding="async"></figure><figure><img src="assets/client-torrens.jpg" alt="A frame shot for Torrens University Australia" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-torrens.png" alt="Torrens University Australia" loading="lazy" decoding="async"></figure><figure><img src="assets/client-bmihms.jpg" alt="A frame shot for Blue Mountains International Hotel Management School" loading="lazy" decoding="async"><img class="client-logo" src="assets/logo-bmihms.png" alt="Blue Mountains International Hotel Management School" loading="lazy" decoding="async"></figure></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></div></section>
 
     <section class="section about-section" id="about" aria-labelledby="about-title"><div class="wrap">
       <div class="section-top"><span class="eyebrow"><span>05</span> THE PERSON BEHIND THE CAMERA</span><span class="mono section-aside">HI. I'M RAHUL.</span></div>
@@ -854,7 +906,7 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
         <div class="about-art has-photo reveal"><img class="art-photo" src="assets/about-1.jpg" alt="Rahul Kumar Das" loading="lazy" decoding="async" width="832" height="1248"><span class="mono">A LONG WAY FROM WHERE I STARTED.</span><strong class="journey"><span class="j-from">NEPAL</span><span class="journey-arrow" aria-hidden="true"><svg viewBox="0 0 110 80" fill="none"><path d="M7 7c4 23 16 40 34 50 13 7 27 11 42 13" stroke-linecap="round"/><path d="M83 70c-7 2-14 2-21-1" stroke-linecap="round"/><path d="M83 70c-6-4-11-9-15-15" stroke-linecap="round"/></svg></span><span class="j-to">SYDNEY<span class="orange">.</span></span></strong><div class="about-ticket"><span class="mono">BROUGHT WITH ME</span><p>A camera.<br>Some curiosity.<br>A willingness to figure it out.</p></div><span class="about-art-bottom mono">SAME CURIOSITY. BIGGER STORIES.</span></div>
         <div class="about-copy reveal"><h2 id="about-title">WHO'S<br><span class="orange">THIS GUY?</span></h2><p class="large-copy">I came from Nepal at 19<br>and knew nobody here.</p><p>A camera habit turned into a career — photography first, then video, then the part I like most, which is working out what your business is actually about.</p><p>I write, shoot, present and edit. Easy to work with, quick to reply.</p><p class="about-belief">“I'd rather earn your audience's trust slowly than borrow their attention for an afternoon.”</p><a class="text-link" href="resume.pdf" download>The slightly more formal version (CV) <span aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-dn"/></svg></span></a></div>
       </div>
-      <div class="story-timeline" aria-label="Rahul's story"><div class="story-options enhance-only" role="group" aria-label="Explore Rahul's story"><button type="button" class="story-option is-active" data-story="arrival" aria-pressed="true"><span class="cat cat-xs"><i>01</i>A New Start</span><strong>19 & in Sydney.</strong></button><button type="button" class="story-option" data-story="camera" aria-pressed="false"><span class="cat cat-xs"><i>02</i>The Constant</span><strong>A camera in hand.</strong></button><button type="button" class="story-option" data-story="community" aria-pressed="false"><span class="cat cat-xs"><i>03</i>The Community</span><strong>3,000+ voices.</strong></button><button type="button" class="story-option" data-story="today" aria-pressed="false"><span class="cat cat-xs"><i>04</i>Still Curious</span><strong>More to make.</strong></button></div><div class="story-details" aria-live="polite"><p data-story-panel="arrival"><strong>Nepal <svg class="ic" aria-hidden="true"><use href="#i-rt"/></svg> Sydney.</strong> At 19, I moved to Australia knowing nobody. You learn a lot about people when you are starting a new place from scratch.</p><p data-story-panel="camera"><strong>About ten years with a camera.</strong> Photography became video, and video became storytelling. I've now spent 4+ years doing content professionally.</p><p data-story-panel="community"><strong>From member to president.</strong> At Torrens University, I went from SRC member to social media manager to president, representing 3,000+ students.</p><p data-story-panel="today"><strong>A few hats. The same curiosity.</strong> Content creator, TAC Assistant, Passport People founder, and MBA (Advanced) student on a full scholarship.</p></div></div>
+      <div class="stage" data-stage="story" data-stage-steps="4" data-stage-mode="highlight" data-stage-items=".story-option" data-stage-story="1"><div class="stage-track"><div class="stage-pin"><div class="story-timeline" aria-label="Rahul's story"><div class="story-options enhance-only" role="group" aria-label="Explore Rahul's story"><button type="button" class="story-option is-active" data-story="arrival" aria-pressed="true"><span class="cat cat-xs"><i>01</i>A New Start</span><strong>19 & in Sydney.</strong></button><button type="button" class="story-option" data-story="camera" aria-pressed="false"><span class="cat cat-xs"><i>02</i>The Constant</span><strong>A camera in hand.</strong></button><button type="button" class="story-option" data-story="community" aria-pressed="false"><span class="cat cat-xs"><i>03</i>The Community</span><strong>3,000+ voices.</strong></button><button type="button" class="story-option" data-story="today" aria-pressed="false"><span class="cat cat-xs"><i>04</i>Still Curious</span><strong>More to make.</strong></button></div><div class="story-details" aria-live="polite"><p data-story-panel="arrival"><strong>Nepal <svg class="ic" aria-hidden="true"><use href="#i-rt"/></svg> Sydney.</strong> At 19, I moved to Australia knowing nobody. You learn a lot about people when you are starting a new place from scratch.</p><p data-story-panel="camera"><strong>About ten years with a camera.</strong> Photography became video, and video became storytelling. I've now spent 4+ years doing content professionally.</p><p data-story-panel="community"><strong>From member to president.</strong> At Torrens University, I went from SRC member to social media manager to president, representing 3,000+ students.</p><p data-story-panel="today"><strong>A few hats. The same curiosity.</strong> Content creator, TAC Assistant, Passport People founder, and MBA (Advanced) student on a full scholarship.</p></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></div>
     </div></section>
 
     <section class="process-section" id="process" aria-labelledby="process-title"><div class="section-top wrap"><span class="eyebrow"><span>06</span> THE PROCESS</span><span class="mono section-aside">EASY FROM THE START.</span></div><div class="stage" data-stage="process" data-stage-steps="3" data-stage-mode="solo" data-stage-items=".process-step"><div class="stage-track"><div class="stage-pin"><div class="process-grid wrap"><div class="process-heading"><h2 id="process-title">IDEA.<br>CAMERA.<br><span>ACTION.</span></h2><p>You bring your business.<br>I'll bring the camera and the questions.</p><span class="process-counter" aria-hidden="true">01<span>/03</span></span></div><div class="process-steps"><article class="process-step" data-step="01"><span class="step-number mono">01 / FIND THE STORY</span><h3>Let's hear it.</h3><p>Tell me what you do and who it's for. We find an idea that sounds like you.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span></article><article class="process-step" data-step="02"><span class="step-number mono">02 / MAKE THE THING</span><h3>I'll take it from here.</h3><p>Script, shoot, edit. One person to talk to, start to finish.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-ne"/></svg></span></article><article class="process-step" data-step="03"><span class="step-number mono">03 / OUT INTO THE WORLD</span><h3>Ready for your feed.</h3><p>Made for your audience and your platform.</p><span class="step-decoration" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span></article></div></div><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></section>
@@ -869,7 +921,7 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
       <div class="other-services" id="toolkit"><h3 class="mono">ALSO IN THE TOOLKIT</h3><div><span>Single post <b>$45</b></span><span>Carousel <b>~$200</b></span><span>Story <b>$45</b></span><span>Presentation <b>~$200</b></span><span>Poster <b>$80</b></span><span>Brochure <b>$80</b></span></div></div>
 
       <div class="beyond-video reveal">
-        <h3 class="bv-head">A website, built<br>and looked after.</h3>
+        <div class="stage" data-stage="rates" data-stage-steps="2" data-stage-mode="build" data-stage-items=".bv-rates > span"><div class="stage-track"><div class="stage-pin"><h3 class="bv-head">A website, built<br>and looked after.</h3>
         <div class="bv-rates">
           <span>
             <small>Build your website</small>
@@ -882,7 +934,7 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
             <i>Maintenance, content and photo updates, team and project changes, small edits and technical support.</i>
           </span>
         </div>
-        <p class="bv-note">Bigger redesigns or new functionality quoted separately. Photography and social media are priced per job — ask and I'll give you a number.</p>
+        <p class="bv-note">Bigger redesigns or new functionality quoted separately. Photography and social media are priced per job — ask and I'll give you a number.</p><div class="stage-dots" aria-hidden="true"><span class="stage-dot"></span><span class="stage-dot"></span></div></div></div></div>
       </div>
     </section>
 
@@ -1371,24 +1423,31 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
       // Measure the block the size it will be while held, not the size it is
       // now: the process collapses three steps into one slot once it is live,
       // and without this it would be judged too tall to ever become live.
-      const wasLive = stage.element.classList.contains('is-live');
-      stage.pin.style.removeProperty('--pin-min');
-      stage.element.classList.add('is-live');
       const headroom = parseFloat(getComputedStyle(root).getPropertyValue('--rail-top')) || 86;
       const pinTop = headroom + 44;
       const room = (height) => window.innerHeight - pinTop - height > 38;
-      // Measure at the authored mode first. If everything on screen at once
-      // will not fit - a phone, a short laptop - show one item at a time
-      // instead, which always does, rather than giving up on the moment.
+      const wasLive = stage.element.classList.contains('is-live');
+      // Work out how tall this block will be while it is held. The probe has to
+      // happen on the real element, so it is done out of flow behind a frozen
+      // track height - otherwise the measurement itself moves the page, which
+      // the browser quite rightly counts as layout shift.
+      const frozen = stage.track.offsetHeight;
+      stage.track.style.height = frozen + 'px';
+      stage.pin.style.removeProperty('--pin-min');
+      stage.element.classList.add('is-live', 'is-probing');
       stage.element.dataset.stageMode = stage.authored;
       stage.mode = stage.authored;
       let pinHeight = stage.pin.offsetHeight;
+      // If everything on screen at once will not fit - a phone, a short laptop -
+      // show one item at a time instead, which always does.
       if (!room(pinHeight) && stage.authored === 'build') {
         stage.element.dataset.stageMode = 'solo';
         stage.mode = 'solo';
         pinHeight = stage.pin.offsetHeight;
       }
+      stage.element.classList.remove('is-probing');
       if (!wasLive) stage.element.classList.remove('is-live');
+      stage.track.style.height = '';
       // Only hold the section still if it comfortably fits on the screen with
       // room to spare. On anything shorter it stays an ordinary block.
       const fits = room(pinHeight);
@@ -1411,7 +1470,9 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
       stage.element.style.setProperty('--pin-top', pinTop + 'px');
       // The held block fills the screen and centres its content in it.
       const frame = window.innerHeight - pinTop - 24;
-      stage.pin.style.setProperty('--pin-min', frame + 'px');
+      // A short block should not be stretched across a whole screen; it only
+      // fills the frame if it has the content to earn it.
+      stage.pin.style.setProperty('--pin-min', Math.min(frame, pinHeight + 170) + 'px');
       const dwell = Math.max(260, Math.min(window.innerHeight * 0.6, 430));
       stage.track.style.setProperty('--track-h', Math.round(frame + stage.count * dwell) + 'px');
     });
@@ -1447,6 +1508,12 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
       stage.dots.forEach((dot, index) => dot.classList.toggle('is-on', index === Math.max(active, 0)));
       const counter = $('.process-counter', stage.element);
       if (counter && active >= 0) counter.firstChild.textContent = String(active + 1).padStart(2, '0');
+      // The story is an existing tab component. The stage turns its pages; the
+      // buttons still work if someone would rather click.
+      if (stage.element.dataset.stageStory && active >= 0) {
+        const button = stage.items[active];
+        if (button && button.dataset.story) showStory(button.dataset.story);
+      }
     });
   }
 
