@@ -86,3 +86,39 @@ priority is coerced, never trusted.
 **Not configured yet:** the function needs `OPENAI_API_KEY` in Supabase →
 Edge Functions → Secrets. Until it's set, a run returns `not_configured`, leaves
 the recording at `uploaded` rather than `failed`, and the UI offers Retry.
+
+## Google Calendar + Gmail
+
+Sign in with Google (`access_type=offline`, `prompt=consent`) and Supabase Auth
+returns a `provider_refresh_token`. The page posts it **once** to
+`google-sync` with `action:"link"`; it is stored in `life_google_auth`, a table
+with RLS on and **no policy for `authenticated`**, so only an Edge Function
+holding the service role can ever read it back. The browser cannot retrieve it.
+
+`google-sync` then:
+- **Calendar** — primary calendar, 28 days from today, every page in that window
+  (`singleEvents`, `orderBy=startTime`, up to 12 pages). Clashes get
+  `is_overlapping`. The window is deleted and rewritten each run, so an event
+  deleted in Google disappears here; rows already promoted to a task are spared.
+  The inclusive last date covered is recorded in `life_sync_log.covered_through`.
+- **Gmail** — `is:unread in:inbox newer_than:7d -category:promotions
+  -category:social -category:forums`, newest 20 threads read as *metadata only*.
+  Bodies are never stored. `List-Unsubscribe` or a no-reply-shaped sender marks
+  a thread as noise; everything else is a candidate for a reply. When more than
+  20 matched, the log says so — the count shown is a sample, never a total.
+
+It never writes to Calendar, and never sends, marks read, archives or deletes
+mail. Each run writes a row to `life_sync_log`, which the Inbox header reads so
+it can say *when* it last succeeded and name a source that failed, rather than
+showing stale data as if it were current.
+
+**Needs:** `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` as Edge Function secrets,
+and Google enabled as an Auth provider with the same credentials.
+
+## Video transcription
+
+Whisper caps uploads at 25 MB, so video is handled in the browser before upload:
+`decodeAudioData` pulls the audio track out, an `OfflineAudioContext` downmixes
+it to 16 kHz mono, and it is written out as WAV — roughly 13 minutes per 25 MB.
+No ffmpeg, no library, nothing leaves the machine until the audio is ready.
+Anything over the limit after that says how long it is and asks you to trim.

@@ -283,6 +283,11 @@ input[type=range]{width:100%;accent-color:var(--accent);height:22px}
         <input type="email" id="email" autocomplete="email" required placeholder="you@example.com"></label>
       <button class="btn" style="width:100%" type="submit" id="signinBtn">Send me a link</button>
     </form>
+    <div style="display:flex;align-items:center;gap:10px;margin:16px 0 14px;color:var(--ink-3);font-size:12px">
+      <span style="flex:1;height:1px;background:var(--line)"></span>or<span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
+    <button class="btn ghost" style="width:100%" id="connectGoogle">Continue with Google</button>
+    <p style="font-size:12.5px;color:var(--ink-3);margin:10px 0 0;line-height:1.5">Signing in with Google also connects your calendar and inbox, read-only.</p>
     <div id="gateMsg" style="margin-top:14px"></div>
   </div>
 </div>
@@ -327,7 +332,7 @@ const DAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satu
 const S = {
   user:null, settings:null, routine:[], overrides:[], tasks:[], calendar:[],
   mealPlan:[], mealLog:[], cats:[], tx:[], goals:[], codes:[], fields:[], recent:[],
-  recordings:[], openRec:null,
+  recordings:[], openRec:null, inbox:[], syncLog:[], googleLinked:false, syncing:false,
   view:"today", month:null, busy:false
 };
 
@@ -517,7 +522,7 @@ async function loadAll(){
   }
   S.settings = settings;
 
-  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields, recordings] =
+  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields, recordings, inbox, syncLog] =
     await Promise.all([
       sb.from("life_routine").select("*").eq("active",true).order("start_time"),
       sb.from("life_day_overrides").select("*").eq("on_date",today),
@@ -533,7 +538,9 @@ async function loadAll(){
       sb.from("life_codes").select("*").eq("active",true),
       sb.from("life_journal").select("*").order("entry_date",{ascending:false}).limit(60),
       sb.from("life_journal_fields").select("*").order("sort"),
-      sb.from("life_recordings").select("*").order("created_at",{ascending:false}).limit(30)
+      sb.from("life_recordings").select("*").order("created_at",{ascending:false}).limit(30),
+      sb.from("life_inbox").select("*").eq("archived",false).order("received_at",{ascending:false}),
+      sb.from("life_sync_log").select("*").order("ran_at",{ascending:false}).limit(20)
     ]);
   S.routine = routine.data || []; S.overrides = overrides.data || [];
   S.tasks = tasks.data || []; S.calendar = calendar.data || [];
@@ -542,6 +549,9 @@ async function loadAll(){
   S.codes = codes.data || []; S.recent = recent.data || [];
   S.fields = fields.data || [];
   S.recordings = recordings.data || [];
+  S.inbox = inbox.data || [];
+  S.syncLog = syncLog.data || [];
+  S.googleLinked = (S.syncLog.length > 0) || S.googleLinked;
   S.month = mk;
 }
 
@@ -582,6 +592,7 @@ const NAV = [
   {id:"today",     label:"Today",   ico:"◉"},
   {id:"capture",   label:"Capture", ico:"◍"},
   {id:"priorities",label:"Priority",ico:"▲"},
+  {id:"inbox",     label:"Inbox",   ico:"✉"},
   {id:"week",      label:"Week",    ico:"▦"},
   {id:"money",  label:"Money",   ico:"$"},
   {id:"journal",label:"Journal", ico:"✎"},
@@ -601,7 +612,7 @@ function renderNav(){
 function render(){
   renderNav();
   const v = el("view");
-  v.innerHTML = ({today:viewToday, capture:viewCapture, priorities:viewPriorities,
+  v.innerHTML = ({today:viewToday, capture:viewCapture, priorities:viewPriorities, inbox:viewInbox,
                   week:viewWeek, money:viewMoney, journal:viewJournal,
                   fields:viewFields, log:viewLog}[S.view] || viewToday)();
   v.scrollTop = 0;
@@ -1220,8 +1231,8 @@ function viewCapture(){
               ? `<button class="btn fit" id="stopRec" style="background:var(--bad);border-color:var(--bad)">■ Stop and save</button>
                  <span class="reclive"><span class="dot"></span>listening…</span>`
               : `<button class="btn fit" id="startRec">● Start recording</button>
-                 <label class="btn ghost fit" style="margin:0">Upload a file
-                   <input type="file" id="audioFile" accept="audio/*" style="display:none"></label>`}
+                 <label class="btn ghost fit" style="margin:0">Upload audio or video
+                   <input type="file" id="audioFile" accept="audio/*,video/*" style="display:none"></label>`}
           </div>
           <p class="empty" style="margin-top:10px">Your microphone is only opened while you're recording. Audio is stored privately and never leaves your account.</p>
         </div>
@@ -1367,6 +1378,189 @@ function viewPriorities(){
         </div></section>`;
     }).join("")}
   </div>`;
+}
+
+/* ===== GOOGLE: connect, sync, inbox ===== */
+const GOOGLE_SCOPES = [
+  "https://www.googleapis.com/auth/calendar.readonly",
+  "https://www.googleapis.com/auth/gmail.readonly"
+].join(" ");
+const SYNC_URL = SUPABASE_URL + "/functions/v1/google-sync";
+
+async function fnCall(url, body, timeoutMs = 120000){
+  const { data:{ session } } = await sb.auth.getSession();
+  if (!session) throw new Error("Your session expired. Reload and sign in again.");
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      method:"POST", signal:ctl.signal,
+      headers:{Authorization:"Bearer " + session.access_token, "Content-Type":"application/json"},
+      body: JSON.stringify(body || {})
+    });
+    const out = await res.json().catch(() => ({}));
+    return { ok:res.ok, status:res.status, out };
+  } catch (e){
+    if (e && e.name === "AbortError") throw new Error("That took too long and was stopped.");
+    throw e;
+  } finally { clearTimeout(t); }
+}
+
+/* Google only hands back a refresh token on a *fresh* consent, hence
+   access_type=offline + prompt=consent. Without it there is nothing to store
+   and the morning sync can never run unattended. */
+async function connectGoogle(){
+  const { error } = await sb.auth.signInWithOAuth({
+    provider:"google",
+    options:{
+      scopes: GOOGLE_SCOPES,
+      redirectTo: location.origin + location.pathname,
+      queryParams:{ access_type:"offline", prompt:"consent" }
+    }
+  });
+  if (error) flash(error.message, "err");
+}
+
+/* Called right after an OAuth round-trip: hand the refresh token to the server
+   once, then forget it. The browser never reads it back. */
+async function captureGoogleToken(session){
+  const rt = session && session.provider_refresh_token;
+  if (!rt) return false;
+  try {
+    const { ok, out } = await fnCall(SYNC_URL, {action:"link", refresh_token:rt, scopes:GOOGLE_SCOPES}, 30000);
+    if (!ok){ flash(out.message || "Couldn't save the Google connection.", "err"); return false; }
+    S.googleLinked = true;
+    return true;
+  } catch (e){ flash(e.message, "err"); return false; }
+}
+
+async function syncGoogle(){
+  if (S.syncing) return;
+  S.syncing = true; render();
+  try {
+    const { ok, out } = await fnCall(SYNC_URL, {});
+    if (!ok){
+      flash(out.message || `Sync failed (${out.code || "unknown"}).`, "err");
+    } else {
+      const bits = [];
+      if (out.calendar && out.calendar.events != null)
+        bits.push(`${out.calendar.events} events through ${out.calendar.through}`);
+      if (out.calendar && out.calendar.error) bits.push("calendar failed");
+      if (out.gmail && out.gmail.stored != null)
+        bits.push(`${out.gmail.from_people} of ${out.gmail.stored} unread look personal`);
+      if (out.gmail && out.gmail.error) bits.push("gmail failed");
+      flash(bits.join(" · ") || "Synced.");
+      await loadAll();
+    }
+  } catch (e){ flash(e.message, "err"); }
+  finally { S.syncing = false; render(); }
+}
+
+function viewInbox(){
+  const rows = (S.inbox || []).filter(r => !r.archived);
+  const people = rows.filter(r => r.tag === "needs_reply");
+  const noise  = rows.filter(r => r.tag !== "needs_reply");
+  const last   = lastSync("gmail");
+
+  return `
+  <div class="pagehead">
+    <div><div class="date">${last ? esc(syncLine(last)) : "never synced"}</div><h1>Inbox</h1>
+      <p class="sub">Unread from the last seven days, with promotions, social and forums left out. Read-only — nothing here is marked read, archived or replied to on your behalf.</p></div>
+    <button class="btn ghost" id="syncBtn" ${S.syncing ? "disabled" : ""}>
+      ${S.syncing ? "Syncing…" : "Sync now"}</button>
+  </div>
+
+  ${!S.googleLinked ? googleCard() : ""}
+  ${last && !last.ok ? `<div class="msg err"><b>Gmail didn't answer last time.</b> ${esc(last.detail || "")}
+    Showing what was stored on ${esc(shortDate(last.ran_at.slice(0,10)))} — it is not today's inbox.</div>` : ""}
+
+  <div class="grid2">
+    <section class="card">
+      <header><h2>Worth opening</h2><span class="meta">${people.length}</span></header>
+      <div class="bd">
+        ${people.length ? people.map(m => `
+          <div class="thread">
+            <span class="subj">${esc(m.subject)}</span>
+            <span class="who">${esc(m.from_name)}${m.received_at ? " · " + esc(whenShort(m.received_at)) : ""}</span>
+            ${m.snippet ? `<span class="snip">${esc(m.snippet)}</span>` : ""}
+            <span class="row" style="margin-top:6px">
+              ${m.link ? `<a class="btn ghost sm fit" href="${esc(m.link)}" target="_blank" rel="noopener noreferrer">Open in Gmail</a>` : ""}
+              <button class="btn ghost sm fit" data-mail-task="${m.id}">Make it a task</button>
+              <button class="btn ghost sm fit" data-mail-done="${m.id}">Dismiss</button>
+            </span>
+          </div>`).join("")
+          : `<p class="empty">${rows.length ? "Nothing from an actual person." : "Nothing unread in the last seven days."}</p>`}
+      </div>
+    </section>
+
+    <section class="card">
+      <header><h2>Everything else</h2><span class="meta">${noise.length}</span></header>
+      <div class="bd">
+        ${noise.length ? noise.map(m => `<div class="ritem">
+          <span class="bar" style="background:var(--home)"></span>
+          <span class="tx">${esc(m.subject)}<small>${esc(m.from_name)}</small></span>
+          <button class="x" data-mail-done="${m.id}" aria-label="Dismiss">×</button></div>`).join("")
+          : `<p class="empty">Nothing.</p>`}
+      </div>
+    </section>
+  </div>`;
+}
+
+function googleCard(){
+  return `<section class="card" style="margin-bottom:16px;border-color:var(--accent)">
+    <div class="bd">
+      <h2 style="font-size:15px;letter-spacing:0;text-transform:none;margin-bottom:6px">Connect Google</h2>
+      <p class="empty" style="margin-bottom:12px">Read-only access to your calendar and inbox. It never writes an event, and never sends, archives or marks mail read. You can revoke it any time at myaccount.google.com/permissions.</p>
+      <button class="btn" id="connectGoogle">Connect Google</button>
+    </div></section>`;
+}
+
+const lastSync = src => (S.syncLog || []).find(l => l.source === src) || null;
+function syncLine(l){
+  if (!l) return "never synced";
+  const when = whenShort(l.ran_at);
+  return l.ok ? `last synced ${when}` : `last attempt failed ${when}`;
+}
+
+/* ---- video / audio: Whisper takes 25 MB, so pull the audio out in the browser
+   and downmix it to 16 kHz mono WAV, which is roughly 13 minutes per 25 MB. ---- */
+async function audioFromMedia(file, onStage){
+  onStage && onStage("Reading the file…");
+  const buf = await file.arrayBuffer();
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) throw new Error("This browser can't decode audio. Upload an audio file instead.");
+  const ctx = new AC();
+  let decoded;
+  try { decoded = await ctx.decodeAudioData(buf); }
+  catch { throw new Error("Couldn't read an audio track from that file. If it's a video, try exporting the audio first."); }
+  finally { try { ctx.close(); } catch {} }
+
+  onStage && onStage("Extracting the audio…");
+  const rate = 16000;
+  const off = new OfflineAudioContext(1, Math.ceil(decoded.duration * rate), rate);
+  const src = off.createBufferSource();
+  src.buffer = decoded;
+  src.connect(off.destination);
+  src.start();
+  const rendered = await off.startRendering();
+  return { blob: wavFromBuffer(rendered), seconds: decoded.duration };
+}
+
+function wavFromBuffer(ab){
+  const d = ab.getChannelData(0), n = d.length, rate = ab.sampleRate;
+  const out = new ArrayBuffer(44 + n * 2), v = new DataView(out);
+  const str = (o,s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  str(0,"RIFF");  v.setUint32(4, 36 + n * 2, true); str(8,"WAVE");
+  str(12,"fmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true);
+  v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  str(36,"data"); v.setUint32(40, n * 2, true);
+  let o = 44;
+  for (let i = 0; i < n; i++, o += 2){
+    const s = Math.max(-1, Math.min(1, d[i]));
+    v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+  }
+  return new Blob([out], {type:"audio/wav"});
 }
 
 /* ===== LOG ===== */
@@ -1561,6 +1755,30 @@ document.addEventListener("click", async e => {
   const go = e.target.closest("[data-go]");
   if (go){ S.view = go.dataset.go; render(); return; }
 
+  if (e.target.closest("#connectGoogle")) return connectGoogle();
+  if (e.target.closest("#syncBtn")) return syncGoogle();
+
+  const mt = e.target.closest("[data-mail-task]");
+  if (mt) return run(async () => {
+    const m = (S.inbox || []).find(x => x.id === mt.dataset.mailTask);
+    if (!m) return;
+    await sb.from("life_tasks").insert({
+      user_id:S.user.id, title:("Reply: " + m.subject).slice(0,140),
+      notes:(m.from_name ? "From " + m.from_name : null), area:"work",
+      priority:"urgent_minor", status:"accepted", source:"briefing", due_date:null
+    });
+    await sb.from("life_inbox").update({archived:true}).eq("id", m.id);
+    await loadAll(); render();
+    flash("Added to Quick. The email itself is untouched.");
+  });
+
+  const md = e.target.closest("[data-mail-done]");
+  if (md) return run(async () => {
+    await sb.from("life_inbox").update({archived:true}).eq("id", md.dataset.mailDone);
+    S.inbox = (S.inbox || []).filter(x => x.id !== md.dataset.mailDone);
+    render();
+  });
+
   if (e.target.closest("#startRec")) return startRecording();
   if (e.target.closest("#stopRec"))  return stopRecording();
 
@@ -1647,9 +1865,19 @@ document.addEventListener("change", async e => {
   const af = e.target.closest("#audioFile");
   if (af && af.files && af.files[0]){
     const f = af.files[0];
-    if (f.size > 25 * 1024 * 1024)
-      return flash("That file is over 25 MB, which is past the transcription limit.", "err");
-    return run(() => saveRecording(f, f.type || "audio/mpeg", null));
+    const isVideo = /^video\//.test(f.type) || /\.(mp4|mov|m4v|webm|mkv|avi)$/i.test(f.name);
+    return run(async () => {
+      // Video, or anything too big for the 25 MB limit, gets its audio pulled
+      // out here and downmixed to 16 kHz mono — about 13 minutes per 25 MB.
+      if (isVideo || f.size > 24 * 1024 * 1024){
+        flash("Pulling the audio out of that file…");
+        const { blob, seconds } = await audioFromMedia(f, m => flash(m));
+        if (blob.size > 25 * 1024 * 1024)
+          return flash(`That's about ${Math.round(seconds/60)} minutes of audio — still over the 25 MB limit. Trim it and try again.`, "err");
+        return saveRecording(blob, "audio/wav", Math.round(seconds * 10) / 10);
+      }
+      return saveRecording(f, f.type || "audio/mpeg", null);
+    });
   }
 
   const tk = e.target.closest("[data-task]");
@@ -1877,6 +2105,7 @@ async function bootInner(){
 
   const { data:{ session } } = await sb.auth.getSession();
   if (!session) return;                      // the gate is already on screen
+  if (session.provider_refresh_token) await captureGoogleToken(session);
   el("gate").classList.add("hide");
   S.user = session.user;
   el("app").classList.remove("hide");
