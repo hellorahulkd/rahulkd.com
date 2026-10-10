@@ -16,13 +16,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237EC8E3'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' text-anchor='middle' fill='%231F2A33'%3Epp%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
   --sky:#7EC8E3; --yellow:#FFD166; --green:#82C09A;
   --sand:#E8D9C0; --coral:#EF8C6F; --white:#FAFAF8;
   --ink:#1F2A33; --ink-soft:#43515C; --line:rgba(31,42,51,.14);
-  --serif:"Playfair Display","DM Serif Display",Georgia,serif;
+  --serif:"DM Serif Display","Playfair Display",Georgia,serif;
   --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --max:1080px;
 }
@@ -32,7 +32,7 @@ body{background:var(--white);color:var(--ink);font:400 17px/1.65 var(--sans);-we
 img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.01em}
 h1{font-size:clamp(2.2rem,5.6vw,4rem)}
 h2{font-size:clamp(1.9rem,4.4vw,3rem)}
 h3{font-size:1.35rem}
@@ -157,10 +157,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <div class="wrap">
     <a class="mark" href="#top" aria-label="Passport People, back to top">passport <i>people</i></a>
     <ul>
-      <li><a href="#idea">the idea</a></li>
+      <li><a href="#idea">the price</a></li>
       <li><a href="#first-trip">first trip</a></li>
       <li><a href="#gram">on instagram</a></li>
-      <li><a href="#where">where we're going</a></li>
+      <li><a href="#where">the plan</a></li>
       <li><a href="#story">the story</a></li>
     </ul>
     <a class="btn small" href="https://instagram.com/passportpeople.syd" target="_blank" rel="noopener">@passportpeople.syd</a>
@@ -172,15 +172,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="label">Day trips for uni students in Sydney</span>
-      <h1>there's a beach 2 hours from sydney where the sand is actually white.</h1>
-      <p class="lede">most people here have never been. passport people is small-group day trips for uni students aged 19–26. domestic and international, everyone's welcome.</p>
+      <span class="label">⊙ 2 hours from sydney</span>
+      <h1>there are actual sand dunes up there. like desert dunes, touching the ocean.</h1>
+      <p class="lede">aaaaanddd they have camels. passport people is day trips out of sydney for uni students, 19–26. domestic and international.</p>
       <div class="ctas">
         <a class="btn" href="https://instagram.com/passportpeople.syd" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           see the next trip
         </a>
-        <a class="btn ghost" href="#first-trip">what a day looks like</a>
+        <a class="btn ghost" href="#first-trip">a day, roughly</a>
       </div>
     </div>
     <figure class="photo">
@@ -192,20 +192,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <section class="idea" id="idea">
   <div class="wrap">
-    <span class="label">The idea</span>
-    <h2>imagine spending a sunday somewhere new. good people, fresh air, a view you didn't know existed.</h2>
+    <span class="label">The price</span>
+    <p class="lede" style="color:var(--ink);font-family:var(--serif);font-style:italic;font-size:1.5rem">i had to explain this to a few people...</p>
+    <h2 style="font-size:clamp(3rem,9vw,6rem);margin:6px 0 10px">$65 for the whole day.</h2>
+    <p class="lede" style="color:var(--ink)">everyone else charges $200.</p>
     <div class="trio">
       <div class="card">
-        <span class="label">Why</span>
-        <p>because travel changes people. meeting someone from a different country, seeing a place you've never been, sharing a meal with a stranger. these moments open your mind in ways nothing else can.</p>
+        <span class="label">What it covers</span>
+        <p>the van there and back, and someone who knows where they're going. food's on you. sandboarding's optional.</p>
       </div>
       <div class="card">
-        <span class="label">How</span>
-        <p>small group day trips and weekend escapes from sydney. small enough that you actually meet everyone, big enough to feel like an adventure. always led personally, never a faceless agency.</p>
+        <span class="label">7 spots</span>
+        <p>one van, seven people. that's the whole group.</p>
       </div>
       <div class="card">
-        <span class="label">What</span>
-        <p>affordable, well-organised day trips for uni students 19–26, domestic and international. starting with port stephens and growing from there.</p>
+        <span class="label">Who's driving</span>
+        <p>me. every trip. no agency, no tour bus.</p>
       </div>
     </div>
   </div>
@@ -214,12 +216,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="trip" id="first-trip">
   <div class="wrap trip-grid">
     <div>
-      <span class="label">Where it started</span>
-      <h2>port stephens. one van. somewhere beautiful.</h2>
-      <p class="lede" style="margin-top:18px">the first trip, a sunday in may. this is roughly what a passport people day looks like: an early start, a lot of sand, and the kind of day you're still talking about next week.</p>
+      <span class="label">Port Stephens · trip 01</span>
+      <h2>a day, <em>roughly.</em></h2>
+      <p class="lede" style="margin-top:18px">sandboarding down the dunes at anna bay. then birubi beach, where the sand is embarrassingly white. then the walk up tomaree head. worth every step.</p>
       <div class="facts">
-        <div class="fact"><b>Group</b><span>7 people, one Kia Carnival</span></div>
-        <div class="fact"><b>Cost</b><span>$70 per person, covering transport and guide</span></div>
+        <div class="fact"><b>Spots</b><span>7, in one Kia Carnival</span></div>
+        <div class="fact"><b>Cost</b><span>$65 for the whole day, transport and guide</span></div>
         <div class="fact"><b>Extras</b><span>sandboarding $40 (optional), food at your own cost</span></div>
         <div class="fact"><b>Route</b><span>toll-free, from Sydenham Station</span></div>
       </div>
@@ -261,51 +263,52 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <section class="roadmap" id="where">
   <div class="wrap">
-    <span class="label">Where we're going</span>
-    <h2>starting local, growing global. one trip at a time.</h2>
+    <span class="label">The plan</span>
+    <h2>now i want to do it properly.</h2>
+    <p class="lede" style="color:var(--ink);margin-top:14px">not for a business. just for the love of it. this is where it goes from here.</p>
     <div class="phases">
       <div class="phase now">
         <div>
           <span class="num">phase one</span>
           <h3>day trips</h3>
-          <p>low cost, easy to say yes to. this is where the community gets built.</p>
+          <p>sundays out of sydney. this is what we're doing now.</p>
           <span class="pill">happening now</span>
         </div>
         <ul class="places">
           <li><b>Port Stephens</b><span>sandboarding, birubi beach, tomaree head</span></li>
           <li><b>Royal National Park</b><span>coastal walk, SUP on the water</span></li>
-          <li><b>Palm Beach</b><span>classic sydney escape, beach, lighthouse</span></li>
+          <li><b>Palm Beach</b><span>beach, the lighthouse walk</span></li>
           <li><b>Kiama</b><span>sea cliff bridge, the blowhole, nan tien temple</span></li>
-          <li><b>Blue Mountains</b><span>three sisters, scenic world, the views</span></li>
-          <li><b>Jervis Bay</b><span>dolphins, some of the whitest sand in the world</span></li>
-          <li><b>Narrabeen</b><span>lakes, beach, a slow chill day</span></li>
-          <li><b>Hunter Valley</b><span>wine tasting, food, rolling countryside</span></li>
+          <li><b>Blue Mountains</b><span>three sisters, scenic world</span></li>
+          <li><b>Jervis Bay</b><span>dolphins, more white sand</span></li>
+          <li><b>Narrabeen</b><span>the lake and the beach, a slow one</span></li>
+          <li><b>Hunter Valley</b><span>wine tasting and food</span></li>
         </ul>
       </div>
       <div class="phase">
         <div>
           <span class="num">phase two</span>
           <h3>overnight trips</h3>
-          <p>once the trust is there. a bigger trip, a stronger shared story.</p>
+          <p>a weekend away. later on.</p>
         </div>
         <ul class="places">
           <li><b>Snowy Mountains</b><span>ski season trips in winter</span></li>
-          <li><b>Byron Bay</b><span>beaches, markets, good vibes</span></li>
-          <li><b>Canberra</b><span>museums, culture, australian history</span></li>
+          <li><b>Byron Bay</b><span>beaches and the markets</span></li>
+          <li><b>Canberra</b><span>the museums</span></li>
         </ul>
       </div>
       <div class="phase">
         <div>
           <span class="num">phase three</span>
           <h3>international</h3>
-          <p>the long-term dream. student-friendly prices, places rich in culture.</p>
+          <p>further out. one day.</p>
         </div>
         <ul class="places">
-          <li><b>Bali</b><span>affordable, and loved by sydney students</span></li>
-          <li><b>Fiji</b><span>beach paradise, a short flight away</span></li>
-          <li><b>New Zealand</b><span>adventure capital, unreal scenery</span></li>
-          <li><b>Thailand</b><span>culture, food, beaches</span></li>
-          <li><b>Vietnam</b><span>history, food, great value</span></li>
+          <li><b>Bali</b><span>cheap, and close</span></li>
+          <li><b>Fiji</b><span>a short flight away</span></li>
+          <li><b>New Zealand</b><span>queenstown and the mountains</span></li>
+          <li><b>Thailand</b><span>food, temples, beaches</span></li>
+          <li><b>Vietnam</b><span>food, history, cheap</span></li>
         </ul>
       </div>
     </div>
@@ -314,11 +317,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <section class="story" id="story">
   <div class="wrap story-grid">
-    <blockquote>"built by an international student who fell in love with exploring with people."</blockquote>
+    <blockquote>i wasn't always someone who did this.</blockquote>
     <div>
       <span class="label" style="color:var(--ink)">The story</span>
-      <p>hi, i'm rahul. i came to sydney as an international student. growing up i was a shy, introverted kid, and travel is what changed that. meeting people from everywhere, learning about their worlds, seeing places i never imagined. it turned me into someone who genuinely loves bringing people together.</p>
-      <p>sydney is one of the most international cities on earth, full of students from every corner of the globe. and yet most weekends, we all end up in the same routine. passport people is my way of changing that, one sunday at a time.</p>
+      <p>hi, i'm rahul. growing up i was quiet. shy. introverted. never the kid who'd suggest an adventure. thanks to my parents i started travelling a little.</p>
+      <p>new places. new people. conversations with strangers that somehow felt like old friends. i fell in love with it.</p>
+      <p>i came to sydney as an international student, and i've organised a lot of trips now. every single one has given me something i didn't expect.</p>
       <p>if you want to know more about me, i'm at <a href="https://rahulkd.com">rahulkd.com</a>.</p>
     </div>
   </div>
@@ -326,14 +330,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <section class="voice">
   <div class="wrap">
-    <span class="label">What to expect</span>
-    <h2>no hype. just good days out.</h2>
+    <span class="label">Good to know</span>
+    <h2>the details.</h2>
     <div class="values">
-      <div class="value" style="--c:var(--sky)"><h3>calm</h3><p>never pushy. like a friend texting you on a sunday morning.</p></div>
-      <div class="value" style="--c:var(--yellow)"><h3>friendly</h3><p>you're being invited, not sold to.</p></div>
-      <div class="value" style="--c:var(--green)"><h3>real</h3><p>real photos, real people, real places. nothing staged.</p></div>
-      <div class="value" style="--c:var(--sand)"><h3>inviting</h3><p>come on your own. you won't be on your own for long.</p></div>
-      <div class="value" style="--c:var(--coral)"><h3>small</h3><p>small groups, so you actually get to know everyone.</p></div>
+      <div class="value" style="--c:var(--sky)"><h3>who</h3><p>uni students, 19–26. domestic and international.</p></div>
+      <div class="value" style="--c:var(--yellow)"><h3>price</h3><p>$65 for the day. food's on you.</p></div>
+      <div class="value" style="--c:var(--green)"><h3>group</h3><p>7 spots. one van.</p></div>
+      <div class="value" style="--c:var(--sand)"><h3>pickup</h3><p>sydenham station, early.</p></div>
+      <div class="value" style="--c:var(--coral)"><h3>led by</h3><p>rahul, every trip.</p></div>
     </div>
   </div>
 </section>
@@ -341,9 +345,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="join" id="join">
   <div class="wrap">
     <div class="box">
-      <span class="label">This is passport people</span>
-      <h2>what if this sunday was actually memorable.</h2>
-      <p class="lede">spots are limited on every trip. new trips go up on instagram first, so follow along and send us a message if you want in.</p>
+      <span class="label">⊕ Passport people ⊕</span>
+      <h2>day trips for uni students in sydney.</h2>
+      <p class="lede">built by an international student who fell in love with exploring with people. 7 spots each trip, and the next one goes up on instagram first.</p>
       <div class="ctas">
         <a class="btn" href="https://instagram.com/passportpeople.syd" target="_blank" rel="noopener">follow @passportpeople.syd</a>
         <a class="btn ghost" href="https://ig.me/m/passportpeople.syd" target="_blank" rel="noopener">send a message</a>
