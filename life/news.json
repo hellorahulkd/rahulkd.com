@@ -1,0 +1,31 @@
+{
+ "fetched_at": null,
+ "total": 0,
+ "problems": [],
+ "sections": {
+  "ai_tech": {
+   "label": "AI & technology",
+   "items": []
+  },
+  "markets": {
+   "label": "Markets & investing",
+   "items": []
+  },
+  "australia": {
+   "label": "Australia \u2014 business",
+   "items": []
+  },
+  "india": {
+   "label": "India \u2014 business",
+   "items": []
+  },
+  "nepal": {
+   "label": "Nepal",
+   "items": []
+  },
+  "discovery": {
+   "label": "Discovery & innovation",
+   "items": []
+  }
+ }
+}

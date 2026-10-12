@@ -1,0 +1,52 @@
+{
+  "ai_tech": {
+    "label": "AI & technology",
+    "feeds": [
+      ["TechCrunch AI",   "https://techcrunch.com/category/artificial-intelligence/feed/"],
+      ["Ars Technica",    "https://feeds.arstechnica.com/arstechnica/technology-lab"],
+      ["MIT Tech Review", "https://www.technologyreview.com/feed/"],
+      ["The Verge",       "https://www.theverge.com/rss/index.xml"]
+    ]
+  },
+  "markets": {
+    "label": "Markets & investing",
+    "feeds": [
+      ["Markets today",  "https://news.google.com/rss/search?q=markets+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+      ["ASX & rates",    "https://news.google.com/rss/search?q=ASX+OR+%22interest+rates%22+Australia+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+      ["Investing & VC", "https://news.google.com/rss/search?q=venture+capital+OR+funding+round+when:1d&hl=en-AU&gl=AU&ceid=AU:en"]
+    ]
+  },
+  "australia": {
+    "label": "Australia — business",
+    "feeds": [
+      ["ABC business",       "https://www.abc.net.au/news/feed/51892/rss.xml"],
+      ["Australia business", "https://news.google.com/rss/search?q=Australian+business+OR+economy+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+      ["SmartCompany",       "https://www.smartcompany.com.au/feed/"]
+    ]
+  },
+  "india": {
+    "label": "India — business",
+    "feeds": [
+      ["India business",  "https://news.google.com/rss/search?q=India+business+OR+economy+when:1d&hl=en-IN&gl=IN&ceid=IN:en"],
+      ["Economic Times",  "https://economictimes.indiatimes.com/rssfeedstopstories.cms"],
+      ["India startups",  "https://news.google.com/rss/search?q=India+startup+funding+when:2d&hl=en-IN&gl=IN&ceid=IN:en"]
+    ]
+  },
+  "nepal": {
+    "label": "Nepal",
+    "feeds": [
+      ["Nepal business", "https://news.google.com/rss/search?q=Nepal+business+OR+economy+when:2d&hl=en&gl=NP&ceid=NP:en"],
+      ["Kathmandu Post", "https://kathmandupost.com/rss"],
+      ["Nepal news",     "https://news.google.com/rss/search?q=Nepal+when:1d&hl=en&gl=NP&ceid=NP:en"]
+    ]
+  },
+  "discovery": {
+    "label": "Discovery & innovation",
+    "feeds": [
+      ["Nature news",     "https://www.nature.com/nature.rss"],
+      ["ScienceDaily",    "https://www.sciencedaily.com/rss/top/science.xml"],
+      ["New Scientist",   "https://www.newscientist.com/feed/home/"],
+      ["Emerging trends", "https://news.google.com/rss/search?q=%22emerging+technology%22+OR+breakthrough+when:2d&hl=en-AU&gl=AU&ceid=AU:en"]
+    ]
+  }
+}
