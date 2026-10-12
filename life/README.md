@@ -122,3 +122,60 @@ Whisper caps uploads at 25 MB, so video is handled in the browser before upload:
 it to 16 kHz mono, and it is written out as WAV — roughly 13 minutes per 25 MB.
 No ffmpeg, no library, nothing leaves the machine until the audio is ready.
 Anything over the limit after that says how long it is and asks you to trim.
+
+## The nightly ritual (Tonight)
+
+`life_day_plan`, keyed `(user_id, on_date)`, holds tomorrow:
+`wake_time`, `sleep_time`, `theme`, plus two JSON columns.
+
+- `meals` — `{breakfast:{at,what}, lunch:{…}, dinner:{…}, snack:{…}}`
+- `intentions` — `[{what, at, place, after, two_min, area, done}]`
+
+The intention shape is the point. Each of those keys is one technique from
+*Atomic Habits*, made into a field you cannot skip past:
+
+| field | technique |
+|---|---|
+| `at` + `place` | **implementation intention** — *I will [X] at [time] in [place]* |
+| `after` | **habit stacking** — hung off something already in the day |
+| `two_min` | **two-minute rule** — the version you can still do on a bad night |
+| `done` | the chain, ticked off on Today the next morning |
+
+Tonight is a stepper, not a long form: one question per screen, Enter moves on,
+and the numbered rail jumps anywhere. All steps live in one `<form>` with the
+inactive ones hidden, so moving between them never re-renders and nothing typed
+is lost. The last step reads the whole form back before anything is saved.
+
+The journal questions themselves come from `life_journal_fields`, same as
+before. The seeded set is now `short` rather than `para` — the form asks a
+question and expects four or five words, not a paragraph. Scales, numbers and
+yes/no are grouped onto one opening screen because they're fast; everything
+else gets a screen each.
+
+One submit writes all three: the `life_journal` entry, up to three
+`life_tasks` for tomorrow, and the `life_day_plan` row. Ticking a habit off the
+next morning writes back into `intentions` in place.
+
+## News
+
+`life_news_sources` is an editable list of RSS feeds per category
+(`ai_tech`, `markets`, `australia`, `india`, `nepal`, `discovery`).
+The `news-fetch` Edge Function pulls each one, parses RSS **and** Atom with a
+small forgiving regex parser — no XML library, no API key, nothing to rotate —
+and upserts into `life_news` on `(user_id, url)`, so re-running during the day
+is idempotent. Anything older than four days is dropped on each run.
+
+Feed text is data, never instruction: titles and links are stored, escaped on
+output, and nothing in a feed is ever interpreted.
+
+**What triggers it:** opening the dashboard. If the newest headline is more
+than four hours old, the page pulls in the background and re-renders when it
+lands — so the news is fresh at the moment it's read, rather than fresh at 6am
+and stale by the time anyone looks. A failed pull is silent; the page still
+works. `Refresh now` on the News page forces it.
+
+A scheduled pull is wired but dormant: set a `CRON_SECRET` Edge Function
+secret and the function will accept an `x-cron-key` header and run for every
+user who has feeds, which `pg_cron` + `pg_net` can call on a schedule. Without
+that secret the cron path is simply off, and only a signed-in request works —
+and it only ever touches that user's own feeds.
