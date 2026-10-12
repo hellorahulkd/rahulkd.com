@@ -17,6 +17,8 @@
   --good:#1F7A56; --warn:#A96A12; --bad:#B33A2B;
   --work:#3B6FD4; --study:#7B5EC7; --health:#2E8B6B; --family:#C8683C;
   --self:#B08A18; --money:#357F99; --home:#7C8593;
+  --meals:#C8683C; --mind:#8A6BC4; --content:#A8567F; --projects:#3D7FA0;
+  --lifestyle:#8C7A4A; --travel:#2F8392;
   --sleep:#5A6478; --meal:#C8683C; --class:#7B5EC7; --gym:#2E8B6B;
   --entertainment:#A8567F; --commute:#7C8593; --admin:#7C8593;
   --display:"Epilogue",system-ui,-apple-system,sans-serif;
@@ -32,6 +34,8 @@
   --good:#43A87C; --warn:#D19B3E; --bad:#DD6A58;
   --work:#6D9BF2; --study:#A98BE8; --health:#4FB18B; --family:#E08A5C;
   --self:#D6AC3A; --money:#5BA8C4; --home:#9AA5B4;
+  --meals:#E08A5C; --mind:#A98BE8; --content:#CE7FA6; --projects:#5E9FBF;
+  --lifestyle:#B2A06C; --travel:#52A4B3;
   --sleep:#8792A8; --meal:#E08A5C; --class:#A98BE8; --gym:#4FB18B;
   --entertainment:#CE7FA6; --commute:#9AA5B4; --admin:#9AA5B4;
   --shadow:0 1px 2px rgba(0,0,0,.3);
@@ -43,6 +47,8 @@
   --good:#43A87C; --warn:#D19B3E; --bad:#DD6A58;
   --work:#6D9BF2; --study:#A98BE8; --health:#4FB18B; --family:#E08A5C;
   --self:#D6AC3A; --money:#5BA8C4; --home:#9AA5B4;
+  --meals:#E08A5C; --mind:#A98BE8; --content:#CE7FA6; --projects:#5E9FBF;
+  --lifestyle:#B2A06C; --travel:#52A4B3;
   --sleep:#8792A8; --meal:#E08A5C; --class:#A98BE8; --gym:#4FB18B;
   --entertainment:#CE7FA6; --commute:#9AA5B4; --admin:#9AA5B4;
   --shadow:0 1px 2px rgba(0,0,0,.3);
@@ -160,6 +166,58 @@ label.fld > .hint{font-weight:400;color:var(--ink-3);font-size:11.5px;margin-top
 
 .bookend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;
   color:var(--ink-3);letter-spacing:.05em;text-transform:uppercase;padding:6px 0}
+
+/* ---------- tonight: the ritual ---------- */
+.steprail{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.steprail .dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-3);font-family:var(--mono);font-size:11px;
+  display:grid;place-items:center;padding:0;transition:.12s}
+.steprail .dot.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.steprail .dot[aria-current="step"]{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.stepsub{color:var(--ink-2);font-size:14px;line-height:1.55;margin:0 0 14px}
+.stepnav{display:flex;gap:10px;justify-content:space-between;align-items:center;
+  padding:13px 17px;border-top:1px solid var(--line-soft)}
+.step .bd{min-height:96px}
+
+.mealrow{display:grid;grid-template-columns:96px 112px 1fr;gap:8px;align-items:center;margin-bottom:9px}
+.mealrow .sl{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-3)}
+@media (max-width:560px){ .mealrow{grid-template-columns:84px 1fr}
+  .mealrow input[type=text]{grid-column:1/-1} }
+
+.intent{border:1px solid var(--line-soft);border-radius:var(--r);padding:12px 13px 2px;margin-bottom:11px;
+  background:var(--sunk)}
+.intent .hd{display:grid;grid-template-columns:auto 1fr 118px;gap:8px;align-items:center;margin-bottom:9px}
+.intent .hd .n{font-family:var(--mono);font-size:13px;color:var(--ink-3);width:18px}
+@media (max-width:560px){ .intent .hd{grid-template-columns:auto 1fr}
+  .intent .hd select{grid-column:2} }
+
+.rvhd{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);margin:16px 0 4px}
+.rvrow{display:grid;grid-template-columns:116px 1fr;gap:12px;padding:7px 0;
+  border-bottom:1px solid var(--line-soft);font-size:14.5px}
+.rvrow:last-child{border-bottom:0}
+.rvrow .k{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-transform:capitalize}
+.rvrow .v small{display:block;color:var(--ink-3);font-size:12.5px}
+
+/* ---------- the morning read-out ---------- */
+.planned .theme{font-family:var(--display);font-size:19px;font-weight:500;line-height:1.35;
+  margin:0 0 10px}
+.upnext{background:var(--sunk);border-radius:var(--r-sm);padding:9px 12px;font-size:14px;
+  color:var(--ink-2);margin:4px 0 2px}
+.subhd{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);margin:16px 0 2px}
+.mono{font-family:var(--mono);font-size:12px;color:var(--ink-3);white-space:nowrap}
+
+/* ---------- news ---------- */
+.newslist{display:grid;gap:0}
+.nitem{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--line-soft);
+  text-decoration:none;color:inherit}
+.nitem:last-child{border-bottom:0}
+.nitem:hover .hl{color:var(--accent)}
+.nitem .hl{font-size:14.5px;line-height:1.4;font-weight:500}
+.nitem .mt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink-3)}
 
 /* ---------- tasks ---------- */
 .task{display:grid;grid-template-columns:auto 1fr auto;gap:11px;align-items:start;padding:10px 0;
@@ -329,10 +387,35 @@ const KINDS = ["sleep","meal","work","study","class","gym","family","self","ente
 const SLOTS = ["breakfast","lunch","dinner","snack"];
 const DAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
+/* Public RSS, no keys needed. Editable from the News page. */
+const NEWS_SEED = [
+  ["ai_tech",   "TechCrunch AI",        "https://techcrunch.com/category/artificial-intelligence/feed/"],
+  ["ai_tech",   "Ars Technica",         "https://feeds.arstechnica.com/arstechnica/technology-lab"],
+  ["ai_tech",   "MIT Tech Review",      "https://www.technologyreview.com/feed/"],
+  ["ai_tech",   "The Verge",            "https://www.theverge.com/rss/index.xml"],
+  ["markets",   "Reuters markets",      "https://news.google.com/rss/search?q=markets+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+  ["markets",   "AFR markets",          "https://news.google.com/rss/search?q=ASX+OR+%22interest+rates%22+Australia+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+  ["markets",   "Investing & VC",       "https://news.google.com/rss/search?q=venture+capital+OR+funding+round+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+  ["australia", "ABC business",         "https://www.abc.net.au/news/feed/51892/rss.xml"],
+  ["australia", "Australia business",   "https://news.google.com/rss/search?q=Australian+business+OR+economy+when:1d&hl=en-AU&gl=AU&ceid=AU:en"],
+  ["australia", "SmartCompany",         "https://www.smartcompany.com.au/feed/"],
+  ["india",     "India business",       "https://news.google.com/rss/search?q=India+business+OR+economy+when:1d&hl=en-IN&gl=IN&ceid=IN:en"],
+  ["india",     "Economic Times",       "https://economictimes.indiatimes.com/rssfeedstopstories.cms"],
+  ["india",     "India startups",       "https://news.google.com/rss/search?q=India+startup+funding+when:2d&hl=en-IN&gl=IN&ceid=IN:en"],
+  ["nepal",     "Nepal business",       "https://news.google.com/rss/search?q=Nepal+business+OR+economy+when:2d&hl=en&gl=NP&ceid=NP:en"],
+  ["nepal",     "Kathmandu Post",       "https://kathmandupost.com/rss"],
+  ["nepal",     "Nepal news",           "https://news.google.com/rss/search?q=Nepal+when:1d&hl=en&gl=NP&ceid=NP:en"],
+  ["discovery", "Nature news",          "https://www.nature.com/nature.rss"],
+  ["discovery", "ScienceDaily",         "https://www.sciencedaily.com/rss/top/science.xml"],
+  ["discovery", "New Scientist",        "https://www.newscientist.com/feed/home/"],
+  ["discovery", "Emerging trends",      "https://news.google.com/rss/search?q=%22emerging+technology%22+OR+breakthrough+when:2d&hl=en-AU&gl=AU&ceid=AU:en"]
+];
+
 const S = {
   user:null, settings:null, routine:[], overrides:[], tasks:[], calendar:[],
   mealPlan:[], mealLog:[], cats:[], tx:[], goals:[], codes:[], fields:[], recent:[],
   recordings:[], openRec:null, inbox:[], syncLog:[], googleLinked:false, syncing:false,
+  plans:[], news:[], newsSources:[], newsBusy:false,
   view:"today", month:null, busy:false
 };
 
@@ -492,12 +575,19 @@ async function seedDefaults(uid){
     F(7,"How the day went","screen_hours","Screen time","number",{min:0,max:24,step:0.5,suffix:"hrs"}),
     F(8,"How the day went","moved_body","Did you move your body?","bool"),
     F(9,"How the day went","ate_well","Did you eat well?","bool"),
-    F(10,"In your own words","wins","What went well","para",{help:"Even a small one counts."}),
-    F(11,"In your own words","challenges","What got in the way","para",{help:"Name it and it stops running the show."}),
-    F(12,"In your own words","grateful_for","Grateful for","para"),
-    F(13,"In your own words","learned","Something you learned","para"),
-    F(14,"In your own words","notes","Anything else","para")
+    F(10,"Four or five words","wins","What went right today?","short",{help:"Four or five words. Even a small one counts."}),
+    F(11,"Four or five words","challenges","What got in the way?","short",{help:"Name it in a handful of words."}),
+    F(12,"Four or five words","learned","What did you learn?","short",{help:"One thing. Short."}),
+    F(13,"Four or five words","grateful_for","Grateful for?","short",{help:"Four or five words."}),
+    F(14,"Four or five words","habit_kept","Which habit did you keep?","short",{help:"Or: which one you dropped."}),
+    F(15,"Four or five words","time_sink","Where did the time go?","short",{help:"Be honest. Four or five words."}),
+    F(16,"Four or five words","body_felt","How did the body feel?","short",{help:"Tired, strong, sore, flat."}),
+    F(17,"Four or five words","one_change","One thing to do differently?","short",{help:"Tomorrow's small correction."}),
+    F(18,"Four or five words","notes","Anything else?","short",{help:"Leave it blank if there's nothing."})
   ], {onConflict:"user_id,key", ignoreDuplicates:true});
+
+  await sb.from("life_news_sources").upsert(NEWS_SEED.map(([category,name,feed_url]) =>
+    ({user_id:uid, category, name, feed_url})), {onConflict:"user_id,feed_url", ignoreDuplicates:true});
 
   await sb.from("life_codes").upsert([
     {user_id:uid,text:"Do the hardest thing first, while the day is still yours."},
@@ -522,7 +612,7 @@ async function loadAll(){
   }
   S.settings = settings;
 
-  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields, recordings, inbox, syncLog] =
+  const [routine, overrides, tasks, calendar, mealPlan, mealLog, cats, tx, goals, codes, recent, fields, recordings, inbox, syncLog, plans, news, newsSrc] =
     await Promise.all([
       sb.from("life_routine").select("*").eq("active",true).order("start_time"),
       sb.from("life_day_overrides").select("*").eq("on_date",today),
@@ -540,7 +630,10 @@ async function loadAll(){
       sb.from("life_journal_fields").select("*").order("sort"),
       sb.from("life_recordings").select("*").order("created_at",{ascending:false}).limit(30),
       sb.from("life_inbox").select("*").eq("archived",false).order("received_at",{ascending:false}),
-      sb.from("life_sync_log").select("*").order("ran_at",{ascending:false}).limit(20)
+      sb.from("life_sync_log").select("*").order("ran_at",{ascending:false}).limit(20),
+      sb.from("life_day_plan").select("*").in("on_date",[today,tomorrow]),
+      sb.from("life_news").select("*").order("published_at",{ascending:false}).limit(140),
+      sb.from("life_news_sources").select("*").order("category").order("name")
     ]);
   S.routine = routine.data || []; S.overrides = overrides.data || [];
   S.tasks = tasks.data || []; S.calendar = calendar.data || [];
@@ -551,6 +644,9 @@ async function loadAll(){
   S.recordings = recordings.data || [];
   S.inbox = inbox.data || [];
   S.syncLog = syncLog.data || [];
+  S.plans = plans.data || [];
+  S.news = news.data || [];
+  S.newsSources = newsSrc.data || [];
   S.googleLinked = (S.syncLog.length > 0) || S.googleLinked;
   S.month = mk;
 }
@@ -590,12 +686,13 @@ function codeForDay(iso){
 /* ---------- views ---------- */
 const NAV = [
   {id:"today",     label:"Today",   ico:"◉"},
+  {id:"tonight",   label:"Tonight", ico:"☾"},
+  {id:"news",      label:"News",    ico:"◈"},
   {id:"capture",   label:"Capture", ico:"◍"},
   {id:"priorities",label:"Priority",ico:"▲"},
   {id:"inbox",     label:"Inbox",   ico:"✉"},
   {id:"week",      label:"Week",    ico:"▦"},
   {id:"money",  label:"Money",   ico:"$"},
-  {id:"journal",label:"Journal", ico:"✎"},
   {id:"log",    label:"Log",     ico:"≡"}
 ];
 function renderNav(){
@@ -612,8 +709,8 @@ function renderNav(){
 function render(){
   renderNav();
   const v = el("view");
-  v.innerHTML = ({today:viewToday, capture:viewCapture, priorities:viewPriorities, inbox:viewInbox,
-                  week:viewWeek, money:viewMoney, journal:viewJournal,
+  v.innerHTML = ({today:viewToday, tonight:viewTonight, news:viewNews, capture:viewCapture,
+                  priorities:viewPriorities, inbox:viewInbox, week:viewWeek, money:viewMoney,
                   fields:viewFields, log:viewLog}[S.view] || viewToday)();
   v.scrollTop = 0;
   window.scrollTo({top:0});
@@ -654,8 +751,10 @@ function viewToday(){
       <h1>${esc(greeting())}</h1>
       ${chunk ? `<p class="sub">${esc(chunk)} on the board today.</p>` : ""}
     </div>
-    <button class="btn ghost" data-go="journal">Tonight's journal →</button>
+    <button class="btn ghost" data-go="tonight">Plan tonight →</button>
   </div>
+
+  ${planCard(iso)}
 
   ${code ? `<div class="card" style="margin-bottom:16px">
     <div class="bd" style="display:flex;gap:13px;align-items:flex-start">
@@ -708,7 +807,7 @@ function viewToday(){
     </div>
 
     <div class="stack">
-      <section class="card">
+      <section class="card ${planFor(iso) ? "hide" : ""}">
         <header><h2>Food</h2><span class="meta">${meals.filter(m=>m.ate).length}/4 logged</span></header>
         <div class="bd">
           ${meals.map(m => `<div class="task ${m.ate ? "done" : ""}">
@@ -749,6 +848,8 @@ function viewToday(){
           <button class="btn ghost sm" data-go="money" style="margin-top:10px">Open money →</button>
         </div>
       </section>
+
+      ${newsStrip()}
     </div>
   </div>`;
 }
@@ -1086,63 +1187,382 @@ function fieldHTML(f, val){
       value="${esc(val ?? "")}" placeholder="${esc(f.help || "")}" maxlength="300"></label>`;
 }
 
-function viewJournal(){
-  const iso = isoDay(), tomorrow = isoDay(1);
-  const existing = S.recent.find(j => j.entry_date === iso);
-  const planned = S.tasks.filter(t => t.due_date === tomorrow).sort((x,y) => x.position - y.position);
-  const fields = S.fields.filter(f => f.active).sort((a,b) => a.sort - b.sort);
+/* ===== TONIGHT: the nightly ritual =====
+   One question at a time. Short answers. Then tomorrow gets planned in full —
+   meals with times, and habits written as implementation intentions
+   (Atomic Habits: I will [what] at [time] in [place], right after [anchor]),
+   each with a two-minute version so a bad night can't break the chain. */
 
-  const sections = [];
-  for (const f of fields){
-    let s = sections.find(s => s.name === f.section);
-    if (!s){ s = {name:f.section, items:[]}; sections.push(s); }
-    s.items.push(f);
+const MEAL_AT = {breakfast:"08:00", lunch:"12:30", dinner:"19:00", snack:"16:00"};
+const MEAL_HINT = {
+  breakfast:"Oats, banana, coffee", lunch:"Rice, dal, salad",
+  dinner:"Chicken, veg, roti",      snack:"Yoghurt and almonds"
+};
+const QUICK_TYPES = new Set(["scale","number","bool"]);
+
+const planFor = iso => S.plans.find(p => p.on_date === iso) || null;
+const askHTML = (f, val) =>
+  fieldHTML(Object.assign({}, f, {label:""}), val).replace("<span></span>", "");
+
+function mealDefaults(iso){
+  const wd = weekdayOf(iso), plan = planFor(iso), m = (plan && plan.meals) || {};
+  return SLOTS.map(slot => {
+    const standing = S.mealPlan.find(x => x.weekday === wd && x.slot === slot);
+    const saved = m[slot] || {};
+    return {
+      slot,
+      at: (saved.at || "").slice(0,5) || MEAL_AT[slot],
+      what: saved.what || (standing && standing.title) || ""
+    };
+  });
+}
+/* Tomorrow's gym / study / class blocks are the obvious things to turn into
+   intentions, so they come pre-filled with the time and nothing else. */
+function intentionDefaults(iso){
+  const plan = planFor(iso);
+  if (plan && Array.isArray(plan.intentions) && plan.intentions.length){
+    return plan.intentions.slice(0,4).concat(
+      Array(Math.max(0, 4 - plan.intentions.length)).fill(null)).slice(0,4);
   }
-  const half = Math.ceil(sections.length / 2);
+  const seeds = blocksFor(iso)
+    .filter(b => ["gym","study","class"].includes(b.kind))
+    .slice(0,2)
+    .map(b => ({what:b.label, at:(b.start||"").slice(0,5), place:"", after:"",
+                two_min:"", area:b.kind === "gym" ? "health" : "study", done:false}));
+  while (seeds.length < 4) seeds.push(null);
+  return seeds;
+}
 
-  const card = s => `<section class="card">
-    <header><h2>${esc(s.name)}</h2></header>
-    <div class="bd">${s.items.map(f => fieldHTML(f, answerOf(f, existing))).join("")}</div>
-  </section>`;
+function viewTonight(){
+  const iso = isoDay(), tom = isoDay(1);
+  const entry  = S.recent.find(j => j.entry_date === iso);
+  const plan   = planFor(tom);
+  const tasks  = S.tasks.filter(t => t.due_date === tom).sort((a,b) => a.position - b.position);
+  const fields = S.fields.filter(f => f.active).sort((a,b) => a.sort - b.sort);
+  const quick  = fields.filter(f => QUICK_TYPES.has(f.type));
+  const asked  = fields.filter(f => !QUICK_TYPES.has(f.type));
+  const meals  = mealDefaults(tom);
+  const ints   = intentionDefaults(tom);
 
-  const three = `<section class="card">
-    <header><h2>Tomorrow's three</h2><span class="meta">these become your tasks</span></header>
-    <div class="bd">
-      ${[1,2,3].map(i => {
-        const t = planned[i-1] || {};
-        return `<div class="tasknum">
-          <span class="n">${i}</span>
-          <input type="text" name="task${i}" maxlength="140" value="${esc(t.title||"")}"
-            placeholder="${i === 1 ? "The one that actually matters" : i === 2 ? "The second thing" : "The third thing"}">
-          <select name="area${i}">${AREAS.map(x =>
-            `<option value="${x}" ${(t.area||["study","work","health"][i-1]) === x ? "selected" : ""}>${x}</option>`).join("")}</select>
-        </div>`;
-      }).join("")}
-      <p class="empty" style="margin-top:6px">Leave one blank if two is honest. Three is a ceiling, not a quota.</p>
-    </div></section>`;
+  const steps = [];
+
+  if (quick.length) steps.push({
+    t:"The day, in numbers",
+    sub:"Slide and tap. Don't think about it too hard — the first number is usually the honest one.",
+    html: quick.map(f => fieldHTML(f, answerOf(f, entry))).join("")
+  });
+
+  for (const f of asked) steps.push({
+    t: f.label,
+    sub: f.help || "Four or five words is plenty.",
+    html: askHTML(f, answerOf(f, entry))
+  });
+
+  steps.push({
+    t:"Tomorrow's three",
+    sub:"Three is a ceiling, not a quota. These land on Today when you wake up.",
+    html: [1,2,3].map(i => {
+      const t = tasks[i-1] || {};
+      return `<div class="tasknum">
+        <span class="n">${i}</span>
+        <input type="text" name="task${i}" maxlength="140" value="${esc(t.title||"")}"
+          placeholder="${i === 1 ? "The one that actually matters" : i === 2 ? "The second thing" : "The third thing"}">
+        <select name="area${i}">${AREAS.map(x =>
+          `<option value="${x}" ${(t.area || ["study","work","health"][i-1]) === x ? "selected" : ""}>${x}</option>`
+        ).join("")}</select></div>`;
+    }).join("")
+  });
+
+  steps.push({
+    t:"What you're eating tomorrow",
+    sub:"Decide it now, while you're calm. A meal with a time on it is a decision you don't have to make tomorrow when you're hungry.",
+    html: meals.map(m => `<div class="mealrow">
+      <span class="sl">${esc(m.slot[0].toUpperCase() + m.slot.slice(1))}</span>
+      <input type="time" name="meal_${m.slot}_at" value="${esc(m.at)}" aria-label="${esc(m.slot)} time">
+      <input type="text" name="meal_${m.slot}_what" value="${esc(m.what)}" maxlength="120"
+        placeholder="${esc(MEAL_HINT[m.slot])}" aria-label="What's for ${esc(m.slot)}">
+    </div>`).join("") +
+    `<p class="empty" style="margin-bottom:0">Leave a slot blank if you're genuinely skipping it. Blank beats a lie.</p>`
+  });
+
+  steps.push({
+    t:"Habits, written so they happen",
+    sub:"A habit with a time and a place gets done about twice as often as one you just intend. Hang each on something you already do, and give it a two-minute version for the night it all goes sideways.",
+    html: ints.map((it,i) => {
+      const n = i + 1, v = it || {};
+      return `<div class="intent">
+        <div class="hd"><span class="n">${n}</span>
+          <input type="text" name="int${n}_what" maxlength="90" value="${esc(v.what||"")}"
+            placeholder="${n === 1 ? "I will — e.g. Gym, push day" : n === 2 ? "Read 10 pages" : n === 3 ? "Post the reel" : "Ring home"}">
+          <select name="int${n}_area">${AREAS.map(x =>
+            `<option value="${x}" ${(v.area||"health") === x ? "selected" : ""}>${x}</option>`).join("")}</select>
+        </div>
+        <div class="row">
+          <label class="fld" style="flex:0 0 118px"><span>at</span>
+            <input type="time" name="int${n}_at" value="${esc((v.at||"").slice(0,5))}"></label>
+          <label class="fld" style="flex:1 1 150px"><span>in / at</span>
+            <input type="text" name="int${n}_place" maxlength="80" value="${esc(v.place||"")}"
+              placeholder="the gym, my desk, the kitchen"></label>
+          <label class="fld" style="flex:1 1 150px"><span>right after I</span>
+            <input type="text" name="int${n}_after" maxlength="80" value="${esc(v.after||"")}"
+              placeholder="make coffee, get off the bus"></label>
+          <label class="fld" style="flex:1 1 150px"><span>two-minute version</span>
+            <input type="text" name="int${n}_two" maxlength="80" value="${esc(v.two_min||"")}"
+              placeholder="put my shoes on"></label>
+        </div></div>`;
+    }).join("")
+  });
+
+  steps.push({
+    t:"The shape of tomorrow",
+    sub:"One line for what tomorrow is about. Then the two times that decide everything else.",
+    html: `<label class="fld"><span>Tomorrow, in one line</span>
+      <input type="text" name="theme" maxlength="120" value="${esc((plan && plan.theme) || "")}"
+        placeholder="Finish the marketing assignment"></label>
+      <div class="row">
+        <label class="fld" style="flex:0 0 150px"><span>Wake</span>
+          <input type="time" name="wake" value="${esc(((plan && plan.wake_time) || S.settings.wake_time || "06:30").slice(0,5))}"></label>
+        <label class="fld" style="flex:0 0 150px"><span>Lights out</span>
+          <input type="time" name="sleep" value="${esc(((plan && plan.sleep_time) || S.settings.sleep_time || "22:30").slice(0,5))}"></label>
+      </div>`
+  });
+
+  steps.push({
+    t:"Read it back",
+    sub:"This is what you'll see first thing tomorrow. Go back and change anything that isn't true.",
+    review:true,
+    html:`<div id="tonightReview"></div>`
+  });
 
   return `
   <div class="pagehead">
     <div><div class="date">${esc(longDate(iso))}</div>
       <h1>Tonight</h1>
-      <p class="sub">Close the day out. The three things at the bottom become tomorrow's tasks — they'll be waiting on Today when you wake up.</p></div>
+      <p class="sub">Close today out, then build tomorrow. ${steps.length} short steps — most of them one answer.</p></div>
     <button class="btn ghost" data-go="fields">Edit these questions</button>
   </div>
 
-  ${existing ? `<div class="msg ok">Already filled in tonight at ${esc(new Date(existing.submitted_at)
+  ${entry ? `<div class="msg ok">You already filled this in at ${esc(new Date(entry.submitted_at)
       .toLocaleTimeString("en-AU",{timeZone:tz(),hour:"numeric",minute:"2-digit"}))}. Saving again updates it.</div>` : ""}
+  ${!fields.length ? `<div class="msg">No journal questions set up yet. <b>Edit these questions</b> to add them.</div>` : ""}
 
-  ${!fields.length ? `<div class="msg">No questions set up yet. <b>Edit these questions</b> to add them.</div>` : ""}
-
-  <form data-form="journal">
-    <div class="grid2">
-      <div class="stack">${sections.slice(0,half).map(card).join("")}${three}</div>
-      <div class="stack">${sections.slice(half).map(card).join("")}
-        <button class="btn" type="submit" style="width:100%;padding:13px">
-          ${existing ? "Update tonight's entry" : "Save and close the day"}</button>
-      </div>
+  <form data-form="tonight">
+    <div class="steprail" role="group" aria-label="Steps">
+      ${steps.map((s,i) => `<button type="button" class="dot ${i ? "" : "on"}"
+        data-step-to="${i}" aria-current="${i ? "false" : "step"}"
+        title="${esc(s.t)}"><span>${i+1}</span></button>`).join("")}
     </div>
+    ${steps.map((s,i) => `<section class="card step ${i ? "hide" : ""}"
+      data-step-panel="${i}" ${s.review ? 'data-review="1"' : ""} ${i === steps.length-1 ? 'data-last="1"' : ""}>
+      <header><h2>${esc(s.t)}</h2><span class="meta">${i+1} / ${steps.length}</span></header>
+      <div class="bd">
+        ${s.sub ? `<p class="stepsub">${esc(s.sub)}</p>` : ""}
+        ${s.html}
+      </div>
+      <div class="stepnav">
+        <button class="btn ghost sm" type="button" data-step="back" ${i ? "" : "disabled"}>← Back</button>
+        ${i === steps.length - 1
+          ? `<button class="btn" type="submit">Save tonight &amp; set tomorrow</button>`
+          : `<button class="btn sm" type="button" data-step="next">Next →</button>`}
+      </div>
+    </section>`).join("")}
   </form>`;
+}
+
+/* The review step is filled from the live form rather than from state, so it
+   always shows what is actually about to be saved. */
+function fillReview(){
+  const form = document.querySelector('[data-form="tonight"]');
+  const box  = el("tonightReview");
+  if (!form || !box) return;
+  const F = new FormData(form), g = k => (F.get(k) || "").toString().trim();
+  const line = (k, v) => v ? `<div class="rvrow"><span class="k">${esc(k)}</span>
+    <span class="v">${esc(v)}</span></div>` : "";
+
+  const three = [1,2,3].map(i => g("task"+i)).filter(Boolean);
+  const meals = SLOTS.map(s => ({slot:s, at:g("meal_"+s+"_at"), what:g("meal_"+s+"_what")}))
+    .filter(m => m.what || m.at);
+  const ints = [1,2,3,4].map(n => ({
+    what:g("int"+n+"_what"), at:g("int"+n+"_at"), place:g("int"+n+"_place"),
+    after:g("int"+n+"_after"), two:g("int"+n+"_two")
+  })).filter(x => x.what);
+
+  box.innerHTML = `
+    ${line("Tomorrow is about", g("theme") || "—")}
+    ${line("Up at", fmtT(g("wake")))}
+    ${line("Lights out", fmtT(g("sleep")))}
+    <div class="rvhd">The three</div>
+    ${three.length ? three.map((t,i) => `<div class="rvrow"><span class="k">${i+1}</span>
+      <span class="v">${esc(t)}</span></div>`).join("")
+      : `<p class="empty" style="margin:0">Nothing set — tomorrow is wide open.</p>`}
+    <div class="rvhd">Food</div>
+    ${meals.length ? meals.map(m => `<div class="rvrow">
+      <span class="k">${esc(m.slot)} ${esc(fmtT(m.at))}</span>
+      <span class="v">${esc(m.what || "—")}</span></div>`).join("")
+      : `<p class="empty" style="margin:0">No meals planned.</p>`}
+    <div class="rvhd">Habits</div>
+    ${ints.length ? ints.map(x => `<div class="rvrow"><span class="k">${esc(fmtT(x.at)) || "—"}</span>
+      <span class="v">${esc(x.what)}${x.place ? ` · <i>${esc(x.place)}</i>` : ""}${
+        x.after ? ` · right after ${esc(x.after)}` : ""}${
+        x.two ? `<small>bad night: ${esc(x.two)}</small>` : ""}</span></div>`).join("")
+      : `<p class="empty" style="margin:0">No habits written down.</p>`}`;
+}
+
+/* ===== NEWS =====
+   Pulled from RSS by the news-fetch function each morning and stored per
+   category, so the morning read is the same shape every day. */
+const NEWS_CATS = [
+  ["ai_tech",   "AI &amp; technology"],
+  ["markets",   "Markets &amp; investing"],
+  ["australia", "Australia — business"],
+  ["india",     "India — business"],
+  ["nepal",     "Nepal"],
+  ["discovery", "Discovery &amp; innovation"]
+];
+const NEWS_LABEL = Object.fromEntries(NEWS_CATS.map(([k,v]) => [k, v.replace(/&amp;/g,"&")]));
+
+function ago(ts){
+  if (!ts) return "";
+  const m = Math.round((Date.now() - new Date(ts).getTime()) / 60000);
+  if (m < 60) return m <= 1 ? "just now" : m + "m ago";
+  const h = Math.round(m/60);
+  if (h < 36) return h + "h ago";
+  return Math.round(h/24) + "d ago";
+}
+function newsOf(cat){
+  return (S.news || []).filter(n => n.category === cat)
+    .sort((a,b) => String(b.published_at||b.fetched_at).localeCompare(String(a.published_at||a.fetched_at)));
+}
+function newsItem(n){
+  return `<a class="nitem" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">
+    <span class="hl">${esc(n.title)}</span>
+    <span class="mt">${esc(n.source || "")}${n.published_at ? ` · ${esc(ago(n.published_at))}` : ""}</span>
+  </a>`;
+}
+
+function viewNews(){
+  const last = (S.news || []).reduce((a,n) => a > n.fetched_at ? a : n.fetched_at, "");
+  const srcs = S.newsSources || [];
+  return `
+  <div class="pagehead">
+    <div><div class="date">${esc(longDate(isoDay()))}</div>
+      <h1>The world, this morning</h1>
+      <p class="sub">${last ? `Last pulled ${esc(ago(last))}.` : "Nothing pulled yet."}
+        It refreshes on its own around 6am, Sydney time.</p></div>
+    <button class="btn ghost" data-news-refresh ${S.newsBusy ? "disabled" : ""}>
+      ${S.newsBusy ? "Pulling…" : "Refresh now"}</button>
+  </div>
+
+  ${!(S.news || []).length ? `<div class="msg">No headlines stored yet. Hit <b>Refresh now</b> — the first pull takes a few seconds.</div>` : ""}
+
+  <div class="grid2">
+    ${[0,1].map(col => `<div class="stack">
+      ${NEWS_CATS.filter((_,i) => i % 2 === col).map(([k,label]) => {
+        const items = newsOf(k).slice(0,7);
+        return `<section class="card">
+          <header><h2>${label}</h2><span class="meta">${items.length || "—"}</span></header>
+          <div class="bd newslist">
+            ${items.length ? items.map(newsItem).join("")
+              : `<p class="empty">Nothing in here yet.</p>`}
+          </div></section>`;
+      }).join("")}
+    </div>`).join("")}
+  </div>
+
+  <section class="card" style="margin-top:16px">
+    <header><h2>Where it comes from</h2><span class="meta">${srcs.length} feed${srcs.length===1?"":"s"}</span></header>
+    <div class="bd">
+      <form data-form="addsource">
+        <div class="row">
+          <label class="fld" style="flex:0 0 170px"><span>Section</span>
+            <select name="category">${NEWS_CATS.map(([k,l]) => `<option value="${k}">${l}</option>`).join("")}</select></label>
+          <label class="fld" style="flex:0 0 150px"><span>Name</span>
+            <input type="text" name="name" maxlength="60" placeholder="ABC Business" required></label>
+          <label class="fld"><span>RSS feed address</span>
+            <input type="url" name="feed_url" placeholder="https://…/rss.xml" required></label>
+          <button class="btn fit" type="submit" style="margin-bottom:12px">Add</button>
+        </div>
+      </form>
+      ${srcs.length ? srcs.map(s => `<div class="ritem">
+        <span class="bar" style="background:var(--${s.category === "markets" ? "money"
+          : s.category === "nepal" ? "family" : s.category === "india" ? "self"
+          : s.category === "australia" ? "work" : s.category === "discovery" ? "health" : "study"})"></span>
+        <span class="tx">${esc(s.name)}
+          <small>${esc(NEWS_LABEL[s.category] || s.category)} · ${
+            s.last_error ? `<b style="color:var(--bad)">failing: ${esc(String(s.last_error).slice(0,70))}</b>`
+            : s.last_ok ? `last ok ${esc(ago(s.last_ok))}` : "not pulled yet"}</small></span>
+        <button class="x" data-del-source="${s.id}" aria-label="Remove ${esc(s.name)}">×</button>
+      </div>`).join("") : `<p class="empty">No feeds yet.</p>`}
+    </div>
+  </section>`;
+}
+
+/* ===== the morning read-out of last night's plan ===== */
+function planCard(iso){
+  const plan = planFor(iso);
+  if (!plan) return `<section class="card" style="margin-bottom:16px">
+    <header><h2>Today wasn't planned</h2></header>
+    <div class="bd"><p class="empty" style="margin-top:0">You didn't close out last night, so today is improvised.
+      It still works — but five minutes tonight makes tomorrow a lot easier.</p>
+      <button class="btn sm" data-go="tonight">Plan tonight →</button></div></section>`;
+
+  const meals = SLOTS.map(s => Object.assign({slot:s}, (plan.meals || {})[s] || {}))
+    .filter(m => m.what || m.at);
+  const ints = Array.isArray(plan.intentions) ? plan.intentions : [];
+  const doneN = ints.filter(i => i.done).length;
+  const now = nowMin();
+  const next = ints.filter(i => !i.done && i.at && toMin(i.at) >= now)
+    .sort((a,b) => toMin(a.at) - toMin(b.at))[0];
+
+  return `<section class="card planned" style="margin-bottom:16px">
+    <header><h2>Today, as you wrote it last night</h2>
+      <span class="meta">${ints.length ? `${doneN}/${ints.length} habits` : "no habits set"}</span></header>
+    <div class="bd">
+      ${plan.theme ? `<p class="theme">${esc(plan.theme)}</p>` : ""}
+      <div class="bookend"><span>↑ Up ${esc(fmtT(plan.wake_time))}</span>
+        <span>↓ Lights out ${esc(fmtT(plan.sleep_time))}</span></div>
+      ${next ? `<div class="upnext">Next up — <b>${esc(next.what)}</b> at ${esc(fmtT(next.at))}${
+        next.place ? `, ${esc(next.place)}` : ""}.</div>` : ""}
+
+      ${ints.length ? `<div class="subhd">Habits</div>${ints.map((it,i) => `
+        <div class="task ${it.done ? "done" : ""}">
+          <input type="checkbox" class="tick" data-int="${i}" ${it.done ? "checked" : ""}
+            id="in-${i}" aria-label="${esc(it.what)}">
+          <label class="tx" for="in-${i}">${esc(it.what)}
+            <small>${[it.at ? fmtT(it.at) : null, it.place || null,
+              it.after ? "right after " + it.after : null].filter(Boolean).join(" · ")}${
+              it.two_min ? ` — bad day: ${esc(it.two_min)}` : ""}</small></label>
+          <span class="chip" style="background:var(--${it.area || "self"})">${esc(it.area || "self")}</span>
+        </div>`).join("")}` : ""}
+
+      ${meals.length ? `<div class="subhd">Food</div>${meals.map(m => {
+        const logd = S.mealLog.find(x => x.slot === m.slot);
+        return `<div class="task ${logd ? "done" : ""}">
+          <input type="checkbox" class="tick" data-meal="${m.slot}" ${logd ? "checked" : ""}
+            aria-label="Ate ${esc(m.slot)}">
+          <span class="tx">${esc(m.slot[0].toUpperCase() + m.slot.slice(1))}
+            <small>${esc(m.what || "nothing written down")}</small></span>
+          <span class="mono">${esc(fmtT(m.at))}</span></div>`;
+      }).join("")}` : ""}
+    </div></section>`;
+}
+
+function newsStrip(){
+  const picks = [];
+  for (const [k] of NEWS_CATS){
+    const top = newsOf(k)[0];
+    if (top) picks.push([k, top]);
+  }
+  if (!picks.length) return "";
+  return `<section class="card">
+    <header><h2>The world, this morning</h2>
+      <span class="meta"><button class="btn ghost sm" data-go="news">all of it →</button></span></header>
+    <div class="bd newslist">
+      ${picks.map(([k,n]) => `<a class="nitem" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">
+        <span class="hl">${esc(n.title)}</span>
+        <span class="mt">${esc(NEWS_LABEL[k])} · ${esc(n.source || "")}${
+          n.published_at ? ` · ${esc(ago(n.published_at))}` : ""}</span></a>`).join("")}
+    </div></section>`;
 }
 
 /* ===== FIELD EDITOR ===== */
@@ -1155,7 +1575,7 @@ function viewFields(){
   <div class="pagehead">
     <div><div class="date">The nightly form</div><h1>Your questions</h1>
       <p class="sub">Whatever is here is what you get asked tonight. Order them with the number on the left. Deleting a question keeps the answers already given — they just stop being shown.</p></div>
-    <button class="btn ghost" data-go="journal">← Back to tonight</button>
+    <button class="btn ghost" data-go="tonight">← Back to tonight</button>
   </div>
 
   <section class="card" style="margin-bottom:16px">
@@ -1755,6 +2175,37 @@ document.addEventListener("click", async e => {
   const go = e.target.closest("[data-go]");
   if (go){ S.view = go.dataset.go; render(); return; }
 
+  /* step through tonight's questions without re-rendering, so nothing typed is lost */
+  const sj = e.target.closest("[data-step],[data-step-to]");
+  if (sj && !sj.disabled){
+    const panels = Array.from(document.querySelectorAll("[data-step-panel]"));
+    if (!panels.length) return;
+    const cur = Math.max(0, panels.findIndex(p => !p.classList.contains("hide")));
+    const want = sj.dataset.stepTo != null ? Number(sj.dataset.stepTo)
+      : sj.dataset.step === "next" ? cur + 1 : cur - 1;
+    const next = Math.max(0, Math.min(panels.length - 1, want));
+    panels.forEach((p,i) => p.classList.toggle("hide", i !== next));
+    document.querySelectorAll("[data-step-to]").forEach(d => {
+      const i = Number(d.dataset.stepTo);
+      d.classList.toggle("on", i <= next);
+      d.setAttribute("aria-current", i === next ? "step" : "false");
+    });
+    if (panels[next].dataset.review) fillReview();
+    const first = panels[next].querySelector("input:not([type=hidden]),textarea,select");
+    if (first) first.focus({preventScroll:true});
+    window.scrollTo({top:0});
+    return;
+  }
+
+  if (e.target.closest("[data-news-refresh]")) return refreshNews();
+
+  const dsrc = e.target.closest("[data-del-source]");
+  if (dsrc) return run(async () => {
+    await sb.from("life_news_sources").delete().eq("id", dsrc.dataset.delSource);
+    S.newsSources = (S.newsSources || []).filter(s => String(s.id) !== dsrc.dataset.delSource);
+    render();
+  });
+
   if (e.target.closest("#connectGoogle")) return connectGoogle();
   if (e.target.closest("#syncBtn")) return syncGoogle();
 
@@ -1886,6 +2337,21 @@ document.addEventListener("change", async e => {
     await sb.from("life_tasks").update({done, done_at: done ? new Date().toISOString() : null}).eq("id", id);
     const t = S.tasks.find(t => t.id === id);
     if (t){ t.done = done; t.done_at = done ? new Date().toISOString() : null; }
+    render();
+  });
+
+  const ick = e.target.closest("[data-int]");
+  if (ick) return run(async () => {
+    const iso = isoDay(), plan = planFor(iso);
+    if (!plan) return;
+    const i = Number(ick.dataset.int);
+    const ints = (Array.isArray(plan.intentions) ? plan.intentions : []).slice();
+    if (!ints[i]) return;
+    ints[i] = Object.assign({}, ints[i], {done: ick.checked});
+    const { error } = await sb.from("life_day_plan").update({intentions:ints})
+      .eq("user_id", S.user.id).eq("on_date", iso);
+    if (error) throw error;
+    plan.intentions = ints;
     render();
   });
 
@@ -2029,7 +2495,18 @@ document.addEventListener("submit", async e => {
     form.reset(); render();
   });
 
-  if (form.dataset.form === "journal") return run(async () => {
+  if (form.dataset.form === "addsource") return run(async () => {
+    const { error } = await sb.from("life_news_sources").insert({
+      user_id:uid, category:g("category"), name:g("name"), feed_url:g("feed_url")
+    });
+    if (error) throw error;
+    await loadNews(); render();
+    flash("Feed added. It'll be in tomorrow's pull, or hit Refresh now.");
+  });
+
+  /* Tonight: one save closes the day out and writes tomorrow — the journal
+     entry, the three tasks, and the plan the morning view reads back. */
+  if (form.dataset.form === "tonight") return run(async () => {
     const iso = isoDay(), tomorrow = isoDay(1);
     const collect = f => {
       if (f.type === "bool"){
@@ -2058,7 +2535,6 @@ document.addEventListener("submit", async e => {
       if (JOURNAL_COLS.has(f.key)) row[f.key] = empty ? null : v;
       else if (!empty) row.answers[f.key] = v;
     }
-
     const { data:j, error } = await sb.from("life_journal")
       .upsert(row, {onConflict:"user_id,entry_date"}).select().single();
     if (error) throw error;
@@ -2072,11 +2548,95 @@ document.addEventListener("submit", async e => {
     })).filter(r => r.title);
     if (rows.length) await sb.from("life_tasks").insert(rows);
 
+    const meals = {};
+    for (const slot of SLOTS){
+      const what = g("meal_" + slot + "_what"), at = g("meal_" + slot + "_at");
+      if (what || at) meals[slot] = {at: at || null, what: what || null};
+    }
+    const keep = new Map(((planFor(tomorrow) || {}).intentions || [])
+      .filter(x => x && x.what).map(x => [x.what, !!x.done]));
+    const intentions = [1,2,3,4].map(n => {
+      const what = g("int" + n + "_what");
+      if (!what) return null;
+      return {what, at:g("int" + n + "_at") || null, place:g("int" + n + "_place") || null,
+        after:g("int" + n + "_after") || null, two_min:g("int" + n + "_two") || null,
+        area:g("int" + n + "_area") || "self", done: keep.get(what) || false};
+    }).filter(Boolean);
+
+    const { error:perr } = await sb.from("life_day_plan").upsert({
+      user_id:uid, on_date:tomorrow, wake_time:g("wake") || null, sleep_time:g("sleep") || null,
+      theme:g("theme") || null, meals, intentions, planned_at:new Date().toISOString()
+    }, {onConflict:"user_id,on_date"});
+    if (perr) throw perr;
+
     await loadAll();
     S.view = "today";
     render();
-    flash(`Day closed out.${rows.length ? ` ${rows.length} ${rows.length === 1 ? "task" : "tasks"} waiting for you tomorrow.` : ""}`);
+    flash(`Day closed out. Tomorrow is planned — ${rows.length} task${rows.length===1?"":"s"}, ${
+      Object.keys(meals).length} meal${Object.keys(meals).length===1?"":"s"}, ${
+      intentions.length} habit${intentions.length===1?"":"s"}.`);
   });
+});
+
+/* ---------- news ---------- */
+const NEWS_URL = SUPABASE_URL + "/functions/v1/news-fetch";
+
+async function loadNews(){
+  const [news, srcs] = await Promise.all([
+    sb.from("life_news").select("*").order("published_at",{ascending:false}).limit(140),
+    sb.from("life_news_sources").select("*").order("category").order("name")
+  ]);
+  S.news = news.data || [];
+  S.newsSources = srcs.data || [];
+}
+
+/* Opening the dashboard in the morning is the trigger: if the newest headline
+   is more than a few hours old, pull quietly in the background. No schedule to
+   keep running, and what you read is fresh at the moment you read it. */
+const NEWS_STALE_MS = 4 * 3600 * 1000;
+async function refreshNewsIfStale(){
+  if (!(S.newsSources || []).length) return;
+  const newest = (S.news || []).reduce((a,n) => a > n.fetched_at ? a : n.fetched_at, "");
+  if (newest && Date.now() - new Date(newest).getTime() < NEWS_STALE_MS) return;
+  try {
+    const { data:{ session } } = await sb.auth.getSession();
+    if (!session) return;
+    const r = await fetch(NEWS_URL, {method:"POST",
+      headers:{"Content-Type":"application/json", Authorization:"Bearer " + session.access_token}});
+    if (!r.ok) return;                       // quiet failure; the page still works
+    await loadNews();
+    if (S.view === "today" || S.view === "news") render();
+  } catch { /* offline, or the function is down — not worth interrupting the morning */ }
+}
+
+async function refreshNews(){
+  if (S.newsBusy) return;
+  S.newsBusy = true; render();
+  try {
+    const { data:{ session } } = await sb.auth.getSession();
+    const r = await fetch(NEWS_URL, {
+      method:"POST",
+      headers:{"Content-Type":"application/json", Authorization:"Bearer " + session.access_token}
+    });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(out.error || ("Pull failed (" + r.status + ")"));
+    await loadNews();
+    flash(`${out.added || 0} new headline${out.added === 1 ? "" : "s"}.`);
+  } catch (err){
+    flash(err.message || "Couldn't pull the news.", "err");
+  } finally {
+    S.newsBusy = false; render();
+  }
+}
+
+/* Enter moves to the next question instead of submitting the whole ritual. */
+document.addEventListener("keydown", e => {
+  if (e.key !== "Enter" || e.target.tagName === "TEXTAREA") return;
+  if (!e.target.closest('[data-form="tonight"]')) return;
+  const panel = e.target.closest("[data-step-panel]");
+  if (!panel || panel.dataset.last === "1") return;
+  const nx = panel.querySelector('[data-step="next"]');
+  if (nx){ e.preventDefault(); nx.click(); }
 });
 
 /* ---------- boot ---------- */
@@ -2113,6 +2673,7 @@ async function bootInner(){
   try {
     await loadAll();
     render();
+    refreshNewsIfStale();               // not awaited: the page is already usable
   } catch (err){
     el("view").innerHTML = `<div class="msg err">Couldn't load: ${esc(err.message || err)}</div>`;
   }
