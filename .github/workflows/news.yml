@@ -1,0 +1,43 @@
+# Pulls Rahul's RSS feeds and commits the result as life/news.json, which the
+# dashboard reads. Everything stays inside GitHub: no database, no API key,
+# nothing to pay for or rotate.
+name: Morning news
+
+on:
+  schedule:
+    # 19:50 UTC = 6:50am Sydney in summer, 5:50am in winter. Minute is off the
+    # hour on purpose: runners are busiest at :00 and schedules get delayed.
+    - cron: "50 19 * * *"
+  workflow_dispatch:        # the "Refresh now" button, and for testing
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morning-news
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch the feeds
+        run: node life/fetch-news.mjs
+
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- life/news.json; then
+            echo "No change in the headlines."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add life/news.json
+          git commit -m "News: $(date -u '+%Y-%m-%d %H:%M') UTC"
+          git push
