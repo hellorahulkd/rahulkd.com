@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-14T22:41:43.285Z",
+ "fetched_at": "2026-10-15T22:41:37.095Z",
  "total": 84,
  "problems": [],
  "sections": {
@@ -7,88 +7,88 @@
    "label": "AI & technology",
    "items": [
     {
-     "title": "The best feature of Apple’s HomeView might be its simplicity",
-     "url": "https://www.theverge.com/tech/1011431/apple-homeview-smart-display-best-feature",
-     "at": "2026-10-14T22:00:02.000Z",
+     "title": "Sega pulls Total War: Shogun 2 remaster from sale following disastrous launch",
+     "url": "https://www.theverge.com/games/1012512/sega-total-war-shogun-2-remaster-pulled",
+     "at": "2026-10-15T22:35:55.000Z",
      "source": "The Verge"
     },
     {
-     "title": "Flock CEO says its microphones detect ‘just gunshots’ — its website says different",
-     "url": "https://techcrunch.com/2026/10/14/flock-ceo-says-its-microphones-detect-just-gunshots-its-website-says-different/",
-     "at": "2026-10-14T21:30:33.000Z",
+     "title": "The tech backlash is now in theaters",
+     "url": "https://www.theverge.com/entertainment/1012438/hollywood-tech-backlash-you-can-see-everything-musk-the-social-reckoning-artificial",
+     "at": "2026-10-15T21:39:52.000Z",
+     "source": "The Verge"
+    },
+    {
+     "title": "Trump posts AI-edited photo to brag about White House restoration work",
+     "url": "https://www.theverge.com/policy/1012445/donald-trump-ai-photo-white-house-rennovation-column",
+     "at": "2026-10-15T21:09:33.000Z",
+     "source": "The Verge"
+    },
+    {
+     "title": "Targeted ads delivered 0-click exploits to install mercenary malware",
+     "url": "https://arstechnica.com/security/2026/10/targeted-ads-delivered-0-click-exploits-to-install-mercenary-malware/",
+     "at": "2026-10-15T20:32:41.000Z",
+     "source": "Ars Technica"
+    },
+    {
+     "title": "Meta launches an open-weight AI model that runs on Macs",
+     "url": "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+     "at": "2026-10-15T20:04:53.000Z",
      "source": "TechCrunch AI"
     },
     {
-     "title": "Eight states sue OpenAI, saying ChatGPT isn’t safe for kids",
-     "url": "https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety",
-     "at": "2026-10-14T21:11:28.000Z",
+     "title": "Bluesky’s AI tool now lets you make games and apps to share on social",
+     "url": "https://www.theverge.com/tech/1012374/bluesky-ai-attie-small-social-games-apps",
+     "at": "2026-10-15T19:57:16.000Z",
      "source": "The Verge"
     },
     {
-     "title": "Microsoft and Japan took down a cybercrime network behind over a billion scam messages",
-     "url": "https://www.theverge.com/tech/1011487/microsoft-scam-messages-marketplace-takedown",
-     "at": "2026-10-14T20:03:43.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "The AI race is back on",
-     "url": "https://www.theverge.com/ai-artificial-intelligence/1011311/the-ai-race-is-back-on",
-     "at": "2026-10-14T19:06:03.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "Now that Character.AI is going bankrupt, what happens to all of its users’ data?",
-     "url": "https://www.theverge.com/policy/1011417/new-york-ag-characterai-bankruptcy",
-     "at": "2026-10-14T18:47:54.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "As a TV enthusiast, I was hoping for more from the Apple TV 4K",
-     "url": "https://www.theverge.com/tech/1011324/apple-tv-4k-missed-features",
-     "at": "2026-10-14T18:38:59.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "YouTube Music launches new labels as AI-generated music floods streaming platforms",
-     "url": "https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms/",
-     "at": "2026-10-14T18:23:46.000Z",
+     "title": "Amazon devices chief Panos Panay sees a future where AI devices replace the need to use apps",
+     "url": "https://techcrunch.com/2026/10/15/amazon-devices-chief-panos-panay-sees-a-future-where-ai-devices-replace-the-need-to-use-apps/",
+     "at": "2026-10-15T19:55:25.000Z",
      "source": "TechCrunch AI"
     },
     {
-     "title": "YouTube sticks new labels on AI-generated songs",
-     "url": "https://www.theverge.com/ai-artificial-intelligence/1011369/youtube-music-ai-label",
-     "at": "2026-10-14T18:22:56.000Z",
+     "title": "Withings now charges $100 per year to sync your data to other apps",
+     "url": "https://www.theverge.com/tech/1012350/withings-plus-subscription-new-users-october-13-2026",
+     "at": "2026-10-15T19:52:13.000Z",
      "source": "The Verge"
     },
     {
-     "title": "Save up to 20 percent on gift cards for REI, Barnes & Noble, and more",
-     "url": "https://www.theverge.com/gadgets/1010749/google-play-gift-card-deal-sale",
-     "at": "2026-10-14T18:20:55.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "Apate sends AI agents undercover to get scammed so they can gather fraud intelligence",
-     "url": "https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/",
-     "at": "2026-10-14T18:00:00.000Z",
+     "title": "Anthropic is letting METR researchers look under the hood with employee-level access",
+     "url": "https://techcrunch.com/2026/10/15/anthropic-is-letting-metr-researchers-look-under-the-hood-with-employee-level-access/",
+     "at": "2026-10-15T19:14:26.000Z",
      "source": "TechCrunch AI"
     },
     {
-     "title": "Apple’s new HomeView smart display is $10 cheaper at Amazon",
-     "url": "https://www.theverge.com/gadgets/1011227/apple-homeview-smart-display-deal-sale",
-     "at": "2026-10-14T17:24:42.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "Sprout Pi adds Bluetooth, streaming, and USB-C to your aging iPod",
-     "url": "https://www.theverge.com/gadgets/1011266/sprout-pi-adds-bluetooth-streaming-and-usb-c-to-your-aging-ipod",
-     "at": "2026-10-14T17:19:11.000Z",
-     "source": "The Verge"
-    },
-    {
-     "title": "Deezer will soon let you filter out AI-generated music",
-     "url": "https://techcrunch.com/2026/10/14/deezer-will-soon-let-you-filter-out-ai-generated-music/",
-     "at": "2026-10-14T15:16:04.000Z",
+     "title": "Bluesky expands its AI-powered Attie app to let anyone build websites, games, and more",
+     "url": "https://techcrunch.com/2026/10/15/bluesky-expands-its-ai-powered-attie-app-to-let-anyone-build-websites-games-and-more/",
+     "at": "2026-10-15T18:56:46.000Z",
      "source": "TechCrunch AI"
+    },
+    {
+     "title": "Meta and Apple team up to make Muse AI models run better on Macs",
+     "url": "https://www.theverge.com/news/1012293/meta-apple-muse-spark-open-ai-model-mlx",
+     "at": "2026-10-15T18:15:36.000Z",
+     "source": "The Verge"
+    },
+    {
+     "title": "Last chance to save up to $200 on your TechCrunch Founder Summit pass: Early booking ends October 16",
+     "url": "https://techcrunch.com/2026/10/15/last-chance-to-save-up-to-200-on-techcrunch-founder-summit-early-booking-ends-oct-16/",
+     "at": "2026-10-15T18:00:00.000Z",
+     "source": "TechCrunch AI"
+    },
+    {
+     "title": "Sony made a $5,900 gold-plated Walkman MP3 player",
+     "url": "https://www.theverge.com/tech/1012200/sony-made-a-5900-gold-plated-walkman-mp3-player",
+     "at": "2026-10-15T17:48:57.000Z",
+     "source": "The Verge"
+    },
+    {
+     "title": "Volvo will use Nvidia’s tech for hands-free, point-to-point driving",
+     "url": "https://www.theverge.com/transportation/1011653/volvo-nvidia-autonomous-driving-level-2-hands-free-urban",
+     "at": "2026-10-15T17:30:00.000Z",
+     "source": "The Verge"
     }
    ]
   },
@@ -96,88 +96,88 @@
    "label": "Markets & investing",
    "items": [
     {
-     "title": "CoreWeave chief says failed Firmus float ‘bleeding into the narrative’",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMngxU3lWTkhiRkhZWlRTNUNsdjVxaTc3dGVCMHdvRGMzZkZCMUdGWmdGWEU1ZHlGQ2d2VTdNMUJEUzFYZnBDWVRwbHh3RU5Uekt5aVlaU3d2Sld6SEJxZ1NlWjVrYUxPMnFoSXp4UC1YY3N2WkUwMUZ6WnRud1BnWnZ5enNLOXFOMTJObjJYRXdGWHBBZUhmSVpHMTNzRWF1QWRrYm1nandPOTJ3X3BjTE0xVzVhaUFuMjBkNTV0OEl3azQ?oc=5",
-     "at": "2026-10-14T21:35:00.000Z",
-     "source": "AFR"
+     "title": "Why copper capital is flowing through the ASX",
+     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOcDhmd2R4QkdQdW1uWk5ZZkZvR29rUy00YnNpalBNMjdDWFlrMWhPcFJfMkl3czdJRU44aGtlXzBlSllVLTR5WjVFVlJPTDlERlRjYUZpSmd4RHAzQXJaMURNVzk5TG5qR0RHLVdXbk1pUHpVNGR1WDMtQUtkNjNyc093?oc=5",
+     "at": "2026-10-15T21:50:22.000Z",
+     "source": "Mining Magazine Australia"
     },
     {
-     "title": "The oil market is running out of easy answers",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOX1NzajFMTFJWamt5S2hiLTl1a0dscUs0OHZnQ2Y2bFVxTnNYMXVaem1NSldHcGNHQWZGTDlDLTA5ei1IdHN2bl9OR05FUHhmOG5SVktFaDM2a1hMNXZhVzBWVlYyWGl3UWVPQUFOekhEZFRMVHVNMlpiT3JiSUlzakZJSQ?oc=5",
-     "at": "2026-10-14T21:19:16.000Z",
-     "source": "Morningstar Australia"
+     "title": "Global stocks flat as AI and rate fears hit tech",
+     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOeTRzUk5SRExJbm1EUXdJWG9JaXdKSEdtX29rb0k3ZkRTRFZIeHRxb0xMcm00eUF0NzhCS1owVkp4OWQ2eHF2dWl3aVpPak85emN3eGdqX1hEOW0zNjVlTWs3eGVUSlFUME1fVHVXRTFtNEZ4aVBZS1pSQmJnOVdHZTNZQkQwMnowenVWaW9PVFZnSG5i?oc=5",
+     "at": "2026-10-15T21:19:22.000Z",
+     "source": "Yahoo Finance"
     },
     {
-     "title": "Chart of the Week: The warning signs for Aussie banks",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNaXZSUnJrQm01azdGOV9hNTdFX3Q3c1RaN3hkVGhQWUl0LWs5WHNadGFBSDkyU0JkNFpoemRNQmVWUTBnLUthbzZmTHhRenR0WGtqSUV5b1otVkpRZDVscV9BRmZjbXM2UTVxZzFkWkh6R2JqYVR1MHhueF9IT1VETw?oc=5",
-     "at": "2026-10-14T21:19:12.000Z",
-     "source": "Morningstar Australia"
+     "title": "ETFs rival shares and property as young Australians' first investment: ASX",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPcEtDWkplZVA5QnpCVE1RWm5EeWRKR0NFZ2k2M3BIdU1nTjhKV1RHVzZya093QnFkZmpuSlExY1FkVUFDbGFEcnlfR2dESmpPZnlLdkNhUGNrcTZINXdTRFRLU0pvQjRweUktcHdxSHJDQVRjUXlDU1VGcnJBVVhpVTlrTDk2UXFLSENBb1d6QzVzUnZXN1g2NU5EVzRraFVyYTU0NGwxc1VpYW8?oc=5",
+     "at": "2026-10-15T21:09:56.000Z",
+     "source": "CommBank"
     },
     {
-     "title": "5 things to watch on the ASX 200 on Thursday 15 October 2026",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNakR5ZnkzZVJpRjY4dW5XcUF2eklMaUVIT2NOSno0clZDdk9WdjlnOS1FaWJTc0p6QlRpQnAxR2YwTHVPRHRXb1BveXd1SUxEb3EtM3hzUVRRUkt6SU1uXzZNM09MYWRuaU9IX0Z0T3l6b001TG9CcjJqM3c1eExIWUcwNENaODdNX3U4YUNZR2JFQS1Kdk1jTkU3cWU?oc=5",
-     "at": "2026-10-14T20:39:41.000Z",
+     "title": "5 things to watch on the ASX 200 on Friday 16 October 2026",
+     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQYzhlQVI3TElqRjBCbXBXWUg4QWp0UGZNV0hNekpBVE83NjBJNTZtWG5pRVo4a2szX3ZXcS1wZVFQbEg4dXNiODdBekFMeG55QTR6eU1PcjFGVnNMbS0yelZqNW1tVnU5V00yd3dzOWphdW9oTnNKNXNEUTdNREdOMjlfUFpRV3B0dTVxa1lQSkd0MGxhMnZ6YmJ3?oc=5",
+     "at": "2026-10-15T20:47:38.000Z",
      "source": "The Motley Fool Australia"
     },
     {
-     "title": "New ASX boss wants to accelerate move to one-day settlement in Australia",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQajZOeXpnM0t5bjhvd2Rhc3E0cTE4WUFEeTFlX2ZpUTlRT3A2eENCWXI0UGpsZGk2OVZYbVdKbFdWZHVVSlZlOWZuTHVtVjFGZFZfVzgySWNLaDBiZGgtYlJ5Q3J3Sml4SEc2ZEdxTWFxWGJwUUtXTTdtNUN2ZzdTQVVNYlVadjJBZy1JQ0tDeHZXSldQdjYtMW8xSXhjRzhOWEMzX0Z6R2JCNDJWSHV4MGp4Zk9uVmJkVkE?oc=5",
-     "at": "2026-10-14T20:21:34.000Z",
-     "source": "Reuters"
+     "title": "Manufacturers face challenges in pursuing new markets",
+     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbDBIUmRENGtibTdTQ0tTZTlWXzV5LXFGYXlURHNpaW9WU2pta0pqcnV0M0xCN0piMndLeUI5bnBzM0lIelRmaF84ZkRFZVBOQ29Xb1IwN0tnNmVtWXB6XzEwaGVSNjhXeWx3Nk5vRjM0S0hwSEpPcG9ZSWdBbHJJcUhWc2Y4UGg4QTl3WWoxY2YxVVFrdWxLSWxuR3JRNUFrUW05MFF0S1VBQU1tejBhWVNla21hQQ?oc=5",
+     "at": "2026-10-15T20:15:15.000Z",
+     "source": "Central Coast Community News"
     },
     {
-     "title": "ASX set to fall, Wall Street slumps as inflation gets worse; Netflix job cuts",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWtLZVh2Ni1SRlhxNjJLVHZyRXV2QVk2REVVWnFiYkZMVkJYeUcyY2RuanVkTHRfYUdwNmwzSnF4OG55SDJVeFg3ejRUUWFmQThNMDE3WkNPb3RVUnE0SFY4VmlkSVdzMTVoQnJBQXBQNkZhcHN3ZVBEcVgzWnBDWE13VVhJTHpvbU5yU2g3cXBDVXBzVzh2THVMNTd1YlZwWjhNMWgzenBCcVkwZnZTSzY3d2hZZk83SUFpMFRsYw?oc=5",
-     "at": "2026-10-14T20:16:01.000Z",
-     "source": "The Age"
+     "title": "Australia among fastest growing EV markets in world as electric cars save oil importers more than $29 billion",
+     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPR0hWQzhnVU5jOVI1Vmk0ZFJRZWVoLXJDeDk5VDZfOUlTcC1Nd011aHRWekxvVGtMR25WdmJkcHFlYmVoUV95U0FpWUt4QnJSNlJ5cm5XckNxZkFTY3lrM01tQTl3elN1NmtISjNBWklFUkhRMEhERmNsOVFTV0ZvQVY3YVItS0s1c2FXc3Y4dkJEMDg4TDBfMi0yYXdMbl9QNXNVTFZReVhXbmpjdldLbjJhUzVDQkNIenVHQ0ltbHkzVzBMTFQzQm43a2xXeExDcnh0RVZSLTg?oc=5",
+     "at": "2026-10-15T20:02:52.000Z",
+     "source": "The Driven IO"
     },
     {
-     "title": "BDO Australia trims clients and markets team",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbDRnaUdzSzg5ejVmUVlPeUJ5dkpQM3hoaE5WUWZfRllaWG5LTTVZb0lnSzdSTE1TWGczWmlLYTlEcmg2eVVXRjh4SENaeUpoWFJHeEFVanhjYm5wQ2w4NHkzbWhwekdqbjQzc3FEcGg2SFhUOGw3ZTU5cE9XNS15YWdFU09RWF9oLWc3NWliQ0gzU2JB?oc=5",
-     "at": "2026-10-14T20:01:18.000Z",
-     "source": "Accounting Times"
+     "title": "Markets through the lens",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9sQXVJZVlNeDdWTkxYdzdSWU5tZXVDb21JUXJab0Z1UUFMMUNGYkhKdk1GVVB0S1o5ZzRPME9DWlBwR3RDbkZrQzFRWVB4ZzFtNE5wanotS0tWYVFXRnJmdXJvR2hVeHZNOXJ6T2VJRkxKdTY3?oc=5",
+     "at": "2026-10-15T20:02:38.000Z",
+     "source": "Central Queensland Today"
     },
     {
-     "title": "The bond market has stopped respecting reputations",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNR3ZBaDV2VHZfNjNIWGRpWm5oeWdrVTJWUzk3TXAyMmRTMUoxcXptSTRVRHRQaEFwaEdwLTI0M3ZFXzNSS20wS1djMzlfR2h1OXM2cktucHZlSWVXT0E3RTJyUzB6LTdyQnZEV1oxWDlGMk94X2duNEZPNDlxeXEzcmoyejVzcTlEWVZ1bw?oc=5",
-     "at": "2026-10-14T19:45:00.000Z",
-     "source": "Stockhead"
+     "title": "Exclusive | Quantum Startup Oratomic Now Worth $5.4 Billion After Series-B Funding",
+     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxONWNvTmUxODJsLUxpQnN5aXI2aDdadld2X1FoOUowbWx6OU10Z00wWWVNUjBGbjlRTnM1aUZSdktPWkVDSnlxc3JDRTBRelNTMUl0NTBScnFNdzk4MzZ1WnROT3NzWnctSkVZNXBJYXpvdUxCd1JPNWQxcEJwaFJfcUp1SXhJXzk5S2t4MDJ3SDBRR2JnaXF5eUVidWMzZ2w1a3ZwaFEtRWM0elBjZTZB?oc=5",
+     "at": "2026-10-15T20:02:15.000Z",
+     "source": "WSJ"
     },
     {
-     "title": "The RBA keeps hiking interest rates – but are the rate rises actually working?",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNUlUSEg5WGVWTTg0SDh6dy1OekdEVkZrOGgyWHNhSkt6V3ZSQ2NxNG1mV1E4cjRvVFFMQlpzVkhRSkNaQUozYTNUTDh4NVd4LTZTQ2k3MDdTeGtpSUpjX1cyVkl1Ty1DX1NiS3lGaG0wYWtuXzBhTWxfUUhPUmJjQWV1X0FBQWlHeDFVbkY4aXMwWElONnJER3kzS3g0cXU2dEt3ZWtuT1JkeUJBcjAtYQ?oc=5",
-     "at": "2026-10-14T19:19:52.000Z",
-     "source": "The Guardian"
+     "title": "Google’s US$4bn power play puts ASX on alert",
+     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNcEVIMG1CWDk5UHg2ZTcyN2ZReTZESThVUVVyTjRHNGN5ak1NY3NwMEVPTi12YWZlN3EtNVRrYjktSUhZZ2ktTEhiYl9MOHcxaU41UVJJVzhrLWlxQ3Y4TUtpdy0yMTN6OWN1VG4tN2xxdFRvZjVwRzFaX0NxOUxPbC01V09uaW45eGVkV05HbzBvVXg4S0lmcW1GYjR4dzlBQW5YbFBnbVllWmRZU2JRZnB3TEIwNjVzNzFrdGc1QXlJaDg4NExPVnRoT3JFcFhDSlF3?oc=5",
+     "at": "2026-10-15T19:58:13.000Z",
+     "source": "NT News"
     },
     {
-     "title": "ASX Growth Companies With High Insider Ownership In October 2026",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPOGc0RVRmMElnTEVqTlpjRVRDUWlXTjl5dHJITzdkZFUtcjVvZzNIZUdZLWdNTGdaWWxDYVlfZTdOdWx5U0hieU9YZUJ1TW1tLUVNenJ3cnB6dW5SdVBrTEFIWHBjdUpkTjIzdjY1RWppM3A2NlpQMWFZMTVISHJZZjlrREpvT2xLa1FOTjBnc3dnWWVOaHpjMVNZN0I3SUtnUVM0V3hrbVlFTkU2b19vTHg2QTM0UTJieFJxSGtvOFZEZ9IBxwFBVV95cUxOelNIVjktUGdJV2djclRmTVdvTWphNjNLQU01ejZwY2o2RTRVOG9uY0xSd25PQ0Jfd0JnYjNPaWg1VzlkRTFNN2xIck83UE11R2d4ajdXdWtZOUVGUEhRQ2VJZmZrWmt2U09HR0kwSkR6NFBMWTV6aGVFYzFqTGVqQ04wVnlsZDMtckV6cXhHYzZzaWw1TkZDcDRaeTFIZDVQQ2EzekJ6LWJQbmd6LVRrbXRma253RHFxMDY1SjVxVlNGRjg2NXpz?oc=5",
-     "at": "2026-10-14T19:12:51.000Z",
+     "title": "ASX investor report confirms advice gap as demand surges: SIAA",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNbnJnMWtYclRtWi1BMlcxZTB4M1JBOU8wUkZfZ0RFQUVLUGlLcW95dTVVdTRZTWVvTnBSY05yZFVUY1lWQmZ3XzY2WVg0bTAxZjNDSUw1eHZBMXI0ckd0b2JhR3BCSUQ5dnh3eEZ2V0RZaFg0SGVWMHoxcEw1b1FRRHd1QjE3dWdjMTl0Wl8tRjVDcWtIUGNZeE1QTDlpaktoWFhsbEZjdUZnUDFLUG9PX01BOU4?oc=5",
+     "at": "2026-10-15T19:33:23.000Z",
+     "source": "Financial Newswire"
+    },
+    {
+     "title": "Undiscovered Gems in Australia to Explore This October 2026",
+     "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQeERDd04wQVpoenRSNHRzMkNfZlVLQ3h5aTZnY0tmTWctMi0xdlZtLVIyeFBRZkJTZHgzQzhQOVFWTmRKaDdubmU5b3dPMENLelhjX1YwSzNocklaQ0IzY050NTJ5QzhRUzBoWnRHMW5KODhwRks5N05HWXJFUXZ2TmE5ekJEbTdSd2Q3MXAzMlRqamMyNDlmRllMUHRFQmcxemRyWGE4VU1lUU41dXhZTnVZQkNzWnRNZVpGa1M4MHpLa25LTHVUcDA0NnFteXJpMTZRdm1RYWtYT2pnY29PNmw1aWJ6a1RmaG5adnVVX1bSAfYBQVVfeXFMT25nTjRNZk5IdWNJaWRLNWJfZUs2XzVpWFg5UUhjZ2JFNEQtclFXamE2Rl93QnVZNG0yN3ZTNTVZX1F2RGJGck9rZVNGamN3RVZPaTRKRlFLUzByZzFWZDJ6UUdqNlJDd2JUZDgteW91dUozQk80S2tsbHVZQmoxZVhkNF9TdTM4QVNIOFRNeW9aZ3ludVZXQ3VGSXVQNnpWNW9qZE5mRko0Mkh6akVjdklwRlRENjlOWWlmR3Y3cXZYMjAwdU5jNlVtWW1GSlhXUlZGSTZncEZzX3hrOTlETHFwQVdjY2k2dFNUZ2RkWGc1TWJiZlpB?oc=5",
+     "at": "2026-10-15T19:12:16.000Z",
      "source": "Simply Wall Street"
     },
     {
-     "title": "A nation of investors: ASX CEO reveals how 11.5 million Australians are investing",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMjA0dmdOcFRRWktKWGFlUVAwSjhHQ3pfNXZLakVIeEF0c3F0RkRnTmhqNEQ2XzlxOHBnSmZZdlhQVnpNSzlGZHBGWDhQalUtTWNhbHUwRlQzZTVUZnI4US03eVJtTVYyVXNzbE4xUjJDNDg2VG9leG4ycTRxSTdGMjl2d3IybGNfZkk3X1h5WVpKYm9Mc1RCWDA0ajJEb1oxcUpGY0N4M0M4Q1VEUE5qY0FMMWs4NUJxU3c?oc=5",
-     "at": "2026-10-14T19:00:11.000Z",
-     "source": "Livewire Markets"
+     "title": "Australian Clinical Labs Leads Our 3 ASX Penny Stock Picks",
+     "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNMUFSbk1GSHRpNmtnaEFpa2tQZVphQ2g0NzIyR0ktMEFTWF90bzY0bWF1aDlEdXVHTWp3T0hiaDNFQl90cFpGWjVtRTlwczJHRHNlVnd3NWE2ZGhjTzZjZy1lbzZuOTh1c05PUWI3Xy11RVN0eUlDTlJoeU1nT0g4NXpaak9pNkdod3VLUEV3RjNEakYyenZCeEtVNHF3SUxaWmhMTHk1cThFbENBY2JnZk9aS09FMDFLYVdScEFSMTdhaVJsY3lCVmw3d0dGenY2cFFPUkI0ZkN5OGMtYk840gHkAUFVX3lxTE1odjF6T0xRMXVYdVBnWDcybVBpX2xlQUc3M240NmxlUU4zWnVTOWlCUnY4dHZOa0tmWFg5TUdTaTlGSEV3TUdnLVA2c0tkUm9Pb2ljUm1HVnV3YlpwNVoxbFJUSE50TlpZeUpkLVJiVmVROXBHNm8zMjdNblE5SllsRzRrTVhOblNYcjVhaTV1dVVxMGxYVHgtamp2cnZ3aXZrSUF0LTg4enFfMUZDOXlKazc4LVhwWXZrelF6UlJJcHNEV0k2bW94ODlfbnBUUXJKUkNXcjlGTURDRmR1RnhISVcwQQ?oc=5",
+     "at": "2026-10-15T19:12:16.000Z",
+     "source": "Simply Wall Street"
     },
     {
-     "title": "4 ASX small caps to back in a market that's looking away",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOUzZxSE5EMDMyT0YwaTZSQmZ6TEp5c1A2TFJsZWVKNGNMRExnRWF3NXRGQkp5QlR1ejRXSkphby1NVUsxcFZnaEt1cUM4dlNBcWo3ejFhWEJIZlpoOUMwTEJoOHhRNV94YmRrSy03Nk54ZFR3YUxXZmFLVzVERkQ5M2ZtWXFpLXQyYWdDUXJLeWZjWUNUb1dUcWpn?oc=5",
-     "at": "2026-10-14T19:00:09.000Z",
-     "source": "Livewire Markets"
+     "title": "Fresh picks: The ultimate guide to Adelaide’s top markets",
+     "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxNSnlSZmhhZmpwUTFvUTFhby1sZnZNNlhMMUpEaEk4STU1TXFXZm5tN09TSHpjc2NQWlJ4UGpTa3RiTTJ1Q3Q2MU41TVlnd1VfNWJyX1hXcWlJeFJ4WTRoS2FlY1EyZV9ZWG5JcThCRkJNVTJKVTQ3bGlLOWNwU2pOakU0bXl0OUNUNjFHU3BiWmYxQzFrLVhkTDhXZjZ4TTFMR19wc3lfclZmbmhrOUtxMzAwWkNFT0VmcWI5c294bkFJamx3NVQyLVgtdlJhSG5KZVY3Q0hGX1JSajNoR0VqaWh4aVV6ck5IQXcxaTVHX0VfNHB4SXBUT1g2WmVtbjQ5SUdsbzFfM1J0Zw?oc=5",
+     "at": "2026-10-15T18:34:35.000Z",
+     "source": "Adelaide Now"
     },
     {
-     "title": "Funding Tracker '26: Ours Privacy, Arintra and Happy Health",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaFJTdWtYZzBuMHVULWhJWFV3dVB3d0NfeEE1V0RMcV82Z2VFZ2ZtV2x2ZDBYTG1ZUnQ1RGFsZ0pFWmNFZW1rczNCOFRDUjFCTlFvUEplLVFuZmpHRVpfS2pZX3M1ZjZDaFUzZVV3QURjclpScmZlVndpaWlaN3hBNU11dWRpMkxmamp5ZXhR?oc=5",
-     "at": "2026-10-14T18:56:22.000Z",
-     "source": "Fierce Healthcare"
-    },
-    {
-     "title": "ASX set to fall, Wall Street slumps as inflation gets worse",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQZGpuTk1BdEhZbXphOFBkdHJyUmdKdTAzODFCQnlvSmJUMnh6MGRLVVRSeWw1QWszS1BmQVJ2TUlrNUtZTFlld3RVdW82NGthUmhkU3B2UUQ1Z1JPSUhPcU42VkhGcWlfaFViT2VuNXlRVTRNLXQ5ZkpUTHBRUUR3ODJ6Wm5yNFRmdm9fUnF0cmNscm11NlNNTEhNTUFiTkdKUzBTaVMzb0R5aXBseHJlUHhsT2dLN0JoTS1ISTQyU2o?oc=5",
-     "at": "2026-10-14T18:16:02.000Z",
-     "source": "WAtoday"
+     "title": "ASX set to jump as Wall Street pushes higher",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQV0RJMS1nZGs3YTFoTXo1VmtyMmFfeFYteFJZUDIwMGdqUGs1SVRvRnNESHNtTnQ3VF9oRXh5WExvRkRCOHhtZHFxaXRRMm5WWERad24tT3hXU1RzWW1OR1kwbFdheXdZZkVydVFQWWtwQ3JzQ29HYnF2N1Vlb0RRWUJuRGNXS0c3SHZ1OVlna3dlVEtkZDNTS3pZRC14eDNNeHc?oc=5",
+     "at": "2026-10-15T18:20:15.000Z",
+     "source": "SMH.com.au"
     }
    ]
   },
@@ -185,88 +185,88 @@
    "label": "Australia — business",
    "items": [
     {
-     "title": "Automated feedlot proposal draws community ire in Victoria's south-east",
-     "url": "https://www.abc.net.au/news/2026-10-15/victoria-automated-feedlot-concerns-gippsland/106922316",
-     "at": "2026-10-14T22:40:07.000Z",
+     "title": "Interests of homebuyers and sellers collide in fight for transparency",
+     "url": "https://www.abc.net.au/news/2026-10-16/underquoting-victoria-new-laws/107259380",
+     "at": "2026-10-15T21:49:06.000Z",
      "source": "ABC business"
     },
     {
-     "title": "Victoria’s top small businesses revealed in 2026 Telstra awards",
-     "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQRVpvSmc2ZkktZUlZdnljaDUtTnp1ZF9MUmNlM1lCSUtMSG5zYlVTbVRFanQ0Q0VrczFOOUVINVZ5YXVDZ3NJNm1PMlRlYUxWWGtiM2VPR0c1MEJ4WTMxb21FU1RkUDdxSEtKMXVBZzlQLWhUeEd2aUxnRjI0RW5SVXhITzRsN3haVHA2TEZoU0FYeGRzTkRhaUdlM1dsVFBGWjdNVkxhWG5qQTJ2azBCdk1Vczl2SmFRUjdhdndpd3hERGQwZ2x5dzg0NWhSclZuSVZrdUhoUURPenk3Vk56TXZzY0xwbXFSdktBMm9BcjB2T1lPbWpKbnJJQk5MbTd0TWVhSVA1Wml1M1EzaU9WMnUyOA?oc=5",
-     "at": "2026-10-14T22:27:43.000Z",
-     "source": "Herald Sun"
-    },
-    {
-     "title": "Victoria gives final state approval for biggest wind farm in southern hemisphere",
-     "url": "https://www.abc.net.au/news/2026-10-15/warracknabeal-wind-farm-clears-victorian-approvals/107263312",
-     "at": "2026-10-14T21:30:44.000Z",
+     "title": "Reassembling John Travolta's jet down to nuts and 5,400 bolts stage",
+     "url": "https://www.abc.net.au/news/2026-10-16/specialist-team-to-reassemble-travolta-plane/107265340",
+     "at": "2026-10-15T21:43:23.000Z",
      "source": "ABC business"
     },
     {
-     "title": "EdgeConneX Enters Australia in Partnership with Stockland, with Hyperscale Data Center Campuses Planned in Sydney and Melbourne",
-     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQOXBYRk9JMlpGM2FBZTZ6MUM3WUpYcXNaMHFCSnZYX0ItZzdDU2NDU3l4QndXcVo2Q1FRdVpwY3hZaHgwcE9OYk9nMF9MZXVqa280TWpfOWRTVjFicFhnaklxbzZ4dHF6dXVjbWZRbVEzT0NlRzFZcThOVG0wTWwxdWw1WTFIMUdWNG85ekJDWmhHTFpFNnNUUGhxVGdJTzl4LWZNcmhNcm8wYXFnb2E0MzV5ZkMtSU5MQ3dvVG9jRlFTYi1ObmN5ZlhqNjZJZXNKYjl4OHZpZXdsT2dENzZfdGVBN0J4eHdpRUJjbkVmbGU3SzdjSGpGMlcwS0dXNmJoZzM4dTZpN05jLTJUZDhYRA?oc=5",
-     "at": "2026-10-14T21:01:00.000Z",
-     "source": "Business Wire"
+     "title": "‘Nothing else will solve it’: Grim warning",
+     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQekJ6bGtKTFhSNWpFTDh2aGQxVjZ2VU9qTWpxOE11eS1iYVVweEgydC1FWV8zdzRhdDRUWXJJbVM1ZkNNUE9TOVROT1NkSm9FcXF4dXI4R29lOWdablowOGs2dlZ5b3F0QkFkZk1UQ01IbzEza2F5MDVqLUhkVFFseVlsZkZaTDJVRGJXOGxtUlp0RFBiYWRXTWcwTWRyWWxQeDlrYndIamxZdmZWUGtKbVFqSHZJa2ZZQ3pHY1B1TzRGTXVkN3RjaG5zcVRHMmtqcDFlZHYxZVFod9IB3wFBVV95cUxOUk9FV2pDZ2FaR1pibU5wc1BWYzFmSFE3dmxJWkdmYWJIT1dvTWNkeVdVMUtEWjlIU1hRZnpCaGc1ZjZPUlZnR3EtVmtPQmp0c3NRc1c5d3ZTblVCaWw1SWxLZzltdThoYTFZOEl2d19lb28wLUpDLThBeUNidHZfV2FQQmUwRnBOY3JNQkxOaXV5UHJZSldLaWZOd3JVSVk0ZVpQRkFPeFl6MmZOQThuUGxoTXJ0UXh6by1lYk0xZ3llemt1YXZ0bG5tV2hSUGlRLWRLdzVHSUM2QUVVMzRz?oc=5",
+     "at": "2026-10-15T21:00:05.000Z",
+     "source": "News.com.au"
     },
     {
-     "title": "Christopher Skase And The Qintex Collapse",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1mRFZFSTc5dElxX0pWQmtVVzhLZktndXl4VFZhQjdUbFZ1eTI4RHlxWmQ5dmlRUG4tLW15eS1IamhCX1FJSDZGNlBobWI1SHRTZkF4YU1MZ2wwWlJ6a2RoOXJLcHhQNW5NT1E?oc=5",
-     "at": "2026-10-14T20:42:00.000Z",
-     "source": "Nett Magazine Online"
-    },
-    {
-     "title": "Which Australian startups are on LinkedIn’s 2026 watch list?",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNcjVtY2F6SzQ1MFRya0NEVHJlc2Jhd192bVV0bkJ4SkVsdzU5d2NLNGZWaDhVWWxYZFhPUGxFaEkzRURNQlBNVUtsWjFNWlZiSG45Y284dVZYdEo5TkJVaHZzQ3ZzU1hRa09RSWYyLXRoa2duRkFxcDdXbDNYTTlJV05IRFlDcmVON2tEMV9xRXdmc0h1aG13?oc=5",
-     "at": "2026-10-14T20:03:48.000Z",
-     "source": "Dynamic Business"
-    },
-    {
-     "title": "Universities justified job cuts with numbers no-one could check",
-     "url": "https://www.abc.net.au/news/2026-10-15/nsw-university-financial-models-job-cuts-inquiry/107244202",
-     "at": "2026-10-14T19:32:45.000Z",
+     "title": "Global sugar prices rally amid key producer Brazil's presidential election",
+     "url": "https://www.abc.net.au/news/2026-10-16/sugar-market-rallies-in-midst-of-brazilian-election/107264588",
+     "at": "2026-10-15T21:00:03.000Z",
      "source": "ABC business"
     },
     {
-     "title": "The RBA keeps hiking interest rates – but are the rate rises actually working?",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNUlUSEg5WGVWTTg0SDh6dy1OekdEVkZrOGgyWHNhSkt6V3ZSQ2NxNG1mV1E4cjRvVFFMQlpzVkhRSkNaQUozYTNUTDh4NVd4LTZTQ2k3MDdTeGtpSUpjX1cyVkl1Ty1DX1NiS3lGaG0wYWtuXzBhTWxfUUhPUmJjQWV1X0FBQWlHeDFVbkY4aXMwWElONnJER3kzS3g0cXU2dEt3ZWtuT1JkeUJBcjAtYQ?oc=5",
-     "at": "2026-10-14T19:19:52.000Z",
-     "source": "The Guardian"
-    },
-    {
-     "title": "Builder chosen for Hobart's Macquarie Point stadium",
-     "url": "https://www.abc.net.au/news/2026-10-15/builder-chosen-for-hobart-macquarie-point-afl-stadium/107264166",
-     "at": "2026-10-14T18:56:44.000Z",
+     "title": "Steelworkers down tools for last time amid first wave of redundancies",
+     "url": "https://www.abc.net.au/news/2026-10-16/whyalla-steelworks-redundancies-take-effect-amid-administration/107269150",
+     "at": "2026-10-15T20:37:18.000Z",
      "source": "ABC business"
     },
     {
-     "title": "Investing bonanza as younger Australians lean on AI advice",
-     "url": "https://www.abc.net.au/news/2026-10-15/asx-investing-bonanza-young-australians-lean-on-free-ai-advice/107266282",
-     "at": "2026-10-14T18:00:00.000Z",
+     "title": "Car insurance premiums jump by almost 60 per cent in four years",
+     "url": "https://www.abc.net.au/news/2026-10-16/car-insurance-premiums-well-above-cpi-asic/107267070",
+     "at": "2026-10-15T20:30:28.000Z",
      "source": "ABC business"
     },
     {
-     "title": "This strange sea animal is on menus, but it is disappearing from our reefs",
-     "url": "https://www.abc.net.au/news/science/2026-10-15/sea-cucumber-100-years-disappearing-reefs/107196076",
-     "at": "2026-10-14T18:00:00.000Z",
+     "title": "Amazon sold light months after being told of fire danger",
+     "url": "https://www.abc.net.au/news/2026-10-16/nsw-amazon-light-catch-fire-melted-lab-test/107270668",
+     "at": "2026-10-15T19:24:57.000Z",
      "source": "ABC business"
     },
     {
-     "title": "‘Failed on both grounds’: Cosette loses Mayne appeal",
-     "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPUkpHVlBBenlXRUlUdi0ydHRlNnpra0RrYlJkRXBseUxkTlJHS0NFb0tXRmRjNURYaVBYaHlhbDVDSTNjdmZ6djItNy1LMDljYUdnM09zV1pBZGxxOGZPWHFmQTgzZkpGZkhqeHpPekpncjI0bHBaZmREbmgzVGVMbWxmcXR2TmZCcjdwN2xGZ2Y3MkxvYzhGSGhCQTFGWllLdndYQ01sY2Vta2hIRkYzM2pkWHdDSTRCZkFfLTlDOXVIMFN3RkdmalRPYXE0RkZyVFAydXdyYlU2NUIwTDFJRlFBelQ4VnAyN3NJMTFvbzFrUEhkZi1TQUlzdDFiTEluT2NmbmpsYw?oc=5",
-     "at": "2026-10-14T16:45:55.000Z",
+     "title": "Builder revealed, but cost of new stadium still 'being worked through'",
+     "url": "https://www.abc.net.au/news/2026-10-16/cost-pressures-hobart-afl-stadium-price-tag/107270728",
+     "at": "2026-10-15T18:54:42.000Z",
+     "source": "ABC business"
+    },
+    {
+     "title": "Dispute over outbreak that was 'like seasick, times 10' on Spirit ferry",
+     "url": "https://www.abc.net.au/news/2026-10-16/spirit-of-tasmania-crew-gastro-outbreak-on-voyage/107264692",
+     "at": "2026-10-15T18:47:35.000Z",
+     "source": "ABC business"
+    },
+    {
+     "title": "Journalist Amy Goodman won't take 'no comment' for an answer",
+     "url": "https://www.abc.net.au/news/2026-10-16/amy-goodman-democracy-now-documentary/107270660",
+     "at": "2026-10-15T18:30:00.000Z",
+     "source": "ABC business"
+    },
+    {
+     "title": "Cheap French wine with a serving of climate division",
+     "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNUk8zYW45ZnJ1ZzB6NU81Tk1yTF90RzFicWgtdXRpcEo5VzRyQ3BaZDhKTFg2R21yWDJuQjFubTY0ajBLT0F3N2Y3MVRlTjNqUDVoMnRnZ0IteW5panhGMFB4eVZER29wR3JmbVM5Y25xcEgwZzRTNnRpcUJWY3FhalNwRC0xR0J1U3FjLVNBdXNRWTk5b0ZZaGZvaWV2M1J0YnpLNFl6a1dfeWN3c2VNZmp1TlRxSThEUzNwXzRCMk9XVG52M0tUREZCQVkwX2l1a0o3WXVBSlh2bnNBNkRwbXVKUUxEQmM?oc=5",
+     "at": "2026-10-15T18:18:09.000Z",
      "source": "The Australian"
     },
     {
-     "title": "The 30 per cent cheaper grocery plan just got a brutal reality check",
-     "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOVHlld1VocHZ6OGZmTml4SllHRWFZQ1NNMjdUYXR5SlQzNHBsSHNDZjBJMVdPWDYxM1BsT1U0UjJSWjlLZW5NSkFfN0M3WGx5N1RLTkZtaTB0VlVGTk1QMUFEbUNFMmFoMzdabnNyTDdtTkdYdVkzaWNwaDNlOTF1UFdBeTZXYVJpdVhMbVJUUTZDUmlIOHI0M2tfVEd4TFBBODFGcjh2b3Y5Y2VkYVhOTWkyd1kta1NQa1JTVWhNM3F3ZjhyNlF4bDNWN2tQTjVlczBtWGdmQ2Q0Y1V3MHZKS3pKX1pzM1AzTklkb3lZaTNBSFU5RGR0M0kxTQ?oc=5",
-     "at": "2026-10-14T14:05:22.000Z",
-     "source": "The Courier Mail"
+     "title": "Huge trend pushing record number of Australians to invest",
+     "url": "https://news.google.com/rss/articles/CBMirgJBVV95cUxOQlFFNzVhZUJzdTA5RE1PSGQ1WmlkVzAzUHpibU9INlFSMlRpdUVGZlBTU3gwRDNLRjJZN25YM3YxaHl0aGMwLUtjVXM1cHk3TFYtSkhHa2JJcEJMVmRUTFZ0dXM0Q1VNTUFOSlE1U21US1VPRmNySlZGQW0wYUo2RkdVX1BLS1M1bGtqUU50anJ2S1RST0tNaWRwbmJfT3dnMmk0TkZHZ283azNsZmZJNUZnd25pVXJqeEg2RUhNTmY3LVRtcE1MNlk3dDI2M3ZxdnI3aE1jaTB6YkF3aFE2RmVMWFV4UVpJZ2ZVdUtjUDlkUjRBY3VWbi14cVVWOTR4WXZtODRWWjlGdWJnaG96cVB5OUY1VGhEZUd5aF80NEY0aVRzNjR4LVRzdmVkZ9IBswJBVV95cUxNbVNuMU00UkRSNWg0TnE1eWNKUXRseUpBUFRzY01XdmZSdEttYnpPYkhnLVU0UkcyQ3QwcnlDTGgxN2JLdlExS1V4SEZ4SU81TVdiUWk5QXFkbXVGX1NFcTdSeURiWXUwbWVOc1BlSjRKNV8xbmxjZ01fRzBNVDRyWWNqTjZ5MVBsSEZvbkt1S0JLN0dpM1Qyb0ZiS2IxQ0dvZjFGeDlTa05IWGdlUEoyQnJ0WGlnemNqd0hOOW5VM01MZkRWMi1WMlRzaGpSbEplblpqYmhrVFR6MmJPaV9hbW5NQmh5MDlQQXpNV3NmWTZyYjhjZ0RKaEpwZ2I3a0gzRDJ1bnpDcjJOR1BNVXRFQmhKSmtyRnNmMnU4c0JDamUzT1ZfYzJEWnBBdW16LXJaYWNJ?oc=5",
+     "at": "2026-10-15T18:05:50.000Z",
+     "source": "News24"
     },
     {
-     "title": "‘Not doing well’: Albanese government has been troubling for Australia’s economy",
-     "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxQcERYdVFMV1c3N1NoREE0NTFIQVZhNVctQnVXYi1teGdQWEZvazlHNXZsdU0yemNESTdLR0RxbWoycGRqMUM2RTRVQzlsLU9OUnBwTkVCQndjQmNsRksxb0NJWlRNdFpvNmIwYlM3bVRTZkhlb2lYSVg1RmcwY05KRkdyNGxXT3B2R1JHejY3cWFnMlIzYkZ4RGRuVFNNM0JkbW4tdXN0N2tyZWFXeWZwN3o4aFpxWXpIVzIwU0sxV05pNVJ0dXpTNXlrWlZqOFhxNXluN0MzdU5pSkNCcW5JSUtyTDFlZWNteEFoWUh0VUdsQ21PRTFwUjhnVUVISmvSAYQCQVVfeXFMTUVkSDRlVHhVTHg3cVBpbUVvMkFEOUlsVGd4T0dOTFlpaUtTcTNmc1otS0tKMHo3dWYxWGktc3p2M2I5ZmJzVFgtdEJTQXd1WFk4Y0hjcFRBSnFCY2hsa09vWG45OXdlV0RleGxpWXhCS01ZekJQZUFYaTZIMFVmbEhlTmdYVlc3Q0FFTWJBd0tKbkVrYlpUM3NCVWdnY0YyWGlzdWUxTmZPdVc4VmRqcnRiOE51ZnR3OWpjTElIRXN1S0RJZFUwYlN4ekE3c3BTOU5nNHdMc2JfRWJJT212NDh5NWZJU3NVNkgzaE1mRGxIVVZuV3hLYm9PSV9pRWVIVVpPZzg?oc=5",
-     "at": "2026-10-14T11:19:30.000Z",
-     "source": "News24"
+     "title": "Howden Australia hires ex-Marsh claims chief Osborne",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOT1U3S2R4LTZ0SGNXLUFJZFhSU09UZzhsQlBuSnF2OVdvTEVoUko1ZFhHUEg0VGNEVTBTNl94ZG1ZQ1VUeWFLenJNd3RGT0UteERibE40MTUyTEw5NFVUaDVkbF9DdEN5RlZhdjcyMkYyblVOLTRhemNwbjQwRnBsMkwxdC1PVGdiZk40VnpTdnBzMmg0YTd0Q2s4b0xSblpfN2l3b3dQRlZ6bVNEdXdrN2JwRXdxeVItdWVzT24yRQ?oc=5",
+     "at": "2026-10-15T13:23:05.000Z",
+     "source": "Insurance Business"
+    },
+    {
+     "title": "Sailors missing as two ships set ablaze in Romanian Black Sea",
+     "url": "https://www.abc.net.au/news/2026-10-15/two-ships-ablaze-romanian-black-sea-sailors-missing/107272674",
+     "at": "2026-10-15T10:59:31.000Z",
+     "source": "ABC business"
     }
    ]
   },
@@ -274,88 +274,88 @@
    "label": "India — business",
    "items": [
     {
-     "title": "A Mumbai company training and employing women in the slums",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPdW9vdExJWGJ5OWw1ZjhBTzNxcERPd2ZsX0d5WjBOTzg3Rlc5OGk1WkJQc0FGOVR2QzVTLUQtazIwc2pXLTVmdDBYVkNLMGt0TXBIU0h5S3d1ZGxPQWFPQUpwZThkdUpYZW52c2R3WEhWQVVLZm5VdWF2bldOcm1MTlE5MWNEYmJzT2VTbXRwb0RWZ2NER1hB?oc=5",
-     "at": "2026-10-14T22:23:59.000Z",
+     "title": "India’s Tea Economy: Production, Consumption, and Trade",
+     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSmZEd1dLZkFfeHU1dEMxWmtJM3RmX2RkN1AyYXJzTkJkTF9PSlB1WUxrWmVjTFFVZWRNeXFDUklyYnROU25XeEU1clNSTWZtOHZvSHU4Q2dLX19TbEVlVTFDODdFYTlJQ0hkQkFqS2hwbHFBc1A5YUhZVHdLYnRGZg?oc=5",
+     "at": "2026-10-15T21:36:49.000Z",
+     "source": "India's World"
+    },
+    {
+     "title": "A family business in Mumbai is finding growth in a complicated global economy",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQRjRFNEZVYXZZVEV3cl9tN0lGcFhZYU11UHBUdUlTdkRCWkdzWkxVUmV3UmlOX3Fqa1BZZkNTaUxldVVET3dMQlBwN2UzMGNhOTZNd3B2U3E2Qmh5WldNN0VfWl9sR0dDUDlnWldJQnl3N29VeTZxYmM4X2dINHUzb3JUb3IwUENwdXN0SnNWdjRNWnRVcXZ2R2pCMHJJNERU?oc=5",
+     "at": "2026-10-15T21:21:00.000Z",
      "source": "Marketplace.org"
     },
     {
-     "title": "DPIIT Recognition: Meaning, Eligibility, Benefits & Registration",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOVFJRVzc4aEVfNnJlbnQ4b0dyaFdxcG9CU3h1dXhUaGhPV0NsZVJ6ODBab0NkZlp4bG9ZYWQ0a2FWTnU0dXlQQnN4Rm1PTi1wUkhKRDBvQW9sV3ljWGNMUDFGNGFqSThla1dsUWVMUUN0MjJDa0J4aXlHTGZhODBJZmhXc1BjdE0?oc=5",
-     "at": "2026-10-14T20:22:42.000Z",
-     "source": "IndiaIPO"
-    },
-    {
-     "title": "Online mobile sales may not ring loud this Navratri",
-     "url": "https://economictimes.indiatimes.com/industry/cons-products/electronics/online-mobile-sales-may-not-ring-loud-this-navratri-phone-price-hike/articleshow/134951050.cms",
-     "at": "2026-10-14T20:04:24.000Z",
+     "title": "19 injured in train-coach collision in France",
+     "url": "https://economictimes.indiatimes.com/news/international/world-news/france-train-and-coach-collide-several-injured-in-channel-tunnel/articleshow/134976430.cms",
+     "at": "2026-10-15T20:29:32.000Z",
      "source": "Economic Times"
     },
     {
-     "title": "States asked to waive stamp duty on road projects",
-     "url": "https://economictimes.indiatimes.com/industry/transportation/roadways/tug-of-war-states-asked-to-waive-stamp-duty-on-road-projects/articleshow/134950819.cms",
-     "at": "2026-10-14T19:41:05.000Z",
+     "title": "Demand for bank loans rises amid hardening yields",
+     "url": "https://economictimes.indiatimes.com/industry/banking/finance/banking/demand-for-bank-loans-rises-amid-hardening-yields/articleshow/134976286.cms",
+     "at": "2026-10-15T19:57:20.000Z",
      "source": "Economic Times"
     },
     {
-     "title": "India tightens tax rules for Mauritius investments",
-     "url": "https://economictimes.indiatimes.com/news/economy/policy/officials-can-deny-benefits-if-tax-relief-found-sole-motive-india-mauritius-double-taxation-avoidance-agreement/articleshow/134950348.cms",
-     "at": "2026-10-14T19:31:06.000Z",
+     "title": "SC ruling deals a heavy blow to Yes Bank's capital",
+     "url": "https://economictimes.indiatimes.com/industry/banking/finance/banking/sc-ruling-deals-a-heavy-blow-to-yes-banks-risk-equity-capital/articleshow/134976144.cms",
+     "at": "2026-10-15T19:48:11.000Z",
      "source": "Economic Times"
     },
     {
-     "title": "India’s Trade Deficit With China Crosses $100 Billion in First Nine Months of 2026",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOYTNSWElSYzN0OHV0SDJ4VmxrVGNrMjVKQVp0eTI1akExS3paSWgxVFlrUGdVLThPV2xYYXQ2QllrMmdtTngyRWJIVno5SXJKZHBlcTlQbGs3eUxaVVRKWUZaVFFxVml0SXZ2azl6b29rQVFlQ25tS3J1bUZRTExtRHVjVmdDYllkalZCZDQ0WkhKdlkxWVltN2JHWjI4T2x3SE41WlR5SUMyd1NjcjFCYjlEZ3E?oc=5",
-     "at": "2026-10-14T19:05:18.000Z",
-     "source": "India Business Trade"
+     "title": "Markets will push the US to act constructively: Nouriel Roubini",
+     "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNREExV0NmaEctc0t3ZGg0RjJnQzZ2M3NkSmNBdTJZV3NxdFN0S3dSNi1QZUpRenFmbFhfek9PTVc1ZTJneTNtNXgxcGpjNjZ6OElwNy1fbTdSOGo5RFNaakJrYXNFOTgzT3NJQU95dEZ2dlA4YUF5QjZwX2NEM3VJOWN4MFQxaEtXeUdkNW9mZk9vdkRubmxZdTI0NGhQWTBXZy1ZZDI1cnFEcXB3TUxORGNjOV80SDlxaTVMWVFhdEZSLXJEeW5VRV9XOFFGQ3JsMG1XYzY2WkloUHPSAeABQVVfeXFMTnU5MWZqSG51eDh5ZkFpVUpJdGo5QUprWW5WVEtNOXFYX1R0MkZrQV9aYVc4d2ZESTNDMzdKX0w0STFseFFLeHY0X1ZFQ2VHWWxxT1VBck9KbVY1TWY2OWd4cnlFcFhMWF9jbi1ETFc0R29aejE0RUNlcjVEc3FXRXk0QlE1VzVKdFN6ZHBiMWg5SV9Ja2RVeG0ydThDejVkNVNVR1pJV0FUY2xVd195V2d2QVF5VXAtdGI2T1RxQVUwRXRtcUQtb0NiN0ZoUHo1djlyakZIVzlzS3BuRkRuckM?oc=5",
+     "at": "2026-10-15T19:42:21.000Z",
+     "source": "The Economic Times"
     },
     {
-     "title": "Hyundai bets on expansion to climb leadership board",
-     "url": "https://economictimes.indiatimes.com/industry/auto/auto-news/hyundai-bets-on-expansion-hopes-to-return-to-no-2-position-in-pv-sales-by-2028-29-says-ceo-jose-munoz/articleshow/134949878.cms",
-     "at": "2026-10-14T18:50:51.000Z",
-     "source": "Economic Times"
+     "title": "The Africa Pivot: India and Japan’s Quest for Critical Mineral Security - The Diplomat – Asia-Pacific Current Affairs Magazine",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM29aNHNybzd1Z2k1aEZGNGVyeXJtR3RLUHdyYWVYOXExMVk3OWpkSTlQYk9OMjQxY2xxMUM1VmV4eUdkUjlyMktmeEZncHRuNElrTUp5Q29nSGdDODNQMU1oSktKOU1BbWxhTmd6bzRKYmt6cEgzRlpfNm5hUnJkd0tYMFl1T1IweWlqZzlEYXQxNTdxcUdFV1I2c2FhZVI1eWpkag?oc=5",
+     "at": "2026-10-15T19:18:43.000Z",
+     "source": "India business"
     },
     {
-     "title": "CJP members jailed; Rahul Gandhi condemns custody",
-     "url": "https://economictimes.indiatimes.com/news/politics-and-nation/cjp-members-jailed-rahul-gandhi-joins-allies-to-condemn-custody/articleshow/134949105.cms",
-     "at": "2026-10-14T18:32:21.000Z",
-     "source": "Economic Times"
+     "title": "Unlocking India's inbound tourism potential",
+     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOQ25QT0xvSy1RZThUTFUxZVZLQ3FpTWw5bjdqX2E5UlZZRnhLcDhSUnNTVnhycktZMkExYjd1OXJweW0yMHJELUdNNW53SjFhWVk3VDBDWno1WllkRnpKWHpkM294REZpNFJGZDhBNm8yTjhoXzh5S0lwSV9YTlFOWGNqRS02a25FdG1kWGtHbk40M240YXExQ0VMN3FER3VBYTJKTEZYX00zQ0d3ZGtTUTBvY2JEWFJ2bTYxNkdn0gHCAUFVX3lxTE5hdzlkSE5rVk45SUtJa0VuMUZHMmdRRTVydGxWTVhMQWd3OHZENklkTHU2T3ZjUjU5bmlqbnZnUnd4WEtmSGNPUEpmUlJTT0ZaemxTX0lmMllqd2lSLTRPVFhCNTdLTFRHcGNPcmpFb0NKVzF2UjlIMFlXWjJkdzNFS2FoRHdfamZjV2R5cTZkSTlXRjhaTGFva21hT2dRSTB3SllVa1dCY3BXVFYzOXlneW1fZnI5TW5ScGN6X3A0RURn?oc=5",
+     "at": "2026-10-15T18:56:15.000Z",
+     "source": "ET HospitalityWorld"
     },
     {
-     "title": "India Startup Funding Q3 2026: Early-Stage vs Late-Stage Investment Trends",
-     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPOUdRRFlTanA1VmNLMzltY3F3TG5UNVEyZVV5ODRfMEFsakc0Z3JReDFBSVh6eXNwVFBsSm16QnNmMzJLMXpuREtDemJLM2JkV2F2dGlHazFENFdfb09zdmQ4U1dseFlTSzZqSmZHQU05MktFeEZLeE9CZ2V4M0RadjRBVzEwZlQwa0VFSFpJTXl4WTJRdjQ1MEkzb1Z0cnJKZE5iN213T3h3b0ZoWU5Kd2JVQ3R2SF9hdThKZkRWb0FfOTAwSF9XTnJ6alBjcWlxaVdpbQ?oc=5",
-     "at": "2026-10-14T18:23:07.000Z",
-     "source": "Siliconindia"
+     "title": "Persistent Systems Q2 revenue rises 20% to $487 mn",
+     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPWFJhLWh3NXJOd1Ixd0IxYzJrc3lFc01SNGc1UmtKTzhSUUwtdEI4WDA4MU9HTU5EeDl0SktLN0tHSEN2Y182NGVnbkdqWl9Cd0Q2a3gxY08xOTlPRFkzckdWNkI2eEJ0dTRkMHp0Tk55QVZjSndJTUV5eTlGanNnTnM1YzlseW1XNEx0S0hkUkZQR0JQX0Foc2llemtPSUExdEtmQ2dkZ0p0Z040RzZfNVFlUWxfYXBpQ0tkUWM2cEJROWhxNHpqdmxBNFZiZFHSAdQBQVVfeXFMUHVOOUpFQlhpeG42NE5vdG1ZaUpnMDBhZUtuTy10TVpRY0JrRnltMkhPMHMyMTNqY2Y0N3FVVEk0dktJR2lmazRXQ2R3MENmV1hTR3Y3Vnh2bnNfN2NrTzIyLWtjYy1IeGZsRzVqSC1sOUtrQ29mOU5lVldGQUpRY01aOGpkSFU0aDJZdWR0aGxnQmduNkdBWnc1ZFAyamhydmMybVpRZFZveURyWU9KcWR2a0cwTS1jT0RvTjIweTF1Y2tLenVJd2ZnQXdTTlJLeXdoMEo?oc=5",
+     "at": "2026-10-15T18:53:00.000Z",
+     "source": "The Times of India"
     },
     {
-     "title": "Keemo Paul's 5-for wrecks India's chase against WI",
-     "url": "https://economictimes.indiatimes.com/news/sports/cricket/india-vs-west-indies-4th-t20i-keemo-pauls-five-for-wrecks-indias-chase-after-hopes-ton-as-wi-level-series/articleshow/134949160.cms",
-     "at": "2026-10-14T18:08:15.000Z",
-     "source": "Economic Times"
-    },
-    {
-     "title": "Repatriation and overseas bets drain India's record gross FDI inflows",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQczdQTWs0MFh4OVNGSW5fZ0xhUURXZUI3RWFsUUpYSVNKWjNJZkRFWFhRVW9wNXo4Qncwc29lRTYxbkF4WHFjRnhiYlEyRVlBeThJdGpvMjJnZ2VRLTBCQlgzSl9Jc3hMajBUSnlDZVVnaFhQay04YUkyNnhWSDFnMGtiVmtfSHU0NmlLbE5QRUtfV0VDRENtanpsYnNpQWVnOFhBRmhLaUhhTTF0dHc4Uk5rTWRhN2paU3hmWXVwRmtsMmFWMUZqS000WGpSSWFWcFHSAdcBQVVfeXFMUHRzdGhBeGQxcWFxZmoxWWFVOTJTWHR1RUp4R3dRQ3VEUHlBMTlmR0YzSVJUY2EwRUl5Sm9ESGVpOU15bk1uajNlNHB5QWJXR2ZLUEppSE4wZmJHVlhUTGl1R0hYcnVLRTQ4QzhkTE5hZ1JZNHphUVZQUUJudVhlcVh5aHhVSXg5WnJOc3NnNmk1MzRyY2s2b1pyVzZrMjZLQ3hSUER3aHA2UXRKU3pVa1ViZFJXbXRNc1J3Y0pCMUwwc2pZVzl0bmlQM3Q0UEdWUWNhWHROa2M?oc=5",
-     "at": "2026-10-14T17:47:18.000Z",
+     "title": "Prosus Ventures leads $1.5 million funding in space startup Cosmochute",
+     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNenFiNTVqd0MwRXJFbDNGSUZ1UGJKYWFRdnZjRlZoUUFPb21IVERXS0lfcDlXOFAtV3B6NGxmcl9aQ0dCYUl0OURqYmE1OVVQVFY4WkVmTDN0Q3prYW0yQTEtU1U4S3RHclZEYkwxV1AwUEFSUHpGYzNybDV4Rm0wX0JUWGJJNW5ESUlabVBfZGNtT0hNTjlKbjA0d2tmUVhGNVhSWTc5WlZkd3IyNjNCZnVSN29xQ0s5RFNSR3hEbVFtbGgwTVBTUVlBUm9VckViUVBjeNIB2gFBVV95cUxOSzVBVlFxQmJweXRpamFXNkZmNXcyLTJrSDhFcFNYNEplQjBwbkpaUTBzemswWTY2bE05QmFKOWFUNFZMRVBZSGphMmJtX1Ztdzd1dEY0M08zWkNTNlNsbE5EZS1FNHFCRzhWUjF1TWlrQmc4M1hvbFlNVGNqWWhZcHJERms2VmxLVTROZ0JoYjVWRl9hUEh3SThYUXNwZHNwX3lOeUVUcmZoX1JOcDh2cjBMQmdURWpid0VwSUhCdFNwUThRSTNuQUlJazc2TWFnaXlvcWNDcHNCZw?oc=5",
+     "at": "2026-10-15T18:18:24.000Z",
      "source": "Business Standard"
     },
     {
-     "title": "India, Brunei Darussalam Review Trade Ties, Explore Ways to Expand Market Access",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOLUlqZ1ZkckF6c1RVWUNhSXVod25zd3pEVG44LUhHZVg5TFN0UER0QTdvbDYxSDhaX01YaWFRaU9nUEV2RFFiWElXWURIdHNfbXdqYV8wRE5CZm9EMmFQNFNOUTVxR3owYU1lUnd2OGpWLVIyNzdMWWpkZmtSUUFrOGYtYl9wb25jcnVobGhQdS1QWlR1WXVybFBTUi1lci1NMV9paVItZ2Y1YWdWNEE?oc=5",
-     "at": "2026-10-14T17:40:06.000Z",
-     "source": "DD India"
+     "title": "Govt cuts drawback on gold, silver jewellery exports",
+     "url": "https://economictimes.indiatimes.com/industry/cons-products/fashion-/-cosmetics-/-jewellery/government-reduces-duty-drawback-rates-on-gold-and-silver-jewellery-exports/articleshow/134973656.cms",
+     "at": "2026-10-15T17:40:16.000Z",
+     "source": "Economic Times"
     },
     {
-     "title": "Policy reforms, risk capital fuel India's fast-growing space-tech ecosystem",
-     "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQcFdRT2VPVTBRSTVsRWt2a3lLam1tclhDTUdKbklkYmRLbjdTRWhaanMxV2dyUVprSTIxR2tYTEdVSDZrMWJOcG1mV3BZRDlpX3pGVGdaRzAyR2tvSGJyN1NLa0M1dVRUdlNzd1FBMG1yWVNVMDdyVElrclFocXFHTzR6QXM0N1hBcHkwUFU4aFVzMVFsZGlveTJkdmZNeFBoa2VrRjROSS1CSDVSbnNnYVl2WVhRemlTQ3owbVVIU0lSdWM0SUZnLUEzZWt0TUpla1JCcW1qZVYtSFR6MlBzZ9IB5gFBVV95cUxPYU9PbnFBb1c1RUlNYUk4ZERNNkFkUk1kanYySE40aGtQOUx6ZllqWjU4ejd1VF8xX1hKcUEwQXZlRnd4TW1zam1kWmpEYmJZYkthaFJOYmNNcDNteXNLR3dRc3Y5bHh5TUl0cUtKS1hGejkydHN6cnhfeDVRVWF0c1hSZzE2QWp6MU5IcnRuRlFvS0ppMXNSZUJ5ZVhKR0w2WVJ0NXBURVoyVmR3RDBxelN4MGZqdGZEZ2cwUjhFc2lQdzhFbThlakxUSVF0dmxWallqUVJoUnBSMWFta0ZFVEpOTnZ5Zw?oc=5",
-     "at": "2026-10-14T17:19:17.000Z",
-     "source": "Business Standard"
+     "title": "India sourced more than two-thirds of its August oil imports from just three countries",
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNcjl4bDBweXlyU1QwQUdXZGQ2czdxVkpfdTZHVFJ6WXQteGttZG5nRUF6WjNYZUZsZWc2UTM4NlRSNFQxeWJHTUxLQ1pjR3BuN1pmUkctYlk4TllnR0YwMUtCZERKMC1PcWVVelg5aldKTENPNnVMY1ZGWHg4M3lVenNFeWdlaDJWRmJaSWg3YjRZZWZxajlMSUk5LUpIY2ZUaTdheWtWaWhXYlVMRmxwY2lBeld1TXdRNmd6ZEFsR2g1MXoxREFJU2NuR1h1Yzg1c2d5LTlzUE9mR0RFaUNFUXUyU1B3am950gHoAUFVX3lxTE1yOXhsMHB5eXJTVDBBR1dkZDZzN3FWSl91NkdUUnpZdC14a21kbmdFQXpaM1hlRmxlZzZRMzg2VFI0VDF5YkdNTEtDWmNHcG43WmZSRy1iWThOWWdHRjAxS0JkREowLU9xZVV6WDlqV0pMQ082dUxjVkZYeDgzeVV6c0V5Z2VoMlZGYlpJaDdiNFllZnFqOUxJSTktSkhjZlRpN2F5a1ZpaFdiVUxGbHBjaUF6V3VNd1E2Z3pkQWxHaDUxejFEQUlTY25HWHVjODVzZ3ktOXNQT2ZHREVpQ0VRdTJTUHdqb3k?oc=5",
+     "at": "2026-10-15T17:27:15.000Z",
+     "source": "The Hindu"
     },
     {
-     "title": "India’s internet subscriber base crosses 111 crores",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPc0N1aTJUdE5wQko5X1lEakJpa2pZUGhqU3VucDdsMEtsZWdrRjRwTEV6d3BXXzRKeHJxSkxZdnVvQllWTXNjV2dqX1ZYV1lOb3J2SzJaN2dwb1pMNld1SXdWV25GSnlrU1dqUVZPdFN5ckFMQS1jV2RiREtSRlFBUzVB?oc=5",
-     "at": "2026-10-14T17:02:03.000Z",
-     "source": "News On AIR"
+     "title": "Walmart-owned Flipkart’s e-commerce arm, Flipkart Internet, reported an 18% increase in revenue as its losses narrowed. The growth comes as Flipkart continues to strengthen its position in India’s competitive e-commerce market, where it faces competition fr -",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1GeE5talJKQ1NndnA3T0VVWE5WM0JRN3ZtaTZ0NHAwWXp1cTZCWUFEd3pHXzNRTVJKMUxpZklydTM5T2p6WHA3UkRSV01jYTVTbHc?oc=5",
+     "at": "2026-10-15T16:43:40.000Z",
+     "source": "India business"
+    },
+    {
+     "title": "India-US Inching Closer To Signing First Tranche Of Trade Deal?",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQOVBVcFZ5VFVQWS1MMDFCVXNxY211RmhzU2gtMGhSWnVsZjF6cVU2WUJsV05ULWNGS3RLRGh6VmtIVnJKV3hKWkNVblJwcDdtUVBOV1VyYjJyWXBJUENIMVFLUHdFNXpIMlh2cjhCYnFVU1ltWW1wREJveEFCZVlyM2V0OU91YmFLSFVhR04zZjVYdGREZ2s2NWs4WEhDS1daWnc?oc=5",
+     "at": "2026-10-15T16:28:45.000Z",
+     "source": "StratNews Global"
     }
    ]
   },
@@ -363,88 +363,88 @@
    "label": "Nepal",
    "items": [
     {
-     "title": "Deadly Nepal flood caused by enormous landslide, glacier tumble: Scientist",
-     "url": "https://news.google.com/rss/articles/CBMirxBBVV95cUxQdDh3SlNma3daSVZCTTAwNVdCamtCQzZIcnlXcG9kcjVnMjlaTTZYeDdmazRuSkdkM3hrS25pdlVmQWhXQXdUWl9hMUt0Njhzal8tS19xczNDWUN6V0dhQ213eWUxUmdNcF9RZU1uYjBxQXdFakFGZU5idmMxaENXS3NhcjNKTG5hWFc3WGZvaVdRTGY5aVFZek1yWGNhY29OUnFyTnFreThPVTVianRmREFmQ2N1WmtGQTZFOXEwdVJiQmpldkZ6UW9ES0plcEhsNFJXRjNLaU1uTHlHREpEX3VhNWVTTzZyejluUmt5TzcwOEV2dDNTNlRfbmVWVjlRTmNFNXl2eW1MR09WbUFaTmRNOGt0VnVoYlp2STVzRDN2ckhmblV1WFhLa2ZkaG54dllLSWlXVHl1LTlrZ3prRXIzV3puVGpyNFMycEcySlBRQlhKUmxROXhsTEpXUkYybXljR3RRWk1UNFE4MkhHeTFRVTJYdDBaYUlVWmhuS0tYY0Jza2U3T1VyazF2eG1NT3JTZ0dsUkJINk1CalBQQnlHS3otY2hCb2gwNDhnYnpnREZrcldmRmpNSFNpc1FNcVQybUNRM2NuRVdqQ0k0elhTTlEydEY5UkZGYXlqV3dtWk4zUlhoSDMxTlZWd29HUXVHSjFjb0U3cEo0cVJlRmN6MFZ3TTNmc1J1U0Y0MkJSclI5ZlVyOFZPMUc2M0Rab2xPc2JsSGFEYmJnQWlUV2lUZnNoOW5vUnI5NGRoblVfdnZKN190VTAwdDdpNzdJZjVkRnd1amhKRnpGZmZLelhUUDN1LVNEeEFQWlA4TTc0bnhKbUVXSEs1TUJTSmhoaWF",
-     "at": "2026-10-14T19:11:52.000Z",
-     "source": "ABC7 Bay Area"
+     "title": "After Nepal Floods, A Long Road to Recovery",
+     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9iWGgxWXJzSzRLNUd5cTNad3VBWW5RS3QtWXhFMEw1YWs1OU4tcUFjY01RYmF4cmRRYWF4ZkJoZ1ZwQnJfRGVMcFRXMkZGQUhkRUh6QXlUX0lNZlFrbUhBMDRCdWF1ZkRkaEF3ZXFfU1Zmd3NfV0EzTUJpVQ?oc=5",
+     "at": "2026-10-15T21:22:30.000Z",
+     "source": "unicef usa"
     },
     {
-     "title": "Administration fails to respond to bipartisan letter requesting temporary protected status for Nepal",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOUEs2OU5IZ0RGNkxJRkdUb21YU0xQVm1MQ0MyMWJ1N3kwUlJxSzZoUk9wdGZXaHZCUGFwNU82UWlIckdKUDkyT1BQa25ncTR1WHFFQnRQYTRXMHItd3hxcjBPVldiWU1FbW54TllnSUpjWnVSS1g5MEkzRmRpZXM2NnZwOUNfOGU5eGhJQy16NDk3ZmEzMFM1RWl5di1teTI0czljR1dxaFliNzBUSWV2VFlUbUQxeEFNY1FWM1lxQU9oMk5BTHc?oc=5",
-     "at": "2026-10-14T18:30:06.000Z",
-     "source": "Lassen County News"
+     "title": "USAID’s Destruction Left Nepal Dangerously Exposed",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMXJyNEMyZ3lPcjlJcG43bVI4N3FJX0FhZEZtZDVyRnVVQmFEeVRWM0pOMjJJNVRXeHMxQ2RDOHhsb0NYck1NWU5Fd2Z5eEhxWVRZNXIxRUI0Z0FQZ1loMG1HSHZFVEZoVVpvTzJRRFVxTk93blU3OWNUTjZxRWwzN09vQ0t1NFhhTEU0?oc=5",
+     "at": "2026-10-15T17:49:11.000Z",
+     "source": "Foreign Policy"
     },
     {
-     "title": "Recovery and resilience package for Nepal",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMXRHem92WlVJTHhHVE9HdlVRUEt3NnhEMGZRaGJLMkxlbnBwZF9xV05sQ2xtSTFKZl9NWjdJd3JMNzJfNk9XNjhuMHhKY053aEowRmZuM1ZDZnN3R1RNUTZpV2RSWnpiZUU1aW9NTGdsTzNYTGFnTEpmX2NhZk9oekFWemV1WlBuazBpeUVGem11Zlhmd1RDRHZKRTNUWndFZ0x3ckJOMHdWZw?oc=5",
-     "at": "2026-10-14T18:07:20.000Z",
-     "source": "Australian Minister for Foreign Affairs"
+     "title": "Nepal's Economy Faces Paradox Amidst Liquidity Surplus and Stagnant Stock Market",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNREJNc2R5alRDb01OX2pseXJlMWpZUkt1MXlZbWxvVk5XWld5TzFsWjRHb1RwdDktOWJ3UEVzakY2TEFuQnRNdUpaQjlIZG1fSy12dUU1cDBETGc5V3BMQlBFd2E5TnIzcS1vRENLbHlhb3phenFkY3FOLVpmZk8wOWkxU00yZmJ2WDF0Y1djcjZSUkFTblc3T05wa3ZlRHRUTGdBM2x2Wm9oYkM5Tm95d0RpTjVGM09hdzRFOHljaw?oc=5",
+     "at": "2026-10-15T17:10:51.000Z",
+     "source": "Ratopati"
     },
     {
-     "title": "From Ukraine to Nepal: Responding When Disaster Strikes",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNN0k5MmZRY1FfaVZrNjJnX3VaMDgwT3k3MTZ1dnE0dXJGbWkyNE9pYmJCdWM1YTZocUktRDlTdDM0d1VCLWs4cG5XV0ZxcV83OUxSNHdOcDRiMEVPdF9iVjc2VVJURWthUTNRM0IxcTFNcFlBZkRvLV9qcW85Y2J4cWFtU3FLSnFHSnJ5dllpWnByTHRta2JfdVVvQW1WeXI1LUxr?oc=5",
-     "at": "2026-10-14T17:13:48.000Z",
-     "source": "Project HOPE"
+     "title": "1st Match (D/N), Nepal Premier League at Kirtipur, Oct 26 2026",
+     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUE54R3RGMEZ0UzExZ3Q0TnVYQVhEZWQwS2JYMWV3aHhfbE9kSDd5VTBCY2wxUG8tVGZTV0JhZE5Kc1RoWFBTMFhWZ29kNzJvLU41R0pJUy1LcTlfdElvMlZ4MjhkWUFhcTRBOC11NWhDZmx6U2k3OUdDTjBhMjJXY2x3NXRETEJnaHlSa04wdFJ0ejZMbGxFb21NejZ4Y3duY1dFak84T1RadDRRSVhySmJXLXEwcDg2OGU5NUdkVHNkTjVaY0NGRVF4TnV6Mlg3UFptNVJR?oc=5",
+     "at": "2026-10-15T16:48:46.000Z",
+     "source": "ESPN"
     },
     {
-     "title": "Recovery, Resettlement, and Risk in the Aftermath of Nepal’s Bhotekoshi-Trishuli Disaster",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOLTJMSS1JcHZrSmlWMjVldjg1QzlIMGx3MHFXbkhETG0tUW04LXZJaGtOQ29leGR1NllVZmtidGZzQ0VCMjVhMmhhNnR3VGZ5RVBmRkcwOUhEV0QyUEpOekVTQ3RHOXBycUFNZC1jNENKQzVlSFdpcVZDbV92R2dTaTlEd1pqNzhudUxPcUNaOFo1MEVxaWhSaGVybG1uc18wMUlKdGRycWFwYkJ5VEYxbkFXWXllbS1I?oc=5",
-     "at": "2026-10-14T16:52:08.000Z",
-     "source": "Stimson Center"
+     "title": "Nepal receives Rs 436 billion in remittances in two months, up 23.9 pct",
+     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQdXh3QkdHQWtOeWhFbkJUeGtqQUtURjB1NmlzalRpMFRZQmZSUlc1LTNUYjdmQTVQcnB1WndkTHk3eFpjUmlUNFl2TU82RlY4SmVITXRvUS1Vd2oxdkVLMEpUdzhXWW1WaDlyRVNEWFluZUw3NTBnbDhyTW01QmlUOHF4dGJCU0FMVkUwLVNVOEFKNVlWN3BZMmFsd0xkalVfbnVFYUwxVnRkeFpmbFZRdDEyQnNPN3FnTkVKc08wWmdhZw?oc=5",
+     "at": "2026-10-15T16:33:23.000Z",
+     "source": "myRepublica"
     },
     {
-     "title": "Longmont Screening of Emmy Award Winning Festivals of Nepal Celebrates Cultural Heritage and Supports Disaster Relief",
-     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQcXRYV1U2UHBJck9nWDJpRHdPcFhoUlNNbUxkV3d4UG9qNjBURlctdUFmeVg4a3ZUVzBLblVrRThuM0lHdW83SlZfTEZ1TkcwMTU1M0VjN0VuRlZ0T0VwV0RxV1A2ejlJbUtvMWtLWUtEZVI5NTZRa254eU1wSjJoS01HMFM1UThRZHo3cUt1LVdRRDJ5MDkzaE95d3M3bVlPX05JSlFXN0dnYTR1MWRIcmpHOW5tTURrTDVqc3pNRWpHblJqbXVrcjNOallmVG9PTU4tMmpkLWtxMnVfQjNLM3VDYUk2WXQx?oc=5",
-     "at": "2026-10-14T16:49:12.000Z",
-     "source": "Yellow Scene Magazine"
-    },
-    {
-     "title": "New Study Reveals Clues About the Origins of Nepal’s Deadly Flood",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQRDNDUkpSWjVDTVRaZ1FCLUJJQ0gtYkhYaVdqdFZiTXFSWTgzNGU3dFhqRWV1cWlqM1oyakt6OEREZVJPOEQxQm11WGRVVE1SRTNUTkhVUmJuaWx6VDNlVGZXeFBIWWlzdnZBdDBXa05JemdmdDZQd0lsZmpvTVZnTUJ4QV9kYUVXTDUwUGtpaXpKMnhYZWw0aWpOazRDVXAwcmcwYTFFcjljZUdwZGc?oc=5",
-     "at": "2026-10-14T16:06:54.000Z",
-     "source": "Inside Climate News"
-    },
-    {
-     "title": "U.S. Drone Manufacturers Expand International Defense Sales as Nepal Orders SPIRIT",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOb0hzdEpjLUg0RkVJRjg1TWVUNlpfbkE4YUFlQ1d0RU00YmVHNzk1Q3RWdk52enF4NWRTV0RUcFRoN2I2V01CN1FqQUxfVGNKd0FURE0tM080ZjFlODdyX1d2UllYWWg5MGhid2YzTUtaR1VZNWlYTUtkclNOWEcxenlkX0VrdGF3X3V1eGY0dTBuTkJiV19LZHU1d3BKd3hUb0FFQWVuZVpBc05rRmtTdjJ2ZEJzQQ?oc=5",
-     "at": "2026-10-14T15:24:30.000Z",
-     "source": "Dronelife"
-    },
-    {
-     "title": "Jaishankar meets Nepal Home Minister Sudhan Gurung at IGI in Delhi",
-     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPYnZ2UzEzeTV5YzJRRWlWejZGc19Sd3g0dElMY29uUDRkSkRtalRkb2hYZW5jWkVlZDZfM3hpaG5ndmxmdTBCWW5BX0c4cEFEZkg2bFJMY1ZjZEN6RklYM3IyRlVvTnI3dWJvODFYSnI5WUVZTzdQR3FNT0JfamRra3FEZ3dPVFI1WmZuWXFJaVNVVWtDMU5jc1huRFFnejlZZTN2RHlRamJCR3NhS2JNT2IzeDNBRWtyUWpuN0EwYUpiRFV6N3BaY0JBc9IBywFBVV95cUxPYnZ2UzEzeTV5YzJRRWlWejZGc19Sd3g0dElMY29uUDRkSkRtalRkb2hYZW5jWkVlZDZfM3hpaG5ndmxmdTBCWW5BX0c4cEFEZkg2bFJMY1ZjZEN6RklYM3IyRlVvTnI3dWJvODFYSnI5WUVZTzdQR3FNT0JfamRra3FEZ3dPVFI1WmZuWXFJaVNVVWtDMU5jc1huRFFnejlZZTN2RHlRamJCR3NhS2JNT2IzeDNBRWtyUWpuN0EwYUpiRFV6N3BaY0JBcw?oc=5",
-     "at": "2026-10-14T14:50:57.000Z",
-     "source": "The Tribune"
-    },
-    {
-     "title": "Calvin students rally support for flood victims in Nepal",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQcnJIMWF6eDUwcTZwSHhKMEtJdkEwb0N5NlpWNERmdEtfdDZ3YmhVMFFDWDlXQ2ZQMjFabnBXZjRycC1idUJ3N2FhR2puZGgxaWJzdHh3alA3Wm1iSEVQa3dGNFQ1VDdaLVhBZXpRa0RvR092SWEzN0xLWUNseV9LVG9B?oc=5",
-     "at": "2026-10-14T13:14:57.000Z",
-     "source": "Calvin University"
-    },
-    {
-     "title": "Nepal News Evening Economic Brief – October 14, 2026",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPWXRjU2p5VUNvalZBMnltd0lndFFDaTlJR3ZEeHRzLTR0MUg1b2ZsekpIX1JQenZudHJNN01tLUZabzJ1OWdHOVRheXlVUmpnUU1Vb2JPNTEyS1BfcS1Mclp2NGVjcXdBMFNhZGY2M0Y3WVQ0RDEtZ1NTeHE0dW5rbzJHczlTVWlDMzE5T056MDlDV001MFE?oc=5",
-     "at": "2026-10-14T12:33:38.000Z",
+     "title": "Fuel prices remain unchanged as NOC faces fortnightly loss",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVHBocklrQ2JSWmoxMVB2cEFGTUducUxkS3ZjT1RBNGJjMWpNQmtqd1RxZzJtVURMdlBjWUtoSlJOMmx6UUJGSG96cXZRMnlxdVFrdkdjX3lRbW9ZclduNzdEU3ZWS1VJV245NmVoZjlhYWNWTmphQ2NjRjdQd0VBWjd1RDY2cnVCZEY3ejdVal9VU1puR0RHajY2MDVWMnQtZHc?oc=5",
+     "at": "2026-10-15T16:28:53.000Z",
      "source": "Nepalnews.com"
     },
     {
-     "title": "IMF urges advanced economies to rein in debt as bond yields surge",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZ082YUxMYUtleTlOeVdrSUF3SDRUSUxZNEJjeGo3aVRySXRxTmdPanpiYWktQzRCeGgxWHVNS3hZUnBhNWNDZ200bFJLWmtxUDJkM0hZcHAzMXF6Um0zZXlpZjFaLUMtU2xZbnkwQkNRejlNNmVkN0xseFJBMWpoY2lnRnIzbG52aTY5VTIweHdiZ2YxcWthQkNIZUhtbGkwVUl6bHhQTFBVeU0?oc=5",
-     "at": "2026-10-14T12:13:38.000Z",
-     "source": "Nepalnews.com"
+     "title": "Villages evacuated as flash flood from Budhi Gandaki River hits northern Nepal",
+     "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNdThNQ050WGxQVDVieTJHOUd3cUJscnotSE45X3BXNmhqY0RaVHRsa3cwd3JwX0gxeVRZTnhMdEpKYk1SQ3JqLTJDM3dFLUNJUGZQM2dJMDlLaUs1WFFfSzM0NkRjYTljUDZWQ3N1WVFHNnYyOVBvREQ3UnNQLUN6VC1PSlJMY3JzdG5kaF9mRE1JOXZ2TEUxaVRlei1qb0JVN1pkQjVsQ1VpMUhGajgxdWJXbkJhVW12N0FLM3U3U1U0NEtpMnZkME53TGhpQi1yNlF4WEtid0tESjNBT1QyTE1rYnRhWDlfblZDZjZrLTdHbUY2WVpDLS11TTItWl9P?oc=5",
+     "at": "2026-10-15T15:33:19.000Z",
+     "source": "New Castle News"
     },
     {
-     "title": "When men leave, patriarchy stays",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5fbGItcGRGMEY3ekRCRGZxdXpnTDJfMVlwU2NRcHhTWnFFTWU1RjlRWS03VzlIY3piVFZvQ05BZThxVmwzZUlhSDE4TG52QnNsbk5aQ0xZSWNvdW03YWRxUWhEaE1HQTA2aVIwdlpIRm5Ldw?oc=5",
-     "at": "2026-10-14T11:15:00.000Z",
+     "title": "Nepal, World Bank explore earthquake catastrophe bond",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOdzJrbWdOREVqWTNFVm8tZ2tGSHRicDFSbGN6MXhPWEVwNllyQXpTU0FLZ1ZHclRzNjFPeUJiaVYxdlhSVWlmQnk2UkdhTXdLUzg5Y1NIRmhVb09haGdjQ0Q5MkltZkp4M2lKR21NNXdnSnpmcW5BSE5WWVEzbXZ5WVhOR2EyRzVEWDFFUDZ1dTV5eEp0UnpHcVZtU0VnTkpDYTBndU81dDhvaWM?oc=5",
+     "at": "2026-10-15T13:46:47.000Z",
+     "source": "myRepublica"
+    },
+    {
+     "title": "After latest Nepal flood, survivors fear for future",
+     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1wblV3V2JjUnJib3JvVEkyeFhnR1FTRXZJbFlscG04MEFmOVB0emc1cUc4WE9DOTVvSEktdHBIcV9LcjNIcVFyOVp3cw?oc=5",
+     "at": "2026-10-15T13:07:46.000Z",
+     "source": "AFP.com"
+    },
+    {
+     "title": "Yuba Raj Khatiwada says caste-based discrimination persists despite changes in Nepal’s class structure",
+     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNaDJKZVZ2VXVNZFh4T3lBbVNUNzlaLWo5bmh4RFk1MU1mS3o2aVNWakwxakg2M1RCV09sUDNicHpVMTlpTmNGS2Fsb1RyNDk5MDJ5NDFQd1ZNdG5DZmdpWFVsX09YcnpQRjhWSDMzZ1FNZkdfQXZGZ04xXzBua2w1ZXZyUVA3dWs4ekZWaWVHUklhTlctSS1Z?oc=5",
+     "at": "2026-10-15T12:20:48.000Z",
      "source": "OnlineKhabar English News"
     },
     {
-     "title": "The forgotten custodians of Nepal’s cultural heritage",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQcWNGU1N1Q2RwWDRJVVBUYXBaRkNyTEQ4TDc2dkw3dnhZMk5JaVYtdElncHI1NDBrcG9iVmZ4ZEZ4R1gwazYtWnlRTy1yMFRPWHVQSjE2N2NaZ0RDQ0I4QXdwREIxRzkzQ2ZEVU1LdjVHR3RneDJOYThtMUhKSng3Si13?oc=5",
-     "at": "2026-10-14T10:11:42.000Z",
-     "source": "Nepali Times"
+     "title": "World Bank confirms signing of Nepal quake catastrophe bond mandate",
+     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQWUNWRXZtN2YzSHFhNWxjbWdULVlMX1dOTFl4SEpaV1dETUNKcFphTWRpSzlsZ1N5Ql9NMFpzZXNFbExDM3ZGNDZvUDA1RUg2N0FUQ2I5czdJbjdsT1MwT2x5Ui0yZERHYzVmVDQ0dVdQR2FXQW5xcG9UUVJxN0ZGZldqZkdSbjIxbGxzVlJoY2pBQklvNnFkcmtqNzA?oc=5",
+     "at": "2026-10-15T11:36:39.000Z",
+     "source": "Artemis.bm"
+    },
+    {
+     "title": "Nepal’s balance of payments surplus reaches Rs 187.68 billion in first two months",
+     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE42ekgzeUhpYW05TDByWGxFbHNHODJCbjAwbkROYklCeUNnRThkT3pmV3lWNlY3dmZ1aHBBYXM0akNlaDNRaHRvZ3NhWEtDRmFsS0FSSXl3OU1DZDdvS01qSFRQN3M0Y05xWU5nbW5RdWpuUGc?oc=5",
+     "at": "2026-10-15T09:57:08.000Z",
+     "source": "OnlineKhabar English News"
+    },
+    {
+     "title": "Nepal, World Bank sign agreement to explore catastrophe bond for earthquake protection",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNMzZ6TUhUek9vaW10LU03MjZMTnVLczdvb2labXBKcWkxRm1pSHFCMFRfX2ZzTDJtbXdBcEZONllKTFo0eUFBUk5LT0lrMG9yMDlQcFpwb2FwNUQwX3J0d0dCZlIwV21yS3BzZ3haMXp0eU16UVI2bTFjSTU0bko0ZVpiNUM3ZHZYN3daV1g2TmNaeXhxRjl6dFVLclpTZk5aYlZBel85bGZ6SWhfZzZhSFJyMGFIc2w5X1AwTlVSWFp3TWRSUlE?oc=5",
+     "at": "2026-10-15T09:48:51.000Z",
+     "source": "Nepalnews.com"
+    },
+    {
+     "title": "Nepal orders Robinson Unmanned’s Spirit for army operations",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNajNFUjFPYnhVb3ZBeGVJMzJ1NENhenFnTGpwbW1sdWIwaTNxZXhiRXFDR3FXZlRlSlNNRFpVR2pFa0x1ZDgxYlZmQXQ3SkNQMTBTQlRhU1JRWXhKU005dHltZGU1S3J4V0wtUzJGczR1MDRNWkdYdEJtVGxIMXo3dmRTZnN6M2VxR3NwbjVXVVR2TzNob3BWRWVwb21ORHh6N3VYOTlQMA?oc=5",
+     "at": "2026-10-15T09:33:14.000Z",
+     "source": "FlightGlobal"
     }
    ]
   },
@@ -452,88 +452,88 @@
    "label": "Discovery & innovation",
    "items": [
     {
-     "title": "FDA Grants Breakthrough Device Designation to Natera's Multi-Cancer Early Detection Blood Test",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPdFlHaWtQdEFOXzVXTGdmUE43ZjNlU29RR0JCeXdDZHU2MDRQaW9Hdk1ualkyWmVRSEVTXzEtVThLSU1FNVcxUnVuNGRmdng4dGlCSTQ5bll0Mm1mUTh4RUVURXp2dkdENTZwN09iblJLTmV5RmdWeV9rV1pkM2JFSkUtczNXVFNocldOTzBWX1ZuOVRKbll1cUdZMEwtLWx3Z3luTkZ0b0xMS19jeU96ckptVGV6TmcxZThMT2FobFVwN2FWSHUyZkxrQ2NzQQ?oc=5",
-     "at": "2026-10-14T21:33:45.000Z",
-     "source": "Patient Care Online"
+     "title": "Little chasing Country Cups breakthrough",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNVjZvZDV4Xy10MUdLZ0FnWElqeGllYmlDY05NalRwVzRGcWhtSVJfSzVWWDlwOXVRMWdpZmxxOWpydHRUWmNxckdTa09sbWNvR1RsQURKRDV3blY2eTU0Q3NQakpLYktpN0VZSTNlbXlObVVfLXpkSzRMTjNqX0U4YXQ1MTVFZ2pWMlpCaVJQYnJiNUJEcTlvLVBZellxbnIweFNFVWdFcUZoNEktQ25PTw?oc=5",
+     "at": "2026-10-15T22:34:38.000Z",
+     "source": "Racing Queensland"
     },
     {
-     "title": "De-Extinction Breakthrough: How AI Just Brought the Dodo 1 Step Closer to Reality",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNRHdFRHRGb0JhOWFlY2NkMHhKOFNOQl9UU2pOYlFkUU1zMTlmS1U1MG1Ybkx1azFDVXZ3ZmVrWmJWMHR4SExLVUo1dTljRDdlc1M0RV9jcERqSVlJeVFpNkliNm1XZFNLSENROHZyWXJ1NVM0ZFgyMzNJZUNJSi10Wm5lX3ZleXJYbFpmNXZwSkJidV90Tmk5QmhvNFVnbndkV2xYWW1WeW14cXk5TUpwRnNKZFlGMW1MY1ozZFJjUnVSQQ?oc=5",
-     "at": "2026-10-14T21:03:44.000Z",
-     "source": "Inc.com"
+     "title": "Google's Quantum Error Correction Breakthrough: Magic State Cultivation Cuts Errors 40-Fold, Easing Resource Bottleneck",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBJamI3R0h1TlJsTEs3c2VaTkJ4bWRDZ0hxRGJFSE1CMjZnV3RTRzNNbUJRR3ZvMlFMcnhjWjczdG5IQzRSYW5RWWZVaDZJSFVpdTdrLXVWUVpmYmFsakJ3Vjk1LTlQSzZwRUJzZTVRX3lBUnNRN3c?oc=5",
+     "at": "2026-10-15T21:25:00.000Z",
+     "source": "BigGo Finance"
     },
     {
-     "title": "Ancient shipwreck discovered off Turkey claimed to be world’s oldest",
-     "url": "https://www.newscientist.com/article/2593986-ancient-shipwreck-discovered-off-turkey-claimed-to-be-worlds-oldest/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T18:36:40.000Z",
+     "title": "Diabetes Dialogue: Screening, Cell Therapy, and Adjunctive Agents at Breakthrough-T1D",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOZWdHWWdYbmg3Qm9neXd2STFZVjB6emFsbmNhNUZMU2JFQUIxM1N1WjF2MG5pOXM5VTJzNVN1ZURuZzZkb0drOVhaeEMyZDZvejJkajRuWUpGSWxIWkdRQnJtbXphazBFSW0xU2k2NG5ZNVRrTUxvQU90bTNHY2taUzJhS2wySmJ6dTlyZXByZGhjelBfZGVWNEt4NE9zRVlSMGVIRTNCc01JSHFSZVBvUA?oc=5",
+     "at": "2026-10-15T20:11:49.000Z",
+     "source": "HCPLive"
+    },
+    {
+     "title": "Antarctica’s ‘doomsday’ glacier will keep melting even if oceans cool",
+     "url": "https://www.newscientist.com/article/2594246-antarcticas-doomsday-glacier-will-keep-melting-even-if-oceans-cool/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
+     "at": "2026-10-15T20:00:00.000Z",
      "source": "New Scientist"
     },
     {
-     "title": "Self-replicating AIs are a great digital horror story",
-     "url": "https://www.newscientist.com/article/2593983-self-replicating-ais-are-a-great-digital-horror-story-heres-the-reality/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T18:11:02.000Z",
-     "source": "here’s the reality"
-    },
-    {
-     "title": "We can rescue the AMOC after its collapse",
-     "url": "https://www.newscientist.com/article/2593766-we-can-rescue-the-amoc-after-its-collapse-but-it-wont-be-easy/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T18:00:00.000Z",
-     "source": "but it won’t be easy"
-    },
-    {
-     "title": "Twisteddoodles on life before the study began…",
-     "url": "https://www.newscientist.com/article/2593499-twisteddoodles-on-life-before-the-study-began/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
+     "title": "Why a high school in Virginia is getting a quantum computer",
+     "url": "https://www.newscientist.com/article/2593536-why-a-high-school-in-virginia-is-getting-a-quantum-computer/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
+     "at": "2026-10-15T19:00:00.000Z",
      "source": "New Scientist"
     },
     {
-     "title": "Tom Gauld: DNA and fossil evidence proved they were close relatives",
-     "url": "https://www.newscientist.com/article/2593496-tom-gauld-dna-and-fossil-evidence-proved-they-were-close-relatives/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
+     "title": "No breakthrough in talks at Antofagasta's striking Centinela copper mine, unions say",
+     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNSWZkVmZrdkI0NVo5WUJvSWUwelVqVlIxemFPbmJ1TGZjMmxtM0FULVdJNFZFTVpfR0dtSTRqS2N6UWk2U0hRN2hGUWluRnpPa2VlLTBma3M5R2hCYzVUUXcxOWhtS3c3RG5RdHJ0V05ZQmtMR1o3S25xd1NvLXRQM055TkJvNkNBTGxZVk5fM2Qxa1RtNThLc09uQkw0SGd5TzJ4eEJ0QmJ6ZDVod3BFeFpmMDdoOW5XZDZqQ0VDd05zd2ZLTGI2Rk5LTG1QVjEz?oc=5",
+     "at": "2026-10-15T18:59:53.000Z",
+     "source": "Reuters"
+    },
+    {
+     "title": "Google demonstrates quantum computing breakthrough, cuts errors 40-fold",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOc01WbmhlUU43OURmcFdSSE1CWW8xZTVkZldGNGpxWFRPQ0dheS13TXpyTUdicHBZZXJWMFBpLWdONXkteVpGdVNqTEs4RFVoTWlhRmRvWGhKZ2trN0Y2N2VpbHM1WG4zSl81eTFxcU80cTBEVUVoV3hQaGRXY19xd3YtbEFpV0pSU1FhOTF6MWczVGFham1uQ2NJUDZrNmdiNXJMZVBWVXFiX0Y1cTA4cklHUVhOYmY5TkRnUDhhbzNJYnNO?oc=5",
+     "at": "2026-10-15T18:21:12.000Z",
+     "source": "Investing.com"
+    },
+    {
+     "title": "Bringing the magic: Google breaks open a bottleneck in quantum computing",
+     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQa2R6b28zVWVNazBoaTJJdkN6c0lwb3FYVDZsaGx6d05lY0V5eUo4aHF4VWU1STRnVUZaam8tMjdwblhzdXNhQzBhWF9qd1RNc0NHX2JONUhHWjNJSzhXWk1CYUVvZXZtSVZ3RG9fRWttYTRGWnpHdlZGZlRNSmlHZzh3SGhNQ08zcFhrTGVYandES2VGaFJMMlBCd0Z6a1pFcDhIbXlsbk5RanhzS3gwZjkwdXVGMlZvUGc?oc=5",
+     "at": "2026-10-15T18:20:27.000Z",
+     "source": "blog.google"
+    },
+    {
+     "title": "Google showcases way to fix quantum computer errors more efficiently",
+     "url": "https://www.newscientist.com/article/2593999-google-showcases-way-to-fix-quantum-computer-errors-more-efficiently/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
+     "at": "2026-10-15T18:00:00.000Z",
      "source": "New Scientist"
     },
     {
-     "title": "Some of our favourite New Scientist Live moments",
-     "url": "https://www.newscientist.com/article/2593337-some-of-our-favourite-new-scientist-live-moments-in-photographs/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
-     "source": "in photographs"
-    },
-    {
-     "title": "This El Niño will bring predictable disasters, so why aren’t we ready?",
-     "url": "https://www.newscientist.com/article/2593320-__trashed-111/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
+     "title": "Towering glacial ice cliffs may collapse in fits and starts",
+     "url": "https://www.newscientist.com/article/2593672-towering-ice-cliffs-may-collapse-in-fits-and-starts/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
+     "at": "2026-10-15T18:00:00.000Z",
      "source": "New Scientist"
     },
     {
-     "title": "This week’s new questions",
-     "url": "https://www.newscientist.com/article/2593198-this-weeks-new-questions-367/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
+     "title": "Hospital achieves robotic surgery breakthrough",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPVXU0NkRSRGxKbXdJRkh4dUdEN1Rid1U3ZHp1SkVJNHhFb1o3SzlmV0pEeEo3UzRvZWVBMFc2WXQta1BhOXBaWi1DWDZXTU83LVVjWUhQVDEyOUdPS3lfZ0hZOUFOcTg5QTdiMm5PZ3BlOW8zS1hxUU1iRHN5dzc4bUZ6TFJOZ1l3LVMtQVNQbTlmLUtHdmJJcGVvVQ?oc=5",
+     "at": "2026-10-15T17:58:16.000Z",
+     "source": "Sunshine Coast News"
+    },
+    {
+     "title": "Micron Technology (MU) Stock Faces Fresh Pressure After Rival DRAM Breakthrough",
+     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQS2ZUb0ZfaTc0WXl2YlQ3Y2x5SjkxaFBNYnZ0aUpSNDRkMFN0Z3lHMEpIQVNjRXdCTWIxbFhlUUJ5amR1OVRJbHZHdEdzTW1kenZhbW9mQ0VRMjhfbk5ZWDRPM21DejVtRnQ0ZTh4cDFCWUgtNXFZNUFocklDSmpWSmZLdlcyX1BpLU5JT3IySlNLazE2ZXl6UlhldGFiYUxocFZqUExoVHFjV21iRnpvS1B3aGJJcGNxODJkaVpTUDc3UTBWV0pLeGloN1hkOHZWbVNESGdB0gHbAUFVX3lxTE5od0hRMkhYR1l1MUhRVkNveURsSjg4dXVoNjZiLXY4R0NqaGM3Y2dlSWNIZmNJVWR0WVBNdFdpMXNwV2k1c19jeG90UTNXZWNjNzR6YU4wRERrdXFqem9SU25PR1MtejM4ZWtLeVE0RWFzZmZGb2VudGs4WmtudU4zQXdKcWZXcS01OVIwSGpzV055TkdsQVdPMm0yQ29QR3FtNzhTTV9nMlA3WTZzQTVnYjA4UGNxcGFYWUt2MWotZ2xHUXVrQTl2cXpNZ01KQXJQQkR3VWlBQVN1OA?oc=5",
+     "at": "2026-10-15T17:27:10.000Z",
+     "source": "Simply Wall Street"
+    },
+    {
+     "title": "Probiotic cuts risk of respiratory infections in formula-fed babies",
+     "url": "https://www.newscientist.com/article/2594148-probiotic-cuts-risk-of-respiratory-infections-in-formula-fed-babies/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
+     "at": "2026-10-15T17:00:00.000Z",
      "source": "New Scientist"
     },
     {
-     "title": "This prize-winning sci-fi novel about wolf rewilding made me cry",
-     "url": "https://www.newscientist.com/article/2593191-this-prize-winning-sci-fi-novel-about-wolf-rewilding-made-me-cry/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
-     "source": "New Scientist"
-    },
-    {
-     "title": "Hidden sounds of nature brought to life in fascinating new book",
-     "url": "https://www.newscientist.com/article/2593189-hidden-sounds-of-nature-brought-to-life-in-fascinating-new-book/?utm_campaign=RSS|NSNS&utm_content=home&utm_medium=RSS&utm_source=NSNS",
-     "at": "2026-10-14T17:00:00.000Z",
-     "source": "New Scientist"
-    },
-    {
-     "title": "Electric Light Orchestra’s A New World Record Marks 50 Years Since The Breakthrough That Changed Everything",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5ZbGdFQUNKSkhEUzJVb0t5N2ZSZUVsSWlPTHlMdzZaS3hZNjVXQk1YaEZ5WVNac2NOWFJQa1cyc0lhMERTVV9RSmlCOEtwczg4UV81YlVuSHNKTGVZN2t1QTVoNVE4dmNyQXJieEk4bHM?oc=5",
-     "at": "2026-10-14T15:33:40.000Z",
-     "source": "Noise11"
-    },
-    {
-     "title": "The battles behind the breakthrough",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1OLXBwU1dKakVPOHFCYXNfRDJvOGtCcFFCbjRwMGk5LU1VTGR6VGZMaHk0QS1JRlM4cnBmZmVIRGdJY1owdHc2VWQ1NDVjaVd6dHFyZXRHM1BJSW1tck53eGp5Q1ZRRm9nZV95RlF4NWM?oc=5",
-     "at": "2026-10-14T13:27:40.000Z",
-     "source": "Shots"
+     "title": "Food and fuel run low as besieged Yemeni city braces for Houthi breakthrough",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNaWh0TXl6UklZTEFnWFFkXy0teUtxZ0dEOUJMb3BzbHR6MFFXcENBV1FQYkw4YzlMR0ZadVNiTnpQbVB1YmZuaE5kcm5nNzhCS2NTT2lBWVd0N2FzVy0zV21tckJZU3NFNkRfVWtYN3pJQTRWaWZzTGZSTHVlZGIyQVhFOVlkcllfOGlyOVJ2UVNaVGp4cGc?oc=5",
+     "at": "2026-10-15T16:41:00.000Z",
+     "source": "The Guardian"
     }
    ]
   }
