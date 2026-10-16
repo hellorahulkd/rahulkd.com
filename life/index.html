@@ -176,6 +176,7 @@ label.fld > .hint{font-weight:400;color:var(--ink-3);font-size:11.5px;margin-top
 .steprail .dot.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .steprail .dot[aria-current="step"]{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
 .stepsub{color:var(--ink-2);font-size:14px;line-height:1.55;margin:0 0 14px}
+.draftnote{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;margin:12px 0 0}
 .stepnav{display:flex;gap:10px;justify-content:space-between;align-items:center;
   padding:13px 17px;border-top:1px solid var(--line-soft)}
 .step .bd{min-height:96px}
@@ -539,6 +540,84 @@ function renderNav(){
   el("navTabs").innerHTML = mk(false);
   el("railWho").textContent = D.settings.name || "";
 }
+/* ---------- the draft ----------
+   Tonight only writes to the store when you finish. That is no good if you
+   spend ten minutes on it and then your phone locks, or you tap another tab
+   to check something. So every keystroke in the ritual is kept here, under
+   its own key, and put back when you return. It is cleared the moment the
+   night is actually saved. */
+const DRAFT_KEY = "life:draft";
+
+function tonightSnapshot(form){
+  const out = {_step: 0, named:{}, fields:{}, segs:{}};
+  const open = document.querySelector("[data-step-panel]:not(.hide)");
+  if (open) out._step = Number(open.dataset.stepPanel) || 0;
+  for (const i of form.querySelectorAll("[name]")) out.named[i.name] = i.value;
+  for (const i of form.querySelectorAll("[data-f]")) out.fields[i.dataset.f] = i.value;
+  for (const g of form.querySelectorAll("[data-bool],[data-choice]")){
+    const key = g.dataset.bool || g.dataset.choice;
+    const on = g.querySelector('[aria-pressed="true"]');
+    out.segs[key] = on ? on.dataset.v : null;
+  }
+  return out;
+}
+function saveDraft(){
+  const form = document.querySelector('[data-form="tonight"]');
+  if (!form) return;
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(
+      Object.assign({date: isoDay(), at: Date.now()}, tonightSnapshot(form))));
+    S.draftAt = Date.now();
+    const note = el("draftNote");
+    if (note) note.textContent = "Kept — you can close this and come back.";
+  } catch { /* storage blocked; the ritual still works, it just won't survive a close */ }
+}
+function readDraft(){
+  try {
+    const d = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+    return d && d.date === isoDay() ? d : null;      // yesterday's half-finished night is not today's
+  } catch { return null; }
+}
+function clearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch {} S.draftAt = null; }
+
+/* Put a draft back after the view is rebuilt, rather than threading it through
+   every prefill — same selectors, in reverse. */
+function applyDraft(){
+  const form = document.querySelector('[data-form="tonight"]');
+  const d = readDraft();
+  if (!form || !d) return;
+  for (const [k,v] of Object.entries(d.named || {})){
+    const i = form.querySelector(`[name="${CSS.escape(k)}"]`);
+    if (i && v != null) i.value = v;
+  }
+  for (const [k,v] of Object.entries(d.fields || {})){
+    const i = form.querySelector(`[data-f="${CSS.escape(k)}"]`);
+    if (i && v != null){
+      i.value = v;
+      const out = el("v_" + k);                       // keep a slider's readout honest
+      if (out) out.textContent = v;
+    }
+  }
+  for (const [k,v] of Object.entries(d.segs || {})){
+    const g = form.querySelector(`[data-bool="${CSS.escape(k)}"],[data-choice="${CSS.escape(k)}"]`);
+    if (!g) continue;
+    g.querySelectorAll("button").forEach(b =>
+      b.setAttribute("aria-pressed", String(v != null && b.dataset.v === v)));
+  }
+  const step = Number(d._step) || 0;
+  const panels = Array.from(document.querySelectorAll("[data-step-panel]"));
+  if (step > 0 && step < panels.length){
+    panels.forEach((p,i) => p.classList.toggle("hide", i !== step));
+    document.querySelectorAll("[data-step-to]").forEach(dot => {
+      const i = Number(dot.dataset.stepTo);
+      dot.classList.toggle("on", i <= step);
+      dot.setAttribute("aria-current", i === step ? "step" : "false");
+    });
+    if (panels[step].dataset.review) fillReview();
+  }
+  S.draftAt = d.at || null;
+}
+
 function render(){
   renderNav();
   const v = el("view");
@@ -546,6 +625,7 @@ function render(){
                   week:viewWeek, log:viewLog, setup:viewSetup}[S.view] || viewToday)();
   el("toast").innerHTML = S.toast
     ? `<div class="msg ${S.toast.kind === "err" ? "err" : "ok"}">${esc(S.toast.msg)}</div>` : "";
+  if (S.view === "tonight") applyDraft();
   window.scrollTo({top:0});
 }
 
@@ -735,6 +815,7 @@ function viewTonight(){
   const meals = mealDefaults(tom);
   const ints  = intentionDefaults(tom);
   const tasks = (plan && plan.tasks) || [];
+  const resuming = !!readDraft();
 
   const steps = [];
   if (quick.length) steps.push({
@@ -821,7 +902,9 @@ function viewTonight(){
   return `
   <div class="pagehead">
     <div><div class="date">${esc(longDate(iso))}</div><h1>Tonight</h1>
-      <p class="sub">Close today out, then build tomorrow. ${steps.length} short steps — most of them one answer.</p></div>
+      <p class="sub">Close today out, then build tomorrow. ${steps.length} short steps — most of them one answer.
+        ${resuming ? "<b>You left this half-finished — it's all still here.</b>"
+          : "Nothing is lost if you stop partway; it's kept as you type."}</p></div>
     <button class="btn ghost" data-go="setup">Edit these questions</button>
   </div>
 
@@ -844,6 +927,8 @@ function viewTonight(){
           ? `<button class="btn" type="submit">Save tonight &amp; set tomorrow</button>`
           : `<button class="btn sm" type="button" data-step="next">Next →</button>`}
       </div></section>`).join("")}
+    <p class="draftnote" id="draftNote">${resuming
+      ? "Picked up where you left off." : "Everything you type is kept as you go."}</p>
   </form>`;
 }
 
@@ -1108,6 +1193,7 @@ document.addEventListener("click", e => {
       d.setAttribute("aria-current", i === next ? "step" : "false");
     });
     if (panels[next].dataset.review) fillReview();
+    saveDraft();
     const first = panels[next].querySelector("input:not([type=hidden]),textarea,select");
     if (first) first.focus({preventScroll:true});
     window.scrollTo({top:0});
@@ -1119,6 +1205,7 @@ document.addEventListener("click", e => {
     const group = seg.parentElement, on = seg.getAttribute("aria-pressed") === "true";
     group.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed","false"));
     seg.setAttribute("aria-pressed", on ? "false" : "true");   // tapping again clears it
+    scheduleDraft();
     return;
   }
 
@@ -1135,10 +1222,21 @@ document.addEventListener("click", e => {
   }
 });
 
+let draftTimer = null;
+function scheduleDraft(){
+  if (!document.querySelector('[data-form="tonight"]')) return;
+  clearTimeout(draftTimer);
+  draftTimer = setTimeout(saveDraft, 250);
+}
 document.addEventListener("input", e => {
   const d = e.target.closest("[data-dial]");
   if (d){ const o = el("v_" + d.dataset.dial); if (o) o.textContent = d.value; }
+  if (e.target.closest('[data-form="tonight"]')) scheduleDraft();
 });
+// a phone backgrounding the tab is the most likely way to lose a half-written
+// night, and it is the one moment the browser guarantees us
+addEventListener("visibilitychange", () => { if (document.hidden) saveDraft(); });
+addEventListener("pagehide", saveDraft);
 
 document.addEventListener("change", e => {
   const iso = isoDay(), plan = planFor(iso);
@@ -1261,6 +1359,7 @@ document.addEventListener("submit", e => {
       theme:g("theme") || null, meals, intentions, tasks, planned_at:new Date().toISOString()};
 
     if (!save()) return;
+    clearDraft();
     S.view = "today";
     flash(`Day closed out. Tomorrow is planned — ${tasks.length} task${tasks.length===1?"":"s"}, ${
       Object.keys(meals).length} meal${Object.keys(meals).length===1?"":"s"}, ${
