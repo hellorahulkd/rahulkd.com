@@ -143,8 +143,8 @@ html,body{overflow-x:clip}body{margin:0;background:var(--paper);color:var(--ink)
 
 /* The looped frames that drift behind the sections. */
 .float-icons{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.fi{position:absolute;display:block;color:var(--orange);opacity:.26;animation:fi-float 9s ease-in-out infinite}
-.fi svg{width:100%;height:100%;display:block;animation:fi-pulse 6s ease-in-out infinite}
+.fi{position:absolute;display:block;color:var(--orange);opacity:.26}
+.fi svg{width:100%;height:100%;display:block}
 .fi.blue{color:var(--blue);opacity:.2}
 .fi-a{top:12%;left:2%;width:54px;height:54px;animation-delay:0s}
 .fi-b{top:66%;left:5%;width:42px;height:42px;animation-delay:1.6s}
@@ -460,7 +460,7 @@ html[data-motion=reduced] .magnetic span{translate:none!important}
 @media (max-width:900px){:root{--rail-top:76px}}
 @media (max-width:680px){:root{--rail-top:70px;--rail-h:59px}}
 
-.section-top{position:sticky;top:var(--rail-top);z-index:6;
+.section-top{position:relative;z-index:6;
   background:var(--section-bg,var(--paper));padding-top:15px}
 .process-section{--section-bg:var(--orange)}
 .first-video{--section-bg:#e9e2d6}
@@ -538,8 +538,8 @@ body.enhanced .stage.is-live .process-heading{position:static;top:auto}
   body.enhanced [data-fx]{--fx-d:0ms}
 
   /* The quiet default: a short lift. Used where nothing louder is wanted. */
-  body.enhanced [data-fx=rise]{opacity:0;transform:translate3d(0,16px,0);
-    transition:opacity .62s var(--fx-ease) var(--fx-d),transform .62s var(--fx-ease) var(--fx-d)}
+  body.enhanced [data-fx=rise]{opacity:0;transform:translate3d(0,10px,0);
+    transition:opacity .45s var(--fx-ease-out) var(--fx-d),transform .45s var(--fx-ease-out) var(--fx-d)}
 
   /* A heading wiped up from behind its own baseline.
      This uses a mask rather than clip-path on purpose: clip-path zeroes an
@@ -631,7 +631,7 @@ body.enhanced .stage.is-live .process-counter{transition:opacity .3s var(--fx-ea
 .process-section .stage-dots{margin-top:34px}
 
 /* The portrait drifts inside its frame as the page passes it. */
-body.enhanced .about-art.has-photo .art-photo{transform:translate3d(0,var(--art-shift,0px),0) scale(1.07)}
+body.enhanced .about-art.has-photo .art-photo{transform:none}
 html[data-motion=reduced] .about-art.has-photo .art-photo{transform:none}
 
 /* ---- What I do: the photo is held while the four things arrive ----------- */
@@ -683,9 +683,9 @@ body.enhanced .stage.is-live .beyond-grid{align-items:center}
    They stop 6px short of the rail's own bottom edge rather than starting
    below it, so they slide under it and no stripe of already-scrolled reel
    can show between the two. */
-#work .work-row-head{position:sticky;top:calc(var(--rail-top) + var(--rail-h) - 6px);z-index:4;
+#work .work-row-head{position:relative;z-index:4;
   background:var(--paper);padding-top:24px;padding-bottom:16px}
-#stills .section-heading{position:sticky;top:calc(var(--rail-top) + var(--rail-h) - 6px);z-index:4;
+#stills .section-heading{position:relative;z-index:4;
   background:var(--paper);padding-top:22px;padding-bottom:20px}
 @media (max-width:860px){
   #work .work-row-head{padding-top:20px;padding-bottom:12px}
@@ -1247,23 +1247,8 @@ body.enhanced .stage.is-live[data-stage-mode=highlight] .stage-item{
     updateStages();
     let needsAnotherFrame = false;
     const heroOnScreen = heroTop + heroHeight > y && heroTop < y + viewportHeight;
-    if (motionEnabled) {
-      // The hero cards drift as the page moves. This part is for everyone, not
-      // only a mouse - it is the first thing that says the page is alive.
-      if (heroOnScreen) {
-        hero.style.setProperty('--scroll-shift', Math.max(-25, Math.min(25, (y - heroTop + 120) * -0.045)).toFixed(2) + 'px');
-      }
-      // The portrait drifts inside its own frame as you pass it, so the panel
-      // reads as a window rather than a flat picture. It is scaled slightly so
-      // no edge is ever exposed.
-      if (artPanel) {
-        const box = artPanel.getBoundingClientRect();
-        if (box.bottom > 0 && box.top < viewportHeight) {
-          const through = (viewportHeight - box.top) / (viewportHeight + box.height);
-          artPanel.style.setProperty('--art-shift', ((through - 0.5) * -46).toFixed(2) + 'px');
-        }
-      }
-    }
+    // Nothing drifts as you scroll: parallax made the text you were reading
+    // move under you.
     if (motionEnabled && finePointerQuery.matches) {
       if (heroOnScreen) {
         heroPointer.x += (heroPointerTarget.x - heroPointer.x) * 0.14;
@@ -1426,7 +1411,7 @@ body.enhanced .stage.is-live[data-stage-mode=highlight] .stage-item{
           window.setTimeout(() => target.classList.add('fx-done'), 1400);
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.02 });
+    }, { rootMargin: '0px 0px 12% 0px', threshold: 0 });
 
     const tagged = new Set();
     storyboard.forEach(([selector, effect, stagger]) => {
@@ -1442,9 +1427,12 @@ body.enhanced .stage.is-live[data-stage-mode=highlight] .stage-item{
         const parent = element.parentElement;
         const seat = (group.get(parent) || 0);
         group.set(parent, seat + 1);
-        element.dataset.fx = effect;
-        if (stagger) element.style.setProperty('--fx-d', Math.min(seat, 5) * stagger + 'ms');
-        if (effect === 'draw') {
+        // One gesture for the whole page: a short fade-up. Masks, wipes, pops and
+        // slides made text arrive in pieces while you were trying to read it.
+        const fx = effect === 'draw' ? 'draw' : 'rise';
+        element.dataset.fx = fx;
+        if (stagger) element.style.setProperty('--fx-d', Math.min(seat, 3) * Math.min(stagger, 60) + 'ms');
+        if (fx === 'draw') {
           $$('path', element).forEach((path) => {
             try { path.style.setProperty('--len', Math.ceil(path.getTotalLength()) + ''); } catch (_) { /* no geometry yet */ }
           });
@@ -1463,7 +1451,6 @@ body.enhanced .stage.is-live[data-stage-mode=highlight] .stage-item{
   // The track is given extra height and the block inside it sticks, so the page
   // keeps scrolling at exactly the speed your finger asks for while the content
   // steps forward. Nothing captures the scroll.
-  const artPanel = $('.about-art.has-photo');
   const stages = $$('[data-stage]').map((element) => ({
     element,
     track: $('.stage-track', element),
@@ -1486,7 +1473,11 @@ body.enhanced .stage.is-live[data-stage-mode=highlight] .stage-item{
     stage.mode = stage.element.dataset.stageMode || 'solo';
   });
 
+  // Holding sections still while the page scrolls read as the scroll
+  // fighting back, and hid content until you had scrolled far enough. Off.
+  const stagesEnabled = false;
   function layoutStages() {
+    if (!stagesEnabled) return;
     stages.forEach((stage) => {
       // Measure the block the size it will be while held, not the size it is
       // now: the process collapses three steps into one slot once it is live,
